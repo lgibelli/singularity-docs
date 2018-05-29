@@ -1,3 +1,10 @@
+.. figure:: logo.png
+   :alt: Singularity
+   :width: 0px
+   :height: 0px
+
+   Singularity
+
 Getting Started
 ===============
 
@@ -730,6 +737,13 @@ The Singularity Usage Workflow
   bulk of your container development. This workflow can be described
   visually as follows:
 
+.. figure:: flow.png
+   :alt: Singularity workflow
+   :width: 0px
+   :height: 0px
+
+   Singularity workflow
+
 | On the left side, you have your build environment: a laptop,
   workstation, or a server that you control. Here you will (optionally):
 
@@ -963,6 +977,13 @@ Overview
   (though the container may not perform properly when run as root). Red
   arrows represent operations that must be carried out with root
   privileges.
+
+.. figure:: build_input_output.png
+   :alt: Singularity build process
+   :width: 0px
+   :height: 0px
+
+   Singularity build process
 
 Downloading a existing container from Singularity Hub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
