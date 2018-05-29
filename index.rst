@@ -12,7 +12,17 @@ Contents:
 =========
 
 
-.. _Admin guide:   admin-guide/admin-guide
-.. _User guide:   user-guide/user-guide
+.. toctree::
+    :maxdepth: 1
+    :caption: User Guide
+
+    user-guide/user-guide
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Admin Guide
+
+    admin-guide/admin-guide
+
 
 
