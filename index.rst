@@ -12,15 +12,9 @@ Contents:
 =========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    admin-guide/admin-guide
    user-guide/user-guide
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
 
