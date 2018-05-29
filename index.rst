@@ -1,7 +1,5 @@
 .. figure:: logo.png
    :alt: Singularity
-   :width: 0px
-   :height: 0px
 
    Singularity
 
@@ -739,8 +737,6 @@ The Singularity Usage Workflow
 
 .. figure:: flow.png
    :alt: Singularity workflow
-   :width: 0px
-   :height: 0px
 
    Singularity workflow
 
@@ -980,8 +976,6 @@ Overview
 
 .. figure:: build_input_output.png
    :alt: Singularity build process
-   :width: 0px
-   :height: 0px
 
    Singularity build process
 
@@ -2073,6 +2067,8 @@ to build images. The high level idea is that we have two environments:
    build your container
 
 -  a **production** environment where you run your container
+
+|Singularity workflow|
 
 Singularity production images are immutable. This is a feature added as
 of Singularity 2.4, and it ensures a higher level of reproducibility and
@@ -5626,3 +5622,6 @@ user would be you, and the cache your .
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
 For details and best practices for creating your Singularity recipe, .
+
+.. |Singularity workflow| image:: flow.png
+
