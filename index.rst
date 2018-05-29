@@ -7,7 +7,7 @@ Contents:
    :maxdepth: 2
    :glob:
 
-    admin-guide/getting_started
+    admin-guide/admin-guide
     user-guide/user-guide
 
 
