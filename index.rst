@@ -11,10 +11,8 @@ The code of the project is on Github: `Singularity <https://github.com/singulari
 Contents:
 =========
 
-.. toctree::
-   :maxdepth: 1
 
-   admin-guide/admin-guide
-   user-guide/user-guide
+.. _Admin guide:   admin-guide/admin-guide
+.. _User guide:   user-guide/user-guide
 
 
