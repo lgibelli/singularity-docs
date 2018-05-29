@@ -1,5 +1,7 @@
 .. figure:: logo.png
    :alt: Singularity
+   :width: 40px
+   :height: 40px
 
    Singularity
 
