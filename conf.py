@@ -105,6 +105,8 @@ html_theme = 'default'
 # documentation.
 #html_theme_options = {}
 html_theme_options = {
+    'sticky_navigation': True,
+    'includehidden': True,
     'navigation_depth': 4,
 }
 
