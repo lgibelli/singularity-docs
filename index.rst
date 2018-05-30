@@ -11,7 +11,7 @@ Getting Started
 Quick Start
 -----------
 
-.. \_sec:quickstart:
+.. _sec:quickstart:
 
 This guide is intended for running Singularity on a computer where you
 have root (administrative) privileges. If you are learning about
@@ -270,7 +270,7 @@ and then disappears.
 Build images from scratch
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. \_sec:buildimagesfromscratch:
+.. _sec:buildimagesfromscratch:
 
 | As of Singularity v2.4 by default produces immutable images in the
   squashfs file format. This ensures reproducible and verifiable images.
@@ -497,7 +497,7 @@ Welcome to Singularity!
 A High Level View of Singularity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| .. \_sec:securityandpriviledge: A user inside a Singularity container
+| .. _sec:securityandpriviledge: A user inside a Singularity container
   is the same user as outside the container
 | This is one of Singularities defining characteristics. It allows a
   user (that may already have shell access to a particular host) to
@@ -798,7 +798,7 @@ Have a question, or need further information? `Reach out to us`_.
 Installation
 ------------
 
-.. \_sec:installation:
+.. _sec:installation:
 
 This document will guide you through the process of installing
 Singularity from source with the version and location of your choice.
@@ -923,7 +923,7 @@ below to continue reading.
 Build a Container
 -----------------
 
-.. \_sec:buildcontainer:
+.. _sec:buildcontainer:
 
 is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
@@ -1193,7 +1193,7 @@ More Build topics
 Build Environment
 -----------------
 
-.. \_sec:buildenv:
+.. _sec:buildenv:
 
 It’s commonly the case that you want to customize your build
 environment, such as specifying a custom cache directory for layers, or
@@ -1224,7 +1224,7 @@ this will use root’s home at and not your user’s home.
 Temporary Folders
 ~~~~~~~~~~~~~~~~~
 
-| .. \_sec:temporaryfolders: Singularity also uses some temporary
+| .. _sec:temporaryfolders: Singularity also uses some temporary
   directories to build the squashfs filesystem, so this temp space needs
   to be large enough to hold the entire resulting Singularity image. By
   default this happens in but can be overridden by setting to the full
@@ -1398,7 +1398,7 @@ yes/y/1/True/true, etc., then the runscript will remain as .
 Container Recipes
 -----------------
 
-.. \_sec:recipefile:
+.. _sec:recipefile:
 
 A Singularity Recipe is the driver of a custom build, and the starting
 point for designing any custom container. It includes specifics about
@@ -1494,7 +1494,7 @@ A build that uses a mirror to install Centos-7 might look like this:
 %help
 ^^^^^
 
-| .. \_sec:writehelpdocs: You don’t need to do much programming to add a
+| .. _sec:writehelpdocs: You don’t need to do much programming to add a
   section to your container. Just write it into a section:
 
 ::
@@ -1781,7 +1781,7 @@ but you can of course download with commands like and and .
 %runscript
 ^^^^^^^^^^
 
-.. \_sec:runscript:
+.. _sec:runscript:
 
 | The is another scriptlet, but it does not get executed during
   bootstrapping. Instead it gets persisted within the container to a
@@ -2044,7 +2044,7 @@ Singularity Flow
   will start with talking about build, and the many different use cases
   it affords.
 
-.. \_sec:singularityflow:
+.. _sec:singularityflow:
 
 Building Images
 ~~~~~~~~~~~~~~~
@@ -2257,7 +2257,7 @@ approach, we support this use case. To do this, given our folder called
 Bind Paths and Mounts
 ---------------------
 
-.. \_sec:bindpaths:
+.. _sec:bindpaths:
 
 If `enabled by the system administrator`_, Singularity allows you to map
 directories on your host system to directories within your container
@@ -2469,7 +2469,7 @@ isolated version of the container image that runs in the background.
 Why container instances?
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. \_sec:instances: Let’s say I want to run a web server. With nginx,
+.. _sec:instances: Let’s say I want to run a web server. With nginx,
 that is pretty simple, I install nginx and start the service:
 
 ::
@@ -2923,7 +2923,7 @@ us!`_.
 Environment and Metadata
 ------------------------
 
-.. \_sec:envandmetadata:
+.. _sec:envandmetadata:
 
 Singularity containers support environment variables and labels that you
 can add to your container during the build process. This page details
@@ -3106,7 +3106,7 @@ helpful to know where they are and what they do:
 Reproducible SCI-F Apps
 -----------------------
 
-.. \_sec:scifapps:
+.. _sec:scifapps:
 
 Why do we need SCI-F?
 ~~~~~~~~~~~~~~~~~~~~~
@@ -4150,7 +4150,7 @@ Commands
 Command Usage
 -------------
 
-.. \_sec:commandlineinterface:
+.. _sec:commandlineinterface:
 
 The Singularity command
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -4242,7 +4242,7 @@ For example:
 Commands Usage
 ~~~~~~~~~~~~~~
 
-.. \_sec:commandsusage:
+.. _sec:commandsusage:
 
 ::
 
@@ -4295,7 +4295,7 @@ Have a question, or need further information? `Reach out to us`_.
 build
 -----
 
-.. \_sec:build:
+.. _sec:build:
 
 Use to download and assemble existing containers, convert containers
 from one format to another, or build a container from a .
@@ -4341,7 +4341,7 @@ Given a Singularity Recipe called :
 exec
 ----
 
-.. \_sec:exec:
+.. _sec:exec:
 
 The Singularity sub-command allows you to spawn an arbitrary command
 within your container image as if it were running directly on the host
@@ -4496,7 +4496,7 @@ version of TensorFlow.
 inspect
 -------
 
-.. \_sec:inspect:
+.. _sec:inspect:
 
 | How can you sniff an image? We have provided the inspect command for
   you to easily see the runscript, test script, environment, help, and
@@ -4733,7 +4733,7 @@ improve or amend this, `please let us know`_!
 pull
 ----
 
-.. \_sec:pull:
+.. _sec:pull:
 
 | Singularity is the command that you would want to use to communicate
   with a container registry. The command does exactly as it says - there
@@ -4900,7 +4900,7 @@ else.
 run
 ---
 
-.. \_sec:run:
+.. _sec:run:
 
 It’s common to want your container to “do a thing.” Singularity allows
 you to define a custom action to be taken when a container is either or
@@ -5045,7 +5045,7 @@ container is one that tells the user how to interact with it.
 shell
 -----
 
-.. \_sec:shell:
+.. _sec:shell:
 
 The Singularity sub-command will automatically spawn an interactive
 shell within a container. As of v2.3 the default that is spawned via the
@@ -5155,7 +5155,7 @@ Image Command Group
 image.export
 ------------
 
-.. \_sec:imageexport:
+.. _sec:imageexport:
 
 | Export is a way to dump the contents of your container into a , or a
   stream to put into some other place. For example, you could stream
@@ -5185,7 +5185,7 @@ And here is the recommended way to compress your image:
 image.expand
 ------------
 
-.. \_sec:imageexpand:
+.. _sec:imageexpand:
 
 While the squashfs filesystem means that you typically don’t need to
 worry about the size of your container being built, you might find that
@@ -5242,7 +5242,7 @@ increase (which is 768MiB) by using the option.
 image.import
 ------------
 
-.. \_sec:imageimport:
+.. _sec:imageimport:
 
 | Singularity import is essentially taking a dump of files and folders
   and adding them to your image. This works for local compressed things
@@ -5260,7 +5260,7 @@ image.import
 image.create
 ------------
 
-.. \_sec:imagecreate:
+.. _sec:imagecreate:
 
 | A Singularity image, which can be referred to as a “container,” is a
   single file that contains a virtual file system. As of Singularity
@@ -5363,12 +5363,12 @@ has provided a nice interactive demonstration of creating an image (pre
 Instance Command Group
 ======================
 
-.. \_sec:instances:
+.. _sec:instances:
 
 instance.start
 --------------
 
-.. \_sec:instancestart:
+.. _sec:instancestart:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5449,7 +5449,7 @@ detailed look at usage see .
 instance.list
 -------------
 
-.. \_sec:instancelist:
+.. _sec:instancelist:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5486,7 +5486,7 @@ detailed look at usage see .
 instance.stop
 -------------
 
-.. \_sec:instancestop:
+.. _sec:instancestop:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5532,7 +5532,7 @@ Deprecated
 bootstrap
 ---------
 
-.. \_sec:bootstrap:
+.. _sec:bootstrap:
 
 Bootstrapping was the original way (for Singularity versions prior to
 2.4) to install an operating system and then configure it appropriately
