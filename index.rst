@@ -133,7 +133,7 @@ following:
 Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the `pull <#pull>`_ and `build <#build>`_ commands to download pre-built images from an
+You can use the `pull <#pull>`_ and `build <#id46>`_ commands to download pre-built images from an
 external resource like `Singularity Hub`_ or `Docker Hub`_. When called
 on a native Singularity images like those provided on Singularity Hub,
 simply downloads the image file to your system.
@@ -211,7 +211,7 @@ disappears when the shell is exited.
 
     $ singularity shell shub://vsoch/hello-world
 
-The `exec <#exec>`_ command allows you to execute a custom command within a container by
+The `exec <#id51>`_ command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
@@ -757,9 +757,9 @@ The Singularity Usage Workflow
   to the production system where you wish to run it. How do the commands
   work? Here is where to look for more information:
 
--  `build <#build>`_ : Build a container on your user endpoint or build environment
+-  `build <#id46>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#exec>`_ : Execute a command to your container
+-  `exec <#id51>`_ : Execute a command to your container
 
 -  `inspect <#inspect>`_ : See labels, run and test scripts, and environment variables
 
@@ -917,7 +917,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quickstart>`_ guide, or learn how to
-interact with your container via the `shell <#shell>`_ , `exec <#exec>`_ , or `run <#run>`_ commands. Or click **next**
+interact with your container via the `shell <#shell>`_ , `exec <#id51>`_ , or `run <#run>`_ commands. Or click **next**
 below to continue reading.
 
 Build a Container
@@ -4169,9 +4169,9 @@ The Singularity command
   level help for all arguments. The main options include:
 | **Container Actions**
 
--  `build <#build>`_ : Build a container on your user endpoint or build environment
+-  `build <#id46>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#exec>`_ : Execute a command to your container
+-  `exec <#id51>`_ : Execute a command to your container
 
 -  `inspect <#inspect>`_ : See labels, run and test scripts, and environment variables
 
