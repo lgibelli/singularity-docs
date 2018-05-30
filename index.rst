@@ -11,7 +11,7 @@ Getting Started
 Quick Start
 -----------
 
-.. _sec:quickstart:
+.. \_sec:quickstart:
 
 This guide is intended for running Singularity on a computer where you
 have root (administrative) privileges. If you are learning about
@@ -24,7 +24,7 @@ system administrator.
 Installation
 ~~~~~~~~~~~~
 
-| There are many ways to but this quick start guide will only cover one.
+| There are many ways to `install Singularity <sec:installation_>`_ but this quick start guide will only cover one.
 
 ::
 
@@ -40,8 +40,7 @@ Singularity must be installed as root to function properly.
 Overview of the Singularity Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| Singularity’s <a href="#sec:commandlineinterface">command line
-  interface</a> allows you to build and interact with containers
+| Singularity’s allows you to build and interact with containers
   transparently. You can run programs inside a container as if they were
   running on your host system. You can easily redirect IO, use pipes,
   pass arguments, and access files, sockets, and ports on the host
@@ -123,10 +122,8 @@ following:
     $ singularity <command> --help
     $ singularity <command> -h
 
-| Users can also a href=“sec:writehelpdocs">write help docs specific
-  to a container</a> or for an internal module called an a
-  href=”sec:scifapps">app</a>. If those help docs exist for a
-  particular container, you can view them like so.
+| Users can also or for an internal module called an . If those help
+  docs exist for a particular container, you can view them like so.
 
 ::
 
@@ -136,11 +133,10 @@ following:
 Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the a href=“sec:pull">pull</a> and a
-href=”sec:build">build</a> commands to download pre-built images from
-an external resource like `Singularity Hub`_ or `Docker Hub`_. When
-called on a native Singularity images like those provided on Singularity
-Hub, simply downloads the image file to your system.
+You can use the and commands to download pre-built images from an
+external resource like `Singularity Hub`_ or `Docker Hub`_. When called
+on a native Singularity images like those provided on Singularity Hub,
+simply downloads the image file to your system.
 
 ::
 
@@ -178,11 +174,9 @@ after downloading it.
 
 is like a “Swiss Army knife” for container creation. In addition to
 downloading images, you can use to create images from other images or
-from scratch using a a href=“sec:recipefile">recipe file</a>. You can
-also use to convert an image between the 3 major container formats
-supported by Singularity. We discuss those image formats below in the a
-href=”sec:buildimagesfromscratch">Build images from scratch</a>
-section.
+from scratch using a . You can also use to convert an image between the
+3 major container formats supported by Singularity. We discuss those
+image formats below in the section.
 
 Interact with images
 ~~~~~~~~~~~~~~~~~~~~
@@ -195,9 +189,8 @@ Singularity Hub like so.
 
     $ singularity pull --name hello-world.simg shub://vsoch/hello-world
 
-The <a href="#sec:shell">shell</a> command allows you to spawn a new
-shell within your container and interact with it as though it were a
-small virtual machine.
+The command allows you to spawn a new shell within your container and
+interact with it as though it were a small virtual machine.
 
 ::
 
@@ -218,10 +211,9 @@ disappears when the shell is exited.
 
     $ singularity shell shub://vsoch/hello-world
 
-The <a href="#sec:exec">exec</a> command allows you to execute a custom
-command within a container by specifying the image file. For instance,
-to list the root (/) of our hello-world.simg image, we could do the
-following:
+The command allows you to execute a custom command within a container by
+specifying the image file. For instance, to list the root (/) of our
+hello-world.simg image, we could do the following:
 
 ::
 
@@ -237,11 +229,10 @@ following:
 
     $ singularity exec shub://singularityhub/ubuntu cat /etc/os-release
 
-Singularity containers contain “a
-href="#sec:runscript">runscripts</a>”. These are user defined scripts
-that define the actions a container should perform when someone runs it.
-The runscript can be triggered with the run command, or simply by
-calling the container as though it were an executable.
+Singularity containers contain “”. These are user defined scripts that
+define the actions a container should perform when someone runs it. The
+runscript can be triggered with the run command, or simply by calling
+the container as though it were an executable.
 
 ::
 
@@ -279,7 +270,7 @@ and then disappears.
 Build images from scratch
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _sec:buildimagesfromscratch:
+.. \_sec:buildimagesfromscratch:
 
 | As of Singularity v2.4 by default produces immutable images in the
   squashfs file format. This ensures reproducible and verifiable images.
@@ -292,7 +283,7 @@ Build images from scratch
   Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
-read about the <a href="#sec:singularityflow">singularity flow</a>.
+read about the .
 
 | To build into a (container in a directory) use the command and option:
 
@@ -399,20 +390,18 @@ named Singularity), you would call build like so:
   executes within the container at build time after the base OS has been
   installed. The section is therefore the place to perform installations
   of custom apps.
-| This is a very small example of the things that you can do with a a
-  href=“sec:recipefile">recipe file</a>. In addition to building a
-  container from Singularity Hub, you can start with base images from
-  Docker Hub, use images directly from official repositories such as
-  Ubuntu, Debian, Centos, Arch, and BusyBox, use an existing container
-  on your host system as a base, or even take a snapshot of the host
-  system itself and use that as a base image.
-  If you want to build Singularity images without having singularity
+| This is a very small example of the things that you can do with a . In
+  addition to building a container from Singularity Hub, you can start
+  with base images from Docker Hub, use images directly from official
+  repositories such as Ubuntu, Debian, Centos, Arch, and BusyBox, use an
+  existing container on your host system as a base, or even take a
+  snapshot of the host system itself and use that as a base image.
+| If you want to build Singularity images without having singularity
   installed in a build environment, you can build images using
   `Singularity
   Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
   instead. If you want a more detailed rundown and examples for
-  different build options, see our a
-  href=”sec:singularityflow">singularity flow</a> page.
+  different build options, see our page.
 
 Introduction
 ------------
@@ -508,7 +497,7 @@ Welcome to Singularity!
 A High Level View of Singularity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| .. _sec:securityandpriviledge: A user inside a Singularity container
+| .. \_sec:securityandpriviledge: A user inside a Singularity container
   is the same user as outside the container
 | This is one of Singularities defining characteristics. It allows a
   user (that may already have shell access to a particular host) to
@@ -540,8 +529,7 @@ A High Level View of Singularity
   Singularity prevents user context escalation within the container, and
   thus makes it possible to run user supplied containers on shared
   infrastructures.
-| This mitigation dictates the Singularity a
-  href="#sec:singularityflow">workflow</a>. If a user needs to be root
+| This mitigation dictates the Singularity . If a user needs to be root
   in order to make changes to their containers, then they need to have
   an endpoint (a local workstation, laptop, or server) where they have
   root access. Considering almost everybody at least has a laptop, this
@@ -584,11 +572,10 @@ A High Level View of Singularity
   copying any other file you control!
 | If you want an automated solution for building and hosting your image,
   you can use our container registry `Singularity Hub`_. Singularity Hub
-  can automatically build <a href="#sec:recipefile">Singularity recipe
-  files</a> from a GitHub repository each time that you push. It
-  provides a simple cloud solution for storing and sharing your image.
-  If you want to host your own Registry, then you should check out
-  `Singularity Registry`_. If you have ideas or suggestions for how
+  can automatically build from a GitHub repository each time that you
+  push. It provides a simple cloud solution for storing and sharing your
+  image. If you want to host your own Registry, then you should check
+  out `Singularity Registry`_. If you have ideas or suggestions for how
   Singularity can better support reproducible science, please `reach
   out!`_.
 
@@ -732,9 +719,7 @@ to run, which is fast enough to seem instantaneous.
 The Singularity Usage Workflow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| The security model of Singularity (as described above, a
-  href=“sec:securityandpriviledge">”A user inside a Singularity
-  container is the same user as outside the container"</a>) defines the
+| The security model of Singularity (as described above, ) defines the
   Singularity workflow. There are generally two groups of actions you
   must implement on a container; management (building your container)
   and usage.
@@ -772,46 +757,38 @@ The Singularity Usage Workflow
   to the production system where you wish to run it. How do the commands
   work? Here is where to look for more information:
 
--  <a href="#sec:build">build</a>: Build a container on your user
-   endpoint or build environment
+-  : Build a container on your user endpoint or build environment
 
--  <a href="#sec:exec">exec</a>: Execute a command to your container
+-  : Execute a command to your container
 
--  <a href="#sec:inspect">inspect</a>: See labels, run and test
-   scripts, and environment variables
+-  : See labels, run and test scripts, and environment variables
 
--  <a href="#sec:pull">pull</a>: pull an image from Docker or
-   Singularity Hub
+-  : pull an image from Docker or Singularity Hub
 
--  <a href="#sec:run">run</a>: Run your image as an executable
+-  : Run your image as an executable
 
--  <a href="#sec:shell">shell</a>: Shell into your image
+-  : Shell into your image
 
 **Image Commands**
 
--  <a href="#sec:imageimport">image.import</a>: import layers or other
-   file content to your image
+-  : import layers or other file content to your image
 
--  <a href="#sec:imageexport">image.export</a>: export the contents of
-   the image to tar or stream
+-  : export the contents of the image to tar or stream
 
--  <a href="#sec:imagecreate">image.create</a>: create a new image,
-   using the old ext3 filesystem
+-  : create a new image, using the old ext3 filesystem
 
--  <a href="#sec:imageexpand">image.expand</a>: increase the size of
-   your image (old ext3)
+-  : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  <a href="#sec:instances">instances</a>: Start, stop, and list
-   container instances
+-  : Start, stop, and list container instances
 
 **Deprecated Commands** The following commands are deprecated in 2.4 and
 will be removed in future releases.
 
--  <a href="#sec:bootstrap">bootstrap</a>: Bootstrap a container recipe
+-  : Bootstrap a container recipe
 
 Support
 ~~~~~~~
@@ -821,7 +798,7 @@ Have a question, or need further information? `Reach out to us`_.
 Installation
 ------------
 
-.. _sec:installation:
+.. \_sec:installation:
 
 This document will guide you through the process of installing
 Singularity from source with the version and location of your choice.
@@ -939,24 +916,21 @@ you need to hit all of the following:
 
     $ sudo rm -rf /some/temp/dir
 
-What should you do next? You can check out the a
-href=“sec:quickstart">quickstart</a> guide, or learn how to interact
-with your container via the a href=”sec:shell">shell</a>, a
-href=“sec:exec">exec</a> , or a href=”sec:run">run</a> commands.
-Or click **next** below to continue reading.
+What should you do next? You can check out the guide, or learn how to
+interact with your container via the , , or commands. Or click **next**
+below to continue reading.
 
 Build a Container
 -----------------
 
-.. _sec:buildcontainer:
+.. \_sec:buildcontainer:
 
 is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
 `Singularity Hub`_ and `Docker Hub`_. You can use it to convert
 containers between the various formats supported by Singularity. And you
-can use it in conjunction with a <a href="#sec:recipefile">Singularity
-recipe</a> file to create a container from scratch and customized it to
-fit your needs.
+can use it in conjunction with a file to create a container from scratch
+and customized it to fit your needs.
 
 Overview
 ~~~~~~~~
@@ -976,7 +950,7 @@ Overview
 
 -  path to an **archive** in .tar or compressed .tar.gz format
 
--  path to a **<a href="#sec:recipefile">Singularity recipe file</a>**
+-  path to a ****
 
 | In addition can produce containers in three different formats. Formats
   types can be specified by passing the following options to build.
@@ -1119,8 +1093,7 @@ Building containers from Singularity recipe files
 
 | Of course, Singularity recipe files can be used as the target when
   building a container. For detailed information on writing Singularity
-  recipe files, please see the <a href="#sec:recipefile">Container
-  Recipes docs</a>.
+  recipe files, please see the .
 | Let’s say you already have the following container recipe file called
   , and you want to use it to build a container.
 
@@ -1208,8 +1181,7 @@ More Build topics
 
 -  If you want to **customize the cache location** (where Docker layers
    are downloaded on your system), specify Docker credentials, or any
-   custom tweaks to your build environment, see a
-   href="#sec:buildenv">build environment</a>.
+   custom tweaks to your build environment, see .
 
 -  If you want to make internally **modular containers**, check out the
    getting started guide `here`_
@@ -1221,7 +1193,7 @@ More Build topics
 Build Environment
 -----------------
 
-.. _sec:buildenv:
+.. \_sec:buildenv:
 
 It’s commonly the case that you want to customize your build
 environment, such as specifying a custom cache directory for layers, or
@@ -1231,11 +1203,10 @@ discuss those things
 Cache Folders
 ~~~~~~~~~~~~~
 
-To make download of layers for build and <a href="#sec:pull">pull</a>
-faster and less redundant, we use a caching strategy. By default, the
-Singularity software will create a set of folders in your directory for
-docker layers, Singularity Hub images, and Docker metadata,
-respectively:
+To make download of layers for build and faster and less redundant, we
+use a caching strategy. By default, the Singularity software will create
+a set of folders in your directory for docker layers, Singularity Hub
+images, and Docker metadata, respectively:
 
 ::
 
@@ -1253,7 +1224,7 @@ this will use root’s home at and not your user’s home.
 Temporary Folders
 ~~~~~~~~~~~~~~~~~
 
-| .. _sec:temporaryfolders: Singularity also uses some temporary
+| .. \_sec:temporaryfolders: Singularity also uses some temporary
   directories to build the squashfs filesystem, so this temp space needs
   to be large enough to hold the entire resulting Singularity image. By
   default this happens in but can be overridden by setting to the full
@@ -1284,9 +1255,8 @@ Temporary Folders
 Pull Folder
 ~~~~~~~~~~~
 
-For details about customizing the output location of a
-href=“sec:pull">pull</a>, see the a href=”sec:pull">pull docs</a>.
-You have the similar ability to set it to be something different, or to
+For details about customizing the output location of , see the . You
+have the similar ability to set it to be something different, or to
 customize the name of the pulled image.
 
 Environment Variables
@@ -1344,10 +1314,9 @@ Cache
 | **SINGULARITY\_LOCALCACHEDIR** Is the temporary folder (default ) to
   generate runtime folders (containers “on the fly”) typically a , , or
   or a image. This is different from where downloaded layers are cached
-  ( ) or pulled ( ) or where a (non on-the-fly build) happens ( ). See a
-  href="#sec:temporaryfolders">temporary folders</a> above for an
-  example. You can generally determine the value of this setting by
-  running a command with , and seeing the last line “Removing
+  ( ) or pulled ( ) or where a (non on-the-fly build) happens ( ). See
+  above for an example. You can generally determine the value of this
+  setting by running a command with , and seeing the last line “Removing
   directory:”
 
 ::
@@ -1429,7 +1398,7 @@ yes/y/1/True/true, etc., then the runscript will remain as .
 Container Recipes
 -----------------
 
-.. _sec:recipefile:
+.. \_sec:recipefile:
 
 A Singularity Recipe is the driver of a custom build, and the starting
 point for designing any custom container. It includes specifics about
@@ -1467,8 +1436,7 @@ composed of several keywords. Specifically:
 -  : references the kind of base you want to use (e.g., docker,
    debootstrap, shub). For example, a shub bootstrap will pull
    containers for shub as bases. A Docker bootstrap will pull docker
-   layers to start your image. For a full list see a
-   href="#sec:buildcontainer">build</a>
+   layers to start your image. For a full list see
 
 -  : is the named container (shub) or reference to layers (Docker) that
    you want to use (e.g., vsoch/hello-world)
@@ -1526,7 +1494,7 @@ A build that uses a mirror to install Centos-7 might look like this:
 %help
 ^^^^^
 
-| .. _sec:writehelpdocs: You don’t need to do much programming to add a
+| .. \_sec:writehelpdocs: You don’t need to do much programming to add a
   section to your container. Just write it into a section:
 
 ::
@@ -1690,8 +1658,7 @@ The easiest way to see labels is to inspect the image:
     }
 
 You’ll notice some other labels that are captured automatically from the
-build process. You can read more about labels and metadata a
-href="#sec:envandmetadata">here</a> .
+build process. You can read more about labels and metadata .
 
 %environment
 ^^^^^^^^^^^^
@@ -1777,8 +1744,7 @@ When we rebuild, is it added to the environment?
   in take precedence over those added via . Note that you won’t see
   these variables in the inspect output, as inspect only shows the
   contents added from .
-| See <a href="#sec:envandmetadata">Environment and Metadata</a> for
-  more information about the and sections.
+| See for more information about the and sections.
 
 %post
 ^^^^^
@@ -1815,7 +1781,7 @@ but you can of course download with commands like and and .
 %runscript
 ^^^^^^^^^^
 
-.. _sec:runscript:
+.. \_sec:runscript:
 
 | The is another scriptlet, but it does not get executed during
   bootstrapping. Instead it gets persisted within the container to a
@@ -1922,11 +1888,10 @@ Apps
   environments? In some circumstances, it may be redundant to build
   different containers for each app with almost equivalent dependencies.
 | Starting in Singularity 2.4 all of the above commands can also be used
-  in the context of internal modules called a
-  href=“sec:scifapps">apps</a> based on the `Standard Container
-  Integration Format`_. For details on apps, see the a
-  href=”sec:scifapps">apps</a> documentation. For a quick rundown of
-  adding an app to your container, here is an example runscript:
+  in the context of internal modules called based on the `Standard
+  Container Integration Format`_. For details on apps, see the
+  documentation. For a quick rundown of adding an app to your container,
+  here is an example runscript:
 
 ::
 
@@ -2042,9 +2007,8 @@ Best Practices for Build Recipes
 
 When crafting your recipe, it is best to consider the following:
 
-#. To make your container internally modular, use a
-   href="#sec:scifapps">SCI-F apps</a>. Shared dependencies (between
-   app modules) can go under .
+#. To make your container internally modular, use . Shared dependencies
+   (between app modules) can go under .
 
 #. For global installs to , install packages, programs, data, and files
    into operating system locations (e.g. not , , or any other
@@ -2067,8 +2031,8 @@ When crafting your recipe, it is best to consider the following:
    sandbox that has been manually changed. This ensures greatest
    possibility of reproducibility and mitigates the black box effect.
 
-Are you a recipe pro and now ready to build? Take a look at the a
-href="#sec:buildcontainer">build</a> documentation.
+Are you a recipe pro and now ready to build? Take a look at the
+documentation.
 
 Singularity Flow
 ----------------
@@ -2080,17 +2044,15 @@ Singularity Flow
   will start with talking about build, and the many different use cases
   it affords.
 
-.. _sec:singularityflow:
+.. \_sec:singularityflow:
 
 Building Images
 ~~~~~~~~~~~~~~~
 
-| If you read the a href=“sec:quickstart">quick start</a>, you
-  probably remember that building images from a Docker base does not
-  require a a href=”sec:recipefile">Singularity recipe</a>. However,
-  if you do want to build and customize your image, you can create a a
-  href="#sec:recipefile">Singularity recipe</a> text file, which is a
-  simple text file that describes how the container should be made.
+| If you read the , you probably remember that building images from a
+  Docker base does not require a . However, if you do want to build and
+  customize your image, you can create a text file, which is a simple
+  text file that describes how the container should be made.
 
 The diagram below is a visual depiction of how you can use Singularity
 to build images. The high level idea is that we have two environments:
@@ -2104,12 +2066,11 @@ to build images. The high level idea is that we have two environments:
 
 Singularity production images are immutable. This is a feature added as
 of Singularity 2.4, and it ensures a higher level of reproducibility and
-verification of images. To read more about the details, check out the a
-href="#sec:buildcontainer">build</a> docs. However, immutability is
-not so great when you are testing, debugging, or otherwise want to
-quickly change your image. We will proceed by describing a typical
-workflow of developing first, building a final image, and using it in
-production.
+verification of images. To read more about the details, check out the
+docs. However, immutability is not so great when you are testing,
+debugging, or otherwise want to quickly change your image. We will
+proceed by describing a typical workflow of developing first, building a
+final image, and using it in production.
 
 If you want a writable image or folder for developing, you have two
 options:
@@ -2296,7 +2257,7 @@ approach, we support this use case. To do this, given our folder called
 Bind Paths and Mounts
 ---------------------
 
-.. _sec:bindpaths:
+.. \_sec:bindpaths:
 
 If `enabled by the system administrator`_, Singularity allows you to map
 directories on your host system to directories within your container
@@ -2508,7 +2469,7 @@ isolated version of the container image that runs in the background.
 Why container instances?
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _sec:instances: Let’s say I want to run a web server. With nginx,
+.. \_sec:instances: Let’s say I want to run a web server. With nginx,
 that is pretty simple, I install nginx and start the service:
 
 ::
@@ -2682,9 +2643,9 @@ image. And to confirm that it’s correctly running:
     working. Further configuration is required.</p>
 
     <p>For online documentation and support please refer to
-    <<a href="#http://nginx.org/">nginx.org</a>.<br/>
+    <a href="http://nginx.org/">nginx.org</a>.<br/>
     Commercial support is available at
-    <<a href="#http://nginx.com/">nginx.com</a>.</p>
+    <a href="http://nginx.com/">nginx.com</a>.</p>
 
     <p><em>Thank you for using nginx.</em></p>
     </body>
@@ -2816,8 +2777,7 @@ Making it Pretty
   and URL syntax each time you want to request a PDF, so let’s automate
   that. To do that, we’re going to be using Standard Container
   Integration Format (SCIF) apps, which are integrated directly into
-  singularity. If you haven’t already, check out the a
-  href="#sec:scifapps">Singularity app documentation</a> to come up to
+  singularity. If you haven’t already, check out the to come up to
   speed.
 | First off, we’re going to move the installation of the url-to-pdf-api
   into an app, so that there is a designated spot to place output files.
@@ -2963,7 +2923,7 @@ us!`_.
 Environment and Metadata
 ------------------------
 
-.. _sec:envandmetadata:
+.. \_sec:envandmetadata:
 
 Singularity containers support environment variables and labels that you
 can add to your container during the build process. This page details
@@ -3146,7 +3106,7 @@ helpful to know where they are and what they do:
 Reproducible SCI-F Apps
 -----------------------
 
-.. _sec:scifapps:
+.. \_sec:scifapps:
 
 Why do we need SCI-F?
 ~~~~~~~~~~~~~~~~~~~~~
@@ -4190,7 +4150,7 @@ Commands
 Command Usage
 -------------
 
-.. _sec:commandlineinterface:
+.. \_sec:commandlineinterface:
 
 The Singularity command
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -4208,50 +4168,41 @@ The Singularity command
   level help for all arguments. The main options include:
 | **Container Actions**
 
--  <a href="#sec:build">build</a>: Build a container on your user
-   endpoint or build environment
+-  : Build a container on your user endpoint or build environment
 
--  <a href="#sec:exec">exec</a>: Execute a command to your container
+-  : Execute a command to your container
 
--  <a href="#sec:inspect">inspect</a>: See labels, run and test
-   scripts, and environment variables
+-  : See labels, run and test scripts, and environment variables
 
--  <a href="#sec:pull">pull</a>: pull an image from Docker or
-   Singularity Hub
+-  : pull an image from Docker or Singularity Hub
 
--  <a href="#sec:run">run</a>: Run your image as an executable
+-  : Run your image as an executable
 
--  <a href="#sec:shell">shell</a>: Shell into your image
+-  : Shell into your image
 
 | **Image Commands**
 
--  <a href="#sec:imageimport">image.import</a>: import layers or other
-   file content to your image
+-  : import layers or other file content to your image
 
--  <a href="#sec:imageexport">image.export</a>: export the contents of
-   the image to tar or stream
+-  : export the contents of the image to tar or stream
 
--  <a href="#sec:imagecreate">image.create</a>: create a new image,
-   using the old ext3 filesystem
+-  : create a new image, using the old ext3 filesystem
 
--  <a href="#sec:imageexpand">image.expand</a>: increase the size of
-   your image (old ext3)
+-  : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  <a href="#sec:instances">instances</a>: Start, stop, and list
-   container instances
+-  : Start, stop, and list container instances
 
 | **Deprecated Commands**
 | The following commands are deprecated in 2.4 and will be removed in
   future releases.
 
--  <a href="#sec:bootstrap">bootstrap</a>: Bootstrap a container recipe
+-  : Bootstrap a container recipe
 
-For the full usage, <a href="#sec:commandsusage">see the bottom of this
-page</a>
+For the full usage,
 
 | Because of the nature of how Singularity cascades commands and
   sub-commands, argument processing is done with a mandatory order.
@@ -4291,7 +4242,7 @@ For example:
 Commands Usage
 ~~~~~~~~~~~~~~
 
-.. _sec:commandsusage:
+.. \_sec:commandsusage:
 
 ::
 
@@ -4344,11 +4295,10 @@ Have a question, or need further information? `Reach out to us`_.
 build
 -----
 
-.. _sec:build:
+.. \_sec:build:
 
 Use to download and assemble existing containers, convert containers
-from one format to another, or build a container from a a
-href="#sec:recipefile">Singularity recipe</a>.
+from one format to another, or build a container from a .
 
 Overview
 ~~~~~~~~
@@ -4358,7 +4308,7 @@ Overview
   to an existing container, or a path to a Singularity Recipe file. The
   output container can be in squashfs, ext3, or directory format.
 | For a complete list of options type . For more info on building
-  containers see <a href="#sec:buildcontainer">Build a Container</a>.
+  containers see .
 
 Examples
 ~~~~~~~~
@@ -4391,7 +4341,7 @@ Given a Singularity Recipe called :
 exec
 ----
 
-.. _sec:exec:
+.. \_sec:exec:
 
 The Singularity sub-command allows you to spawn an arbitrary command
 within your container image as if it were running directly on the host
@@ -4546,7 +4496,7 @@ version of TensorFlow.
 inspect
 -------
 
-.. _sec:inspect:
+.. \_sec:inspect:
 
 | How can you sniff an image? We have provided the inspect command for
   you to easily see the runscript, test script, environment, help, and
@@ -4783,7 +4733,7 @@ improve or amend this, `please let us know`_!
 pull
 ----
 
-.. _sec:pull:
+.. \_sec:pull:
 
 | Singularity is the command that you would want to use to communicate
   with a container registry. The command does exactly as it says - there
@@ -4950,7 +4900,7 @@ else.
 run
 ---
 
-.. _sec:run:
+.. \_sec:run:
 
 It’s common to want your container to “do a thing.” Singularity allows
 you to define a custom action to be taken when a container is either or
@@ -5035,8 +4985,7 @@ following order of operations:
 #. If the user has not defined a runscript, and there is no or (or we
    aren’t importing Docker at all) then we default to
 
-Here is how you would define the runscript section when you a
-href="#sec:buildcontainer">build</a> an image:
+Here is how you would define the runscript section when you an image:
 
 ::
 
@@ -5060,8 +5009,7 @@ you want to use run instead of exec, you could also just do:
     exec "$@"`
 
 If you want different entrypoints for your image, we recommend using the
-%apprun syntax (see <a href="#sec:scifapps">apps</a> ). Here we have
-two entrypoints for foo and bar:
+%apprun syntax (see ). Here we have two entrypoints for foo and bar:
 
 ::
 
@@ -5097,7 +5045,7 @@ container is one that tells the user how to interact with it.
 shell
 -----
 
-.. _sec:shell:
+.. \_sec:shell:
 
 The Singularity sub-command will automatically spawn an interactive
 shell within a container. As of v2.3 the default that is spawned via the
@@ -5207,7 +5155,7 @@ Image Command Group
 image.export
 ------------
 
-.. _sec:imageexport:
+.. \_sec:imageexport:
 
 | Export is a way to dump the contents of your container into a , or a
   stream to put into some other place. For example, you could stream
@@ -5237,7 +5185,7 @@ And here is the recommended way to compress your image:
 image.expand
 ------------
 
-.. _sec:imageexpand:
+.. \_sec:imageexpand:
 
 While the squashfs filesystem means that you typically don’t need to
 worry about the size of your container being built, you might find that
@@ -5294,7 +5242,7 @@ increase (which is 768MiB) by using the option.
 image.import
 ------------
 
-.. _sec:imageimport:
+.. \_sec:imageimport:
 
 | Singularity import is essentially taking a dump of files and folders
   and adding them to your image. This works for local compressed things
@@ -5312,16 +5260,15 @@ image.import
 image.create
 ------------
 
-.. _sec:imagecreate:
+.. \_sec:imagecreate:
 
 | A Singularity image, which can be referred to as a “container,” is a
   single file that contains a virtual file system. As of Singularity
   2.4, we strongly recommend that you build (create and install) an
-  image using <a href="#sec:buildcontainer">build</a>. If you have
-  reason to create an empty image, or use create for any other reason,
-  the original command is replaced with a more specific . After creating
-  an image you can install an operating system, applications, and save
-  meta-data with it.
+  image using . If you have reason to create an empty image, or use
+  create for any other reason, the original command is replaced with a
+  more specific . After creating an image you can install an operating
+  system, applications, and save meta-data with it.
 | Whereas Docker assembles images from layers that are stored on your
   computer (viewed with the command), a Singularity image is just one
   file that can sit on your Desktop, in a folder on your cluster, or
@@ -5416,12 +5363,12 @@ has provided a nice interactive demonstration of creating an image (pre
 Instance Command Group
 ======================
 
-.. _sec:instances:
+.. \_sec:instances:
 
 instance.start
 --------------
 
-.. _sec:instancestart:
+.. \_sec:instancestart:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5456,8 +5403,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see <a href="#sec:instances">Running
-Instances</a>.
+detailed look at usage see .
 
 ::
 
@@ -5503,7 +5449,7 @@ Instances</a>.
 instance.list
 -------------
 
-.. _sec:instancelist:
+.. \_sec:instancelist:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5521,8 +5467,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see <a href="#sec:instances">Running
-Instances</a>.
+detailed look at usage see .
 
 ::
 
@@ -5541,7 +5486,7 @@ Instances</a>.
 instance.stop
 -------------
 
-.. _sec:instancestop:
+.. \_sec:instancestop:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5559,8 +5504,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see <a href="#sec:instances">Running
-Instances</a>.
+detailed look at usage see .
 
 ::
 
@@ -5583,13 +5527,12 @@ Deprecated
 ==========
 
     Note: The bootstrap command is deprecated for Singularity Version
-    2.4. You should use <a href="#sec:buildcontainer">build</a>
-    instead.
+    2.4. You should use instead.
 
 bootstrap
 ---------
 
-.. _sec:bootstrap:
+.. \_sec:bootstrap:
 
 Bootstrapping was the original way (for Singularity versions prior to
 2.4) to install an operating system and then configure it appropriately
@@ -5597,8 +5540,7 @@ for a specified need. Bootstrap is very similar to build, except that it
 by default uses an `ext3`_ filesystem and allows for writability. The
 images unfortunately are not immutable in this way, and can degrade over
 time. As of 2.4, bootstrap is still supported for Singularity, however
-we encourage you to use <a href="#sec:buildcontainer">build</a>
-instead.
+we encourage you to use instead.
 
 Quick Start
 ~~~~~~~~~~~
@@ -5678,8 +5620,7 @@ user would be you, and the cache your .
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
-For details and best practices for creating your Singularity recipe, 
-<a href="#sec:recipefile">read about them here</a>.
+For details and best practices for creating your Singularity recipe, .
 
 .. _Singularity Hub: https://singularity-hub.org/
 .. _Docker Hub: https://hub.docker.com/
