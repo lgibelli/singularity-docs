@@ -24,7 +24,7 @@ system administrator.
 Installation
 ~~~~~~~~~~~~
 
-| There are many ways to `install Singularity<#sec-installation>`__ but this quick start
+| There are many ways to `install Singularity<#sec-installation>`_ but this quick start
   guide will only cover one.
 
 __ sec:installation_
