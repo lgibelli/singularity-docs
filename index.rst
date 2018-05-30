@@ -11,6 +11,8 @@ Getting Started
 Quick Start
 -----------
 
+.. _sec:quickstart:
+
 This guide is intended for running Singularity on a computer where you
 have root (administrative) privileges. If you are learning about
 Singularity on a system where you lack root privileges, you can still
@@ -22,8 +24,9 @@ system administrator.
 Installation
 ~~~~~~~~~~~~
 
-| There are many ways to `install Singularity`__ but this quick start
+| There are many ways to `install Singularity<#sec-installation>`__ but this quick start
   guide will only cover one.
+
 __ sec:installation_
 
 ::
@@ -40,13 +43,16 @@ Singularity must be installed as root to function properly.
 Overview of the Singularity Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| Singularity’s allows you to build and interact with containers
-  transparently. You can run programs inside a container as if they were
-  running on your host system. You can easily redirect IO, use pipes,
-  pass arguments, and access files, sockets, and ports on the host
-  system from within a container.
+| Singularity’s `command line interface`__
+  allows you to build and interact with containers transparently. You
+  can run programs inside a container as if they were running on your
+  host system. You can easily redirect IO, use pipes, pass arguments,
+  and access files, sockets, and ports on the host system from within a
+  container.
 | The option gives an overview of Singularity options and subcommands as
   follows:
+
+__ sec:commandlineinterface_
 
 ::
 
@@ -122,8 +128,9 @@ following:
     $ singularity <command> --help
     $ singularity <command> -h
 
-| Users can also or for an internal module called an . If those help
+| Users can also `write help docs specific to a container`_ or for an internal module called an app. If those help
   docs exist for a particular container, you can view them like so.
+__ sec:writehelpdocs_
 
 ::
 
@@ -133,594 +140,16 @@ following:
 Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the and commands to download pre-built images from an
-external resource like `Singularity Hub`_ or `Docker Hub`_. When called
-on a native Singularity images like those provided on Singularity Hub,
-simply downloads the image file to your system.
+| You can use the `recipe file`. You can also pull and 
+  use to convert an image between the 3 major container formats
+  supported by Singularity. We discuss those image formats below in the
+  `“A user inside a Singularity container is the same user as outside
+  the container”`) defines the Singularity workflow. There are generally
+  two groups of actions you must implement on a container; management
+  (building your container) and usage.
+
+__ sec:pull_ `pull` 
 
-::
-
-    $ singularity pull shub://vsoch/hello-world   # pull with default name, vsoch-hello-world-master.simg
-    $ singularity pull --name hello.simg shub://vsoch/hello-world   # pull with custom name
-
-| Singularity images can also be pulled and named by an associated
-  GitHub commit or content hash.
-| You can also use with the uri to reference Docker images served from a
-  registry. In this case does not just download an image file. Docker
-  images are stored in layers, so must also combine those layers into a
-  usable Singularity file.
-
-::
-
-    $ singularity pull docker://godlovedc/lolcow  # with default name
-    $ singularity pull --name funny.simg docker://godlovedc/lolcow # with custom name
-
-| Pulling Docker images reduces reproducibility. If you were to pull a
-  Docker image today and then wait six months and pull again, you are
-  not guaranteed to get the same image. If any of the source layers has
-  changed the image will be altered. If reproducibility is a priority
-  for you, try building your images from Singularity Hub.
-| You can also use the command to download pre-built images from an
-  external resource. When using you must specify a name for your
-  container like so:
-
-::
-
-    $ singularity build hello-world.simg shub://vsoch/hello-world
-    $ singularity build lolcow.simg docker://godlovedc/lolcow
-
-Unlike , will convert your image to the latest Singularity image format
-after downloading it.
-
-is like a “Swiss Army knife” for container creation. In addition to
-downloading images, you can use to create images from other images or
-from scratch using a . You can also use to convert an image between the
-3 major container formats supported by Singularity. We discuss those
-image formats below in the section.
-
-Interact with images
-~~~~~~~~~~~~~~~~~~~~
-
-Once you have an image, you can interact with it in several ways. For
-these examples we will use a image that can be downloaded from
-Singularity Hub like so.
-
-::
-
-    $ singularity pull --name hello-world.simg shub://vsoch/hello-world
-
-The command allows you to spawn a new shell within your container and
-interact with it as though it were a small virtual machine.
-
-::
-
-    $ singularity shell hello-world.simg
-    Singularity: Invoking an interactive shell within container...
-
-    # I am the same user inside as outside!
-    Singularity hello-world.simg:~/Desktop> whoami
-    vanessa
-
-    Singularity hello-world.simg:~/Desktop> id
-    uid=1000(vanessa) gid=1000(vanessa) groups=1000(vanessa),4(adm),24,27,30(tape),46,113,128,999(input)
-
-also works with the and URIs. This creates an ephemeral container that
-disappears when the shell is exited.
-
-::
-
-    $ singularity shell shub://vsoch/hello-world
-
-The command allows you to execute a custom command within a container by
-specifying the image file. For instance, to list the root (/) of our
-hello-world.simg image, we could do the following:
-
-::
-
-    $ singularity exec hello-world.simg ls /
-    anaconda-post.log  etc   lib64       mnt   root  singularity  tmp
-    bin        home  lost+found  opt   run   srv          usr
-    dev        lib   media       proc  sbin  sys          var
-
-| also works with the and URIs. This creates an ephemeral container that
-  executes a command and disappears.
-
-::
-
-    $ singularity exec shub://singularityhub/ubuntu cat /etc/os-release
-
-Singularity containers contain “”. These are user defined scripts that
-define the actions a container should perform when someone runs it. The
-runscript can be triggered with the run command, or simply by calling
-the container as though it were an executable.
-
-::
-
-    $ singularity run hello-world.simg
-    $ ./hello-world.simg
-
-also works with and URIs. This creates an ephemeral container that runs
-and then disappears.
-
-::
-
-    $ singularity run shub://GodloveD/lolcow
-
-| Files on the host are reachable from within the container.
-
-::
-
-    $ echo "Hello World" > $HOME/hello-kitty.txt
-    $ singularity exec vsoch-hello-world-master.simg cat $HOME/hello-kitty.txt
-    Hello World
-
-| This example works because exists in the user’s home directory. By
-  default singularity bind mounts , , and into your container at
-  runtime.
-| You can specify additional directories to bind mount into your
-  container with the option. In this example, the directory on the host
-  system is bind mounted to the directory inside the container.
-
-::
-
-    $ echo "I am your father" >/data/vader.sez
-    $ ~/sing-dev/bin/singularity exec --bind /data:/mnt hello-world.simg cat /mnt/vader.sez
-    I am your father
-
-Build images from scratch
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| As of Singularity v2.4 by default produces immutable images in the
-  squashfs file format. This ensures reproducible and verifiable images.
-| However, during testing and debugging you may want an image format
-  that is writable. This way you can into the image and install software
-  and dependencies until you are satisfied that your container will
-  fulfill your needs. For these scenarios, Singularity supports two
-  other image formats: a format (which is really just a chroot
-  directory), and a format (the ext3 file system that was used in
-  Singularity versions less than 2.4).
-
-For more details about the different build options and best practices,
-read about the .
-
-| To build into a (container in a directory) use the command and option:
-
-::
-
-    $ sudo singularity build --sandbox ubuntu/ docker://ubuntu
-
-| This command creates a directory called with an entire Ubuntu
-  Operating System and some Singularity metadata in your current working
-  directory.
-| You can use commands like , , and with this directory just as you
-  would with a Singularity image. You can also write files to this
-  directory from within a Singularity session (provided you have the
-  permissions to do so). These files will be ephemeral and will
-  disappear when the container is finished executing. However if you use
-  the option the changes will be saved into your directory so that you
-  can use them the next time you use your container.
-
-| If you prefer to have a writable image file, you can a container with
-  the option.
-
-::
-
-    $ sudo singularity build --writable ubuntu.img docker://ubuntu
-
-| This produces an image that is writable with an ext3 file system.
-  Unlike the sandbox, it is a single image file. Also by convention this
-  file name has an “.img” extension instead of “.simg” .
-| When you want to alter your image, you can use commands like , , ,
-  with the option. Because of permission issues it may be necessary to
-  execute the container as root to modify it.
-
-::
-
-    $ sudo singularity shell --writable ubuntu.img
-
-| The command allows you to build a container from an existing
-  container. This means that you can use it to convert a container from
-  one format to another. For instance, if you have already created a
-  sandbox (directory) and want to convert it to the default immutable
-  image format (squashfs) you can do so:
-
-::
-
-    $ singularity build new-squashfs sandbox
-
-| Doing so may break reproducibility if you have altered your sandbox
-  outside of the context of a recipe file, so you are advised to
-  exercise care.
-| You can use to convert containers to and from , , and default
-  (squashfs) file formats via any of the six possible combinations.
-
-| For a reproducible, production-quality container, we recommend that
-  you build a container with the default (squashfs) file format using a
-  Singularity recipe file. This also makes it easy to add files,
-  environment variables, and install custom software, and still start
-  from your base of choice (e.g., Singularity Hub).
-| A recipe file has a header and a body. The header determines what kind
-  of base container to begin with, and the body is further divided into
-  sections (called scriptlets) that do things like install software,
-  setup the environment, and copy files into the container from the host
-  system.
-| Here is an example of a recipe file:
-
-::
-
-
-    Bootstrap: shub
-    From: singularityhub/ubuntu
-
-    %runscript
-        exec echo "The runscript is the containers default runtime command!"
-
-    %files
-       /home/vanessa/Desktop/hello-kitty.txt        # copied to root of container
-       /home/vanessa/Desktop/party_dinosaur.gif     /opt/the-party-dino.gif #
-
-    %environment
-        VARIABLE=MEATBALLVALUE
-        export VARIABLE
-
-    %labels
-       AUTHOR vsochat@stanford.edu
-
-    %post
-        apt-get update && apt-get -y install python3 git wget
-        mkdir /data
-        echo "The post section is where you can install, and configure your container."
-
-To build a container from this definition file (assuming it is a file
-named Singularity), you would call build like so:
-
-::
-
-    $ sudo singularity build ubuntu.simg Singularity
-
-| In this example, the header tells singularity to use a base Ubuntu
-  image from Singularity Hub. The section defines actions for the
-  container to take when it is executed (in this case a simple message).
-  The section copies some files into the container from the host system
-  at build time. The section defines some environment variables that
-  will be available to the container at runtime. The section allows for
-  custom metadata to be added to the container. And finally the section
-  executes within the container at build time after the base OS has been
-  installed. The section is therefore the place to perform installations
-  of custom apps.
-| This is a very small example of the things that you can do with a . In
-  addition to building a container from Singularity Hub, you can start
-  with base images from Docker Hub, use images directly from official
-  repositories such as Ubuntu, Debian, Centos, Arch, and BusyBox, use an
-  existing container on your host system as a base, or even take a
-  snapshot of the host system itself and use that as a base image.
-| If you want to build Singularity images without having singularity
-  installed in a build environment, you can build images using
-  `Singularity
-  Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
-  instead. If you want a more detailed rundown and examples for
-  different build options, see our page.
-
-Introduction
-------------
-
-This document will introduce you to Singularity, and the links in the
-bar to the left will give you more detail on using the software. If you
-want to get a quick rundown, see our quickstart. If you want to
-understand which commands are best fit for your usecase, see our build
-flow page. There is also a separate Singularity Administration Guide
-that targets system administrators, so if you are a service provider, or
-an interested user, it is encouraged that you read that document as
-well.
-
-Welcome to Singularity!
-~~~~~~~~~~~~~~~~~~~~~~~
-
-| Singularity is a container solution created by necessity for
-  scientific and application driven workloads.
-| Over the past decade and a half, virtualization has gone from an
-  engineering toy to a global infrastructure necessity and the evolution
-  of enabling technologies has flourished. Most recently, we have seen
-  the introduction of the latest spin on virtualization… “containers”.
-  People tend to view containers in light of their virtual machine
-  ancestry and these preconceptions influence feature sets and expected
-  use cases. This is both a good and a bad thing...
-| For industry and enterprise-centric container technologies this is a
-  good thing. Web enabled cloud requirements are very much in alignment
-  with the feature set of virtual machines, and thus the preceding
-  container technologies. But the idea of containers as miniature
-  virtual machines is a bad thing for the scientific world and
-  specifically the high performance computation (HPC) community. While
-  there are many overlapping requirements in these two fields, they
-  differ in ways that make a shared implementation generally
-  incompatible. Some groups have leveraged custom-built resources that
-  can operate on a lower performance scale, but proper integration is
-  difficult and perhaps impossible with today’s technology.
-| Many scientists could benefit greatly by using container technology,
-  but they need a feature set that differs somewhat from that available
-  with current container technology. This necessity drives the creation
-  of Singularity and articulated its four primary functions:
-
-| Mobility of compute is defined as the ability to define, create and
-  maintain a workflow and be confident that the workflow can be executed
-  on different hosts, operating systems (as long as it is Linux) and
-  service providers. Being able to contain the entire software stack,
-  from data files to library stack, and portably move it from system to
-  system is true mobility.
-| Singularity achieves this by utilizing a distributable image format
-  that contains the entire container and stack into a single file. This
-  file can be copied, shared, archived, and standard UNIX file
-  permissions also apply. Additionally containers are portable (even
-  across different C library versions and implementations) which makes
-  sharing and copying an image as easy as or or . As mentioned above,
-  Singularity containers utilize a single file which is the complete
-  representation of all the files within the container. The same
-  features which facilitate mobility also facilitate reproducibility.
-  Once a contained workflow has been defined, the container image can be
-  snapshotted, archived, and locked down such that it can be used later
-  and you can be confident that the code within the container has not
-  changed. System integrators, administrators, and engineers spend a lot
-  of effort maintaining their systems, and tend to take a cautious
-  approach. As a result, it is common to see hosts installed with
-  production, mission critical operating systems that are “old” and have
-  few installed packages. Users may find software or libraries that are
-  too old or incompatible with the software they must run, or the
-  environment may just lack the software stack they need due to
-  complexities with building, specific software knowledge,
-  incompatibilities or conflicts with other installed programs.
-| Singularity can give the user the freedom they need to install the
-  applications, versions, and dependencies for their workflows without
-  impacting the system in any way. Users can define their own working
-  environment and literally copy that environment image (single file) to
-  a shared resource, and run their workflow inside that image.
-  Replicating a virtual machine cloud like environment within an
-  existing HPC resource is not a reasonable goal for many
-  administrators. There are a lots of container systems available which
-  are designed for enterprise, as a replacement for virtual machines,
-  are cloud focused, or require unstable or unavailable kernel features.
-| Singularity supports existing and traditional HPC resources as easily
-  as installing a single package onto the host operating system. Custom
-  configurations may be achieved via a single configuration file, and
-  the defaults are tuned to be generally applicable for shared
-  environments.
-| Singularity can run on host Linux distributions from RHEL6 (RHEL5 for
-  versions lower than 2.2) and similar vintages, and the contained
-  images have been tested as far back as Linux 2.2 (approximately 14
-  years old). Singularity natively supports InfiniBand, Lustre, and
-  works seamlessly with all resource managers (e.g. SLURM, Torque, SGE,
-  etc.) because it works like running any other command on the system.
-  It also has built-in support for MPI and for containers that need to
-  leverage GPU resources.
-
-A High Level View of Singularity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| [sec:securityandpriviledge] A user inside a Singularity container is
-  the same user as outside the container
-| This is one of Singularities defining characteristics. It allows a
-  user (that may already have shell access to a particular host) to
-  simply run a command inside of a container image as themselves. Here
-  is a scenario to help articulate this:
-
-    %SERVER and %CLUSTER are large expensive systems with resources far
-    exceeding those of my personal workstation. But because the are
-    shared systems, no users have root access. The environments are
-    tightly controlled and managed by a staff of system administrators.
-    To keep these systems secure, only the system administrators are
-    granted root access and they control the state of the operating
-    systems and installed applications. If a user is able to escalate to
-    root (even within a container) on %SERVER or %CLUSTER, they can do
-    bad things to the network, cause denial of service to the host (as
-    well as other hosts on the same network), and may have unrestricted
-    access to file systems reachable by the container.
-
-| To mitigate security concerns like this, Singularity limits one’s
-  ability to escalate permission inside a container. For example, if I
-  do not have root access on the target system, I should not be able to
-  escalate my privileges within the container to root either. This is
-  semi-antagonistic to Singularity’s 3rd tenant; allowing the users to
-  have freedom of their own environments. Because if a user has the
-  freedom to create and manipulate their own container environment,
-  surely they know how to escalate their privileges to root within that
-  container. Possible means could be setting the root user’s password,
-  or enabling themselves to have sudo access. For these reasons,
-  Singularity prevents user context escalation within the container, and
-  thus makes it possible to run user supplied containers on shared
-  infrastructures.
-| This mitigation dictates the Singularity . If a user needs to be root
-  in order to make changes to their containers, then they need to have
-  an endpoint (a local workstation, laptop, or server) where they have
-  root access. Considering almost everybody at least has a laptop, this
-  is not an unreasonable or unmanageable mitigation, but it must be
-  defined and articulated. Singularity makes use of a container image
-  file, which physically contains the container. This file is a physical
-  representation of the container environment itself. If you obtain an
-  interactive shell within a Singularity container, you are literally
-  running within that file.
-| This simplifies management of files to the element of least surprise,
-  basic file permission. If you either own a container image, or have
-  read access to that container image, you can start a shell inside that
-  image. If you wish to disable or limit access to a shared image, you
-  simply change the permission ACLs to that file.
-| There are numerous benefits for using a single file image for the
-  entire container:
-
--  Copying or branching an entire container is as simple as
-
--  Permission/access to the container is managed via standard file
-   system permissions
-
--  Large scale performance (especially over parallel file systems) is
-   very efficient
-
--  No caching of the image contents to run (especially nice on clusters)
-
--  Containers are compressed and consume very little disk space
-
--  Images can serve as stand-alone programs, and can be executed like
-   any other program on the host
-
-*Copying, sharing, branching, and distributing your image*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-| A primary goal of Singularity is mobility. The single file image
-  format makes mobility easy. Because Singularity images are single
-  files, they are easily copied and managed. You can copy the image to
-  create a branch, share the image and distribute the image as easily as
-  copying any other file you control!
-| If you want an automated solution for building and hosting your image,
-  you can use our container registry `Singularity Hub`_. Singularity Hub
-  can automatically build from a GitHub repository each time that you
-  push. It provides a simple cloud solution for storing and sharing your
-  image. If you want to host your own Registry, then you should check
-  out `Singularity Registry`_. If you have ideas or suggestions for how
-  Singularity can better support reproducible science, please `reach
-  out!`_.
-
-*Supported container formats*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
--  **squashfs**: the default container format is a compressed read-only
-   file system that is widely used for things like live CDs/USBs and
-   cell phone OS’s
-
--  **ext3**: (also called ) a writable image file containing an ext3
-   file system that was the default container format prior to
-   Singularity version 2.4
-
--  **directory**: (also called ) standard Unix directory containing a
-   root container image
-
--  **tar.gz**: zlib compressed tar archive
-
--  **tar.bz2**: bzip2 compressed tar archive
-
--  **tar**: uncompressed tar archive
-
-*Supported URIs*
-^^^^^^^^^^^^^^^^
-
-Singularity also supports several different mechanisms for obtaining the
-images using a standard URI format.
-
--  **shub://** Singularity Hub is our own registry for Singularity
-   containers. If you want to publish a container, or give easy access
-   to others from their command line, or enable automatic builds, you
-   should build it on `Singularity Hub`_.
-
--  **docker://** Singularity can pull Docker images from a Docker
-   registry, and will run them non-persistently (e.g. changes are not
-   persisted as they can not be saved upstream). Note that pulling a
-   Docker image implies assembling layers at runtime, and two subsequent
-   pulls are not guaranteed to produce an identical image.
-
--  **instance://** A Singularity container running as service, called an
-   instance, can be referenced with this URI.
-
-| When asked, “What namespaces does Singularity virtualize?”, the most
-  appropriate response from a Singularity use case is “As few as
-  possible!”. This is because the goals of Singularity are mobility,
-  reproducibility and freedom, not full isolation (as you would expect
-  from industry driven container technologies). Singularity only
-  separates the needed namespaces in order to satisfy our primary goals.
-| Coupling incomplete isolation with the fact that a user inside a
-  container is the same user outside the container, allows Singularity
-  to blur the lines between a container and the underlying host system.
-  Using Singularity feels like running in a parallel universe, where
-  there are two timelines. In one timeline, the system administrators
-  installed their operating system of choice. But on an alternate
-  timeline, we bribed the system administrators and they installed our
-  favorite operating system and apps, and gave us full control but
-  configured the rest of the system identically. And Singularity gives
-  us the power to pick between these two timelines.
-| In other words, Singularity allows you to virtually swap out the
-  underlying operating system for one that you’ve defined without
-  affecting anything else on the system and still having all of the host
-  resources available to us.
-| It’s like ssh’ing into another identical host running a different
-  operating system. One moment you are on Centos-6 and the next minute
-  you are on the latest version of Ubuntu that has Tensorflow installed,
-  or Debian with the latest OpenFoam, or a custom workflow that you
-  installed. But you are still the same user with the same files running
-  the same PIDs.
-| Additionally, the selection of name-space virtualization can be
-  dynamic or conditional. For example, the PID namespace is not
-  separated from the host by default, but if you want to separate it,
-  you can with a command line (or environment variable) setting. You can
-  also decide you want to contain a process so it can not reach out to
-  the host file system if you don’t know if you trust the image. But by
-  default, you are allowed to interface with all of the resources,
-  devices and network inside the container as you are outside the
-  container.
-
-| Singularity abstracts the complications of running an application in
-  an environment that differs from the host. For example, applications
-  or scripts within a Singularity container can easily be part of a
-  pipeline that is being executed on the host. Singularity containers
-  can also be executed from a batch script or other program (e.g. an HPC
-  system’s resource manager) natively.
-| Some usage examples of Singularity can be seen as follows:
-
-::
-
-    $ singularity exec dummy.img xterm  # run xterm from within the container
-    $ singularity exec dummy.img python script.py  # run a script on the host system using container's python
-    $ singularity exec dummy.img python < /path/to/python/script.py  # do the same via redirection
-    $ cat /path/to/python/script.py | singularity exec dummy.img python  # do the same via a pipe
-
-You can even run MPI executables within the container as simply as:
-
-::
-
-    $ mpirun -np X singularity exec /path/to/container.img /usr/bin/mpi_program_inside_container (mpi program args)
-
-When executing container commands, the Singularity process flow can be
-generalized as follows:
-
-#. Singularity application is invoked
-
-#. Global options are parsed and activated
-
-#. The Singularity command (subcommand) process is activated
-
-#. Subcommand options are parsed
-
-#. The appropriate sanity checks are made
-
-#. Environment variables are set
-
-#. The Singularity Execution binary is called ()
-
-#. Sexec determines if it is running privileged and calls the code if
-   necessary
-
-#. Namespaces are created depending on configuration and process
-   requirements
-
-#. The Singularity image is checked, parsed, and mounted in the
-   namespace
-
-#. Bind mount points are setup so that files on the host are visible in
-   the container
-
-#. The namespace is used to virtualize a new root file system
-
-#. Singularity calls and Singularity process itself is replaced by the
-   process inside the container
-
-#. When the process inside the container exits, all namespaces collapse
-   with that process, leaving a clean system
-
-All of the above steps take approximately 15-25 thousandths of a second
-to run, which is fast enough to seem instantaneous.
-
-The Singularity Usage Workflow
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| The security model of Singularity (as described above, ) defines the
-  Singularity workflow. There are generally two groups of actions you
-  must implement on a container; management (building your container)
-  and usage.
 | In many circumstances building containers require root administrative
   privileges just like these actions would require on any system,
   container, or virtual machine. This means that a user must have access
@@ -755,38 +184,45 @@ The Singularity Usage Workflow
   to the production system where you wish to run it. How do the commands
   work? Here is where to look for more information:
 
--  : Build a container on your user endpoint or build environment
+-  __ sec:build_`build`: Build a container on your user endpoint or
+   build environment
 
--  : Execute a command to your container
+-  __ sec:exec_`exec`: Execute a command to your container
 
--  : See labels, run and test scripts, and environment variables
+-  __ sec:inspect_`inspect`: See labels, run and test scripts, and
+   environment variables
 
--  : pull an image from Docker or Singularity Hub
+-  __ sec:pull_`pull`: pull an image from Docker or Singularity Hub
 
--  : Run your image as an executable
+-  __ sec:run_`run`: Run your image as an executable
 
--  : Shell into your image
+-  __ sec:shell_`shell`: Shell into your image
 
 **Image Commands**
 
--  : import layers or other file content to your image
+-  __ sec:imageimport_`image.import`: import layers or other file
+   content to your image
 
--  : export the contents of the image to tar or stream
+-  __ sec:imageexport_`image.export`: export the contents of the
+   image to tar or stream
 
--  : create a new image, using the old ext3 filesystem
+-  __ sec:imagecreate_`image.create`: create a new image, using the
+   old ext3 filesystem
 
--  : increase the size of your image (old ext3)
+-  __ sec:imageexpand_`image.expand`: increase the size of your image
+   (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  : Start, stop, and list container instances
+-  __ sec:instances_`instances`: Start, stop, and list container
+   instances
 
 **Deprecated Commands** The following commands are deprecated in 2.4 and
 will be removed in future releases.
 
--  : Bootstrap a container recipe
+-  __ sec:bootstrap_`bootstrap`: Bootstrap a container recipe
 
 Support
 ~~~~~~~
@@ -914,403 +350,13 @@ you need to hit all of the following:
 
     $ sudo rm -rf /some/temp/dir
 
-What should you do next? You can check out the guide, or learn how to
-interact with your container via the , , or commands. Or click **next**
-below to continue reading.
-
-Build a Container
------------------
-
-is the “Swiss army knife” of container creation. You can use it to
-download and assemble existing containers from external resources like
-`Singularity Hub`_ and `Docker Hub`_. You can use it to convert
-containers between the various formats supported by Singularity. And you
-can use it in conjunction with a file to create a container from scratch
-and customized it to fit your needs.
-
-Overview
-~~~~~~~~
-
-| The command accepts a target as input and produces a container as
-  output.
-| The target defines the method that uses to create the container. It
-  can be one of the following:
-
--  URI beginning with **shub://** to build from Singularity Hub
-
--  URI beginning with **docker://** to build from Docker Hub
-
--  path to a **existing container** on your local machine
-
--  path to a **directory** to build from a sandbox
-
--  path to an **archive** in .tar or compressed .tar.gz format
-
--  path to a ****
-
-| In addition can produce containers in three different formats. Formats
-  types can be specified by passing the following options to build.
-
--  compressed read-only **squashfs** file system suitable for production
-   (default)
-
--  writable **ext3** file system suitable for interactive development (
-   option )
-
--  writable **(ch)root directory** called a sandbox for interactive
-   development ( option)
-
-| Because can accept an existing container as a target and create a
-  container in any of these three formats you can convert existing
-  containers from one format to another.
-| The following diagram illustrates the targets that can be supplied to
-  as inputs and the containers can produce as outputs. Green arrows
-  represent operations that can be carried out without root privileges
-  (though the container may not perform properly when run as root). Red
-  arrows represent operations that must be carried out with root
-  privileges.
-
-.. figure:: build_input_output.png
-   :alt: Singularity build process
-
-   Singularity build process
-
-Downloading a existing container from Singularity Hub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can use the build command to download a container from Singularity
-Hub.
-
-::
-
-    $ singularity build lolcow.simg shub://GodloveD/lolcow
-
-| The first argument () specifies a path and name for your container.
-  The second argument
-| () gives the Singularity Hub URI from which to download.
-| But default the container will be converted to a compressed, read-only
-  squashfs file. If you want your container in a different format use
-  the or options.
-
-Downloading a existing container from Docker Hub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can use to download layers from Docker Hub and assemble them into
-Singularity containers.
-
-::
-
-    $ singularity build lolcow.simg docker://godlovedc/lolcow
-
-Creating - -writable images and - -sandbow directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| If you wanted to create a writable ext3 image similar to those used by
-  Singularity version < 2.4, you could do so with the option. You must
-  create writable containers as root.
-| Extending the Singularity Hub example from above:
-
-::
-
-    $ sudo singularity build --writable lolcow.img shub://GodloveD/lolcow
-
-| The resulting container is writable, but is still mounted as read-only
-  when executed with commands such as , , and . To mount the container
-  as read-write when using these commands add the option to them as
-  well.
-| To ensure that you have the proper permissions to write to the
-  container as you like, it is also a good idea to make changes as root.
-  For example:
-
-::
-
-    $ sudo singularity shell --writable lolcow.img
-
-If you wanted to create a container within a writable directory (called
-a sandbox) you could do so with the option. It’s possible to create a
-sandbox without root privileges, but to ensure proper file permissions
-it is recommended to do so as root.
-
-::
-
-    $ sudo singularity build --sandbox lolcow/ shub://GodloveD/lolcow
-
-| The resulting directory operates just like a container in an image
-  file. You are permitted to make changes and write files within the
-  directory, but those changes will not persist when you are finished
-  using the container. To make your changes persistent, use the flag
-  when you invoke your container.
-| Once again, it’s a good idea to do this as root to ensure you have
-  permission to access the files and directories that you want to
-  change.
-
-::
-
-    $ sudo singularity shell --writable lolcow/
-
-Converting containers from one format to another
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you already have a container saved locally, you can use it as a
-target to build a new container. This allows you convert containers from
-one format to another. For example if you had a squashfs container
-called and wanted to convert it to a writable ext3 container called you
-could:
-
-::
-
-    $ sudo singularity build --writable development.img production.simg
-
-| Similarly, to convert it to a writable directory (a sandbox):
-
-::
-
-    $ singularity build --sandbox development/ production.simg
-
-If you omit any options you can also convert your sandbox back to a
-read-only compressed squashfs image suitable for use in a production
-environment:
-
-::
-
-    $ singularity build production2 development/
-
-| You can convert the three supported container formats using any
-  combination.
-| Use care when converting writable ext3 images or sandbox directories
-  to the default squashfs file format. If changes were made to the
-  writable container before conversion, there is no record of those
-  changes in the Singularity recipe file rendering your container
-  non-reproducible. It is a best practice to build your immutable
-  production containers directly from a Singularity recipe file instead.
-
-Building containers from Singularity recipe files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| Of course, Singularity recipe files can be used as the target when
-  building a container. For detailed information on writing Singularity
-  recipe files, please see the .
-| Let’s say you already have the following container recipe file called
-  , and you want to use it to build a container.
-
-::
-
-    Bootstrap: docker
-    From: ubuntu:16.04
-
-    %post
-        apt-get -y update
-        apt-get -y install fortune cowsay lolcat
-
-    %environment
-        export LC_ALL=C
-        export PATH=/usr/games:$PATH
-
-    %runscript
-        fortune | cowsay | lolcat
-
-You can do so with the following command.
-
-::
-
-    $ sudo singularity build lolcow.simg Singularity 
-
-The command requires just as installing software on your local machine
-requires root privileges.
-
-| You can build into the same container multiple times (though the
-  results may be unpredictable and it is generally better to delete your
-  container and start from scratch).
-| By default if you build into an existing container, the command will
-  skip the steps involved in adding a new base. You can override this
-  default with the option requiring that a new base OS is bootstrapped
-  into the existing container. This behavior does not delete the
-  existing OS, it just adds the new OS on top of the existing one.
-| Use care with this option: you may get results that you did not
-  expect.
-
-If you only want to build a single section of your Singularity recipe
-file use the option. For instance, if you have edited the section of a
-long Singularity recipe and don’t want to completely re-build the
-container, you could re-build only the   section like so:
-
-::
-
-    $ sudo singularity build --section environment image.simg Singularity
-
-Under normal build conditions, the Singularity recipe file is saved into
-a container’s meta-data so that there is a record showing how the
-container was built. Using the option may render this meta-data useless,
-so use care if you value reproducibility.
-
-If you don’t want to run the section during the container build, you can
-skip it with the option. For instance, maybe you are building a
-container intended to run in a production environment with GPUs. But
-perhaps your local build resource does not have GPUs. You want to
-include a section that runs a short validation but you don’t want your
-build to exit with an error because it cannot find a GPU on your system.
-
-::
-
-    $ sudo singularity build GPU.simg --notest Singularity
-
-| Checks are a new feature (in 2.4) that offer an easy way for an admin
-  to define a security (or any other kind of check) to be run on demand
-  for a Singularity image. They are defined (and run) via different
-  tags.
-
-::
-
-    CHECKS OPTIONS:
-        -c|--checks    enable checks
-        -t|--tag       specify a check tag (not default)
-        -l|--low       Specify low threshold (all checks, default) 
-        -m|--med       Perform medium and high checks
-        -h|--high      Perform only checks at level high
-
-When you add the option along with applicable tags to the command
-Singularity will run the desired checks on your container at build time.
-See for available tags.
-
-More Build topics
-~~~~~~~~~~~~~~~~~
-
--  If you want to **customize the cache location** (where Docker layers
-   are downloaded on your system), specify Docker credentials, or any
-   custom tweaks to your build environment, see .
-
--  If you want to make internally **modular containers**, check out the
-   getting started guide `here`_
-
--  If you want to **build your containers** on Singularity Hub, (because
-   you don’t have root access on a Linux machine or want to host your
-   container on the cloud) check out `this guide`_
-
-Build Environment
------------------
-
-It’s commonly the case that you want to customize your build
-environment, such as specifying a custom cache directory for layers, or
-sending your Docker Credentials to the registry endpoint. Here we will
-discuss those things
-
-Cache Folders
-~~~~~~~~~~~~~
-
-To make download of layers for build and faster and less redundant, we
-use a caching strategy. By default, the Singularity software will create
-a set of folders in your directory for docker layers, Singularity Hub
-images, and Docker metadata, respectively:
-
-::
-
-    $HOME/.singularity
-    $HOME/.singularity/docker
-    $HOME/.singularity/shub
-    $HOME/.singularity/metadata 
-
-Fear not, you have control to customize this behavior! If you don’t want
-the cache to be created (and a temporary directory will be used), set to
-True/yes, or if you want to move it elsewhere, set to the full path
-where you want to cache. Remember that when you run commands as sudo
-this will use root’s home at and not your user’s home.
-
-Temporary Folders
-~~~~~~~~~~~~~~~~~
-
-| Singularity also uses some temporary directories to build the squashfs
-  filesystem, so this temp space needs to be large enough to hold the
-  entire resulting Singularity image. By default this happens in but can
-  be overridden by setting to the full path where you want the squashfs
-  temp files to be stored. Since images are typically built as root, be
-  sure to set this variable in root’s environment.
-| If you are building an image on the fly, for example
-
-::
-
-    singularity exec docker://busybox /bin/sh 
-
-| by default a temporary runtime directory is created that looks like .
-  This can be problematic for some directories that are hosted at
-  Jetstream/OpenStack, Azure, and possibly EC2, which are very small. If
-  you need to change the location of this runtime, then **export** the
-  variable
-| .
-
-::
-
-    SINGULARITY_LOCALCACHEDIR=/tmp/pancakes
-    export SINGULARITY_LOCALCACHEDIR
-    singularity exec docker://busybox /bin/sh
-
-| The above runtime folder would be created under
-
-Pull Folder
-~~~~~~~~~~~
-
-For details about customizing the output location of , see the . You
-have the similar ability to set it to be something different, or to
-customize the name of the pulled image.
-
-Environment Variables
-~~~~~~~~~~~~~~~~~~~~~
-
-| All environmental variables are parsed by Singularity python helper
-  functions, and specifically the file `defaults.py`_ is a gateway
-  between variables defined at runtime, and pre-defined defaults. By way
-  of import from the file, variables set at runtime do not change if
-  re-imported. This was done intentionally to prevent changes during the
-  execution, and could be changed if needed. For all variables, the
-  order of operations works as follows:
-
-#. First preference goes to environment variable set at runtime
-
-#. Second preference goes to default defined in this file
-
-#. Then, if neither is found, null is returned except in the case that .
-   A variable not found will system exit with an error.
-
-#. Variables that should not be displayed in debug logger are set with ,
-   and are only reported to be defined.
-
-For boolean variables, the following are acceptable for True, with any
-kind of capitalization or not:
-
-::
-
-    ("yes", "true", "t", "1","y")
-
-Cache
-~~~~~
-
-| The location and usage of the cache is also determined by environment
-  variables.
-| **SINGULARITY\_DISABLE\_CACHE** If you want to disable the cache, this
-  means is that the layers are written to a temporary directory. Thus,
-  if you want to disable cache and write to a temporary folder, simply
-  set to any true/yes value. By default, the cache is not disabled.
-| **SINGULARITY\_CACHEDIR** Is the base folder for caching layers and
-  singularity hub images. If not defined, it uses default of . If
-  defined, the defined location is used instead.
-| If is set to True, this value is ignored in favor of a temporary
-  directory. For specific sub-types of things to cache, subdirectories
-  are created (by python), including for docker layers and for
-  Singularity Hub images. If the cache is not created, the Python script
-  creates it.
-| **SINGULARITY\_PULLFOLDER** While this isn’t relevant for build, since
-  build is close to pull, we will include it here. By default, images
-  are pulled to the present working directory. The user can change this
-  variable to change that.
-| **SINGULARITY\_TMPDIR** Is the base folder for squashfs image
-  temporary building. If not defined, it uses default of . If defined,
-  the defined location is used instead.
-| **SINGULARITY\_LOCALCACHEDIR** Is the temporary folder (default ) to
-  generate runtime folders (containers “on the fly”) typically a , , or
-  or a image. This is different from where downloaded layers are cached
-  ( ) or pulled ( ) or where a (non on-the-fly build) happens ( ). See
-  above for an example. You can generally determine the value of this
-  setting by running a command with , and seeing the last line “Removing
+| What should you do next? You can check out the __
+  sec:quickstart_ `quickstart` guide, or learn how to interact with your
+  container via the `shell`, `exec` , or `temporary folders` above for
+  an example. You can generally determine the value of this setting by
+  running a command with , and seeing the last line “Removing
   directory:”
+| [0.1in_
 
 ::
 
@@ -1325,21 +371,21 @@ Docker
 ^^^^^^
 
 | 
-| **DOCKER\_API\_BASE** Set as , which is the name of the registry. In
+| **DOCKER_API_BASE** Set as , which is the name of the registry. In
   the first version of Singularity we parsed the Registry argument from
   the build spec file, however now this is removed because it can be
   obtained directly from the image name (eg, ). If you don’t specify a
   registry name for your image, this default is used. If you have
   trouble with your registry being detected from the image URI, use this
   variable.
-| **DOCKER\_API\_VERSION** Is the version of the Docker Registry API
+| **DOCKER_API_VERSION** Is the version of the Docker Registry API
   currently being used, by default now is .
-| **DOCKER\_OS** This is exposed via the exported environment variable
+| **DOCKER_OS** This is exposed via the exported environment variable
   and pertains to images that reveal a version 2 manifest with a
   `manifest list`_. In the case that the list is present, we must choose
   an operating system (this variable) and an architecture (below). The
   default is .
-| **DOCKER\_ARCHITECTURE** This is exposed via the exported environment
+| **DOCKER_ARCHITECTURE** This is exposed via the exported environment
   variable
 | and the same applies as for the with regards to being used in context
   of a list of manifests. In the case that the list is present, we must
@@ -1347,11 +393,11 @@ Docker
   is , and other common ones include , , , , and .
 | **NAMESPACE** Is the default namespace, .
 
-| **RUNSCRIPT\_COMMAND** Is not obtained from the environment, but is a
+| **RUNSCRIPT_COMMAND** Is not obtained from the environment, but is a
   hard coded default (“/bin/bash”). This is the fallback command used in
   the case that the docker image does not have a CMD or ENTRYPOINT.
 | **TAG** Is the default tag, .
-| **SINGULARITY\_NOHTTPS** This is relevant if you want to use a
+| **SINGULARITY_NOHTTPS** This is relevant if you want to use a
   registry that doesn’t have https, and it speaks for itself. If you
   export the variable you can force the software to not use https when
   interacting with a Docker registry. This use case is typically for use
@@ -1360,15 +406,15 @@ Docker
 Singularity Hub
 ^^^^^^^^^^^^^^^
 
-| **SHUB\_API\_BASE** The default base for the Singularity Hub API,
+| **SHUB_API_BASE** The default base for the Singularity Hub API,
   which is
 | . If you deploy your own registry, you don’t need to change this, you
   can again specify the registry name in the URI.
 
-| **SINGULARITY\_PYTHREADS** The Python modules use threads (workers) to
+| **SINGULARITY_PYTHREADS** The Python modules use threads (workers) to
   download layer files for Docker, and change permissions. By default,
   we will use 9 workers, unless the environment variable is defined.
-| **SINGULARITY\_COMMAND\_ASIS** By default, we want to make sure the
+| **SINGULARITY_COMMAND_ASIS** By default, we want to make sure the
   container running process gets passed forward as the current process,
   so we want to prefix whatever the Docker command or entrypoint is with
   . We also want to make sure that following arguments get passed, so we
@@ -1390,6 +436,8 @@ yes/y/1/True/true, etc., then the runscript will remain as .
 
 Container Recipes
 -----------------
+
+.. _sec:recipefile:
 
 A Singularity Recipe is the driver of a custom build, and the starting
 point for designing any custom container. It includes specifics about
@@ -1427,7 +475,8 @@ composed of several keywords. Specifically:
 -  : references the kind of base you want to use (e.g., docker,
    debootstrap, shub). For example, a shub bootstrap will pull
    containers for shub as bases. A Docker bootstrap will pull docker
-   layers to start your image. For a full list see
+   layers to start your image. For a full list see __
+   sec:buildcontainer_`build`
 
 -  : is the named container (shub) or reference to layers (Docker) that
    you want to use (e.g., vsoch/hello-world)
@@ -1484,9 +533,10 @@ A build that uses a mirror to install Centos-7 might look like this:
 
 %help
 ^^^^^
+.. _sec:writehelpdocs: 
 
-| You don’t need to do much programming to add a section to your
-  container. Just write it into a section:
+| You don’t need to do much programming to add a
+  section to your container. Just write it into a section:
 
 ::
 
@@ -1510,7 +560,7 @@ And it will work when the user asks the container for help.
 | Commands in the %setup section are executed on the host system outside
   of the container after the base OS has been installed. For versions
   earlier than 2.3 if you need files during %post, you should copy files
-  from your host to $SINGULARITY\_ROOTFS to move them into the
+  from your host to $SINGULARITY_ROOTFS to move them into the
   container. For >2.3 you can add files to the container (added before
   %post) using the %files section. We can see the difference between
   %setup and %post in the following asciicast:
@@ -1532,7 +582,7 @@ And it will work when the user asks the container for help.
         touch avocados.txt
 
 Importantly, notice that the avocados file isn’t relative to
-$SINGULARITY\_ROOTFS, so we would expect it not to be in the image. Is
+$SINGULARITY_ROOTFS, so we would expect it not to be in the image. Is
 tacos there?
 
 ::
@@ -1649,7 +699,8 @@ The easiest way to see labels is to inspect the image:
     }
 
 You’ll notice some other labels that are captured automatically from the
-build process. You can read more about labels and metadata .
+build process. You can read more about labels and metadata __
+sec:envandmetadata_`here` .
 
 %environment
 ^^^^^^^^^^^^
@@ -1735,7 +786,8 @@ When we rebuild, is it added to the environment?
   in take precedence over those added via . Note that you won’t see
   these variables in the inspect output, as inspect only shows the
   contents added from .
-| See for more information about the and sections.
+| See __ sec:envandmetadata_`Environment and Metadata` for more
+  information about the and sections.
 
 %post
 ^^^^^
@@ -1771,6 +823,8 @@ but you can of course download with commands like and and .
 
 %runscript
 ^^^^^^^^^^
+
+.. _sec:runscript:
 
 | The is another scriptlet, but it does not get executed during
   bootstrapping. Instead it gets persisted within the container to a
@@ -1877,171 +931,14 @@ Apps
   environments? In some circumstances, it may be redundant to build
   different containers for each app with almost equivalent dependencies.
 | Starting in Singularity 2.4 all of the above commands can also be used
-  in the context of internal modules called based on the `Standard
-  Container Integration Format`_. For details on apps, see the
-  documentation. For a quick rundown of adding an app to your container,
-  here is an example runscript:
-
-::
-
-    Bootstrap: docker
-    From: ubuntu
-
-    %environment
-        VADER=badguy
-        LUKE=goodguy
-        SOLO=someguy
-        export VADER LUKE SOLO
-
-    %labels
-       Maintainer Vanessasaur
-
-    ##############################
-    # foo
-    ##############################
-
-    %apprun foo
-        exec echo "RUNNING FOO"
-
-    %applabels foo
-       BESTAPP=FOO
-       export BESTAPP
-
-    %appinstall foo
-       touch foo.exec
-
-    %appenv foo
-        SOFTWARE=foo
-        export SOFTWARE
-
-    %apphelp foo
-        This is the help for foo.
-
-    %appfiles foo
-       avocados.txt
-
-
-    ##############################
-    # bar
-    ##############################
-
-    %apphelp bar
-        This is the help for bar.
-
-    %applabels bar
-       BESTAPP=BAR
-       export BESTAPP
-
-    %appinstall bar
-        touch bar.exec
-
-    %appenv bar
-        SOFTWARE=bar
-        export SOFTWARE
-
-| Importantly, note that the apps can exist alongside any and all of the
-  primary sections (e.g. or ), and the new section is the equivalent of
-  %post but for an app. The title sections () aren’t necessary or
-  required, they are just comments to show you the different apps. The
-  ordering isn’t important either, you can have any mixture of sections
-  anywhere in the file after the header. The primary difference is now
-  the container can perform any of it’s primary functions in the context
-  of an app:
-| **What apps are installed in the container?**
-
-::
-
-    $ singularity apps roar.simg 
-    bar
-    foo
-
-**Help me with bar!**
-
-::
-
-    $ singularity help --app bar roar.simg
-    This is the help for bar.
-
-**Run foo**
-
-::
-
-    singularity run --app foo roar.simg 
-    RUNNING FOO
-
-| **Show me the custom environments**
-| Remember how we defined the same environment variable, SOFTWARE for
-  each of foo and bar? We can execute a command to search the list of
-  active environment variables with grep to see if the variable changes
-  depending on the app we specify:
-
-::
-
-    $ singularity exec --app foo roar.simg env | grep SOFTWARE
-    SOFTWARE=foo
-    $ singularity exec --app bar roar.simg env | grep SOFTWARE
-    SOFTWARE=bar
-
-Examples
-~~~~~~~~
-
-| For more examples, for real world scientific recipes we recommend you
-  look at other containers on `Singularity Hub`_. For examples of
-  different bases, look at the examples folder for the most up-to-date
-  examples. For apps, including snippets and tutorial with more walk
-  throughs, see `SCI-F Apps Home`_.
-
-Best Practices for Build Recipes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When crafting your recipe, it is best to consider the following:
-
-#. To make your container internally modular, use . Shared dependencies
-   (between app modules) can go under .
-
-#. For global installs to , install packages, programs, data, and files
-   into operating system locations (e.g. not , , or any other
-   directories that might get commonly binded on).
-
-#. Make your container speak for itself. If your runscript doesn’t spit
-   out help, write a or or section. A good container tells the user how
-   to interact with it.
-
-#. If you require any special environment variables to be defined, add
-   them the and sections of the build recipe.
-
-#. Files should never be owned by actual users, they should always be
-   owned by a system account (UID less than 500).
-
-#. Ensure that the container’s , , , and no other sensitive files have
-   anything but the bare essentials within them.
-
-#. It is encouraged to build containers from a recipe instead of a
-   sandbox that has been manually changed. This ensures greatest
-   possibility of reproducibility and mitigates the black box effect.
-
-Are you a recipe pro and now ready to build? Take a look at the
-documentation.
-
-Singularity Flow
-----------------
-
-| This document describes a suggested “best-practices” workflow for
-  building, running, and managing your containers.
-| There are generally two ways to get images. You either want to pull an
-  image file as is, or (more likely) build your own custom image. We
-  will start with talking about build, and the many different use cases
-  it affords.
-
-[sec:singularityflow]
-
-Building Images
-~~~~~~~~~~~~~~~
-
-| If you read the , you probably remember that building images from a
-  Docker base does not require a . However, if you do want to build and
-  customize your image, you can create a text file, which is a simple
-  text file that describes how the container should be made.
+  in the context of internal modules called __ sec:scifapps_ `apps`
+  based on the `Standard Container Integration Format`_. For details on
+  apps, see the `quick start`, you probably remember that building
+  images from a Docker base does not require a `Singularity recipe`.
+  However, if you do want to build and customize your image, you can
+  create a `Singularity recipe` text file, which is a simple text file
+  that describes how the container should be made.
+| [0.1in_
 
 The diagram below is a visual depiction of how you can use Singularity
 to build images. The high level idea is that we have two environments:
@@ -2056,10 +953,10 @@ to build images. The high level idea is that we have two environments:
 Singularity production images are immutable. This is a feature added as
 of Singularity 2.4, and it ensures a higher level of reproducibility and
 verification of images. To read more about the details, check out the
-docs. However, immutability is not so great when you are testing,
-debugging, or otherwise want to quickly change your image. We will
-proceed by describing a typical workflow of developing first, building a
-final image, and using it in production.
+__ sec:buildcontainer_`build` docs. However, immutability is not so
+great when you are testing, debugging, or otherwise want to quickly
+change your image. We will proceed by describing a typical workflow of
+developing first, building a final image, and using it in production.
 
 If you want a writable image or folder for developing, you have two
 options:
@@ -2246,6 +1143,8 @@ approach, we support this use case. To do this, given our folder called
 Bind Paths and Mounts
 ---------------------
 
+.. _sec:bindpaths:
+
 If `enabled by the system administrator`_, Singularity allows you to map
 directories on your host system to directories within your container
 using bind mounts. This allows you to read and write data on the host
@@ -2254,7 +1153,7 @@ system with ease.
 Overview
 ~~~~~~~~
 
-When Singularity ‘swaps’ the host operating system for the one inside
+When Singularity `swaps’ the host operating system for the one inside
 your container, the host file systems becomes inaccessible. But you may
 want to read and write files on the host system from within the
 container. To enable this functionality, Singularity will bind
@@ -2456,8 +1355,8 @@ isolated version of the container image that runs in the background.
 Why container instances?
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Let’s say I want to run a web server. With nginx, that is pretty simple,
-I install nginx and start the service:
+.. _sec:instances: Let’s say I want to run a web server. With nginx,
+that is pretty simple, I install nginx and start the service:
 
 ::
 
@@ -2644,10 +1543,9 @@ Putting all together
 In this section, we will demonstrate an example of packaging a service
 into a container and running it. The service we will be packaging is an
 API server that converts a web page into a PDF, and can be found
-`here <https://github.com/alvarcarto/url-to-pdf-api>`__. The final
-example can be found `here on GitHub`_, and `here on SingularityHub`_.
-If you wish to just download the final image directly from Singularity
-Hub, simply run .
+`here`_. The final example can be found `here on GitHub`_, and `here on
+SingularityHub`_. If you wish to just download the final image directly
+from Singularity Hub, simply run .
 
 Building the image
 ^^^^^^^^^^^^^^^^^^
@@ -2745,13 +1643,13 @@ If you shell into the instance, you can see the running processes:
     Singularity pdf_server.img:~/bauerm97/instance-example> ps auxf
     USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     node        87  0.2  0.0  20364  3384 pts/0    S    16:16   0:00 /bin/bash --norc
-    node        88  0.0  0.0  17496  2144 pts/0    R+   16:16   0:00  \_ ps auxf
+    node        88  0.0  0.0  17496  2144 pts/0    R+   16:16   0:00  _ ps auxf
     node         1  0.0  0.0  13968  1904 ?        Ss   16:10   0:00 singularity-instance: mibauer [pdf]
     node         3  0.1  0.4 997452 40364 ?        Sl   16:10   0:00 npm                          
-    node        13  0.0  0.0   4340   724 ?        S    16:10   0:00  \_ sh -c nodemon --watch ./src -e j
-    node        14  0.0  0.4 1184492 37008 ?       Sl   16:10   0:00      \_ node /scif/apps/pdf_server/p
-    node        26  0.0  0.0   4340   804 ?        S    16:10   0:00          \_ sh -c node src/index.js
-    node        27  0.2  0.5 906108 43424 ?        Sl   16:10   0:00              \_ node src/index.js
+    node        13  0.0  0.0   4340   724 ?        S    16:10   0:00  _ sh -c nodemon --watch ./src -e j
+    node        14  0.0  0.4 1184492 37008 ?       Sl   16:10   0:00      _ node /scif/apps/pdf_server/p
+    node        26  0.0  0.0   4340   804 ?        S    16:10   0:00          _ sh -c node src/index.js
+    node        27  0.2  0.5 906108 43424 ?        Sl   16:10   0:00              _ node src/index.js
     Singularity pdf_server.img:~/bauerm97/instance-example> ls
     LICENSE  README.md  Singularity  out  pdf_server.img
     Singularity pdf_server.img:~/bauerm97/instance-example> exit  
@@ -2764,12 +1662,12 @@ Making it Pretty
   and URL syntax each time you want to request a PDF, so let’s automate
   that. To do that, we’re going to be using Standard Container
   Integration Format (SCIF) apps, which are integrated directly into
-  singularity. If you haven’t already, check out the to come up to
-  speed.
-| First off, we’re going to move the installation of the url-to-pdf-api
-  into an app, so that there is a designated spot to place output files.
-  To do that, we want to add a section to our definition file to build
-  the server:
+  singularity. If you haven’t already, check out the __
+  sec:scifapps_ `Singularity app documentation` to come up to speed.
+| [0.1in_ First off, we’re going to move the installation of the
+  url-to-pdf-api into an app, so that there is a designated spot to
+  place output files. To do that, we want to add a section to our
+  definition file to build the server:
 
 ::
 
@@ -2788,7 +1686,7 @@ And update our to point to the app location:
         # Use nohup and /dev/null to completely detach server process from terminal
         nohup npm start > /dev/null 2>&1 < /dev/null & 
 
-Now we want to define the pdf\_client app, which we will run to send the
+Now we want to define the pdf_client app, which we will run to send the
 requests to the server:
 
 ::
@@ -2910,6 +1808,8 @@ us!`_.
 Environment and Metadata
 ------------------------
 
+.. _sec:envandmetadata:
+
 Singularity containers support environment variables and labels that you
 can add to your container during the build process. This page details
 general information about defining environments and labels. If you are
@@ -2936,7 +1836,7 @@ also define custom environment variables in your Recipe file like so:
   %post section. For instance, maybe you will not know the appropriate
   value of a variable until you have installed some software.
 | To add variables to the environment during %post you can use the
-  $SINGULARITY\_ENVIRONMENT variable with the following syntax:
+  $SINGULARITY_ENVIRONMENT variable with the following syntax:
 
 ::
 
@@ -2949,7 +1849,7 @@ also define custom environment variables in your Recipe file like so:
   variables added using take precedence over those added via the
   section.
 | Need to define a variable at runtime? You can set variables inside the
-  container by prefixing them with “SINGULARITYENV\_”. They will be
+  container by prefixing them with “SINGULARITYENV_”. They will be
   transposed automatically and the prefix will be stripped. For example,
   let’s say we want to set the variable to have value . We can do that
   as follows:
@@ -3090,6 +1990,8 @@ helpful to know where they are and what they do:
 
 Reproducible SCI-F Apps
 -----------------------
+
+.. _sec:scifapps:
 
 Why do we need SCI-F?
 ~~~~~~~~~~~~~~~~~~~~~
@@ -3346,7 +2248,7 @@ We can summarize these observations about using apps:
 
 -  the specific environment () is active because is foo
 
--  the lib folder in foo’s base is added to the LD\_LIBRARY\_PATH
+-  the lib folder in foo’s base is added to the LD_LIBRARY_PATH
 
 -  the bin folder is added to the path
 
@@ -3453,25 +2355,25 @@ environment for “moo” and the result is what we would want:
   and lib. The following variables are available to you, for each app in
   the container, whenever any app is being run:
 
--  \*\*SCIF\_APPBIN\_\*: the path to the bin folder, if you want to add
-   an app that isn’t active to your ‘PATH‘
+-  \*\*SCIF_APPBIN_\*: the path to the bin folder, if you want to add
+   an app that isn’t active to your `PATH`
 
--  \*\*SCIF\_APPLIB\_\*: the path to the lib folder, if you want to add
-   an app that isn’t active to your ‘LD\_LIBRARY\_PATH‘
+-  \*\*SCIF_APPLIB_\*: the path to the lib folder, if you want to add
+   an app that isn’t active to your `LD_LIBRARY_PATH`
 
--  \*\*SCIF\_APPRUN\_\*: the app’s runscript (so you can call it from
+-  \*\*SCIF_APPRUN_\*: the app’s runscript (so you can call it from
    elsewhere)
 
--  \*\*SCIF\_APPMETA\_\*: the path to the metadata folder for the app
+-  \*\*SCIF_APPMETA_\*: the path to the metadata folder for the app
 
--  \*\*SCIF\_APPENV\_\*: the path to the primary environment file (for
+-  \*\*SCIF_APPENV_\*: the path to the primary environment file (for
    sourcing) if it exists
 
--  \*\*SCIF\_APPROOT\_\*: the app’s install folder
+-  \*\*SCIF_APPROOT_\*: the app’s install folder
 
--  \*\*SCIF\_APPDATA\_\*: the app’s data folder
+-  \*\*SCIF_APPDATA_\*: the app’s data folder
 
--  \*\*SCIF\_APPLABELS\_\*: The path to the label.json in the metadata
+-  \*\*SCIF_APPLABELS_\*: The path to the label.json in the metadata
    folder, if it exists
 
 Singularity containers are already reproducible in that they package
@@ -3565,7 +2467,7 @@ app:
     \ make-up.                               /
      ----------------------------------------
             \   ^__^
-             \  (oo)\_______
+             \  (oo)_______
                 (__)\       )\/\
                     ||----w |
                     ||     ||
@@ -3582,7 +2484,7 @@ lazy and use an environment variable for the command:
     \ never meant to stay there.              /
      -----------------------------------------
             \   ^__^
-             \  (oo)\_______
+             \  (oo)_______
                 (__)\       )\/\
                     ||----w |
                     ||     ||
@@ -4100,7 +3002,7 @@ the default compiled prefix of /usr/local:
   reasonable to extend the default sudo PATH to include this directory.
 | To add /usr/local/bin to the default sudo search path, run the program
   visudo which will edit the sudoers file, and search for the string
-  ‘secure\_path’. Once found, append :/usr/local/bin to that line so it
+  `secure_path’. Once found, append :/usr/local/bin to that line so it
   looks like this:
 
 ::
@@ -4133,6 +3035,8 @@ Commands
 Command Usage
 -------------
 
+.. _sec:commandlineinterface:
+
 The Singularity command
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -4149,41 +3053,49 @@ The Singularity command
   level help for all arguments. The main options include:
 | **Container Actions**
 
--  : Build a container on your user endpoint or build environment
+-  __ sec:build_`build`: Build a container on your user endpoint or
+   build environment
 
--  : Execute a command to your container
+-  __ sec:exec_`exec`: Execute a command to your container
 
--  : See labels, run and test scripts, and environment variables
+-  __ sec:inspect_`inspect`: See labels, run and test scripts, and
+   environment variables
 
--  : pull an image from Docker or Singularity Hub
+-  __ sec:pull_`pull`: pull an image from Docker or Singularity Hub
 
--  : Run your image as an executable
+-  __ sec:run_`run`: Run your image as an executable
 
--  : Shell into your image
+-  __ sec:shell_`shell`: Shell into your image
 
 | **Image Commands**
 
--  : import layers or other file content to your image
+-  __ sec:imageimport_`image.import`: import layers or other file
+   content to your image
 
--  : export the contents of the image to tar or stream
+-  __ sec:imageexport_`image.export`: export the contents of the
+   image to tar or stream
 
--  : create a new image, using the old ext3 filesystem
+-  __ sec:imagecreate_`image.create`: create a new image, using the
+   old ext3 filesystem
 
--  : increase the size of your image (old ext3)
+-  __ sec:imageexpand_`image.expand`: increase the size of your image
+   (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  : Start, stop, and list container instances
+-  __ sec:instances_`instances`: Start, stop, and list container
+   instances
 
 | **Deprecated Commands**
 | The following commands are deprecated in 2.4 and will be removed in
   future releases.
 
--  : Bootstrap a container recipe
+-  __ sec:bootstrap_`bootstrap`: Bootstrap a container recipe
 
-For the full usage,
+For the full usage, __ sec:commandsusage_`see the bottom of this
+page`
 
 | Because of the nature of how Singularity cascades commands and
   sub-commands, argument processing is done with a mandatory order.
@@ -4222,6 +3134,8 @@ For example:
 
 Commands Usage
 ~~~~~~~~~~~~~~
+
+.. _sec:commandsusage:
 
 ::
 
@@ -4274,8 +3188,11 @@ Have a question, or need further information? `Reach out to us`_.
 build
 -----
 
+.. _sec:build:
+
 Use to download and assemble existing containers, convert containers
-from one format to another, or build a container from a .
+from one format to another, or build a container from a __
+sec:recipefile_`Singularity recipe`.
 
 Overview
 ~~~~~~~~
@@ -4285,7 +3202,7 @@ Overview
   to an existing container, or a path to a Singularity Recipe file. The
   output container can be in squashfs, ext3, or directory format.
 | For a complete list of options type . For more info on building
-  containers see .
+  containers see __ sec:buildcontainer_`Build a Container`.
 
 Examples
 ~~~~~~~~
@@ -4317,6 +3234,8 @@ Given a Singularity Recipe called :
 
 exec
 ----
+
+.. _sec:exec:
 
 The Singularity sub-command allows you to spawn an arbitrary command
 within your container image as if it were running directly on the host
@@ -4470,6 +3389,8 @@ version of TensorFlow.
 
 inspect
 -------
+
+.. _sec:inspect:
 
 | How can you sniff an image? We have provided the inspect command for
   you to easily see the runscript, test script, environment, help, and
@@ -4706,6 +3627,8 @@ improve or amend this, `please let us know`_!
 pull
 ----
 
+.. _sec:pull:
+
 | Singularity is the command that you would want to use to communicate
   with a container registry. The command does exactly as it says - there
   exists an image external to my host, and I want to pull it here. We
@@ -4871,6 +3794,8 @@ else.
 run
 ---
 
+.. _sec:run:
+
 It’s common to want your container to “do a thing.” Singularity allows
 you to define a custom action to be taken when a container is either or
 executed directly by file name. Specifically, you might want it to
@@ -4954,7 +3879,8 @@ following order of operations:
 #. If the user has not defined a runscript, and there is no or (or we
    aren’t importing Docker at all) then we default to
 
-Here is how you would define the runscript section when you an image:
+Here is how you would define the runscript section when you __
+sec:buildcontainer_`build` an image:
 
 ::
 
@@ -4978,7 +3904,8 @@ you want to use run instead of exec, you could also just do:
     exec "$@"`
 
 If you want different entrypoints for your image, we recommend using the
-%apprun syntax (see ). Here we have two entrypoints for foo and bar:
+%apprun syntax (see __ sec:scifapps_`apps` ). Here we have two
+entrypoints for foo and bar:
 
 ::
 
@@ -5013,6 +3940,8 @@ container is one that tells the user how to interact with it.
 
 shell
 -----
+
+.. _sec:shell:
 
 The Singularity sub-command will automatically spawn an interactive
 shell within a container. As of v2.3 the default that is spawned via the
@@ -5122,6 +4051,8 @@ Image Command Group
 image.export
 ------------
 
+.. _sec:imageexport:
+
 | Export is a way to dump the contents of your container into a , or a
   stream to put into some other place. For example, you could stream
   this into an in memory tar in python. Importantly, this command was
@@ -5149,6 +4080,8 @@ And here is the recommended way to compress your image:
 
 image.expand
 ------------
+
+.. _sec:imageexpand:
 
 While the squashfs filesystem means that you typically don’t need to
 worry about the size of your container being built, you might find that
@@ -5205,6 +4138,8 @@ increase (which is 768MiB) by using the option.
 image.import
 ------------
 
+.. _sec:imageimport:
+
 | Singularity import is essentially taking a dump of files and folders
   and adding them to your image. This works for local compressed things
   (e.g., tar.gz) but also for docker image layers that you don’t have on
@@ -5221,22 +4156,30 @@ image.import
 image.create
 ------------
 
+.. _sec:imagecreate:
+
 | A Singularity image, which can be referred to as a “container,” is a
   single file that contains a virtual file system. As of Singularity
   2.4, we strongly recommend that you build (create and install) an
-  image using . If you have reason to create an empty image, or use
-  create for any other reason, the original command is replaced with a
-  more specific . After creating an image you can install an operating
-  system, applications, and save meta-data with it.
-| Whereas Docker assembles images from layers that are stored on your
-  computer (viewed with the command), a Singularity image is just one
-  file that can sit on your Desktop, in a folder on your cluster, or
-  anywhere. Having Singularity containers housed within a single image
-  file greatly simplifies management tasks such as sharing, copying, and
-  branching your containers. It also means that standard Linux file
-  system concepts like permissions, ownership, and ACLs apply to the
-  container (e.g. I can give read only access to a colleague, or block
-  access completely with a simple command).
+  image using 
+`build`. If you have reason to
+  create an empty image, or use create for any other reason, the
+  original command is replaced with a more specific . After creating an
+  image you can install an operating system, applications, and save
+  meta-data with it.
+| [0.1in_
+
+__ sec:buildcontainer_ 
+
+Whereas Docker assembles images from layers that are stored on your
+computer (viewed with the command), a Singularity image is just one file
+that can sit on your Desktop, in a folder on your cluster, or anywhere.
+Having Singularity containers housed within a single image file greatly
+simplifies management tasks such as sharing, copying, and branching your
+containers. It also means that standard Linux file system concepts like
+permissions, ownership, and ACLs apply to the container (e.g. I can give
+read only access to a colleague, or block access completely with a
+simple command).
 
 Creating a new blank Singularity container image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5322,8 +4265,12 @@ has provided a nice interactive demonstration of creating an image (pre
 Instance Command Group
 ======================
 
+.. _sec:instances:
+
 instance.start
 --------------
+
+.. _sec:instancestart:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5358,7 +4305,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see .
+detailed look at usage see __ sec:instances_`Running Instances`.
 
 ::
 
@@ -5384,7 +4331,7 @@ detailed look at usage see .
     \ -- Mark Twain                           /
      -----------------------------------------
             \   ^__^
-             \  (oo)\_______
+             \  (oo)_______
                 (__)\       )\/\
                     ||----w |
                     ||     ||
@@ -5396,13 +4343,15 @@ detailed look at usage see .
     < I like blending into the background >
      -------------------------------------
             \   ^__^
-             \  (oo)\_______
+             \  (oo)_______
                 (__)\       )\/\
                     ||----w |
                     ||     ||
 
 instance.list
 -------------
+
+.. _sec:instancelist:
 
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
@@ -5420,7 +4369,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see .
+detailed look at usage see __ sec:instances_`Running Instances`.
 
 ::
 
@@ -5439,6 +4388,8 @@ detailed look at usage see .
 instance.stop
 -------------
 
+.. _sec:instancestop:
+
 New in Singularity version 2.4 you can use the command group to run
 instances of containers in the background. This is useful for running
 services like databases and web servers. The command lets you stop
@@ -5455,7 +4406,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see .
+detailed look at usage see __ sec:instances_`Running Instances`.
 
 ::
 
@@ -5478,10 +4429,12 @@ Deprecated
 ==========
 
     Note: The bootstrap command is deprecated for Singularity Version
-    2.4. You should use instead.
+    2.4. You should use __ sec:buildcontainer_`build` instead.
 
 bootstrap
 ---------
+
+.. _sec:bootstrap:
 
 Bootstrapping was the original way (for Singularity versions prior to
 2.4) to install an operating system and then configure it appropriately
@@ -5489,7 +4442,7 @@ for a specified need. Bootstrap is very similar to build, except that it
 by default uses an `ext3`_ filesystem and allows for writability. The
 images unfortunately are not immutable in this way, and can degrade over
 time. As of 2.4, bootstrap is still supported for Singularity, however
-we encourage you to use instead.
+we encourage you to use __ sec:buildcontainer_`build` instead.
 
 Quick Start
 ~~~~~~~~~~~
@@ -5569,18 +4522,12 @@ user would be you, and the cache your .
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
-For details and best practices for creating your Singularity recipe, .
+For details and best practices for creating your Singularity recipe,
+__ sec:recipefile_`read about them here`.
 
-.. _Singularity Hub: https://singularity-hub.org/
-.. _Docker Hub: https://hub.docker.com/
-.. _Singularity Registry: https://www.github.com/singularityhub/sregistry
-.. _reach out!: https://www.sylabs.io/contact/
 .. _Reach out to us: http://singularity.lbl.gov/support
 .. _GitHub repo: https://github.com/singularityware/singularity
 .. _GitHub releases: https://github.com/singularityware/singularity/releases
-.. _here: https://sci-f.github.io/tutorials
-.. _this guide: https://github.com/singularityhub/singularityhub.github.io/wiki
-.. _defaults.py: https://github.com/singularityware/singularity/blob/master/libexec/python/defaults.py
 .. _manifest list: https://docs.docker.com/registry/spec/manifest-v2-2/#manifest-list
 .. _Scientific Filesystem: https://sci-f.github.io/
 .. _examples: https://github.com/singularityware/singularity/tree/master/examples
@@ -5595,12 +4542,12 @@ For details and best practices for creating your Singularity recipe, .
 .. _zypper: http://singularity.lbl.gov/build-zypper
 .. _same conventions apply: https://linux.die.net/man/1/cp
 .. _Standard Container Integration Format: https://sci-f.github.io/
-.. _SCI-F Apps Home: https://sci-f.github.io/
 .. _squashfs image: https://en.wikipedia.org/wiki/SquashFS
 .. _singularity hub: https://github.com/singularityhub/singularityhub.github.io/wiki
 .. _enabled by the system administrator: http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes
 .. _enabled user control of binds: http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes
 .. _overlay in the Singularity configuration file: http://singularity.lbl.gov/docs-config#enable-overlay-boolean-defaultno
+.. _here: https://github.com/alvarcarto/url-to-pdf-api
 .. _here on GitHub: https://github.com/bauerm97/instance-example
 .. _here on SingularityHub: https://singularity-hub.org/collections/bauerm97/instance-example/
 .. _Puppeteer: https://github.com/GoogleChrome/puppeteer
@@ -5612,7 +4559,9 @@ For details and best practices for creating your Singularity recipe, .
 .. _full documentation: https://sci-f.github.io/
 .. _take a look at these examples: https://asciinema.org/a/139153?speed=3
 .. _Docker image folder: http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine
+.. _Docker Hub: https://hub.docker.com/
 .. _Docker Remote API: https://docs.docker.com/engine/reference/api/docker_remote_api/
+.. _Singularity Hub: https://singularity-hub.org/
 .. _let us know: https://www.github.com/singularityware/singularityware.github.io/issues
 .. _ldconfig: https://codeyarns.com/2014/01/14/how-to-add-library-directory-to-ldconfig-cache/
 .. _ping us an issue: https://www.github.com/singularityware/singularity/issues
