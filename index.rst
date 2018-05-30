@@ -22,7 +22,9 @@ system administrator.
 Installation
 ~~~~~~~~~~~~
 
-| There are many ways to but this quick start guide will only cover one.
+| There are many ways to `install Singularity`__ but this quick start
+  guide will only cover one.
+__ sec:installation_
 
 ::
 
@@ -132,11 +134,9 @@ Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can use the and commands to download pre-built images from an
-external resource like `Singularity
-Hub <https://singularity-hub.org/>`__ or `Docker
-Hub <https://hub.docker.com/>`__. When called on a native Singularity
-images like those provided on Singularity Hub, simply downloads the
-image file to your system.
+external resource like `Singularity Hub`_ or `Docker Hub`_. When called
+on a native Singularity images like those provided on Singularity Hub,
+simply downloads the image file to your system.
 
 ::
 
@@ -569,16 +569,13 @@ A High Level View of Singularity
   create a branch, share the image and distribute the image as easily as
   copying any other file you control!
 | If you want an automated solution for building and hosting your image,
-  you can use our container registry `Singularity
-  Hub <https://singularity-hub.org/>`__. Singularity Hub can
-  automatically build from a GitHub repository each time that you push.
-  It provides a simple cloud solution for storing and sharing your
+  you can use our container registry `Singularity Hub`_. Singularity Hub
+  can automatically build from a GitHub repository each time that you
+  push. It provides a simple cloud solution for storing and sharing your
   image. If you want to host your own Registry, then you should check
-  out `Singularity
-  Registry <https://www.github.com/singularityhub/sregistry>`__. If you
-  have ideas or suggestions for how Singularity can better support
-  reproducible science, please `reach
-  out! <https://www.sylabs.io/contact/>`__.
+  out `Singularity Registry`_. If you have ideas or suggestions for how
+  Singularity can better support reproducible science, please `reach
+  out!`_.
 
 *Supported container formats*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -609,8 +606,7 @@ images using a standard URI format.
 -  **shub://** Singularity Hub is our own registry for Singularity
    containers. If you want to publish a container, or give easy access
    to others from their command line, or enable automatic builds, you
-   should build it on `Singularity
-   Hub <https://singularity-hub.org/>`__.
+   should build it on `Singularity Hub`_.
 
 -  **docker://** Singularity can pull Docker images from a Docker
    registry, and will run them non-persistently (e.g. changes are not
@@ -795,11 +791,12 @@ will be removed in future releases.
 Support
 ~~~~~~~
 
-Have a question, or need further information? `Reach out to
-us <http://singularity.lbl.gov/support>`__.
+Have a question, or need further information? `Reach out to us`_.
 
 Installation
 ------------
+
+.. _sec:installation:
 
 This document will guide you through the process of installing
 Singularity from source with the version and location of your choice.
@@ -832,8 +829,7 @@ Install the master branch
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following commands will install the latest version of the `GitHub
-repo <https://github.com/singularityware/singularity>`__ master branch
-to .
+repo`_ master branch to .
 
 ::
 
@@ -860,8 +856,7 @@ Install a specific release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | The following commands will install a specific release from `GitHub
-  releases <https://github.com/singularityware/singularity/releases>`__
-  page to .
+  releases`_ page to .
 
 ::
 
@@ -928,11 +923,10 @@ Build a Container
 
 is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
-`Singularity Hub <https://singularity-hub.org/>`__ and `Docker
-Hub <https://hub.docker.com/>`__. You can use it to convert containers
-between the various formats supported by Singularity. And you can use it
-in conjunction with a file to create a container from scratch and
-customized it to fit your needs.
+`Singularity Hub`_ and `Docker Hub`_. You can use it to convert
+containers between the various formats supported by Singularity. And you
+can use it in conjunction with a file to create a container from scratch
+and customized it to fit your needs.
 
 Overview
 ~~~~~~~~
@@ -1186,12 +1180,11 @@ More Build topics
    custom tweaks to your build environment, see .
 
 -  If you want to make internally **modular containers**, check out the
-   getting started guide `here <https://sci-f.github.io/tutorials>`__
+   getting started guide `here`_
 
 -  If you want to **build your containers** on Singularity Hub, (because
    you don’t have root access on a Linux machine or want to host your
-   container on the cloud) check out `this
-   guide <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
+   container on the cloud) check out `this guide`_
 
 Build Environment
 -----------------
@@ -1263,13 +1256,12 @@ Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~
 
 | All environmental variables are parsed by Singularity python helper
-  functions, and specifically the file
-  `defaults.py <https://github.com/singularityware/singularity/blob/master/libexec/python/defaults.py>`__
-  is a gateway between variables defined at runtime, and pre-defined
-  defaults. By way of import from the file, variables set at runtime do
-  not change if re-imported. This was done intentionally to prevent
-  changes during the execution, and could be changed if needed. For all
-  variables, the order of operations works as follows:
+  functions, and specifically the file `defaults.py`_ is a gateway
+  between variables defined at runtime, and pre-defined defaults. By way
+  of import from the file, variables set at runtime do not change if
+  re-imported. This was done intentionally to prevent changes during the
+  execution, and could be changed if needed. For all variables, the
+  order of operations works as follows:
 
 #. First preference goes to environment variable set at runtime
 
@@ -1344,10 +1336,9 @@ Docker
   currently being used, by default now is .
 | **DOCKER\_OS** This is exposed via the exported environment variable
   and pertains to images that reveal a version 2 manifest with a
-  `manifest
-  list <https://docs.docker.com/registry/spec/manifest-v2-2/#manifest-list>`__.
-  In the case that the list is present, we must choose an operating
-  system (this variable) and an architecture (below). The default is .
+  `manifest list`_. In the case that the list is present, we must choose
+  an operating system (this variable) and an architecture (below). The
+  default is .
 | **DOCKER\_ARCHITECTURE** This is exposed via the exported environment
   variable
 | and the same applies as for the with regards to being used in context
@@ -1405,7 +1396,7 @@ point for designing any custom container. It includes specifics about
 installation software, environment variables, files to add, and
 container metadata. You can even write a help section, or define modular
 components in the container called based on the `Scientific
-Filesystem <https://sci-f.github.io/>`__.
+Filesystem`_.
 
 Overview
 ~~~~~~~~
@@ -1426,11 +1417,8 @@ A Singularity Recipe file is divided into several parts:
    sections that produce scripts to be executed at runtime can accept
    options intended for
 
-| Please see the
-  `examples <https://github.com/singularityware/singularity/tree/master/examples>`__
-  directory in the `Singularity source
-  code <https://github.com/singularityware/singularity>`__ for some
-  ideas on how to get started.
+| Please see the `examples`_ directory in the `Singularity source code`_
+  for some ideas on how to get started.
 
 The header is at the top of the file, and tells Singularity the base
 Operating System that it should use to build the container. It is
@@ -1466,27 +1454,21 @@ A build that uses a mirror to install Centos-7 might look like this:
 | Each build base requires particular details during build time. You can
   read about them and see examples at the following links:
 
--  `shub <http://singularity.lbl.gov/build-shub>`__ (images hosted on
-   Singularity Hub)
+-  `shub`_ (images hosted on Singularity Hub)
 
--  `docker <http://singularity.lbl.gov/build-docker-module>`__ (images
-   hosted on Docker Hub)
+-  `docker`_ (images hosted on Docker Hub)
 
--  `localimage <http://singularity.lbl.gov/build-localimage>`__ (images
-   saved on your machine)
+-  `localimage`_ (images saved on your machine)
 
--  `yum <http://singularity.lbl.gov/build-yum>`__ (yum based systems
-   such as CentOS and Scientific Linux)
+-  `yum`_ (yum based systems such as CentOS and Scientific Linux)
 
--  `debootstrap <http://singularity.lbl.gov/build-debootstrap>`__ (apt
-   based systems such as Debian and Ubuntu)
+-  `debootstrap`_ (apt based systems such as Debian and Ubuntu)
 
--  `arch <http://singularity.lbl.gov/build-arch>`__ (Arch Linux)
+-  `arch`_ (Arch Linux)
 
--  `busybox <http://singularity.lbl.gov/build-busybox>`__ (BusyBox)
+-  `busybox`_ (BusyBox)
 
--  `zypper <http://singularity.lbl.gov/build-zypper>`__ (zypper based
-   systems such as Suse and OpenSuse)
+-  `zypper`_ (zypper based systems such as Suse and OpenSuse)
 
 | The main content of the bootstrap file is broken into sections.
   Different sections add different content or execute commands at
@@ -1576,7 +1558,7 @@ directory:
   the source is a path on your host system, and the destination is a
   path in the container.
 | The section uses the traditional command, so the `same conventions
-  apply <https://linux.die.net/man/1/cp>`__
+  apply`_
 | Files are copied **before** any or installation procedures for
   Singularity versions >2.3. If you are using a legacy version, files
   are copied after so you must do this via . Let’s add the avocado.txt
@@ -1896,9 +1878,9 @@ Apps
   different containers for each app with almost equivalent dependencies.
 | Starting in Singularity 2.4 all of the above commands can also be used
   in the context of internal modules called based on the `Standard
-  Container Integration Format <https://sci-f.github.io/>`__. For
-  details on apps, see the documentation. For a quick rundown of adding
-  an app to your container, here is an example runscript:
+  Container Integration Format`_. For details on apps, see the
+  documentation. For a quick rundown of adding an app to your container,
+  here is an example runscript:
 
 ::
 
@@ -2004,11 +1986,10 @@ Examples
 ~~~~~~~~
 
 | For more examples, for real world scientific recipes we recommend you
-  look at other containers on `Singularity
-  Hub <https://singularity-hub.org/>`__. For examples of different
-  bases, look at the examples folder for the most up-to-date examples.
-  For apps, including snippets and tutorial with more walk throughs, see
-  `SCI-F Apps Home <https://sci-f.github.io/>`__.
+  look at other containers on `Singularity Hub`_. For examples of
+  different bases, look at the examples folder for the most up-to-date
+  examples. For apps, including snippets and tutorial with more walk
+  throughs, see `SCI-F Apps Home`_.
 
 Best Practices for Build Recipes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2222,11 +2203,10 @@ extended.
 Recommended Production Build
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-What we want for production is a build into a `squashfs
-image <https://en.wikipedia.org/wiki/SquashFS>`__ . Squashfs is a read
-only, and compressed filesystem, and well suited for confident archive
-and re-use of your hello-world. To build a production image, just remove
-the extra options:
+What we want for production is a build into a `squashfs image`_ .
+Squashfs is a read only, and compressed filesystem, and well suited for
+confident archive and re-use of your hello-world. To build a production
+image, just remove the extra options:
 
 ::
 
@@ -2261,17 +2241,15 @@ approach, we support this use case. To do this, given our folder called
   production containers to its users.
 | If you want to go through this entire process without having
   singularity installed locally, or without leaving your cluster, you
-  can build images using `singularity
-  hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__.
+  can build images using `singularity hub`_.
 
 Bind Paths and Mounts
 ---------------------
 
-If `enabled by the system
-administrator <http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes>`__,
-Singularity allows you to map directories on your host system to
-directories within your container using bind mounts. This allows you to
-read and write data on the host system with ease.
+If `enabled by the system administrator`_, Singularity allows you to map
+directories on your host system to directories within your container
+using bind mounts. This allows you to read and write data on the host
+system with ease.
 
 Overview
 ~~~~~~~~
@@ -2292,10 +2270,8 @@ bind path in the Singularity configuration file). In the default
 configuration, the directories , , , , and are among the system-defined
 bind points.
 
-| If the system administrator has `enabled user control of
-  binds <http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes>`__,
-  you will be able to request your own bind points within your
-  container.
+| If the system administrator has `enabled user control of binds`_, you
+  will be able to request your own bind points within your container.
 | To *mount* a bind path inside the container, a **bind point** must be
   defined within the container. The bind point is a directory within the
   container that Singularity can use to bind a directory on the host
@@ -2304,11 +2280,10 @@ bind points.
   container.
 | It is, however, possible that the system administrator has enabled a
   Singularity feature called `overlay in the Singularity configuration
-  file <http://singularity.lbl.gov/docs-config#enable-overlay-boolean-defaultno>`__.
-  This will cause the bind points to be created on an as-needed basis in
-  an overlay file system so that the underlying container is not
-  modified. But because the overlay feature is not always enabled or is
-  unavailable in the kernels of some older host systems, it may be
+  file`_. This will cause the bind points to be created on an as-needed
+  basis in an overlay file system so that the underlying container is
+  not modified. But because the overlay feature is not always enabled or
+  is unavailable in the kernels of some older host systems, it may be
   necessary for container standards to exist to ensure portability from
   host to host.
 
@@ -2670,9 +2645,7 @@ In this section, we will demonstrate an example of packaging a service
 into a container and running it. The service we will be packaging is an
 API server that converts a web page into a PDF, and can be found
 `here <https://github.com/alvarcarto/url-to-pdf-api>`__. The final
-example can be found `here on
-GitHub <https://github.com/bauerm97/instance-example>`__, and `here on
-SingularityHub <https://singularity-hub.org/collections/bauerm97/instance-example/>`__.
+example can be found `here on GitHub`_, and `here on SingularityHub`_.
 If you wish to just download the final image directly from Singularity
 Hub, simply run .
 
@@ -2681,9 +2654,9 @@ Building the image
 
 To begin, we need to build the image. When looking at the GitHub page of
 the , we can see that it is a Node 8 server that uses headless Chromium
-called `Puppeteer <https://github.com/GoogleChrome/puppeteer>`__. Let’s
-first choose a base from which to build our container, in this case I
-used the docker image which comes pre-installed with Node 8:
+called `Puppeteer`_. Let’s first choose a base from which to build our
+container, in this case I used the docker image which comes
+pre-installed with Node 8:
 
 ::
 
@@ -2932,7 +2905,7 @@ and we anticipate adding an ability to view tags that are available,
 along with your own custom checks. You should also ask your
 administration if new checks have been added not supported by
 Singularity. If you want to request adding a new check, please `tell
-us! <https://github.com/singularityware/singularity/issues>`__.
+us!`_.
 
 Environment and Metadata
 ------------------------
@@ -3013,8 +2986,8 @@ Labels
 | Your container stores metadata about it’s build, along with Docker
   labels, and custom labels that you define during build in a section.
   For containers that are generated with Singularity version 2.4 and
-  later, labels are represented using the `rc1 Label
-  Schema <http://label-schema.org/rc1/>`__. For example:
+  later, labels are represented using the `rc1 Label Schema`_. For
+  example:
 
 ::
 
@@ -3134,9 +3107,9 @@ Why do we need SCI-F?
   intended functions. This documentation will walk through some
   rationale, background, and examples of the SCIF integration for
   Singularity containers. For other examples (and a client that works
-  across container technologies) see the the `scientific
-  filesystem <https://sci-f.github.io/>`__. This page will primarily
-  cover the native Singularity SCIF integration.
+  across container technologies) see the the `scientific filesystem`_.
+  This page will primarily cover the native Singularity SCIF
+  integration.
 | To start, let’s take a look at this series of steps to install
   dependencies for software foo and bar.
 
@@ -3521,13 +3494,11 @@ and execute our scientific containers.
 Cowsay Container
 ~~~~~~~~~~~~~~~~
 
-| Now let’s go through the tutorial to build our `cowsay
-  container <https://github.com/singularityware/singularity/blob/development/examples/apps/Singularity.cowsay>`__.
+| Now let’s go through the tutorial to build our `cowsay container`_.
 | **Important!** This tutorial is for Singularity 2.4.
 | When you’ve installed 2.4, download the recipe, and save it to your
   present working directory. By the way, credit for anything and
-  everything lolcat and cowsay goes to
-  `GodLoveD <https://www.github.com/GodLoveD>`__! Here is the recipe:
+  everything lolcat and cowsay goes to `GodLoveD`_! Here is the recipe:
 
 ::
 
@@ -3629,10 +3600,8 @@ an app:
 
 | If you want to see the full specification or create your own
   Scientific Filesystem integration (doesn’t have to be Singularity, or
-  Docker, or containers!) see the `full
-  documentation <https://sci-f.github.io/>`__.
-| If you haven’t yet, `take a look at these
-  examples <https://asciinema.org/a/139153?speed=3>`__ with the
+  Docker, or containers!) see the `full documentation`_.
+| If you haven’t yet, `take a look at these examples`_ with the
   asciinema!
 
 Singularity and Docker
@@ -3673,25 +3642,21 @@ Import a Docker image into a Singularity Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The core of a Docker image is basically a compressed set of files, a set
-of that (if you look in your `Docker image
-folder <http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine>`__
-on your host machine, you will see. The Docker Registry, which you
-probably interact with via `Docker Hub <https://hub.docker.com/>`__,
-serves these layers. These are the layers that you see downloading when
-you interact with the docker daemon. We are going to use these same
-layers for Singularity!
+of that (if you look in your `Docker image folder`_ on your host
+machine, you will see. The Docker Registry, which you probably interact
+with via `Docker Hub`_, serves these layers. These are the layers that
+you see downloading when you interact with the docker daemon. We are
+going to use these same layers for Singularity!
 
 Quick Start: The Docker Registry
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | The Docker engine communicates with the Docker Hub via the `Docker
-  Remote
-  API <https://docs.docker.com/engine/reference/api/docker_remote_api/>`__,
-  and guess what, we can too! The easiest thing to do is create an
-  image, and then pipe a Docker image directly into it from the Docker
-  Registry. You don’t need Docker installed on your machine, but you
-  will need a working internet connection. Let’s create an ubuntu
-  operating system, from Docker. We will pull, then build:
+  Remote API`_, and guess what, we can too! The easiest thing to do is
+  create an image, and then pipe a Docker image directly into it from
+  the Docker Registry. You don’t need Docker installed on your machine,
+  but you will need a working internet connection. Let’s create an
+  ubuntu operating system, from Docker. We will pull, then build:
 
 ::
 
@@ -3810,8 +3775,7 @@ runscript, and add IncludeCmd to the header:
 
 Did you know that you can commit this Singularity file to a GitHub repo
 and it will automatically build for you when you push to `Singularity
-Hub <https://singularity-hub.org/>`__?. This will ensure maximum
-reproducibility of your work.
+Hub`_?. This will ensure maximum reproducibility of your work.
 
 How does the runscript work?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3950,8 +3914,7 @@ Best Practices
 While most docker images can import and run without a hitch, there are
 some special cases for which things can go wrong. Here is a general list
 of suggested practices, and if you discover a new one in your building
-ventures please `let us
-know <https://www.github.com/singularityware/singularityware.github.io/issues>`__.
+ventures please `let us know`_.
 
 | When using Docker, you typically run as root, meaning that root’s home
   at is where things will install given a specification of home. This is
@@ -3961,14 +3924,12 @@ know <https://www.github.com/singularityware/singularityware.github.io/issues>`_
 
     Don’t install anything to root’s home, .
 
-| The command
-  `ldconfig <https://codeyarns.com/2014/01/14/how-to-add-library-directory-to-ldconfig-cache/>`__
-  is used to update the shared library cache. If you have software that
-  requires symbolic linking of libraries and you do the installation
-  without updating the cache, then the Singularity image (in read only)
-  will likely give you an error that the library is not found. If you
-  look in the image, the library will exist but the symbolic link will
-  not. This leads us to best practice #2:
+| The command `ldconfig`_ is used to update the shared library cache. If
+  you have software that requires symbolic linking of libraries and you
+  do the installation without updating the cache, then the Singularity
+  image (in read only) will likely give you an error that the library is
+  not found. If you look in the image, the library will exist but the
+  symbolic link will not. This leads us to best practice #2:
 
     Update the library cache at the end of your Dockerfile with a call
     to ldconfig.
@@ -3980,17 +3941,14 @@ know <https://www.github.com/singularityware/singularityware.github.io/issues>`_
 
     Don’t put container valuables in or
 
-Have any more best practices? Please `let us
-know <https://www.github.com/singularityware/singularityware.github.io/issues>`__!
+Have any more best practices? Please `let us know`_!
 
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
 Why won’t my image build work? If you can’t find an answer on this site,
-please `ping us an
-issue <https://www.github.com/singularityware/singularity/issues>`__. If
-you’ve found an answer and you’d like to see it on the site for others
-to benefit from, then post to us
+please `ping us an issue`_. If you’ve found an answer and you’d like to
+see it on the site for others to benefit from, then post to us
 `here <https://www.github.com/singularityware/singularityware.github.io/issues>`__.
 
 Troubleshooting
@@ -4053,10 +4011,8 @@ and then update grub and reboot:
 
     update-grub && reboot
 
-Please note that this change might have `security
-implications <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/admin-guide/kernel-parameters.txt?h=v4.13-rc3#n4387>`__
-that you should be aware of. For more information, see the `original
-issue <https://github.com/singularityware/singularity/issues/845>`__.
+Please note that this change might have `security implications`_ that
+you should be aware of. For more information, see the `original issue`_.
 
 How to use Singularity with GRSecurity enabled kernerls
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4077,8 +4033,7 @@ The container isn’t working on a different host!
 | Singularity by default mounts your home directory. While this is great
   for seamless communication between your host and the container, it can
   introduce issues if you have software modules installed at . For
-  example, we had a user `run into this
-  issue <https://github.com/singularityware/singularity/issues/476>`__.
+  example, we had a user `run into this issue`_.
 | **Solution 1: Specify the home to mount**
 | A first thing to try is to point to some “sanitized home,” which is
   the purpose of the -H or –home option. For example, here we are
@@ -4108,9 +4063,8 @@ The container isn’t working on a different host!
     exec python "$@"
 
 This same idea would be useful if you are issuing the command to the
-container using . Thanks to
-`yarikoptic <https://github.com/yarikoptic>`__ for the suggestions on
-this issue.
+container using . Thanks to `yarikoptic`_ for the suggestions on this
+issue.
 
 Invalid Argument or Unknown Option
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4315,8 +4269,7 @@ Commands Usage
 Support
 ~~~~~~~
 
-Have a question, or need further information? `Reach out to
-us <http://singularity.lbl.gov/support>`__.
+Have a question, or need further information? `Reach out to us`_.
 
 build
 -----
@@ -4396,8 +4349,7 @@ Use the syntax like so:
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the and our
-documentation on `flags <http://singularity.lbl.gov/action-flags>`__ to
-better customize this command.
+documentation on `flags`_ to better customize this command.
 
 And properly passing along special characters to the program within the
 container.
@@ -4749,8 +4701,7 @@ or with output.
 The goal of these commands is to bring more transparency to containers,
 and to help better integrate them into common workflows by having them
 expose their guts to the world! If you have feedback for how we can
-improve or amend this, `please let us
-know <https://github.com/singularityware/singularity/issues>`__!
+improve or amend this, `please let us know`_!
 
 pull
 ----
@@ -4758,9 +4709,8 @@ pull
 | Singularity is the command that you would want to use to communicate
   with a container registry. The command does exactly as it says - there
   exists an image external to my host, and I want to pull it here. We
-  currently support pull for both `Docker <https://hub.docker.com/>`__
-  and `Singularity Hub images <https://singularity-hub.org/>`__, and
-  will review usage for both.
+  currently support pull for both `Docker`_ and `Singularity Hub
+  images`_, and will review usage for both.
 
 Singularity Hub
 ~~~~~~~~~~~~~~~
@@ -4786,10 +4736,9 @@ above would be equivalent to doing:
     singularity pull shub://vsoch/hello-world:master
 
 To enable other branches to build, they must be turned on in your
-collection (more details are available in the `Singularity Hub
-docs <https://singularity-hub.org/faq>`__). If you then put another
-Singularity file in a branch called development, you would pull it as
-follows:
+collection (more details are available in the `Singularity Hub docs`_).
+If you then put another Singularity file in a branch called development,
+you would pull it as follows:
 
 ::
 
@@ -4970,8 +4919,7 @@ Runtime Flags
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the and our
-documentation on `flags <http://singularity.lbl.gov/action-flags>`__ to
-better customize this command.
+documentation on `flags`_ to better customize this command.
 
 Examples
 ~~~~~~~~
@@ -5089,9 +5037,8 @@ Additionally any arguments passed to the Singularity command (after the
 container name) will be passed to the called shell within the container,
 and shell can be used across image types. Here is a quick example of
 shelling into a container assembled from Docker layers. We highly
-recommend that you look at the and our documentation on
-`flags <http://singularity.lbl.gov/action-flags>`__ to better customize
-this command.
+recommend that you look at the and our documentation on `flags`_ to
+better customize this command.
 
 Change your shell
 ~~~~~~~~~~~~~~~~~
@@ -5539,11 +5486,10 @@ bootstrap
 Bootstrapping was the original way (for Singularity versions prior to
 2.4) to install an operating system and then configure it appropriately
 for a specified need. Bootstrap is very similar to build, except that it
-by default uses an `ext3 <https://en.wikipedia.org/wiki/Ext3>`__
-filesystem and allows for writability. The images unfortunately are not
-immutable in this way, and can degrade over time. As of 2.4, bootstrap
-is still supported for Singularity, however we encourage you to use
-instead.
+by default uses an `ext3`_ filesystem and allows for writability. The
+images unfortunately are not immutable in this way, and can degrade over
+time. As of 2.4, bootstrap is still supported for Singularity, however
+we encourage you to use instead.
 
 Quick Start
 ~~~~~~~~~~~
@@ -5624,6 +5570,62 @@ user would be you, and the cache your .
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
 For details and best practices for creating your Singularity recipe, .
+
+.. _Singularity Hub: https://singularity-hub.org/
+.. _Docker Hub: https://hub.docker.com/
+.. _Singularity Registry: https://www.github.com/singularityhub/sregistry
+.. _reach out!: https://www.sylabs.io/contact/
+.. _Reach out to us: http://singularity.lbl.gov/support
+.. _GitHub repo: https://github.com/singularityware/singularity
+.. _GitHub releases: https://github.com/singularityware/singularity/releases
+.. _here: https://sci-f.github.io/tutorials
+.. _this guide: https://github.com/singularityhub/singularityhub.github.io/wiki
+.. _defaults.py: https://github.com/singularityware/singularity/blob/master/libexec/python/defaults.py
+.. _manifest list: https://docs.docker.com/registry/spec/manifest-v2-2/#manifest-list
+.. _Scientific Filesystem: https://sci-f.github.io/
+.. _examples: https://github.com/singularityware/singularity/tree/master/examples
+.. _Singularity source code: https://github.com/singularityware/singularity
+.. _shub: http://singularity.lbl.gov/build-shub
+.. _docker: http://singularity.lbl.gov/build-docker-module
+.. _localimage: http://singularity.lbl.gov/build-localimage
+.. _yum: http://singularity.lbl.gov/build-yum
+.. _debootstrap: http://singularity.lbl.gov/build-debootstrap
+.. _arch: http://singularity.lbl.gov/build-arch
+.. _busybox: http://singularity.lbl.gov/build-busybox
+.. _zypper: http://singularity.lbl.gov/build-zypper
+.. _same conventions apply: https://linux.die.net/man/1/cp
+.. _Standard Container Integration Format: https://sci-f.github.io/
+.. _SCI-F Apps Home: https://sci-f.github.io/
+.. _squashfs image: https://en.wikipedia.org/wiki/SquashFS
+.. _singularity hub: https://github.com/singularityhub/singularityhub.github.io/wiki
+.. _enabled by the system administrator: http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes
+.. _enabled user control of binds: http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes
+.. _overlay in the Singularity configuration file: http://singularity.lbl.gov/docs-config#enable-overlay-boolean-defaultno
+.. _here on GitHub: https://github.com/bauerm97/instance-example
+.. _here on SingularityHub: https://singularity-hub.org/collections/bauerm97/instance-example/
+.. _Puppeteer: https://github.com/GoogleChrome/puppeteer
+.. _tell us!: https://github.com/singularityware/singularity/issues
+.. _rc1 Label Schema: http://label-schema.org/rc1/
+.. _scientific filesystem: https://sci-f.github.io/
+.. _cowsay container: https://github.com/singularityware/singularity/blob/development/examples/apps/Singularity.cowsay
+.. _GodLoveD: https://www.github.com/GodLoveD
+.. _full documentation: https://sci-f.github.io/
+.. _take a look at these examples: https://asciinema.org/a/139153?speed=3
+.. _Docker image folder: http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine
+.. _Docker Remote API: https://docs.docker.com/engine/reference/api/docker_remote_api/
+.. _let us know: https://www.github.com/singularityware/singularityware.github.io/issues
+.. _ldconfig: https://codeyarns.com/2014/01/14/how-to-add-library-directory-to-ldconfig-cache/
+.. _ping us an issue: https://www.github.com/singularityware/singularity/issues
+.. _security implications: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/admin-guide/kernel-parameters.txt?h=v4.13-rc3#n4387
+.. _original issue: https://github.com/singularityware/singularity/issues/845
+.. _run into this issue: https://github.com/singularityware/singularity/issues/476
+.. _yarikoptic: https://github.com/yarikoptic
+.. _flags: http://singularity.lbl.gov/action-flags
+.. _please let us know: https://github.com/singularityware/singularity/issues
+.. _Docker: https://hub.docker.com/
+.. _Singularity Hub images: https://singularity-hub.org/
+.. _Singularity Hub docs: https://singularity-hub.org/faq
+.. _ext3: https://en.wikipedia.org/wiki/Ext3
 
 .. |Singularity workflow| image:: flow.png
 
