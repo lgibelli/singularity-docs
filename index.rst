@@ -935,9 +935,9 @@ create a container from scratch and customized it to fit your needs.
 Overview
 ~~~~~~~~
 
-| The command accepts a target as input and produces a container as
+| The ``build`` command accepts a target as input and produces a container as
   output.
-| The target defines the method that uses to create the container. It
+| The target defines the method that ``build`` uses to create the container. It
   can be one of the following:
 
 -  URI beginning with **shub://** to build from Singularity Hub
@@ -952,23 +952,23 @@ Overview
 
 -  path to a `Singularity recipe file <#container-recipes>`_
 
-| In addition can produce containers in three different formats. Formats
+| In addition ``build`` can produce containers in three different formats. Formats
   types can be specified by passing the following options to build.
 
 -  compressed read-only **squashfs** file system suitable for production
    (default)
 
--  writable **ext3** file system suitable for interactive development (
+-  writable **ext3** file system suitable for interactive development ( ``--writable``
    option )
 
 -  writable **(ch)root directory** called a sandbox for interactive
-   development ( option)
+   development ( ``--sandbox`` option)
 
-| Because can accept an existing container as a target and create a
+| Because ``build`` can accept an existing container as a target and create a
   container in any of these three formats you can convert existing
   containers from one format to another.
-| The following diagram illustrates the targets that can be supplied to
-  as inputs and the containers can produce as outputs. Green arrows
+| The following diagram illustrates the targets that can be supplied to ``build``
+  as inputs and the containers ``build`` can produce as outputs. Green arrows
   represent operations that can be carried out without root privileges
   (though the container may not perform properly when run as root). Red
   arrows represent operations that must be carried out with root
@@ -989,17 +989,17 @@ Hub.
 
     $ singularity build lolcow.simg shub://GodloveD/lolcow
 
-| The first argument () specifies a path and name for your container.
+| The first argument (``lolvow.simg``) specifies a path and name for your container.
   The second argument
-| () gives the Singularity Hub URI from which to download.
+| (``shub://GodloveD/lolcow``) gives the Singularity Hub URI from which to download.
 | But default the container will be converted to a compressed, read-only
   squashfs file. If you want your container in a different format use
-  the or options.
+  the ``--writable`` or ``--sandbox`` options.
 
 Downloading a existing container from Docker Hub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use to download layers from Docker Hub and assemble them into
+You can use ``build`` to download layers from Docker Hub and assemble them into
 Singularity containers.
 
 ::
