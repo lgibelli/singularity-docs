@@ -1,4 +1,4 @@
-#container-recipes.. figure:: logo.png
+-.. figure:: logo.png
    :alt: Singularity
    :width: 40px
    :height: 40px
@@ -211,7 +211,7 @@ disappears when the shell is exited.
 
     $ singularity shell shub://vsoch/hello-world
 
-The `exec <#id51>`_ command allows you to execute a custom command within a container by
+The `exec <#id52>`_ command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
@@ -759,7 +759,7 @@ The Singularity Usage Workflow
 
 -  `build <#id46>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id51>`_ : Execute a command to your container
+-  `exec <#id52>`_ : Execute a command to your container
 
 -  `inspect <#id53>`_ : See labels, run and test scripts, and environment variables
 
@@ -917,7 +917,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <#id62>`_ , `exec <#id51>`_ , or `run <#id57>`_ commands. Or click **next**
+interact with your container via the `shell <#id62>`_ , `exec <#id52>`_ , or `run <#id57>`_ commands. Or click **next**
 below to continue reading.
 
 Build a Container
@@ -4171,7 +4171,7 @@ The Singularity command
 
 -  `build <#id46>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id51>`_ : Execute a command to your container
+-  `exec <#id52>`_ : Execute a command to your container
 
 -  `inspect <#id53>`_ : See labels, run and test scripts, and environment variables
 
