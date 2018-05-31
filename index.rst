@@ -94,17 +94,17 @@ Overview of the Singularity Interface
 
 | For any additional help or support visit the Singularity website:
   https://www.sylabs.io/
-| Singularity uses positional syntax. Global options follow the
+| Singularity uses positional syntax. Global options follow the ``singularity``
   invocation and affect the way that Singularity runs any command. Then
   commands are passed followed by their options.
-| For example, to pass the option to the main command and run
+| For example, to pass the ``--debug`` option to the main ``singularity`` command and run
   Singularity with debugging messages on:
 
 ::
 
     $ singularity --debug run shub://GodloveD/lolcow
 
-And to pass the option to the command and run a Singularity image in an
+And to pass the ``--containall`` option to the ``run`` command and run a Singularity image in an
 isolated manner:
 
 ::
@@ -135,7 +135,7 @@ Download pre-built images
 
 You can use the `pull <#id63>`_ and `build <#id55>`_ commands to download pre-built images from an
 external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
-on a native Singularity images like those provided on Singularity Hub,
+on a native Singularity images like those provided on Singularity Hub, ``pull``
 simply downloads the image file to your system.
 
 ::
@@ -145,9 +145,9 @@ simply downloads the image file to your system.
 
 | Singularity images can also be pulled and named by an associated
   GitHub commit or content hash.
-| You can also use with the uri to reference Docker images served from a
-  registry. In this case does not just download an image file. Docker
-  images are stored in layers, so must also combine those layers into a
+| You can also use ``pull`` with the ``docker://`` uri to reference Docker images served from a
+  registry. In this case ``pull`` does not just download an image file. Docker
+  images are stored in layers, so ``pull`` must also combine those layers into a
   usable Singularity file.
 
 ::
@@ -160,8 +160,8 @@ simply downloads the image file to your system.
   not guaranteed to get the same image. If any of the source layers has
   changed the image will be altered. If reproducibility is a priority
   for you, try building your images from Singularity Hub.
-| You can also use the command to download pre-built images from an
-  external resource. When using you must specify a name for your
+| You can also use the ``build`` command to download pre-built images from an
+  external resource. When using ``build`` you must specify a name for your
   container like so:
 
 ::
@@ -169,12 +169,12 @@ simply downloads the image file to your system.
     $ singularity build hello-world.simg shub://vsoch/hello-world
     $ singularity build lolcow.simg docker://godlovedc/lolcow
 
-Unlike , will convert your image to the latest Singularity image format
+Unlike ``pull``, ``build`` will convert your image to the latest Singularity image format
 after downloading it.
 
-is like a “Swiss Army knife” for container creation. In addition to
-downloading images, you can use `recipe file <#container-recipes>`_ to create images from other images or
-from scratch using a . You can also use to convert an image between the
+``build`` is like a “Swiss Army knife” for container creation. In addition to
+downloading images, you can use ``build`` to create images from other images or
+from scratch using a `recipe file <#container-recipes>`_. You can also use ``build`` to convert an image between the
 3 major container formats supported by Singularity. We discuss those
 image formats below in the `Build images from scratch <#id1>`_ section.
 
@@ -182,7 +182,7 @@ Interact with images
 ~~~~~~~~~~~~~~~~~~~~
 
 Once you have an image, you can interact with it in several ways. For
-these examples we will use a image that can be downloaded from
+these examples we will use a ``hello-world.simg`` image that can be downloaded from
 Singularity Hub like so.
 
 ::
@@ -204,7 +204,7 @@ interact with it as though it were a small virtual machine.
     Singularity hello-world.simg:~/Desktop> id
     uid=1000(vanessa) gid=1000(vanessa) groups=1000(vanessa),4(adm),24,27,30(tape),46,113,128,999(input)
 
-also works with the and URIs. This creates an ephemeral container that
+``shell`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
 disappears when the shell is exited.
 
 ::
@@ -222,7 +222,7 @@ hello-world.simg image, we could do the following:
     bin        home  lost+found  opt   run   srv          usr
     dev        lib   media       proc  sbin  sys          var
 
-| also works with the and URIs. This creates an ephemeral container that
+|``exec`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
   executes a command and disappears.
 
 ::
@@ -239,7 +239,7 @@ the container as though it were an executable.
     $ singularity run hello-world.simg
     $ ./hello-world.simg
 
-also works with and URIs. This creates an ephemeral container that runs
+``run`` also works with ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that runs
 and then disappears.
 
 ::
@@ -254,8 +254,8 @@ and then disappears.
     $ singularity exec vsoch-hello-world-master.simg cat $HOME/hello-kitty.txt
     Hello World
 
-| This example works because exists in the user’s home directory. By
-  default singularity bind mounts , , and into your container at
+| This example works because ``hello-kitty.txt`` exists in the user’s home directory. By
+  default singularity bind mounts ``/home/$USER``, , and into your container at
   runtime.
 | You can specify additional directories to bind mount into your
   container with the `- -bind <#bind-paths-and-mounts>`_ option. In this example, the directory on the host
