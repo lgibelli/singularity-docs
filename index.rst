@@ -229,7 +229,7 @@ hello-world.simg image, we could do the following:
 
     $ singularity exec shub://singularityhub/ubuntu cat /etc/os-release
 
-Singularity containers contain “`runscript <#runscripts>`_”. These are user defined scripts that
+Singularity containers contain “`runscript <#id19>`_”. These are user defined scripts that
 define the actions a container should perform when someone runs it. The
 runscript can be triggered with the run command, or simply by calling
 the container as though it were an executable.
@@ -258,7 +258,7 @@ and then disappears.
   default singularity bind mounts , , and into your container at
   runtime.
 | You can specify additional directories to bind mount into your
-  container with the `--bind <#bind>`_ option. In this example, the directory on the host
+  container with the `- -bind <#bind-paths-and-mounts>`_ option. In this example, the directory on the host
   system is bind mounted to the directory inside the container.
 
 ::
