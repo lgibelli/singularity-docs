@@ -1421,7 +1421,7 @@ A Singularity Recipe file is divided into several parts:
 
 #. **Sections**: The rest of the definition is comprised of sections,
    sometimes called scriptlets or blobs of data. Each section is defined
-   by a ``%``character followed by the name of the particular section. All
+   by a ``%`` character followed by the name of the particular section. All
    sections are optional. Sections that are executed at build time are
    executed with the ``/bin/sh`` interpreter and can accept ``bin/sh`` options. Similarly,
    sections that produce scripts to be executed at runtime can accept
