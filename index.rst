@@ -1,4 +1,4 @@
-#why-container-instances#id57.. figure:: logo.png
+.. figure:: logo.png
    :alt: Singularity
    :width: 40px
    :height: 40px
@@ -133,7 +133,7 @@ following:
 Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the `pull <#id57>`_ and `build <#id49>`_ commands to download pre-built images from an
+You can use the `pull <#id58>`_ and `build <#id50>`_ commands to download pre-built images from an
 external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
 on a native Singularity images like those provided on Singularity Hub,
 simply downloads the image file to your system.
@@ -189,7 +189,7 @@ Singularity Hub like so.
 
     $ singularity pull --name hello-world.simg shub://vsoch/hello-world
 
-The `shell <#id65>`_ command allows you to spawn a new shell within your container and
+The `shell <#id66>`_ command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
 ::
@@ -211,7 +211,7 @@ disappears when the shell is exited.
 
     $ singularity shell shub://vsoch/hello-world
 
-The `exec <#id54>`_ command allows you to execute a custom command within a container by
+The `exec <#id55>`_ command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
@@ -757,27 +757,27 @@ The Singularity Usage Workflow
   to the production system where you wish to run it. How do the commands
   work? Here is where to look for more information:
 
--  `build <#id49>`_ : Build a container on your user endpoint or build environment
+-  `build <#id50>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id54>`_ : Execute a command to your container
+-  `exec <#id55>`_ : Execute a command to your container
 
--  `inspect <#id56>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <#id57>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id57>`_ : pull an image from Docker or Singularity Hub
+-  `pull <#id58>`_ : pull an image from Docker or Singularity Hub
 
--  `run <#id60>`_ : Run your image as an executable
+-  `run <#id61>`_ : Run your image as an executable
 
--  `shell <#id65>`_ : Shell into your image
+-  `shell <#id66>`_ : Shell into your image
 
 **Image Commands**
 
 -  `image.import <#id68>`_ : import layers or other file content to your image
 
--  `image.export <#id66>`_ : export the contents of the image to tar or stream
+-  `image.export <#id67>`_ : export the contents of the image to tar or stream
 
--  `image.create <#id69>`_ : create a new image, using the old ext3 filesystem
+-  `image.create <#id70>`_ : create a new image, using the old ext3 filesystem
 
--  `image.expand <#id67>`_ : increase the size of your image (old ext3)
+-  `image.expand <#id68>`_ : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
@@ -917,7 +917,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <#id65>`_ , `exec <#id54>`_ , or `run <#id60>`_ commands. Or click **next**
+interact with your container via the `shell <#id66>`_ , `exec <#id55>`_ , or `run <#id61>`_ commands. Or click **next**
 below to continue reading.
 
 Build a Container
@@ -1203,7 +1203,7 @@ discuss those things
 Cache Folders
 ~~~~~~~~~~~~~
 
-To make download of layers for build and `pull <#id57>`_ faster and less redundant, we
+To make download of layers for build and `pull <#id58>`_ faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
 a set of folders in your directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
@@ -1255,8 +1255,8 @@ Temporary Folders
 Pull Folder
 ~~~~~~~~~~~
 
-For details about customizing the output location of `pull <#id57>`_, see the
-`pull docs <#id57>`_. You have the similar ability to set it to be something
+For details about customizing the output location of `pull <#id58>`_, see the
+`pull docs <#id58>`_. You have the similar ability to set it to be something
 different, or to customize the name of the pulled image.
 
 Environment Variables
@@ -4169,27 +4169,27 @@ The Singularity command
   level help for all arguments. The main options include:
 | **Container Actions**
 
--  `build <#id49>`_ : Build a container on your user endpoint or build environment
+-  `build <#id50>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id54>`_ : Execute a command to your container
+-  `exec <#id55>`_ : Execute a command to your container
 
--  `inspect <#id56>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <#id57>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id57>`_ : pull an image from Docker or Singularity Hub
+-  `pull <#id58>`_ : pull an image from Docker or Singularity Hub
 
 -  `run <#id60>`_ : Run your image as an executable
 
--  `shell <#id65>`_ : Shell into your image
+-  `shell <#id66>`_ : Shell into your image
 
 | **Image Commands**
 
 -  `image.import <#id68>`_ : import layers or other file content to your image
 
--  `image.export <#id66>`_ : export the contents of the image to tar or stream
+-  `image.export <#id67>`_ : export the contents of the image to tar or stream
 
--  `image.create <#id69>`_ : create a new image, using the old ext3 filesystem
+-  `image.create <#id70>`_ : create a new image, using the old ext3 filesystem
 
--  `image.expand <#id67>`_ : increase the size of your image (old ext3)
+-  `image.expand <#id68>`_ : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
