@@ -1,4 +1,4 @@
-.. figure:: logo.png
+#a-high-level-view-of-singularity.. figure:: logo.png
    :alt: Singularity
    :width: 40px
    :height: 40px
@@ -497,7 +497,7 @@ Welcome to Singularity!
 A High Level View of Singularity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| .. _sec:securityandpriviledge: A user inside a Singularity container
+| A user inside a Singularity container
   is the same user as outside the container
 | This is one of Singularities defining characteristics. It allows a
   user (that may already have shell access to a particular host) to
@@ -571,7 +571,7 @@ A High Level View of Singularity
   create a branch, share the image and distribute the image as easily as
   copying any other file you control!
 | If you want an automated solution for building and hosting your image,
-  you can use our container registry `Singularity Hub`_. Singularity Hub
+  you can use our container registry `Singularity Hub <https://singularity-hub.org/>`_. Singularity Hub
   can automatically build `Singularity recipe files <#container-recipes>`_ from
   a GitHub repository each time that you push. It provides a simple cloud
   solution for storing and sharing your image. If you want to host your own
@@ -608,7 +608,7 @@ images using a standard URI format.
 -  **shub://** Singularity Hub is our own registry for Singularity
    containers. If you want to publish a container, or give easy access
    to others from their command line, or enable automatic builds, you
-   should build it on `Singularity Hub`_.
+   should build it on `Singularity Hub <https://singularity-hub.org/>`_.
 
 -  **docker://** Singularity can pull Docker images from a Docker
    registry, and will run them non-persistently (e.g. changes are not
@@ -719,7 +719,7 @@ to run, which is fast enough to seem instantaneous.
 The Singularity Usage Workflow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| The security model of Singularity (as described above, `"A user inside a Singularity container is the same user as outside the container" <#securityandpriviledge>`_) defines the
+| The security model of Singularity (as described above, `"A user inside a Singularity container is the same user as outside the container" <#a-high-level-view-of-singularity>`_) defines the
   Singularity workflow. There are generally two groups of actions you
   must implement on a container; management (building your container)
   and usage.
