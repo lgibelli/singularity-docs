@@ -765,19 +765,19 @@ The Singularity Usage Workflow
 
 -  `pull <#id63>`_ : pull an image from Docker or Singularity Hub
 
--  `run <#id61>`_ : Run your image as an executable
+-  `run <#id67>`_ : Run your image as an executable
 
 -  `shell <#id72>`_ : Shell into your image
 
 **Image Commands**
 
--  `image.import <#id69>`_ : import layers or other file content to your image
+-  `image.import <#id75>`_ : import layers or other file content to your image
 
 -  `image.export <#id67>`_ : export the contents of the image to tar or stream
 
--  `image.create <#id70>`_ : create a new image, using the old ext3 filesystem
+-  `image.create <#id76>`_ : create a new image, using the old ext3 filesystem
 
--  `image.expand <#id68>`_ : increase the size of your image (old ext3)
+-  `image.expand <#id74>`_ : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
@@ -4183,13 +4183,13 @@ The Singularity command
 
 | **Image Commands**
 
--  `image.import <#id69>`_ : import layers or other file content to your image
+-  `image.import <#id75>`_ : import layers or other file content to your image
 
--  `image.export <#id67>`_ : export the contents of the image to tar or stream
+-  `image.export <#id73>`_ : export the contents of the image to tar or stream
 
--  `image.create <#id70>`_ : create a new image, using the old ext3 filesystem
+-  `image.create <#id76>`_ : create a new image, using the old ext3 filesystem
 
--  `image.expand <#id68>`_ : increase the size of your image (old ext3)
+-  `image.expand <#id74>`_ : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
