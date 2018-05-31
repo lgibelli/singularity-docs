@@ -40,7 +40,7 @@ Singularity must be installed as root to function properly.
 Overview of the Singularity Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| Singularity’s `command line interface <#commandlineinterface>`_ allows you to build and interact with containers
+| Singularity’s `command line interface <#command-usage>`_ allows you to build and interact with containers
   transparently. You can run programs inside a container as if they were
   running on your host system. You can easily redirect IO, use pipes,
   pass arguments, and access files, sockets, and ports on the host
@@ -122,7 +122,7 @@ following:
     $ singularity <command> --help
     $ singularity <command> -h
 
-| Users can also `write help docs specific to a container <#writehelpdocs>`_ or for an internal module called an . If those help
+| Users can also `write help docs specific to a container <#help>`_ or for an internal module called an . If those help
   docs exist for a particular container, you can view them like so.
 
 ::
@@ -4203,7 +4203,7 @@ The Singularity command
 
 -  `bootstrap <#bootstrap>`_ : Bootstrap a container recipe
 
-For the full usage, `see the bottom of this page <#commandsusage>`_
+For the full usage, `see the bottom of this page <#command-usage>`_
 
 | Because of the nature of how Singularity cascades commands and
   sub-commands, argument processing is done with a mandatory order.
