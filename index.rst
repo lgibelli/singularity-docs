@@ -133,7 +133,7 @@ following:
 Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the `pull <#id54>`_ and `build <#id46>`_ commands to download pre-built images from an
+You can use the `pull <#id55>`_ and `build <#id47>`_ commands to download pre-built images from an
 external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
 on a native Singularity images like those provided on Singularity Hub,
 simply downloads the image file to your system.
@@ -757,15 +757,15 @@ The Singularity Usage Workflow
   to the production system where you wish to run it. How do the commands
   work? Here is where to look for more information:
 
--  `build <#id46>`_ : Build a container on your user endpoint or build environment
+-  `build <#id47>`_ : Build a container on your user endpoint or build environment
 
 -  `exec <#id52>`_ : Execute a command to your container
 
--  `inspect <#id53>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <#id54>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id54>`_ : pull an image from Docker or Singularity Hub
+-  `pull <#id55>`_ : pull an image from Docker or Singularity Hub
 
--  `run <#id57>`_ : Run your image as an executable
+-  `run <#id58>`_ : Run your image as an executable
 
 -  `shell <#id62>`_ : Shell into your image
 
@@ -917,7 +917,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <#id62>`_ , `exec <#id52>`_ , or `run <#id57>`_ commands. Or click **next**
+interact with your container via the `shell <#id62>`_ , `exec <#id52>`_ , or `run <#id58>`_ commands. Or click **next**
 below to continue reading.
 
 Build a Container
@@ -1203,7 +1203,7 @@ discuss those things
 Cache Folders
 ~~~~~~~~~~~~~
 
-To make download of layers for build and `pull <#id54>`_ faster and less redundant, we
+To make download of layers for build and `pull <#id55>`_ faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
 a set of folders in your directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
@@ -1255,8 +1255,8 @@ Temporary Folders
 Pull Folder
 ~~~~~~~~~~~
 
-For details about customizing the output location of `pull <#id54>`_, see the
-`pull docs <#id54>`_. You have the similar ability to set it to be something
+For details about customizing the output location of `pull <#id55>`_, see the
+`pull docs <#id55>`_. You have the similar ability to set it to be something
 different, or to customize the name of the pulled image.
 
 Environment Variables
@@ -4169,15 +4169,15 @@ The Singularity command
   level help for all arguments. The main options include:
 | **Container Actions**
 
--  `build <#id46>`_ : Build a container on your user endpoint or build environment
+-  `build <#id47>`_ : Build a container on your user endpoint or build environment
 
 -  `exec <#id52>`_ : Execute a command to your container
 
--  `inspect <#id53>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <#id54>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id54>`_ : pull an image from Docker or Singularity Hub
+-  `pull <#id55>`_ : pull an image from Docker or Singularity Hub
 
--  `run <#id57>`_ : Run your image as an executable
+-  `run <#id58>`_ : Run your image as an executable
 
 -  `shell <#id62>`_ : Shell into your image
 
