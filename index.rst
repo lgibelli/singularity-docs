@@ -222,7 +222,7 @@ hello-world.simg image, we could do the following:
     bin        home  lost+found  opt   run   srv          usr
     dev        lib   media       proc  sbin  sys          var
 
-|``exec`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
+``exec`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
   executes a command and disappears.
 
 ::
@@ -255,11 +255,11 @@ and then disappears.
     Hello World
 
 | This example works because ``hello-kitty.txt`` exists in the user’s home directory. By
-  default singularity bind mounts ``/home/$USER``, , and into your container at
+  default singularity bind mounts ``/home/$USER``, ``/tmp``, and ``$PWD`` into your container at
   runtime.
 | You can specify additional directories to bind mount into your
-  container with the `- -bind <#bind-paths-and-mounts>`_ option. In this example, the directory on the host
-  system is bind mounted to the directory inside the container.
+  container with the `- -bind <#bind-paths-and-mounts>`_ option. In this example, the ``data`` directory on the host
+  system is bind mounted to the ``/mnt`` directory inside the container.
 
 ::
 
@@ -272,38 +272,38 @@ Build images from scratch
 
 .. _sec:buildimagesfromscratch:
 
-| As of Singularity v2.4 by default produces immutable images in the
+| As of Singularity v2.4 by default ``build`` produces immutable images in the
   squashfs file format. This ensures reproducible and verifiable images.
 | However, during testing and debugging you may want an image format
-  that is writable. This way you can into the image and install software
+  that is writable. This way you can ``shell`` into the image and install software
   and dependencies until you are satisfied that your container will
   fulfill your needs. For these scenarios, Singularity supports two
-  other image formats: a format (which is really just a chroot
-  directory), and a format (the ext3 file system that was used in
+  other image formats: a ``sandbox`` format (which is really just a chroot
+  directory), and a ``writable`` format (the ext3 file system that was used in
   Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
 read about the `singularity flow <#id29>`_.
 
-| To build into a (container in a directory) use the command and option:
+| To build into a ``sandbox`` (container in a directory) use the ``build --sandbox`` command and option:
 
 ::
 
     $ sudo singularity build --sandbox ubuntu/ docker://ubuntu
 
-| This command creates a directory called with an entire Ubuntu
+| This command creates a directory called ``ubuntu/`` with an entire Ubuntu
   Operating System and some Singularity metadata in your current working
   directory.
-| You can use commands like , , and with this directory just as you
+| You can use commands like ``shell``, ``exec`` , and ``run`` with this directory just as you
   would with a Singularity image. You can also write files to this
   directory from within a Singularity session (provided you have the
   permissions to do so). These files will be ephemeral and will
   disappear when the container is finished executing. However if you use
-  the option the changes will be saved into your directory so that you
+  the ``--writable`` option the changes will be saved into your directory so that you
   can use them the next time you use your container.
 
-| If you prefer to have a writable image file, you can a container with
-  the option.
+| If you prefer to have a writable image file, you can ``build`` a container with
+  the ``--writable`` option.
 
 ::
 
@@ -312,15 +312,15 @@ read about the `singularity flow <#id29>`_.
 | This produces an image that is writable with an ext3 file system.
   Unlike the sandbox, it is a single image file. Also by convention this
   file name has an “.img” extension instead of “.simg” .
-| When you want to alter your image, you can use commands like , , ,
-  with the option. Because of permission issues it may be necessary to
+| When you want to alter your image, you can use commands like ``shell``, ``exec``, ``run``,
+  with the ``--writable`` option. Because of permission issues it may be necessary to
   execute the container as root to modify it.
 
 ::
 
     $ sudo singularity shell --writable ubuntu.img
 
-| The command allows you to build a container from an existing
+| The ``build`` command allows you to build a container from an existing
   container. This means that you can use it to convert a container from
   one format to another. For instance, if you have already created a
   sandbox (directory) and want to convert it to the default immutable
@@ -333,7 +333,7 @@ read about the `singularity flow <#id29>`_.
 | Doing so may break reproducibility if you have altered your sandbox
   outside of the context of a recipe file, so you are advised to
   exercise care.
-| You can use to convert containers to and from , , and default
+| You can use ``build`` to convert containers to and from ``writable``, ``sandbox``, and default
   (squashfs) file formats via any of the six possible combinations.
 
 | For a reproducible, production-quality container, we recommend that
@@ -381,14 +381,14 @@ named Singularity), you would call build like so:
     $ sudo singularity build ubuntu.simg Singularity
 
 | In this example, the header tells singularity to use a base Ubuntu
-  image from Singularity Hub. The section defines actions for the
+  image from Singularity Hub. The ``%runscript`` section defines actions for the
   container to take when it is executed (in this case a simple message).
-  The section copies some files into the container from the host system
-  at build time. The section defines some environment variables that
-  will be available to the container at runtime. The section allows for
-  custom metadata to be added to the container. And finally the section
+  The ``%files`` section copies some files into the container from the host system
+  at build time. The ``%environment`` section defines some environment variables that
+  will be available to the container at runtime. The ``%labels`` section allows for
+  custom metadata to be added to the container. And finally the ``%post`` section
   executes within the container at build time after the base OS has been
-  installed. The section is therefore the place to perform installations
+  installed. The ``%post`` section is therefore the place to perform installations
   of custom apps.
 | This is a very small example of the things that you can do with a `recipe file <#container-recipes>`_ . In
   addition to building a container from Singularity Hub, you can start
@@ -454,7 +454,7 @@ Welcome to Singularity!
   file can be copied, shared, archived, and standard UNIX file
   permissions also apply. Additionally containers are portable (even
   across different C library versions and implementations) which makes
-  sharing and copying an image as easy as or or . As mentioned above,
+  sharing and copying an image as easy as ``cp`` or ``scp``or ``ftp``. As mentioned above,
   Singularity containers utilize a single file which is the complete
   representation of all the files within the container. The same
   features which facilitate mobility also facilitate reproducibility.
@@ -547,7 +547,7 @@ A High Level View of Singularity
 | There are numerous benefits for using a single file image for the
   entire container:
 
--  Copying or branching an entire container is as simple as
+-  Copying or branching an entire container is as simple as ``cp``
 
 -  Permission/access to the container is managed via standard file
    system permissions
@@ -586,11 +586,11 @@ A High Level View of Singularity
    file system that is widely used for things like live CDs/USBs and
    cell phone OS’s
 
--  **ext3**: (also called ) a writable image file containing an ext3
+-  **ext3**: (also called ``writable``) a writable image file containing an ext3
    file system that was the default container format prior to
    Singularity version 2.4
 
--  **directory**: (also called ) standard Unix directory containing a
+-  **directory**: (also called ``sandbox``) standard Unix directory containing a
    root container image
 
 -  **tar.gz**: zlib compressed tar archive
@@ -691,9 +691,9 @@ generalized as follows:
 
 #. Environment variables are set
 
-#. The Singularity Execution binary is called ()
+#. The Singularity Execution binary is called (``sexec``)
 
-#. Sexec determines if it is running privileged and calls the code if
+#. Sexec determines if it is running privileged and calls the ``SUID``code if
    necessary
 
 #. Namespaces are created depending on configuration and process
@@ -703,11 +703,11 @@ generalized as follows:
    namespace
 
 #. Bind mount points are setup so that files on the host are visible in
-   the container
+   the ``CLONE_NEWNS`` container
 
-#. The namespace is used to virtualize a new root file system
+#. The namespace ``CLONE_FS`` is used to virtualize a new root file system
 
-#. Singularity calls and Singularity process itself is replaced by the
+#. Singularity calls ``execvp()`` and Singularity process itself is replaced by the
    process inside the container
 
 #. When the process inside the container exits, all namespaces collapse
@@ -743,8 +743,8 @@ The Singularity Usage Workflow
 | On the left side, you have your build environment: a laptop,
   workstation, or a server that you control. Here you will (optionally):
 
-#. develop and test containers using (build into a writable directory)
-   or (build into a writable ext3 image)
+#. develop and test containers using ``--sandbox`` (build into a writable directory)
+   or ``--writable`` (build into a writable ext3 image)
 
 #. build your production containers with a squashfs filesystem.
 
@@ -831,7 +831,7 @@ Install the master branch
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following commands will install the latest version of the `GitHub
-repo`_ master branch to .
+repo`_ master branch to ``/usr/local``.
 
 ::
 
