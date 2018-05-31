@@ -1,4 +1,4 @@
-#id57.. figure:: logo.png
+#why-container-instances#id57.. figure:: logo.png
    :alt: Singularity
    :width: 40px
    :height: 40px
@@ -229,7 +229,7 @@ hello-world.simg image, we could do the following:
 
     $ singularity exec shub://singularityhub/ubuntu cat /etc/os-release
 
-Singularity containers contain “`runscript <#id19>`_”. These are user defined scripts that
+Singularity containers contain “`runscript <#id21>`_”. These are user defined scripts that
 define the actions a container should perform when someone runs it. The
 runscript can be triggered with the run command, or simply by calling
 the container as though it were an executable.
@@ -283,7 +283,7 @@ Build images from scratch
   Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
-read about the `singularity flow <#id23>`_.
+read about the `singularity flow <#id25>`_.
 
 | To build into a (container in a directory) use the command and option:
 
@@ -401,7 +401,7 @@ named Singularity), you would call build like so:
   `Singularity
   Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
   instead. If you want a more detailed rundown and examples for
-  different build options, see our `singularity flow <#id23>`_ page.
+  different build options, see our `singularity flow <#id25>`_ page.
 
 Introduction
 ------------
@@ -529,7 +529,7 @@ A High Level View of Singularity
   Singularity prevents user context escalation within the container, and
   thus makes it possible to run user supplied containers on shared
   infrastructures.
-| This mitigation dictates the Singularity `workflow <#id23>`_. If a user needs to be root
+| This mitigation dictates the Singularity `workflow <#id25>`_. If a user needs to be root
   in order to make changes to their containers, then they need to have
   an endpoint (a local workstation, laptop, or server) where they have
   root access. Considering almost everybody at least has a laptop, this
@@ -783,12 +783,12 @@ The Singularity Usage Workflow
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  `instances <#instances>`_ : Start, stop, and list container instances
+-  `instances <#why-container-instances>`_ : Start, stop, and list container instances
 
 **Deprecated Commands** The following commands are deprecated in 2.4 and
 will be removed in future releases.
 
--  `bootstrap <#bootstrap>`_ : Bootstrap a container recipe
+-  `bootstrap <#id83>`_ : Bootstrap a container recipe
 
 Support
 ~~~~~~~
@@ -927,7 +927,7 @@ Build a Container
 
 is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
-`Singularity Hub`_ and `Docker Hub`_. You can use it to convert
+`Singularity Hub <https://singularity-hub.org/>`_ and `Docker Hub`_. You can use it to convert
 containers between the various formats supported by Singularity. And you
 can use it in conjunction with a `Singularity recipe <#container-recipes>`_ file to
 create a container from scratch and customized it to fit your needs.
@@ -1181,7 +1181,7 @@ More Build topics
 
 -  If you want to **customize the cache location** (where Docker layers
    are downloaded on your system), specify Docker credentials, or any
-   custom tweaks to your build environment, see `build environment <#buildenv>`_.
+   custom tweaks to your build environment, see `build environment <#id14>`_.
 
 -  If you want to make internally **modular containers**, check out the
    getting started guide `here`_
@@ -4195,13 +4195,13 @@ The Singularity command
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  `instances <#instances>`_ : Start, stop, and list container instances
+-  `instances <#why-container-instances>`_ : Start, stop, and list container instances
 
 | **Deprecated Commands**
 | The following commands are deprecated in 2.4 and will be removed in
   future releases.
 
--  `bootstrap <#bootstrap>`_ : Bootstrap a container recipe
+-  `bootstrap <#id83>`_ : Bootstrap a container recipe
 
 For the full usage, `see the bottom of this page <#command-usage>`_
 
@@ -5404,7 +5404,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see `Running Instances <#instances>`_.
+detailed look at usage see `Running Instances <#why-container-instances>`_.
 
 ::
 
@@ -5468,7 +5468,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see `Running Instances <#instances>`_.
+detailed look at usage see `Running Instances <#why-container-instances>`_.
 
 ::
 
@@ -5505,7 +5505,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at usage see `Running Instances <#instances>`_.
+detailed look at usage see `Running Instances <#why-container-instances>`_.
 
 ::
 
