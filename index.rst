@@ -693,7 +693,7 @@ generalized as follows:
 
 #. The Singularity Execution binary is called (``sexec``)
 
-#. Sexec determines if it is running privileged and calls the ``SUID``code if
+#. Sexec determines if it is running privileged and calls the ``SUID`` code if
    necessary
 
 #. Namespaces are created depending on configuration and process
@@ -1205,7 +1205,7 @@ Cache Folders
 
 To make download of layers for build and `pull <#id63>`_ faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
-a set of folders in your ``$HOME``directory for docker layers, Singularity Hub
+a set of folders in your ``$HOME`` directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
 
 ::
@@ -3777,8 +3777,8 @@ customizing the environment. Here is a full Singularity file:
 
     AUTHOR Vanessasaur
 
-In the example above, I am overriding any Dockerfile ``ENTRYPOINT`` or ``CMD``because I have
-defined a ``%runscript``. If I want the Dockerfile ``ENTRYPOINT`` to take preference, I would remove
+In the example above, I am overriding any Dockerfile ``ENTRYPOINT`` or ``CMD`` because I have
+defined a ``%runscript`` . If I want the Dockerfile ``ENTRYPOINT`` to take preference, I would remove
 the ``%runscript`` section. If I want to use ``CMD`` instead of ``ENTRYPOINT`` , I would again remove the
 runscript, and add IncludeCmd to the header:
 
@@ -4904,7 +4904,7 @@ run
 
 .. _sec:run:
 
-It’s common to want your container to “do a thing.” Singularity ``run``allows
+It’s common to want your container to “do a thing.” Singularity ``run`` allows
 you to define a custom action to be taken when a container is either ``run`` or
 executed directly by file name. Specifically, you might want it to
 execute a command, or run an executable that gives access to many
