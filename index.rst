@@ -45,7 +45,7 @@ Overview of the Singularity Interface
   running on your host system. You can easily redirect IO, use pipes,
   pass arguments, and access files, sockets, and ports on the host
   system from within a container.
-| The option gives an overview of Singularity options and subcommands as
+| The ``--help`` option gives an overview of Singularity options and subcommands as
   follows:
 
 ::
@@ -2576,7 +2576,7 @@ instance. Similarly with , it will execute the given command in the
 instance.
 
 When you are finished with your instance you can clean it up with the
-`instance.stop <#instancestop>`_ command like so:
+`instance.stop <#id85>`_ command like so:
 
 ::
 
