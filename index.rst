@@ -189,7 +189,7 @@ Singularity Hub like so.
 
     $ singularity pull --name hello-world.simg shub://vsoch/hello-world
 
-The `shell <#id62>`_ command allows you to spawn a new shell within your container and
+The `shell <#id63>`_ command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
 ::
@@ -767,7 +767,7 @@ The Singularity Usage Workflow
 
 -  `run <#id58>`_ : Run your image as an executable
 
--  `shell <#id62>`_ : Shell into your image
+-  `shell <#id63>`_ : Shell into your image
 
 **Image Commands**
 
@@ -917,7 +917,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <#id62>`_ , `exec <#id52>`_ , or `run <#id58>`_ commands. Or click **next**
+interact with your container via the `shell <#id63>`_ , `exec <#id52>`_ , or `run <#id58>`_ commands. Or click **next**
 below to continue reading.
 
 Build a Container
@@ -4179,7 +4179,7 @@ The Singularity command
 
 -  `run <#id58>`_ : Run your image as an executable
 
--  `shell <#id62>`_ : Shell into your image
+-  `shell <#id63>`_ : Shell into your image
 
 | **Image Commands**
 
