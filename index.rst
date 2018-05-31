@@ -1,4 +1,4 @@
-.. figure:: logo.png
+#container-recipes.. figure:: logo.png
    :alt: Singularity
    :width: 40px
    :height: 40px
@@ -134,7 +134,7 @@ Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can use the `pull <#id54>`_ and `build <#id46>`_ commands to download pre-built images from an
-external resource like `Singularity Hub`_ or `Docker Hub`_. When called
+external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
 on a native Singularity images like those provided on Singularity Hub,
 simply downloads the image file to your system.
 
@@ -173,7 +173,7 @@ Unlike , will convert your image to the latest Singularity image format
 after downloading it.
 
 is like a “Swiss Army knife” for container creation. In addition to
-downloading images, you can use `recipe file <#recipefile>`_ to create images from other images or
+downloading images, you can use `recipe file <#container-recipes>`_ to create images from other images or
 from scratch using a . You can also use to convert an image between the
 3 major container formats supported by Singularity. We discuss those
 image formats below in the `Build images from scratch <#buildimagesfromscratch>`_ section.
@@ -390,7 +390,7 @@ named Singularity), you would call build like so:
   executes within the container at build time after the base OS has been
   installed. The section is therefore the place to perform installations
   of custom apps.
-| This is a very small example of the things that you can do with a `recipe file <#recipefile>`_ . In
+| This is a very small example of the things that you can do with a `recipe file <#container-recipes>`_ . In
   addition to building a container from Singularity Hub, you can start
   with base images from Docker Hub, use images directly from official
   repositories such as Ubuntu, Debian, Centos, Arch, and BusyBox, use an
@@ -572,7 +572,7 @@ A High Level View of Singularity
   copying any other file you control!
 | If you want an automated solution for building and hosting your image,
   you can use our container registry `Singularity Hub`_. Singularity Hub
-  can automatically build `Singularity recipe files <#recipefile>`_ from
+  can automatically build `Singularity recipe files <#container-recipes>`_ from
   a GitHub repository each time that you push. It provides a simple cloud
   solution for storing and sharing your image. If you want to host your own
   Registry, then you should check out `Singularity Registry`_.
@@ -929,7 +929,7 @@ is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
 `Singularity Hub`_ and `Docker Hub`_. You can use it to convert
 containers between the various formats supported by Singularity. And you
-can use it in conjunction with a `Singularity recipe <#recipefile>`_ file to
+can use it in conjunction with a `Singularity recipe <#container-recipes>`_ file to
 create a container from scratch and customized it to fit your needs.
 
 Overview
@@ -950,7 +950,7 @@ Overview
 
 -  path to an **archive** in .tar or compressed .tar.gz format
 
--  path to a **`Singularity recipe file <#recipefile>`_**
+-  path to a **`Singularity recipe file <#container-recipes>`_**
 
 | In addition can produce containers in three different formats. Formats
   types can be specified by passing the following options to build.
@@ -1093,7 +1093,7 @@ Building containers from Singularity recipe files
 
 | Of course, Singularity recipe files can be used as the target when
   building a container. For detailed information on writing Singularity
-  recipe files, please see the `Container Recipes docs <#recipefile>`_.
+  recipe files, please see the `Container Recipes docs <#container-recipes>`_.
 | Let’s say you already have the following container recipe file called
   , and you want to use it to build a container.
 
@@ -2051,8 +2051,8 @@ Building Images
 ~~~~~~~~~~~~~~~
 
 | If you read the `quick start <#quickstart>`_, you probably remember that building images from a
-  Docker base does not require a `Singularity recipe <#recipefile>`_. However, if you do want to build and
-  customize your image, you can create a `Singularity recipe <#recipefile>`_ text file, which is a simple
+  Docker base does not require a `Singularity recipe <#container-recipes>`_. However, if you do want to build and
+  customize your image, you can create a `Singularity recipe <#container-recipes>`_ text file, which is a simple
   text file that describes how the container should be made.
 
 The diagram below is a visual depiction of how you can use Singularity
@@ -4299,7 +4299,7 @@ build
 .. _sec:build:
 
 Use to download and assemble existing containers, convert containers
-from one format to another, or build a container from a `Singularity recipe <#recipefile>`_.
+from one format to another, or build a container from a `Singularity recipe <#container-recipes>`_.
 
 Overview
 ~~~~~~~~
@@ -5621,7 +5621,7 @@ user would be you, and the cache your .
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
-For details and best practices for creating your Singularity recipe, `read about them here <#recipefile>`_.
+For details and best practices for creating your Singularity recipe, `read about them here <#container-recipes>`_.
 
 .. _Singularity Hub: https://singularity-hub.org/
 .. _Docker Hub: https://hub.docker.com/
