@@ -773,7 +773,7 @@ The Singularity Usage Workflow
 
 -  `image.import <#id75>`_ : import layers or other file content to your image
 
--  `image.export <#id67>`_ : export the contents of the image to tar or stream
+-  `image.export <#id73>`_ : export the contents of the image to tar or stream
 
 -  `image.create <#id76>`_ : create a new image, using the old ext3 filesystem
 
@@ -788,7 +788,7 @@ The Singularity Usage Workflow
 **Deprecated Commands** The following commands are deprecated in 2.4 and
 will be removed in future releases.
 
--  `bootstrap <#id84>`_ : Bootstrap a container recipe
+-  `bootstrap <#id90>`_ : Bootstrap a container recipe
 
 Support
 ~~~~~~~
@@ -1658,7 +1658,7 @@ The easiest way to see labels is to inspect the image:
     }
 
 You’ll notice some other labels that are captured automatically from the
-build process. You can read more about labels and metadata `here <#id33>`_.
+build process. You can read more about labels and metadata `here <#id37>`_.
 
 %environment
 ^^^^^^^^^^^^
@@ -1744,7 +1744,7 @@ When we rebuild, is it added to the environment?
   in take precedence over those added via . Note that you won’t see
   these variables in the inspect output, as inspect only shows the
   contents added from .
-| See `Environment and Metadata <#id33>`_ for more information about
+| See `Environment and Metadata <#id37>`_ for more information about
 the and sections.
 
 %post
@@ -2505,7 +2505,7 @@ file like so:
 
 Now let’s say we build a container with that startscript into an image
 called and we want to run an nginx service. All we need to do is start
-the instance with the `instance.start <#instancestart>`_ command, and the
+the instance with the `instance.start <#id78>`_ command, and the
 startscript will run inside the container automatically:
 
 ::
@@ -4201,7 +4201,7 @@ The Singularity command
 | The following commands are deprecated in 2.4 and will be removed in
   future releases.
 
--  `bootstrap <#id84>`_ : Bootstrap a container recipe
+-  `bootstrap <#id90>`_ : Bootstrap a container recipe
 
 For the full usage, `see the bottom of this page <#command-usage>`_
 
