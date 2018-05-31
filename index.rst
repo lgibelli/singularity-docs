@@ -454,7 +454,7 @@ Welcome to Singularity!
   file can be copied, shared, archived, and standard UNIX file
   permissions also apply. Additionally containers are portable (even
   across different C library versions and implementations) which makes
-  sharing and copying an image as easy as ``cp`` or ``scp``or ``ftp``. As mentioned above,
+  sharing and copying an image as easy as ``cp`` or ``scp`` or ``ftp``. As mentioned above,
   Singularity containers utilize a single file which is the complete
   representation of all the files within the container. The same
   features which facilitate mobility also facilitate reproducibility.
