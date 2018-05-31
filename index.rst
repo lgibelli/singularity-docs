@@ -761,7 +761,7 @@ The Singularity Usage Workflow
 
 -  `exec <#id60>`_ : Execute a command to your container
 
--  `inspect <#id57>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <#id62>`_ : See labels, run and test scripts, and environment variables
 
 -  `pull <#id63>`_ : pull an image from Docker or Singularity Hub
 
@@ -917,7 +917,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <#id72>`_ , `exec <#id60>`_ , or `run <#id61>`_ commands. Or click **next**
+interact with your container via the `shell <#id72>`_ , `exec <#id60>`_ , or `run <#id67>`_ commands. Or click **next**
 below to continue reading.
 
 Build a Container
@@ -4173,11 +4173,11 @@ The Singularity command
 
 -  `exec <#id60>`_ : Execute a command to your container
 
--  `inspect <#id57>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <#id62>`_ : See labels, run and test scripts, and environment variables
 
 -  `pull <#id63>`_ : pull an image from Docker or Singularity Hub
 
--  `run <#id60>`_ : Run your image as an executable
+-  `run <#id67>`_ : Run your image as an executable
 
 -  `shell <#id72>`_ : Shell into your image
 
