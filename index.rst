@@ -1006,11 +1006,11 @@ Singularity containers.
 
     $ singularity build lolcow.simg docker://godlovedc/lolcow
 
-Creating - -writable images and - -sandbow directories
+Creating - -writable images and - -sandbox directories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | If you wanted to create a writable ext3 image similar to those used by
-  Singularity version < 2.4, you could do so with the option. You must
+  Singularity version < 2.4, you could do so with the ``--writable`` option. You must
   create writable containers as root.
 | Extending the Singularity Hub example from above:
 
@@ -1019,8 +1019,8 @@ Creating - -writable images and - -sandbow directories
     $ sudo singularity build --writable lolcow.img shub://GodloveD/lolcow
 
 | The resulting container is writable, but is still mounted as read-only
-  when executed with commands such as , , and . To mount the container
-  as read-write when using these commands add the option to them as
+  when executed with commands such as ``run``, ``exec``, and ``shell``. To mount the container
+  as read-write when using these commands add the ``--writable`` option to them as
   well.
 | To ensure that you have the proper permissions to write to the
   container as you like, it is also a good idea to make changes as root.
@@ -1031,7 +1031,7 @@ Creating - -writable images and - -sandbow directories
     $ sudo singularity shell --writable lolcow.img
 
 If you wanted to create a container within a writable directory (called
-a sandbox) you could do so with the option. It’s possible to create a
+a sandbox) you could do so with the ``--sandbox`` option. It’s possible to create a
 sandbox without root privileges, but to ensure proper file permissions
 it is recommended to do so as root.
 
@@ -1042,7 +1042,7 @@ it is recommended to do so as root.
 | The resulting directory operates just like a container in an image
   file. You are permitted to make changes and write files within the
   directory, but those changes will not persist when you are finished
-  using the container. To make your changes persistent, use the flag
+  using the container. To make your changes persistent, use the ``--writable`` flag
   when you invoke your container.
 | Once again, it’s a good idea to do this as root to ensure you have
   permission to access the files and directories that you want to
@@ -1058,7 +1058,7 @@ Converting containers from one format to another
 If you already have a container saved locally, you can use it as a
 target to build a new container. This allows you convert containers from
 one format to another. For example if you had a squashfs container
-called and wanted to convert it to a writable ext3 container called you
+called ``production.simg`` and wanted to convert it to a writable ext3 container called ``development.img`` you
 could:
 
 ::
@@ -1094,7 +1094,7 @@ Building containers from Singularity recipe files
 | Of course, Singularity recipe files can be used as the target when
   building a container. For detailed information on writing Singularity
   recipe files, please see the `Container Recipes docs <#container-recipes>`_.
-| Let’s say you already have the following container recipe file called
+| Let’s say you already have the following container recipe file called ``Singularity``
   , and you want to use it to build a container.
 
 ::
@@ -1119,24 +1119,24 @@ You can do so with the following command.
 
     $ sudo singularity build lolcow.simg Singularity
 
-The command requires just as installing software on your local machine
+The command requires ``sudo`` just as installing software on your local machine
 requires root privileges.
 
 | You can build into the same container multiple times (though the
   results may be unpredictable and it is generally better to delete your
   container and start from scratch).
-| By default if you build into an existing container, the command will
+| By default if you build into an existing container, the ``build`` command will
   skip the steps involved in adding a new base. You can override this
-  default with the option requiring that a new base OS is bootstrapped
+  default with the ``--force`` option requiring that a new base OS is bootstrapped
   into the existing container. This behavior does not delete the
   existing OS, it just adds the new OS on top of the existing one.
 | Use care with this option: you may get results that you did not
   expect.
 
 If you only want to build a single section of your Singularity recipe
-file use the option. For instance, if you have edited the section of a
+file use the ``--section`` option. For instance, if you have edited the ``%environment`` section of a
 long Singularity recipe and don’t want to completely re-build the
-container, you could re-build only the   section like so:
+container, you could re-build only the ``%environment`` section like so:
 
 ::
 
@@ -1144,14 +1144,14 @@ container, you could re-build only the   section like so:
 
 Under normal build conditions, the Singularity recipe file is saved into
 a container’s meta-data so that there is a record showing how the
-container was built. Using the option may render this meta-data useless,
+container was built. Using the ``--section`` option may render this meta-data useless,
 so use care if you value reproducibility.
 
-If you don’t want to run the section during the container build, you can
-skip it with the option. For instance, maybe you are building a
+If you don’t want to run the ``%test`` section during the container build, you can
+skip it with the ``--notest`` option. For instance, maybe you are building a
 container intended to run in a production environment with GPUs. But
 perhaps your local build resource does not have GPUs. You want to
-include a section that runs a short validation but you don’t want your
+include a ``%test`` section that runs a short validation but you don’t want your
 build to exit with an error because it cannot find a GPU on your system.
 
 ::
@@ -1172,9 +1172,9 @@ build to exit with an error because it cannot find a GPU on your system.
         -m|--med       Perform medium and high checks
         -h|--high      Perform only checks at level high
 
-When you add the option along with applicable tags to the command
+When you add the ``--checks`` option along with applicable tags to the ``build`` command
 Singularity will run the desired checks on your container at build time.
-See for available tags.
+See ``singularity check --help`` for available tags.
 
 More Build topics
 ~~~~~~~~~~~~~~~~~
@@ -1205,7 +1205,7 @@ Cache Folders
 
 To make download of layers for build and `pull <#id63>`_ faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
-a set of folders in your directory for docker layers, Singularity Hub
+a set of folders in your ``$HOME``directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
 
 ::
@@ -1216,32 +1216,33 @@ images, and Docker metadata, respectively:
     $HOME/.singularity/metadata
 
 Fear not, you have control to customize this behavior! If you don’t want
-the cache to be created (and a temporary directory will be used), set to
-True/yes, or if you want to move it elsewhere, set to the full path
+the cache to be created (and a temporary directory will be used), set ``SINGULARITY_DISABLE_CACHE`` to
+True/yes, or if you want to move it elsewhere, set ``SINGULARITY_CACHEDIR`` to the full path
 where you want to cache. Remember that when you run commands as sudo
-this will use root’s home at and not your user’s home.
+this will use root’s home at ``/root`` and not your user’s home.
 
 Temporary Folders
 ~~~~~~~~~~~~~~~~~
 
-| .. _sec:temporaryfolders: Singularity also uses some temporary
-  directories to build the squashfs filesystem, so this temp space needs
-  to be large enough to hold the entire resulting Singularity image. By
-  default this happens in but can be overridden by setting to the full
-  path where you want the squashfs temp files to be stored. Since images
-  are typically built as root, be sure to set this variable in root’s
-  environment.
+ .. _sec:temporaryfolders:
+
+Singularity also uses some temporary directories to build the squashfs filesystem,
+so this temp space needs to be large enough to hold the entire resulting Singularity image.
+By default this happens in ``/tmp`` but can be overridden by setting ``SINGULARITY_TMPDIR`` to the full
+path where you want the squashfs temp files to be stored. Since images
+are typically built as root, be sure to set this variable in root’s
+environment.
 | If you are building an image on the fly, for example
 
 ::
 
     singularity exec docker://busybox /bin/sh
 
-| by default a temporary runtime directory is created that looks like .
-  This can be problematic for some directories that are hosted at
+| by default a temporary runtime directory is created that looks like ``/tmp/.singularity-runtime.xxxxxxxx``.
+  This can be problematic for some ``/tmp`` directories that are hosted at
   Jetstream/OpenStack, Azure, and possibly EC2, which are very small. If
   you need to change the location of this runtime, then **export** the
-  variable
+  variable ``SINGULARITY_LOCALCACHEDIR``
 | .
 
 ::
@@ -1250,7 +1251,7 @@ Temporary Folders
     export SINGULARITY_LOCALCACHEDIR
     singularity exec docker://busybox /bin/sh
 
-| The above runtime folder would be created under
+| The above runtime folder would be created under ``/tmp/pancakes/.singularity-runtime.xxxxxxxx``
 
 Pull Folder
 ~~~~~~~~~~~
@@ -1274,10 +1275,10 @@ Environment Variables
 
 #. Second preference goes to default defined in this file
 
-#. Then, if neither is found, null is returned except in the case that .
-   A variable not found will system exit with an error.
+#. Then, if neither is found, null is returned except in the case that ``required=True``.
+   A ``required=True`` variable not found will system exit with an error.
 
-#. Variables that should not be displayed in debug logger are set with ,
+#. Variables that should not be displayed in debug logger are set with ``silent=True``,
    and are only reported to be defined.
 
 For boolean variables, the following are acceptable for True, with any
@@ -1295,13 +1296,13 @@ Cache
 | **SINGULARITY\_DISABLE\_CACHE** If you want to disable the cache, this
   means is that the layers are written to a temporary directory. Thus,
   if you want to disable cache and write to a temporary folder, simply
-  set to any true/yes value. By default, the cache is not disabled.
+  set ``SINGULARITY_DISABLE_CACHE`` to any true/yes value. By default, the cache is not disabled.
 | **SINGULARITY\_CACHEDIR** Is the base folder for caching layers and
-  singularity hub images. If not defined, it uses default of . If
+  singularity hub images. If not defined, it uses default of ``$HOME/.singularity``. If
   defined, the defined location is used instead.
-| If is set to True, this value is ignored in favor of a temporary
+| If ``SINGULARITY_DISABLE_CACHE`` is set to True, this value is ignored in favor of a temporary
   directory. For specific sub-types of things to cache, subdirectories
-  are created (by python), including for docker layers and for
+  are created (by python), including ``$SINGULARITY_CACHEDIR/docker`` for docker layers and ``$SINGULARITY_CACHEDIR/shub`` for
   Singularity Hub images. If the cache is not created, the Python script
   creates it.
 | **SINGULARITY\_PULLFOLDER** While this isn’t relevant for build, since
@@ -1309,14 +1310,14 @@ Cache
   are pulled to the present working directory. The user can change this
   variable to change that.
 | **SINGULARITY\_TMPDIR** Is the base folder for squashfs image
-  temporary building. If not defined, it uses default of . If defined,
+  temporary building. If not defined, it uses default of ``$TEMPDIR``. If defined,
   the defined location is used instead.
-| **SINGULARITY\_LOCALCACHEDIR** Is the temporary folder (default ) to
-  generate runtime folders (containers “on the fly”) typically a , , or
-  or a image. This is different from where downloaded layers are cached
-  ( ) or pulled ( ) or where a (non on-the-fly build) happens ( ). See
+| **SINGULARITY\_LOCALCACHEDIR** Is the temporary folder (default ``/tmp``) to
+  generate runtime folders (containers “on the fly”) typically a ``run``, ``exec`` , or ``shell``
+  or a ``docker://`` image. This is different from where downloaded layers are cached
+  (``$SINGULARITY_CACHEDIR``) or pulled (``SINGULARITY_PULLFOLDER``) or where a (non on-the-fly build) happens ( ``$SINGULARITY_TMPDIR`` ). See
   `temporary folders <#temporary-folders>`_ above for an example. You can generally determine the value of this
-  setting by running a command with , and seeing the last line “Removing
+  setting by running a command with ``--debug`` , and seeing the last line “Removing
   directory:”
 
 ::
@@ -1332,35 +1333,35 @@ Docker
 ^^^^^^
 
 |
-| **DOCKER\_API\_BASE** Set as , which is the name of the registry. In
+| **DOCKER\_API\_BASE** Set as ``index.docker.io``, which is the name of the registry. In
   the first version of Singularity we parsed the Registry argument from
   the build spec file, however now this is removed because it can be
-  obtained directly from the image name (eg, ). If you don’t specify a
+  obtained directly from the image name (eg, ``registry/namespace/repo:tag``). If you don’t specify a
   registry name for your image, this default is used. If you have
   trouble with your registry being detected from the image URI, use this
   variable.
 | **DOCKER\_API\_VERSION** Is the version of the Docker Registry API
-  currently being used, by default now is .
-| **DOCKER\_OS** This is exposed via the exported environment variable
+  currently being used, by default now is ``v2``.
+| **DOCKER\_OS** This is exposed via the exported environment variable ``SINGULARITY_DOCKER_OS``
   and pertains to images that reveal a version 2 manifest with a
   `manifest list`_. In the case that the list is present, we must choose
   an operating system (this variable) and an architecture (below). The
-  default is .
+  default is ``linux``.
 | **DOCKER\_ARCHITECTURE** This is exposed via the exported environment
-  variable
-| and the same applies as for the with regards to being used in context
+  variable ``SINGULARITY_DOCKER_ARCHITECTURE``
+| and the same applies as for the ``DOCKER_OS`` with regards to being used in context
   of a list of manifests. In the case that the list is present, we must
   choose an architecture (this variable) and an os (above). The default
-  is , and other common ones include , , , , and .
-| **NAMESPACE** Is the default namespace, .
+  is ``amd64``, and other common ones include ``arm``, ``arm64``, ``ppc64le``, ``386``, and ``s390x``.
+| **NAMESPACE** Is the default namespace, ``library``.
 
 | **RUNSCRIPT\_COMMAND** Is not obtained from the environment, but is a
   hard coded default (“/bin/bash”). This is the fallback command used in
   the case that the docker image does not have a CMD or ENTRYPOINT.
-| **TAG** Is the default tag, .
+| **TAG** Is the default tag, ``latest``.
 | **SINGULARITY\_NOHTTPS** This is relevant if you want to use a
   registry that doesn’t have https, and it speaks for itself. If you
-  export the variable you can force the software to not use https when
+  export the variable ``SINGULARITY_NOHTTPS`` you can force the software to not use https when
   interacting with a Docker registry. This use case is typically for use
   of a local registry.
 
@@ -1368,18 +1369,18 @@ Singularity Hub
 ^^^^^^^^^^^^^^^
 
 | **SHUB\_API\_BASE** The default base for the Singularity Hub API,
-  which is
+  which is ``https://singularity-hub.org/api``
 | . If you deploy your own registry, you don’t need to change this, you
   can again specify the registry name in the URI.
 
 | **SINGULARITY\_PYTHREADS** The Python modules use threads (workers) to
   download layer files for Docker, and change permissions. By default,
-  we will use 9 workers, unless the environment variable is defined.
+  we will use 9 workers, unless the environment variable ``SINGULARITY_PYTHREADS`` is defined.
 | **SINGULARITY\_COMMAND\_ASIS** By default, we want to make sure the
   container running process gets passed forward as the current process,
   so we want to prefix whatever the Docker command or entrypoint is with
-  . We also want to make sure that following arguments get passed, so we
-  append . Thus, some entrypoint or cmd might look like this:
+  ``exec``. We also want to make sure that following arguments get passed, so we
+  append ``"$@"``. Thus, some entrypoint or cmd might look like this:
 
 ::
 
@@ -1392,8 +1393,8 @@ and we would parse it into the runscript as:
     exec /usr/bin/python "$@"
 
 However, it might be the case that the user does not want this. For this
-reason, we have the environmental variable . If defined as
-yes/y/1/True/true, etc., then the runscript will remain as .
+reason, we have the environmental variable ``RUNSCRIPT_COMMAND_ASIS``. If defined as
+yes/y/1/True/true, etc., then the runscript will remain as ``/usr/bin/python``.
 
 Container Recipes
 -----------------
@@ -1420,11 +1421,11 @@ A Singularity Recipe file is divided into several parts:
 
 #. **Sections**: The rest of the definition is comprised of sections,
    sometimes called scriptlets or blobs of data. Each section is defined
-   by a character followed by the name of the particular section. All
+   by a ``%``character followed by the name of the particular section. All
    sections are optional. Sections that are executed at build time are
-   executed with the interpreter and can accept options. Similarly,
+   executed with the ``/bin/sh`` interpreter and can accept ``bin/sh`` options. Similarly,
    sections that produce scripts to be executed at runtime can accept
-   options intended for
+   options intended for ``/bin/sh``
 
 | Please see the `examples`_ directory in the `Singularity source code`_
   for some ideas on how to get started.
@@ -1433,15 +1434,15 @@ The header is at the top of the file, and tells Singularity the base
 Operating System that it should use to build the container. It is
 composed of several keywords. Specifically:
 
--  : references the kind of base you want to use (e.g., docker,
+-  ``Bootstrap``: references the kind of base you want to use (e.g., docker,
    debootstrap, shub). For example, a shub bootstrap will pull
    containers for shub as bases. A Docker bootstrap will pull docker
    layers to start your image. For a full list see `build <#build-a-container>`_
 
--  : is the named container (shub) or reference to layers (Docker) that
+-  ``From``: is the named container (shub) or reference to layers (Docker) that
    you want to use (e.g., vsoch/hello-world)
 
-| Depending on the value assigned to , other keywords may also be valid
+| Depending on the value assigned to ``Bootstrap``, other keywords may also be valid
   in the header.
 | For example, a very minimal Singularity Hub build might look like
   this:
@@ -1494,7 +1495,7 @@ A build that uses a mirror to install Centos-7 might look like this:
 %help
 ^^^^^
 
-| You don’t need to do much programming to add a
+| You don’t need to do much programming to add a ``%help``
   section to your container. Just write it into a section:
 
 ::
@@ -1523,8 +1524,8 @@ And it will work when the user asks the container for help.
   container. For >2.3 you can add files to the container (added before
   %post) using the %files section. We can see the difference between
   %setup and %post in the following asciicast:
-| In the above, we see that copying something to during was successful
-  to move the file into the container, but copying during was not. Let’s
+| In the above, we see that copying something to ``$SINGULARITY_ROOTFS`` during ``%setup`` was successful
+  to move the file into the container, but copying during ``%post`` was not. Let’s
   add a setup to our current container, just writing a file to the root
   of the image:
 
@@ -1563,14 +1564,14 @@ directory:
 ^^^^^^
 
 | If you want to copy files from your host system into the container,
-  you should do so using the section. Each line is a pair of and , where
+  you should do so using the ``%files`` section. Each line is a pair of ``<source>`` and ``<destination>``, where
   the source is a path on your host system, and the destination is a
   path in the container.
-| The section uses the traditional command, so the `same conventions
+| The ``%files`` section uses the traditional ``cp`` command, so the `same conventions
   apply`_
-| Files are copied **before** any or installation procedures for
+| Files are copied **before** any ``%post`` or installation procedures for
   Singularity versions >2.3. If you are using a legacy version, files
-  are copied after so you must do this via . Let’s add the avocado.txt
+  are copied after ``%post`` so you must do this via ``%setup``. Let’s add the avocado.txt
   into the container, to join tacos.txt.
 
 ::
@@ -1613,9 +1614,9 @@ We have avocados!
 %labels
 ^^^^^^^
 
-To store metadata with your container, you can add them to the section.
-They will be stored in the file as metadata within your container. The
-general format is a followed by a . Labels from Docker bootstraps will
+To store metadata with your container, you can add them to the ``%labels`` section.
+They will be stored in the file ``/.singularity.d/labels.json`` as metadata within your container. The
+general format is a ``LABELNAME`` followed by a ``LABELVALUE``. Labels from Docker bootstraps will
 be carried forward here. Let’s add to our example:
 
 ::
@@ -1664,12 +1665,12 @@ build process. You can read more about labels and metadata `here <#id37>`_.
 ^^^^^^^^^^^^
 
 | As of Singularity 2.3, you can add environment variables to your
-  Singularity Recipe in a section called . Keep in mind that these
+  Singularity Recipe in a section called ``%environment``. Keep in mind that these
   environment variables are sourced at runtime and not at build time.
   This means that if you need the same variables during build time, you
-  should also define them in your section. Specifically:
+  should also define them in your ``%post`` section. Specifically:
 
--  **during build**: the section is written to a file in the container’s
+-  **during build**: the ``%environment`` section is written to a file in the container’s
    metadata folder. This file is not sourced.
 
 -  **during runtime**: the file written to the container’s metadata
@@ -1677,7 +1678,7 @@ build process. You can read more about labels and metadata `here <#id37>`_.
 
 Since the file is ultimately sourced, you should generally use the same
 conventions that you might use in a bashrc or profile. In the example
-below, the variables and would not be available during build, but when
+below, the variables ``VADER`` and ``LUKE`` would not be available during build, but when
 the container is finished and run:
 
 ::
@@ -1721,7 +1722,7 @@ with inspect, and this is done by showing the file produced above:
         export VADER LUKE SOLO
 
 or in the case of variables generated at build time, you can add
-environment variables to your container in the section (see below) using
+environment variables to your container in the ``%post`` section (see below) using
 the following syntax:
 
 ::
@@ -1737,20 +1738,20 @@ When we rebuild, is it added to the environment?
     JAWA_SEZ=wutini
 
 | Where are all these environment variables going? Inside the container
-  is a metadata folder located at , and a subdirectory for environment
-  scripts that are sourced. Text in the section is appended to a file
-  called . Text redirected to the variable will added to a file called .
-  At runtime, scripts in are sourced in order. This means that variables
-  in take precedence over those added via . Note that you won’t see
+  is a metadata folder located at ``/.singularity.d``, and a subdirectory ``env`` for environment
+  scripts that are sourced. Text in the ``%environment`` section is appended to a file
+  called ``/.singularity.d/env/90-environment.sh``. Text redirected to the ``SINGULARITY_ENVIRONMENT`` variable will added to a file called ``/.singularity.d/env/91-environment.sh``.
+  At runtime, scripts in ``/.singularity/env`` are sourced in order. This means that variables
+  in ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via ``%environment``. Note that you won’t see
   these variables in the inspect output, as inspect only shows the
-  contents added from .
+  contents added from ``%environment``.
 | See `Environment and Metadata <#id37>`_ for more information about
-the and sections.
+the ``%labels`` and ``%environment`` sections.
 
 %post
 ^^^^^
 
-Commands in the section are executed within the container after the base
+Commands in the ``%post`` section are executed within the container after the base
 OS has been installed at build time. This is where the meat of your
 setup will live, including making directories, and installing software
 and libraries. We will jump from our simple use case to show a more
@@ -1777,19 +1778,19 @@ other dependencies for a Centos7 bootstrap:
         /usr/local/bin/mpicc examples/ring_c.c -o /usr/bin/mpi_ring
 
 You cannot copy files from the host to your container in this section,
-but you can of course download with commands like and and .
+but you can of course download with commands like ``git clone`` and ``wget`` and ``curl``.
 
 %runscript
 ^^^^^^^^^^
 
 .. _sec:runscript:
 
-| The is another scriptlet, but it does not get executed during
+| The ``%runscript`` is another scriptlet, but it does not get executed during
   bootstrapping. Instead it gets persisted within the container to a
-  file (or symlink for later versions) called which is the execution
-  driver when the container image is run (either via the command or via
+  file (or symlink for later versions) called ``singularity`` which is the execution
+  driver when the container image is run (either via the ``singularity run`` command or via
   executing the container directly).
-| When the is executed, all options are passed along to the executing
+| When the ``%runscript`` is executed, all options are passed along to the executing
   script at runtime, this means that you can (and should) manage
   argument processing from within your runscript. Here is an example of
   how to do that, adding to our work in progress:
@@ -1830,9 +1831,9 @@ but you can of course download with commands like and and .
         exec echo "$@"
 
 In this particular runscript, the arguments are printed as a single
-string () and then they are passed to echo via a quoted array () which
+string (``$*``) and then they are passed to echo via a quoted array (``$@``) which
 ensures that all of the arguments are properly parsed by the executed
-command. Using the command is like handing off the calling process to
+command. Using the ``exec`` command is like handing off the calling process to
 the one in the container. The final command (the echo) replaces the
 current entry in the process table (which originally was the call to
 Singularity). This makes it so the runscript shell process ceases to

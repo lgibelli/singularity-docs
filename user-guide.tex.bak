@@ -827,7 +827,7 @@ You can use \colorbox{lightgray}{build} to download layers from Docker Hub and a
 \begin{lstlisting}[frame=single]  
 $ singularity build lolcow.simg docker://godlovedc/lolcow
 \end{lstlisting}
-\subsubsection{Creating - -writable images and - -sandbow directories}
+\subsubsection{Creating - -writable images and - -sandbox directories}
 	\subsubsubsection{- -writable}
 	
 	If you wanted to create a writable ext3 image similar to those used by Singularity version < 2.4, you could do so with the \colorbox{lightgray}{-{}-writable} option. You must create writable containers as root.
