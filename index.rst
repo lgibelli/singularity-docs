@@ -176,7 +176,7 @@ is like a “Swiss Army knife” for container creation. In addition to
 downloading images, you can use `recipe file <#container-recipes>`_ to create images from other images or
 from scratch using a . You can also use to convert an image between the
 3 major container formats supported by Singularity. We discuss those
-image formats below in the `Build images from scratch <#buildimagesfromscratch>`_ section.
+image formats below in the `Build images from scratch <#id1>`_ section.
 
 Interact with images
 ~~~~~~~~~~~~~~~~~~~~
@@ -916,7 +916,7 @@ you need to hit all of the following:
 
     $ sudo rm -rf /some/temp/dir
 
-What should you do next? You can check out the `quickstart <#quickstart>`_ guide, or learn how to
+What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
 interact with your container via the `shell <#id62>`_ , `exec <#id51>`_ , or `run <#id57>`_ commands. Or click **next**
 below to continue reading.
 
@@ -2050,7 +2050,7 @@ Singularity Flow
 Building Images
 ~~~~~~~~~~~~~~~
 
-| If you read the `quick start <#quickstart>`_, you probably remember that building images from a
+| If you read the `quick start <#quick-start>`_, you probably remember that building images from a
   Docker base does not require a `Singularity recipe <#container-recipes>`_. However, if you do want to build and
   customize your image, you can create a `Singularity recipe <#container-recipes>`_ text file, which is a simple
   text file that describes how the container should be made.
