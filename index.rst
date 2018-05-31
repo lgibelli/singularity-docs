@@ -1181,7 +1181,7 @@ More Build topics
 
 -  If you want to **customize the cache location** (where Docker layers
    are downloaded on your system), specify Docker credentials, or any
-   custom tweaks to your build environment, see `build environment <#id14>`_.
+   custom tweaks to your build environment, see `build environment <#id15>`_.
 
 -  If you want to make internally **modular containers**, check out the
    getting started guide `here`_
@@ -1315,7 +1315,7 @@ Cache
   generate runtime folders (containers “on the fly”) typically a , , or
   or a image. This is different from where downloaded layers are cached
   ( ) or pulled ( ) or where a (non on-the-fly build) happens ( ). See
-  `temporary folders <#temporaryfolders>`_ above for an example. You can generally determine the value of this
+  `temporary folders <#temporary-folders>`_ above for an example. You can generally determine the value of this
   setting by running a command with , and seeing the last line “Removing
   directory:”
 
@@ -1436,7 +1436,7 @@ composed of several keywords. Specifically:
 -  : references the kind of base you want to use (e.g., docker,
    debootstrap, shub). For example, a shub bootstrap will pull
    containers for shub as bases. A Docker bootstrap will pull docker
-   layers to start your image. For a full list see `build <#buildcontainer>`_
+   layers to start your image. For a full list see `build <#build-a-container>`_
 
 -  : is the named container (shub) or reference to layers (Docker) that
    you want to use (e.g., vsoch/hello-world)
@@ -1494,7 +1494,7 @@ A build that uses a mirror to install Centos-7 might look like this:
 %help
 ^^^^^
 
-| .. _sec:writehelpdocs: You don’t need to do much programming to add a
+| You don’t need to do much programming to add a
   section to your container. Just write it into a section:
 
 ::
@@ -1658,7 +1658,7 @@ The easiest way to see labels is to inspect the image:
     }
 
 You’ll notice some other labels that are captured automatically from the
-build process. You can read more about labels and metadata `here <#envandmetadata>`_.
+build process. You can read more about labels and metadata `here <#id33>`_.
 
 %environment
 ^^^^^^^^^^^^
@@ -1744,7 +1744,7 @@ When we rebuild, is it added to the environment?
   in take precedence over those added via . Note that you won’t see
   these variables in the inspect output, as inspect only shows the
   contents added from .
-| See `Environment and Metadata <#envandmetadata>`_ for more information about
+| See `Environment and Metadata <#id33>`_ for more information about
 the and sections.
 
 %post
@@ -1889,8 +1889,8 @@ Apps
   environments? In some circumstances, it may be redundant to build
   different containers for each app with almost equivalent dependencies.
 | Starting in Singularity 2.4 all of the above commands can also be used
-  in the context of internal modules called `apps <#scifapps>`_ based on the `Standard
-  Container Integration Format`_. For details on apps, see the `apps <#scifapps>`_
+  in the context of internal modules called `apps <#reproducible-sci-f-apps>`_ based on the `Standard
+  Container Integration Format`_. For details on apps, see the `apps <#reproducible-sci-f-apps>`_
   documentation. For a quick rundown of adding an app to your container,
   here is an example runscript:
 
@@ -2008,7 +2008,7 @@ Best Practices for Build Recipes
 
 When crafting your recipe, it is best to consider the following:
 
-#. To make your container internally modular, use `SCI-F apps <#scifapps>`_. Shared dependencies
+#. To make your container internally modular, use `SCI-F apps <#reproducible-sci-f-apps>`_. Shared dependencies
    (between app modules) can go under .
 
 #. For global installs to , install packages, programs, data, and files
@@ -2033,7 +2033,7 @@ When crafting your recipe, it is best to consider the following:
    possibility of reproducibility and mitigates the black box effect.
 
 Are you a recipe pro and now ready to build? Take a look at the
-`build <#buildcontainer>`_ documentation.
+`build <#build-a-container>`_ documentation.
 
 Singularity Flow
 ----------------
@@ -2067,7 +2067,7 @@ to build images. The high level idea is that we have two environments:
 
 Singularity production images are immutable. This is a feature added as
 of Singularity 2.4, and it ensures a higher level of reproducibility and
-verification of images. To read more about the details, check out the `build <#buildcontainer>`_
+verification of images. To read more about the details, check out the `build <#build-a-container>`_
 docs. However, immutability is not so great when you are testing,
 debugging, or otherwise want to quickly change your image. We will
 proceed by describing a typical workflow of developing first, building a
@@ -2778,7 +2778,7 @@ Making it Pretty
   and URL syntax each time you want to request a PDF, so let’s automate
   that. To do that, we’re going to be using Standard Container
   Integration Format (SCIF) apps, which are integrated directly into
-  singularity. If you haven’t already, check out the `Singularity app documentation <#scifapps>`_ to come up to
+  singularity. If you haven’t already, check out the `Singularity app documentation <#reproducible-sci-f-apps>`_ to come up to
   speed.
 | First off, we’re going to move the installation of the url-to-pdf-api
   into an app, so that there is a designated spot to place output files.
@@ -4309,7 +4309,7 @@ Overview
   to an existing container, or a path to a Singularity Recipe file. The
   output container can be in squashfs, ext3, or directory format.
 | For a complete list of options type . For more info on building
-  containers see `Build a Container <#buildcontainer>`_.
+  containers see `Build a Container <#build-a-container>`_.
 
 Examples
 ~~~~~~~~
@@ -4986,7 +4986,7 @@ following order of operations:
 #. If the user has not defined a runscript, and there is no or (or we
    aren’t importing Docker at all) then we default to
 
-Here is how you would define the runscript section when you `build <#buildcontainer>`_ an image:
+Here is how you would define the runscript section when you `build <#build-a-container>`_ an image:
 
 ::
 
@@ -5010,7 +5010,7 @@ you want to use run instead of exec, you could also just do:
     exec "$@"`
 
 If you want different entrypoints for your image, we recommend using the
-%apprun syntax (see `apps <#scifapps>`_). Here we have two entrypoints for foo and bar:
+%apprun syntax (see `apps <#reproducible-sci-f-apps>`_). Here we have two entrypoints for foo and bar:
 
 ::
 
@@ -5266,7 +5266,7 @@ image.create
 | A Singularity image, which can be referred to as a “container,” is a
   single file that contains a virtual file system. As of Singularity
   2.4, we strongly recommend that you build (create and install) an
-  image using `build <#buildcontainer>`_. If you have reason to create an empty image, or use
+  image using `build <#build-a-container>`_. If you have reason to create an empty image, or use
   create for any other reason, the original command is replaced with a
   more specific . After creating an image you can install an operating
   system, applications, and save meta-data with it.
@@ -5528,7 +5528,7 @@ Deprecated
 ==========
 
     Note: The bootstrap command is deprecated for Singularity Version
-    2.4. You should use `build <#buildcontainer>`_ instead.
+    2.4. You should use `build <#build-a-container>`_ instead.
 
 bootstrap
 ---------
@@ -5541,7 +5541,7 @@ for a specified need. Bootstrap is very similar to build, except that it
 by default uses an `ext3`_ filesystem and allows for writability. The
 images unfortunately are not immutable in this way, and can degrade over
 time. As of 2.4, bootstrap is still supported for Singularity, however
-we encourage you to use `build <#buildcontainer>`_ instead.
+we encourage you to use `build <#build-a-container>`_ instead.
 
 Quick Start
 ~~~~~~~~~~~
