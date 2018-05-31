@@ -1465,7 +1465,7 @@ A build that uses a mirror to install Centos-7 might look like this:
 
 -  `shub`_ (images hosted on Singularity Hub)
 
--  `docker`_ (images hosted on Docker Hub)
+-  `docker <http://singularity.lbl.gov/build-docker-module>`_ (images hosted on Docker Hub)
 
 -  `localimage`_ (images saved on your machine)
 
