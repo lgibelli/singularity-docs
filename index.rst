@@ -133,7 +133,7 @@ following:
 Download pre-built images
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the `pull <#id58>`_ and `build <#id50>`_ commands to download pre-built images from an
+You can use the `pull <#id63>`_ and `build <#id55>`_ commands to download pre-built images from an
 external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
 on a native Singularity images like those provided on Singularity Hub,
 simply downloads the image file to your system.
@@ -189,7 +189,7 @@ Singularity Hub like so.
 
     $ singularity pull --name hello-world.simg shub://vsoch/hello-world
 
-The `shell <#id66>`_ command allows you to spawn a new shell within your container and
+The `shell <#id72>`_ command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
 ::
@@ -211,7 +211,7 @@ disappears when the shell is exited.
 
     $ singularity shell shub://vsoch/hello-world
 
-The `exec <#id55>`_ command allows you to execute a custom command within a container by
+The `exec <#id60>`_ command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
@@ -229,7 +229,7 @@ hello-world.simg image, we could do the following:
 
     $ singularity exec shub://singularityhub/ubuntu cat /etc/os-release
 
-Singularity containers contain “`runscript <#id22>`_”. These are user defined scripts that
+Singularity containers contain “`runscript <#id24>`_”. These are user defined scripts that
 define the actions a container should perform when someone runs it. The
 runscript can be triggered with the run command, or simply by calling
 the container as though it were an executable.
@@ -283,7 +283,7 @@ Build images from scratch
   Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
-read about the `singularity flow <#id26>`_.
+read about the `singularity flow <#id29>`_.
 
 | To build into a (container in a directory) use the command and option:
 
@@ -401,7 +401,7 @@ named Singularity), you would call build like so:
   `Singularity
   Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
   instead. If you want a more detailed rundown and examples for
-  different build options, see our `singularity flow <#id26>`_ page.
+  different build options, see our `singularity flow <#id29>`_ page.
 
 Introduction
 ------------
@@ -529,7 +529,7 @@ A High Level View of Singularity
   Singularity prevents user context escalation within the container, and
   thus makes it possible to run user supplied containers on shared
   infrastructures.
-| This mitigation dictates the Singularity `workflow <#id26>`_. If a user needs to be root
+| This mitigation dictates the Singularity `workflow <#id29>`_. If a user needs to be root
   in order to make changes to their containers, then they need to have
   an endpoint (a local workstation, laptop, or server) where they have
   root access. Considering almost everybody at least has a laptop, this
@@ -757,17 +757,17 @@ The Singularity Usage Workflow
   to the production system where you wish to run it. How do the commands
   work? Here is where to look for more information:
 
--  `build <#id50>`_ : Build a container on your user endpoint or build environment
+-  `build <#id55>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id55>`_ : Execute a command to your container
+-  `exec <#id60>`_ : Execute a command to your container
 
 -  `inspect <#id57>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id58>`_ : pull an image from Docker or Singularity Hub
+-  `pull <#id63>`_ : pull an image from Docker or Singularity Hub
 
 -  `run <#id61>`_ : Run your image as an executable
 
--  `shell <#id66>`_ : Shell into your image
+-  `shell <#id72>`_ : Shell into your image
 
 **Image Commands**
 
@@ -917,7 +917,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <#id66>`_ , `exec <#id55>`_ , or `run <#id61>`_ commands. Or click **next**
+interact with your container via the `shell <#id72>`_ , `exec <#id60>`_ , or `run <#id61>`_ commands. Or click **next**
 below to continue reading.
 
 Build a Container
@@ -1203,7 +1203,7 @@ discuss those things
 Cache Folders
 ~~~~~~~~~~~~~
 
-To make download of layers for build and `pull <#id58>`_ faster and less redundant, we
+To make download of layers for build and `pull <#id63>`_ faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
 a set of folders in your directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
@@ -1255,8 +1255,8 @@ Temporary Folders
 Pull Folder
 ~~~~~~~~~~~
 
-For details about customizing the output location of `pull <#id58>`_, see the
-`pull docs <#id58>`_. You have the similar ability to set it to be something
+For details about customizing the output location of `pull <#id63>`_, see the
+`pull docs <#id63>`_. You have the similar ability to set it to be something
 different, or to customize the name of the pulled image.
 
 Environment Variables
@@ -4169,17 +4169,17 @@ The Singularity command
   level help for all arguments. The main options include:
 | **Container Actions**
 
--  `build <#id50>`_ : Build a container on your user endpoint or build environment
+-  `build <#id55>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id55>`_ : Execute a command to your container
+-  `exec <#id60>`_ : Execute a command to your container
 
 -  `inspect <#id57>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id58>`_ : pull an image from Docker or Singularity Hub
+-  `pull <#id63>`_ : pull an image from Docker or Singularity Hub
 
 -  `run <#id60>`_ : Run your image as an executable
 
--  `shell <#id66>`_ : Shell into your image
+-  `shell <#id72>`_ : Shell into your image
 
 | **Image Commands**
 
