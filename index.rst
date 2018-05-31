@@ -842,12 +842,12 @@ repo`_ master branch to ``/usr/local``.
     $ make
     $ sudo make install
 
-| Note that the installation prefix is but the configuration directory
-  is . This ensures that the configuration file is placed in the
+| Note that the installation prefix is ``/usr/local`` but the configuration directory
+  is ``/etc``. This ensures that the configuration file ``singularity.conf`` is placed in the
   standard location.
-| If you omit the option , the configuration file will be installed in .
-  If you omit the option, Singularity will be installed in the directory
-  hierarchy by default. And if you specify a custom directory with the
+| If you omit the ``--sysconfdir`` option , the configuration file will be installed in ``/usr/local/etc``.
+  If you omit the ``--prefix`` option, Singularity will be installed in the ``/usr/local`` directory
+  hierarchy by default. And if you specify a custom directory with the ``--prefix``
   option, all of Singularity’s binaries and the configuration file will
   be installed within that directory. This last option can be useful if
   you want to install multiple versions of Singularity, install
@@ -858,7 +858,7 @@ Install a specific release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | The following commands will install a specific release from `GitHub
-  releases`_ page to .
+  releases`_ page to ``/usr/local``.
 
 ::
 
@@ -890,7 +890,7 @@ Install the development branch
 Remove an old version
 ~~~~~~~~~~~~~~~~~~~~~
 
-Let’s say that we installed Singularity to . To remove it completely,
+Let’s say that we installed Singularity to ``/usr/local``. To remove it completely,
 you need to hit all of the following:
 
 ::
@@ -905,11 +905,11 @@ you need to hit all of the following:
     $ sudo rm /usr/local/etc/bash_completion.d/singularity
     $ sudo rm /usr/local/man/man1/singularity.1
 
-| If you modified the system configuration directory, remove the file
+| If you modified the system configuration directory, remove the ``singularity.conf`` file
   there as well.
 | If you installed Singularity in a custom directory, you need only
   remove that directory to uninstall Singularity. For instance if you
-  installed singularity with the option argument pair, you can remove
+  installed singularity with the ``--prefix=/some/temp/dir`` option argument pair, you can remove
   Singularity like so:
 
 ::
@@ -925,7 +925,7 @@ Build a Container
 
 .. _sec:buildcontainer:
 
-is the “Swiss army knife” of container creation. You can use it to
+``build`` is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
 `Singularity Hub <https://singularity-hub.org/>`_ and `Docker Hub`_. You can use it to convert
 containers between the various formats supported by Singularity. And you
