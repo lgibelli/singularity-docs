@@ -771,7 +771,7 @@ The Singularity Usage Workflow
 
 **Image Commands**
 
--  `image.import <#id68>`_ : import layers or other file content to your image
+-  `image.import <#id69>`_ : import layers or other file content to your image
 
 -  `image.export <#id67>`_ : export the contents of the image to tar or stream
 
@@ -788,7 +788,7 @@ The Singularity Usage Workflow
 **Deprecated Commands** The following commands are deprecated in 2.4 and
 will be removed in future releases.
 
--  `bootstrap <#id83>`_ : Bootstrap a container recipe
+-  `bootstrap <#id84>`_ : Bootstrap a container recipe
 
 Support
 ~~~~~~~
@@ -4183,7 +4183,7 @@ The Singularity command
 
 | **Image Commands**
 
--  `image.import <#id68>`_ : import layers or other file content to your image
+-  `image.import <#id69>`_ : import layers or other file content to your image
 
 -  `image.export <#id67>`_ : export the contents of the image to tar or stream
 
@@ -4201,7 +4201,7 @@ The Singularity command
 | The following commands are deprecated in 2.4 and will be removed in
   future releases.
 
--  `bootstrap <#id83>`_ : Bootstrap a container recipe
+-  `bootstrap <#id84>`_ : Bootstrap a container recipe
 
 For the full usage, `see the bottom of this page <#command-usage>`_
 
