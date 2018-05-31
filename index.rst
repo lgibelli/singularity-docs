@@ -950,7 +950,7 @@ Overview
 
 -  path to an **archive** in .tar or compressed .tar.gz format
 
--  path to a **`Singularity recipe file <#container-recipes>`_**
+-  path to a **` Singularity recipe file <#container-recipes>`_ **
 
 | In addition can produce containers in three different formats. Formats
   types can be specified by passing the following options to build.
