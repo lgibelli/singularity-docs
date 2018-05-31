@@ -229,7 +229,7 @@ hello-world.simg image, we could do the following:
 
     $ singularity exec shub://singularityhub/ubuntu cat /etc/os-release
 
-Singularity containers contain “`runscript <#id21>`_”. These are user defined scripts that
+Singularity containers contain “`runscript <#id22>`_”. These are user defined scripts that
 define the actions a container should perform when someone runs it. The
 runscript can be triggered with the run command, or simply by calling
 the container as though it were an executable.
@@ -283,7 +283,7 @@ Build images from scratch
   Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
-read about the `singularity flow <#id25>`_.
+read about the `singularity flow <#id26>`_.
 
 | To build into a (container in a directory) use the command and option:
 
@@ -401,7 +401,7 @@ named Singularity), you would call build like so:
   `Singularity
   Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
   instead. If you want a more detailed rundown and examples for
-  different build options, see our `singularity flow <#id25>`_ page.
+  different build options, see our `singularity flow <#id26>`_ page.
 
 Introduction
 ------------
@@ -529,7 +529,7 @@ A High Level View of Singularity
   Singularity prevents user context escalation within the container, and
   thus makes it possible to run user supplied containers on shared
   infrastructures.
-| This mitigation dictates the Singularity `workflow <#id25>`_. If a user needs to be root
+| This mitigation dictates the Singularity `workflow <#id26>`_. If a user needs to be root
   in order to make changes to their containers, then they need to have
   an endpoint (a local workstation, laptop, or server) where they have
   root access. Considering almost everybody at least has a laptop, this
