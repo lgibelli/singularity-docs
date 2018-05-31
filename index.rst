@@ -223,7 +223,7 @@ hello-world.simg image, we could do the following:
     dev        lib   media       proc  sbin  sys          var
 
 ``exec`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
-  executes a command and disappears.
+executes a command and disappears.
 
 ::
 
