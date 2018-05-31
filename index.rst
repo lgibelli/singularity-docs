@@ -1184,7 +1184,7 @@ More Build topics
    custom tweaks to your build environment, see `build environment <#id15>`_.
 
 -  If you want to make internally **modular containers**, check out the
-   getting started guide `here`_
+   getting started guide `here <https://sci-f.github.io/tutorials>`_
 
 -  If you want to **build your containers** on Singularity Hub, (because
    you don’t have root access on a Linux machine or want to host your
@@ -1998,7 +1998,7 @@ Examples
 ~~~~~~~~
 
 | For more examples, for real world scientific recipes we recommend you
-  look at other containers on `Singularity Hub`_. For examples of
+  look at other containers on `Singularity Hub <https://singularity-hub.org/>`_. For examples of
   different bases, look at the examples folder for the most up-to-date
   examples. For apps, including snippets and tutorial with more walk
   throughs, see `SCI-F Apps Home`_.
@@ -2253,7 +2253,7 @@ approach, we support this use case. To do this, given our folder called
   production containers to its users.
 | If you want to go through this entire process without having
   singularity installed locally, or without leaving your cluster, you
-  can build images using `singularity hub`_.
+  can build images using `Singularity Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`_.
 
 Bind Paths and Mounts
 ---------------------
@@ -3793,7 +3793,7 @@ runscript, and add IncludeCmd to the header:
 
 Did you know that you can commit this Singularity file to a GitHub repo
 and it will automatically build for you when you push to `Singularity
-Hub`_?. This will ensure maximum reproducibility of your work.
+Hub <https://singularity-hub.org/>`_?. This will ensure maximum reproducibility of your work.
 
 How does the runscript work?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4739,7 +4739,7 @@ pull
 | Singularity is the command that you would want to use to communicate
   with a container registry. The command does exactly as it says - there
   exists an image external to my host, and I want to pull it here. We
-  currently support pull for both `Docker`_ and `Singularity Hub
+  currently support pull for both `Docker <https://hub.docker.com/>`_ and `Singularity Hub
   images`_, and will review usage for both.
 
 Singularity Hub
