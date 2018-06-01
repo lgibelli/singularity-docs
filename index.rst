@@ -5632,6 +5632,20 @@ build-docker-module
 
 .. _sec:build-docker-module:
 
+Overview
+~~~~~~~~
+
+Docker images are comprised of layers that are assembled at runtime to create an image. You can use Docker layers to create a base
+image, and then add your own custom software. For example, you might use Docker’s Ubuntu image layers to create an Ubuntu Singularity
+container. You could do the same with CentOS, Debian, Arch, Suse, Alpine, BusyBox, etc.
+
+Or maybe you want a container that already has software installed. For instance, maybe you want to build a container that uses CUDA
+and cuDNN to leverage the GPU, but you don’t want to install from scratch. You can start with one of the nvidia/cuda containers and
+install your software on top of that.
+
+Or perhaps you have already invested in Docker and created your own Docker containers. If so, you can seamlessly convert them to
+Singularity with the docker bootstrap module.
+
 
 build-shub
 ----------
