@@ -5640,12 +5640,26 @@ image, and then add your own custom software. For example, you might use Docker�
 container. You could do the same with CentOS, Debian, Arch, Suse, Alpine, BusyBox, etc.
 
 Or maybe you want a container that already has software installed. For instance, maybe you want to build a container that uses CUDA
-and cuDNN to leverage the GPU, but you don’t want to install from scratch. You can start with one of the nvidia/cuda containers and
+and cuDNN to leverage the GPU, but you don’t want to install from scratch. You can start with one of the ``nvidia/cuda`` containers and
 install your software on top of that.
 
 Or perhaps you have already invested in Docker and created your own Docker containers. If so, you can seamlessly convert them to
-Singularity with the docker bootstrap module.
+Singularity with the ``docker`` bootstrap module.
 
+Keywords
+~~~~~~~~
+
+::
+
+    Registry: http://custom_registry
+
+The Registry keyword is optional. It will default to ``index.docker.io``.
+
+::
+
+    Namespace: namespace
+
+The Namespace keyword is optional. It will default to ``library``.
 
 build-shub
 ----------
