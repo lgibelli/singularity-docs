@@ -90,10 +90,10 @@ Overview of the Singularity Interface
         see singularity help <command>
 
     For any additional help or support visit the Singularity
-    website: http://singularity.lbl.gov/
+    website: https://github.com/singularityware/singularity
 
 | For any additional help or support visit the Singularity website:
-  https://www.sylabs.io/
+  https://www.sylabs.io/contact/
 | Singularity uses positional syntax. Global options follow the ``singularity``
   invocation and affect the way that Singularity runs any command. Then
   commands are passed followed by their options.
@@ -4239,7 +4239,7 @@ For example:
     For additional help, please visit our public documentation pages which are
     found at:
 
-        http://singularity.lbl.gov/
+        https://www.sylabs.io/docs/
 
 Commands Usage
 ~~~~~~~~~~~~~~
@@ -4287,7 +4287,7 @@ Commands Usage
         see singularity help <command>
 
     For any additional help or support visit the Singularity
-    website: http://singularity.lbl.gov/
+    website: https://www.sylabs.io/contact/
 
 Support
 ~~~~~~~
@@ -5628,7 +5628,7 @@ For details and best practices for creating your Singularity recipe, `read about
 .. _Docker Hub: https://hub.docker.com/
 .. _Singularity Registry: https://www.github.com/singularityhub/sregistry
 .. _reach out!: https://www.sylabs.io/contact/
-.. _Reach out to us: http://singularity.lbl.gov/support
+.. _Reach out to us: https://www.sylabs.io/bug-report/
 .. _GitHub repo: https://github.com/singularityware/singularity
 .. _GitHub releases: https://github.com/singularityware/singularity/releases
 .. _here: https://sci-f.github.io/tutorials
