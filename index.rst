@@ -5624,6 +5624,60 @@ user would be you, and the cache your ``$HOME``.
 
 For details and best practices for creating your Singularity recipe, `read about them here <#container-recipes>`_.
 
+Appendix
+========
+
+build-docker-module
+-------------------
+
+.. _sec:build-docker-module:
+
+
+build-shub
+----------
+
+.. _sec:build-shub:
+
+build-localimage
+----------------
+
+.. _sec:build-localimage:
+
+build-yum
+---------
+
+.. _sec:build-yum:
+
+build-debootstrap
+-----------------
+
+.. _sec:build-debootstrap:
+
+build-arch
+----------
+
+.. _sec:build-arch:
+
+build-busybox
+-------------
+
+.. _sec:build-busybox:
+
+build-zypper
+------------
+
+.. _sec:build-zypper:
+
+User bind control boolean default yes
+-------------------------------------
+
+.. _sec:user-bind-control-boolean-default-yes:
+
+Enable overlay boolean default no
+---------------------------------
+
+.. _sec:enable-overlay-boolean-default-no:
+
 .. _Singularity Hub: https://singularity-hub.org/
 .. _Docker Hub: https://hub.docker.com/
 .. _Singularity Registry: https://www.github.com/singularityhub/sregistry
