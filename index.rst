@@ -1466,7 +1466,7 @@ A build that uses a mirror to install Centos-7 might look like this:
 
 -  `shub`_ (images hosted on Singularity Hub)
 
--  `docker <http://singularity.lbl.gov/build-docker-module>`_ (images hosted on Docker Hub)
+-  `docker <http://singularity-userdoc.readthedocs.io/en/latest/#build-docker-module>`_ (images hosted on Docker Hub)
 
 -  `localimage`_ (images saved on your machine)
 
@@ -6061,14 +6061,14 @@ Here we will test contain. We can first confirm that there are a lot of files on
 .. _Scientific Filesystem: https://sci-f.github.io/
 .. _examples: https://github.com/singularityware/singularity/tree/master/examples
 .. _Singularity source code: https://github.com/singularityware/singularity
-.. _shub: http://singularity.lbl.gov/build-shub
-.. _docker: http://singularity.lbl.gov/build-docker-module
-.. _localimage: http://singularity.lbl.gov/build-localimage
-.. _yum: http://singularity.lbl.gov/build-yum
-.. _debootstrap: http://singularity.lbl.gov/build-debootstrap
-.. _arch: http://singularity.lbl.gov/build-arch
-.. _busybox: http://singularity.lbl.gov/build-busybox
-.. _zypper: http://singularity.lbl.gov/build-zypper
+.. _shub: http://singularity-userdoc.readthedocs.io/en/latest/#build-shub
+.. _docker: http://singularity-userdoc.readthedocs.io/en/latest/#build-docker-module
+.. _localimage: http://singularity-userdoc.readthedocs.io/en/latest/#build-localimage
+.. _yum: http://singularity-userdoc.readthedocs.io/en/latest/#build-yum
+.. _debootstrap: http://singularity-userdoc.readthedocs.io/en/latest/#build-debootstrap
+.. _arch: http://singularity-userdoc.readthedocs.io/en/latest/#build-arch
+.. _busybox: http://singularity-userdoc.readthedocs.io/en/latest/#build-busybox
+.. _zypper: http://singularity-userdoc.readthedocs.io/en/latest/#build-zypper
 .. _same conventions apply: https://linux.die.net/man/1/cp
 .. _Standard Container Integration Format: https://sci-f.github.io/
 .. _SCI-F Apps Home: https://sci-f.github.io/
@@ -6096,7 +6096,7 @@ Here we will test contain. We can first confirm that there are a lot of files on
 .. _original issue: https://github.com/singularityware/singularity/issues/845
 .. _run into this issue: https://github.com/singularityware/singularity/issues/476
 .. _yarikoptic: https://github.com/yarikoptic
-.. _flags: http://singularity.lbl.gov/action-flags
+.. _flags: http://singularity-userdoc.readthedocs.io/en/latest/#singularity-action-flags
 .. _please let us know: https://github.com/singularityware/singularity/issues
 .. _Docker: https://hub.docker.com/
 .. _Singularity Hub images: https://singularity-hub.org/
