@@ -5651,6 +5651,22 @@ Keywords
 
 ::
 
+    Bootstrap: docker
+
+The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
+
+::
+
+    From: <registry>/<namespace>/<container>:<tag>@<digest>
+
+The From keyword is mandatory. It specifies the container to use as a base. ``registry`` is optional and defaults to ``index.docker.io``.
+``namespace`` is optional and defaults to ``library``. This is the correct namespace to use for some official containers (ubuntu for example).
+``tag`` is also optional and will default to ``latest``
+
+See `Singularity and Docker <#singularity-and-docker>`_ for more detailed info on using Docker registries.
+
+::
+
     Registry: http://custom_registry
 
 The Registry keyword is optional. It will default to ``index.docker.io``.
@@ -5661,15 +5677,104 @@ The Registry keyword is optional. It will default to ``index.docker.io``.
 
 The Namespace keyword is optional. It will default to ``library``.
 
+::
+
+    IncludeCmd: yes
+
+The IncludeCmd keyword is optional. If included, and if a ``%runscript`` is not specified, a Docker ``CMD`` will take precedence over ``ENTRYPOINT``
+and will be used as a runscript. Note that the ``IncludeCmd`` keyword is considered valid if it is not empty! This means that
+ ``IncludeCmd: yes`` and ``IncludeCmd: no`` are identical. In both cases the ``IncludeCmd`` keyword is not empty, so the Docker ``CMD`` will take precedence
+ over an ``ENTRYPOINT``.
+
+ See `Singularity and Docker <#singularity-and-docker>`_ for more info on order of operations for determining a runscript.
+
+
+ Notes
+ ~~~~~
+
+ Docker containers are stored as a collection of tarballs called layers. When building from a Docker container the layers must be downloaded and then
+ assembled in the proper order to produce a viable file system. Then the file system must be converted to squashfs or ext3 format.
+
+ Building from Docker Hub is not considered reproducible because if any of the layers of the image are changed, the container will change.
+ If reproducibility is important to you, consider hosting a base container on Singularity Hub and building from it instead.
+
+ For detailed information about setting your build environment see `Build Customization <#id15>`_.
+
 build-shub
 ----------
 
 .. _sec:build-shub:
 
+Overview
+~~~~~~~~
+
+You can use an existing container on Singularity Hub as your “base,” and then add customization. This allows you to build multiple images
+from the same starting point. For example, you may want to build several containers with the same custom python installation, the same custom
+compiler toolchain, or the same base MPI installation. Instead of building these from scratch each time, you could create a base container on
+Singularity Hub and then build new containers from that existing base container adding customizations in ``%post`` , ``%environment``, ``%runscript``, etc.
+
+Keywords
+~~~~~~~~
+
+::
+
+    Bootstrap: shub
+
+The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
+
+::
+
+    From: shub://<registry>/<username>/<container-name>:<tag>@digest
+
+The From keyword is mandatory. It specifies the container to use as a base. ``registry is optional and defaults to ``singularity-hub.org``.
+``tag`` and ``digest`` are also optional. ``tag`` defaults to ``latest`` and ``digest`` can be left blank if you want the latest build.
+
+Notes
+~~~~~
+
+When bootstrapping from a Singularity Hub image, all previous definition files that led to the creation of the current image will be stored
+in a directory within the container called ``/.singularity.d/bootstrap_history``. Singularity will also alert you if environment variables have
+been changed between the base image and the new image during bootstrap.
+
+
 build-localimage
 ----------------
 
 .. _sec:build-localimage:
+
+This module allows you to build a container from an existing Singularity container on your host system. The name is somewhat misleading
+because your container can be in either image or directory format.
+
+Overview
+~~~~~~~~
+
+You can use an existing container image as your “base,” and then add customization. This allows you to build multiple images from the same
+starting point. For example, you may want to build several containers with the same custom python installation, the same custom compiler
+toolchain, or the same base MPI installation. Instead of building these from scratch each time, you could start with the appropriate local
+base container and then customize the new container in ``%post``, ``%environment``, ``%runscript``, etc.
+
+Keywords
+~~~~~~~~
+
+::
+
+    Bootstrap: localimage
+
+The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
+
+::
+
+    From: /path/to/container/file/or/directory
+
+The From keyword is mandatory. It specifies the local container to use as a base.
+
+Notes
+~~~~~
+
+When building from a local container, all previous definition files that led to the creation of the current container will be stored in a
+directory within the container called ``/.singularity.d/bootstrap_history``. Singularity will also alert you if environment variables have been
+changed between the base image and the new image during bootstrap.
+
 
 build-yum
 ---------
