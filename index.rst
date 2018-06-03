@@ -5862,8 +5862,7 @@ The Bootstrap keyword is always mandatory. It describes the bootstrap module to 
     OSVersion: xenial
 
 The OSVersion keyword is mandatory. It specifies the OS version you would like to use. For Ubuntu you can use code words like ``trusty`` (14.04), ``xenial`` (16.04),
-and ``yakkety`` (17.04). For Debian you can use values like ``stable``, ``oldstable``, ``testing``, and ``unstable`` or code words like ``wheezy`` (7), ``jesse`` (8), and
- ``stretch`` (9).
+and ``yakkety`` (17.04). For Debian you can use values like ``stable``, ``oldstable``, ``testing``, and ``unstable`` or code words like ``wheezy`` (7), ``jesse`` (8), and ``stretch`` (9).
 
  ::
 
@@ -5963,15 +5962,90 @@ build-zypper
 
 .. _sec:build-zypper:
 
-User bind control boolean default yes
--------------------------------------
+This module allows you to build a Suse style container from a mirror URI.
 
-.. _sec:user-bind-control-boolean-default-yes:
+Overview
+~~~~~~~~
 
-Enable overlay boolean default no
----------------------------------
+Use the ``zypper`` module to specify a base for a Suse-like container. You must also specify a URI for
+the mirror you would like to use.
 
-.. _sec:enable-overlay-boolean-default-no:
+Keywords
+~~~~~~~~
+
+::
+
+    Bootstrap: zypper
+
+The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
+
+::
+
+    OSVersion: 42.2
+
+The OSVersion keyword is optional. It specifies the OS version you would like to use.
+It is only required if you have specified a %{OSVERSION} variable in the ``MirrorURL`` keyword.
+
+::
+
+    Include: somepackage
+
+The Include keyword is optional. It allows you to install additional packages into the core operating system.
+It is a best practice to supply only the bare essentials such that the ``%post`` section has what it needs to properly complete the build.
+One common package you may want to install when using the zypper build module is ``zypper`` itself.
+
+Singularity Action Flags
+------------------------
+.. _sec:action-flags:
+
+For each of ``exec``, ``run``, and ``shell``, there are a few important flags that we want to note for new users that have substantial impact on using
+your container. While we won’t include the complete list of run options (for this complete list see ``singularity run --help`` or more generally
+``singularity <action> --help``) we will review some highly useful flags that you can add to these actions.
+
+-  **--contain**: Contain suggests that we want to better isolate the container runtime from the host. Adding the ``--contain`` flag will use minimal
+``/dev`` and empty other directories (e.g., ``/tmp``).
+
+-  **--containall**: In addition to what is provided with ``--contain`` (filesystems) also contain PID, IPC, and environment.
+
+-  **--cleanenv**: Clean the environment before running the container.
+
+-  **--pwd**: Initial working directory for payload process inside the container.
+
+This is **not** a complete list! Please see the ``singularity <action> help`` for an updated list.
+
+
+Examples
+~~~~~~~~
+
+Here we are cleaning the environment. In the first command, we see that the variable ``PEANUTBUTTER`` gets passed into the container.
+
+::
+
+    PEANUTBUTTER=JELLY singularity exec Centos7.img env | grep PEANUT
+    PEANUTBUTTER=JELLY
+
+And now here we add ``--cleanenv`` to see that it doesn’t.
+
+::
+
+    PEANUTBUTTER=JELLY singularity exec --cleanenv Centos7.img env | grep PEANUT
+
+Here we will test contain. We can first confirm that there are a lot of files on our host in /tmp, and the same files are found in the container.
+
+::
+
+    # On the host
+    $ ls /tmp | wc -l
+    17
+
+    # And then /tmp is mounted to the container, by default
+    $ singularity exec Centos7.img  ls /tmp | wc -l
+
+    # ..but not if we use --contain
+    $ singularity exec --contain Centos7.img  ls /tmp | wc -l
+    0
+
+
 
 .. _Singularity Hub: https://singularity-hub.org/
 .. _Docker Hub: https://hub.docker.com/
@@ -6000,9 +6074,9 @@ Enable overlay boolean default no
 .. _SCI-F Apps Home: https://sci-f.github.io/
 .. _squashfs image: https://en.wikipedia.org/wiki/SquashFS
 .. _singularity hub: https://github.com/singularityhub/singularityhub.github.io/wiki
-.. _enabled by the system administrator: http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes
-.. _enabled user control of binds: http://singularity.lbl.gov/docs-config#user-bind-control-boolean-defaultyes
-.. _overlay in the Singularity configuration file: http://singularity.lbl.gov/docs-config#enable-overlay-boolean-defaultno
+.. _enabled by the system administrator: https://singularity-admindoc.readthedocs.io/en/latest/#parameters
+.. _enabled user control of binds: https://singularity-admindoc.readthedocs.io/en/latest/#parameters
+.. _overlay in the Singularity configuration file: https://singularity-admindoc.readthedocs.io/en/latest/#parameters
 .. _here on GitHub: https://github.com/bauerm97/instance-example
 .. _here on SingularityHub: https://singularity-hub.org/collections/bauerm97/instance-example/
 .. _Puppeteer: https://github.com/GoogleChrome/puppeteer
