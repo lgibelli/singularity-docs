@@ -124,7 +124,7 @@ following:
     $ singularity <command> --help
     $ singularity <command> -h
 
-| Users can also `write help docs specific to a container <#help>`_ or for an internal module called an . If those help
+| Users can also `write help docs specific to a container <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#help>`_ or for an internal module called an . If those help
   docs exist for a particular container, you can view them like so.
 
 ::
@@ -135,7 +135,7 @@ following:
 Download pre-built images
 =========================
 
-You can use the `pull <#id63>`_ and `build <#id55>`_ commands to download pre-built images from an
+You can use the `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ and `build <http://singularity-userdoc.readthedocs.io/en/latest/commands.html#id1>`_ commands to download pre-built images from an
 external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
 on a native Singularity images like those provided on Singularity Hub, ``pull``
 simply downloads the image file to your system.
@@ -176,9 +176,9 @@ after downloading it.
 
 ``build`` is like a “Swiss Army knife” for container creation. In addition to
 downloading images, you can use ``build`` to create images from other images or
-from scratch using a `recipe file <#container-recipes>`_. You can also use ``build`` to convert an image between the
+from scratch using a `recipe file <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_. You can also use ``build`` to convert an image between the
 3 major container formats supported by Singularity. We discuss those
-image formats below in the `Build images from scratch <#id1>`_ section.
+image formats below in the `Build images from scratch <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id2>`_ section.
 
 Interact with images
 ====================
@@ -194,7 +194,7 @@ Singularity Hub like so.
 Shell
 -----
 
-The `shell <#id72>`_ command allows you to spawn a new shell within your container and
+The `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
 ::
@@ -219,7 +219,7 @@ disappears when the shell is exited.
 Executing Commands
 ------------------
 
-The `exec <#id60>`_ command allows you to execute a custom command within a container by
+The `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
@@ -416,7 +416,7 @@ named Singularity), you would call build like so:
   executes within the container at build time after the base OS has been
   installed. The ``%post`` section is therefore the place to perform installations
   of custom apps.
-| This is a very small example of the things that you can do with a `recipe file <#container-recipes>`_ . In
+| This is a very small example of the things that you can do with a `recipe file <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ . In
   addition to building a container from Singularity Hub, you can start
   with base images from Docker Hub, use images directly from official
   repositories such as Ubuntu, Debian, Centos, Arch, and BusyBox, use an
@@ -624,7 +624,7 @@ The Singularity container image
   copying any other file you control!
 | If you want an automated solution for building and hosting your image,
   you can use our container registry `Singularity Hub <https://singularity-hub.org/>`_. Singularity Hub
-  can automatically build `Singularity recipe files <#container-recipes>`_ from
+  can automatically build `Singularity recipe files <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ from
   a GitHub repository each time that you push. It provides a simple cloud
   solution for storing and sharing your image. If you want to host your own
   Registry, then you should check out `Singularity Registry`_.
@@ -823,17 +823,17 @@ Singularity Commands
   How do the commands
   work? Here is where to look for more information:
 
--  `build <#id55>`_ : Build a container on your user endpoint or build environment
+-  `build <http://singularity-userdoc.readthedocs.io/en/latest/commands.html#id1>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id60>`_ : Execute a command to your container
+-  `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ : Execute a command to your container
 
 -  `inspect <#id62>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id63>`_ : pull an image from Docker or Singularity Hub
+-  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ : pull an image from Docker or Singularity Hub
 
 -  `run <#id67>`_ : Run your image as an executable
 
--  `shell <#id72>`_ : Shell into your image
+-  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ : Shell into your image
 
 **Image Commands**
 
@@ -984,7 +984,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <#id72>`_ , `exec <#id60>`_ , or `run <#id67>`_ commands. Or click **next**
+interact with your container via the `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ , `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ , or `run <#id67>`_ commands. Or click **next**
 below to continue reading.
 
 -----------------
@@ -997,7 +997,7 @@ Build a Container
 download and assemble existing containers from external resources like
 `Singularity Hub <https://singularity-hub.org/>`_ and `Docker Hub`_. You can use it to convert
 containers between the various formats supported by Singularity. And you
-can use it in conjunction with a `Singularity recipe <#container-recipes>`_ file to
+can use it in conjunction with a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ file to
 create a container from scratch and customized it to fit your needs.
 
 Overview
@@ -1018,7 +1018,7 @@ Overview
 
 -  path to an **archive** in .tar or compressed .tar.gz format
 
--  path to a `Singularity recipe file <#container-recipes>`_
+-  path to a `Singularity recipe file <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_
 
 | In addition ``build`` can produce containers in three different formats. Formats
   types can be specified by passing the following options to build.
@@ -1167,7 +1167,7 @@ Building containers from Singularity recipe files
 
 | Of course, Singularity recipe files can be used as the target when
   building a container. For detailed information on writing Singularity
-  recipe files, please see the `Container Recipes docs <#container-recipes>`_.
+  recipe files, please see the `Container Recipes docs <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_.
 | Let’s say you already have the following container recipe file called ``Singularity``
   , and you want to use it to build a container.
 
@@ -1290,7 +1290,7 @@ discuss those things
 Cache Folders
 =============
 
-To make download of layers for build and `pull <#id63>`_ faster and less redundant, we
+To make download of layers for build and `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
 a set of folders in your ``$HOME`` directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
@@ -1343,8 +1343,8 @@ environment.
 Pull Folder
 ===========
 
-For details about customizing the output location of `pull <#id63>`_, see the
-`pull docs <#id63>`_. You have the similar ability to set it to be something
+For details about customizing the output location of `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_, see the
+`pull docs <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_. You have the similar ability to set it to be something
 different, or to customize the name of the pulled image.
 
 Environment Variables
@@ -2153,8 +2153,8 @@ Building Images
 ===============
 
 | If you read the `quick start <#quick-start>`_, you probably remember that building images from a
-  Docker base does not require a `Singularity recipe <#container-recipes>`_. However, if you do want to build and
-  customize your image, you can create a `Singularity recipe <#container-recipes>`_ text file, which is a simple
+  Docker base does not require a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_. However, if you do want to build and
+  customize your image, you can create a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ text file, which is a simple
   text file that describes how the container should be made.
 
 The Singularity Flow
