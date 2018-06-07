@@ -627,9 +627,9 @@ The Singularity container image
   can automatically build `Singularity recipe files <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ from
   a GitHub repository each time that you push. It provides a simple cloud
   solution for storing and sharing your image. If you want to host your own
-  Registry, then you should check out `Singularity Registry`_.
+  Registry, then you should check out `Singularity Registry <https://www.github.com/singularityhub/sregistry>`_.
   If you have ideas or suggestions for how Singularity can better support
-  reproducible science, please `reach out!`_.
+  reproducible science, please `reach out! <https://www.sylabs.io/contact/>`_.
 
 *Supported container formats*
 """""""""""""""""""""""""""""
@@ -827,23 +827,23 @@ Singularity Commands
 
 -  `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ : Execute a command to your container
 
--  `inspect <#id62>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id4>`_ : See labels, run and test scripts, and environment variables
 
 -  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ : pull an image from Docker or Singularity Hub
 
--  `run <#id67>`_ : Run your image as an executable
+-  `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id7>`_ : Run your image as an executable
 
 -  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ : Shell into your image
 
 **Image Commands**
 
--  `image.import <#id75>`_ : import layers or other file content to your image
+-  `image.import <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-import>`_ : import layers or other file content to your image
 
--  `image.export <#id73>`_ : export the contents of the image to tar or stream
+-  `image.export <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-export>`_ : export the contents of the image to tar or stream
 
--  `image.create <#id76>`_ : create a new image, using the old ext3 filesystem
+-  `image.create <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-create>`_ : create a new image, using the old ext3 filesystem
 
--  `image.expand <#id74>`_ : increase the size of your image (old ext3)
+-  `image.expand <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-expand>`_ : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
@@ -854,12 +854,12 @@ Singularity Commands
 **Deprecated Commands** The following commands are deprecated in 2.4 and
 will be removed in future releases.
 
--  `bootstrap <#id90>`_ : Bootstrap a container recipe
+-  `bootstrap <https://singularity-userdoc.readthedocs.io/en/latest/deprecated.html#bootstrap>`_ : Bootstrap a container recipe
 
 Support
 =======
 
-Have a question, or need further information? `Reach out to us`_.
+Have a question, or need further information? `Reach out to us <https://www.sylabs.io/bug-report/>`_.
 
 ------------
 Installation
@@ -898,7 +898,7 @@ Install the master branch
 =========================
 
 The following commands will install the latest version of the `GitHub
-repo`_ master branch to ``/usr/local``.
+repo <https://github.com/singularityware/singularity>`_ master branch to ``/usr/local``.
 
 ::
 
@@ -925,7 +925,7 @@ Install a specific release
 ==========================
 
 | The following commands will install a specific release from `GitHub
-  releases`_ page to ``/usr/local``.
+  releases <https://github.com/singularityware/singularity/releases>`_ page to ``/usr/local``.
 
 ::
 
@@ -984,7 +984,7 @@ you need to hit all of the following:
     $ sudo rm -rf /some/temp/dir
 
 What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
-interact with your container via the `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ , `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ , or `run <#id67>`_ commands. Or click **next**
+interact with your container via the `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ , `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ , or `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id7>`_ commands. Or click **next**
 below to continue reading.
 
 -----------------
