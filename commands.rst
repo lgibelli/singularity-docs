@@ -26,15 +26,15 @@ The Singularity command
 
 -  `build <http://singularity-userdoc.readthedocs.io/en/latest/commands.html#id1>`_ : Build a container on your user endpoint or build environment
 
--  `exec https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ : Execute a command to your container
+-  `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ : Execute a command to your container
 
--  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id4>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id3>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ : pull an image from Docker or Singularity Hub
+-  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id4>`_ : pull an image from Docker or Singularity Hub
 
--  `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id7>`_ : Run your image as an executable
+-  `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id6>`_ : Run your image as an executable
 
--  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ : Shell into your image
+-  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id11>`_ : Shell into your image
 
 | **Image Commands**
 
