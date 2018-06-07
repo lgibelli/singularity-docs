@@ -1077,8 +1077,8 @@ Singularity containers.
 Creating - -writable images and - -sandbox directories
 ======================================================
 
---writable
-----------
+- -writable
+-----------
 
 | If you wanted to create a writable ext3 image similar to those used by
   Singularity version < 2.4, you could do so with the ``--writable`` option. You must
@@ -1101,8 +1101,8 @@ Creating - -writable images and - -sandbox directories
 
     $ sudo singularity shell --writable lolcow.img
 
---sandbox
----------
+- -sandbox
+----------
 
 If you wanted to create a container within a writable directory (called
 a sandbox) you could do so with the ``--sandbox`` option. It’s possible to create a
@@ -1267,14 +1267,14 @@ More Build topics
 
 -  If you want to **customize the cache location** (where Docker layers
    are downloaded on your system), specify Docker credentials, or any
-   custom tweaks to your build environment, see `build environment <#id15>`_.
+   custom tweaks to your build environment, see `build environment <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id16>`_.
 
 -  If you want to make internally **modular containers**, check out the
    getting started guide `here <https://sci-f.github.io/tutorials>`_
 
 -  If you want to **build your containers** on Singularity Hub, (because
    you don’t have root access on a Linux machine or want to host your
-   container on the cloud) check out `this guide`_
+   container on the cloud) check out `this guide <https://github.com/singularityhub/singularityhub.github.io/wiki>`_
 
 -----------------
 Build Environment
