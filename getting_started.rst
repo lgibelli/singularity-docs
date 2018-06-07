@@ -583,8 +583,8 @@ Security and privilege escalation
   is not an unreasonable or unmanageable mitigation, but it must be
   defined and articulated.
 
-  The Singularity container image
-  -------------------------------
+The Singularity container image
+-------------------------------
 
   Singularity makes use of a container image
   file, which physically contains the container. This file is a physical
@@ -1196,7 +1196,7 @@ You can do so with the following command.
 The command requires ``sudo`` just as installing software on your local machine
 requires root privileges.
 
---force
+- -force
 -------
 
 | You can build into the same container multiple times (though the
@@ -1210,7 +1210,7 @@ requires root privileges.
 | Use care with this option: you may get results that you did not
   expect.
 
---section
+- -section
 ---------
 
 If you only want to build a single section of your Singularity recipe
@@ -1227,7 +1227,7 @@ a container’s meta-data so that there is a record showing how the
 container was built. Using the ``--section`` option may render this meta-data useless,
 so use care if you value reproducibility.
 
---notest
+- -notest
 --------
 
 If you don’t want to run the ``%test`` section during the container build, you can
@@ -1241,7 +1241,7 @@ build to exit with an error because it cannot find a GPU on your system.
 
     $ sudo singularity build GPU.simg --notest Singularity
 
---checks
+- -checks
 --------
 
 | Checks are a new feature (in 2.4) that offer an easy way for an admin
