@@ -1,4 +1,8 @@
 
+==========
+User Guide
+==========
+
 .. toctree::
    :caption: User Guide
    :maxdepth: 5
