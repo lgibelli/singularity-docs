@@ -20,43 +20,43 @@ The Singularity command
 
     $ singularity (opts1) [subcommand] (opts2) ...
 
-| If you type singularity without any arguments, you will see a high
+| If you type ``singularity`` without any arguments, you will see a high
   level help for all arguments. The main options include:
 | **Container Actions**
 
--  `build <#id55>`_ : Build a container on your user endpoint or build environment
+-  `build <http://singularity-userdoc.readthedocs.io/en/latest/commands.html#id1>`_ : Build a container on your user endpoint or build environment
 
--  `exec <#id60>`_ : Execute a command to your container
+-  `exec https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ : Execute a command to your container
 
--  `inspect <#id62>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id4>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <#id63>`_ : pull an image from Docker or Singularity Hub
+-  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ : pull an image from Docker or Singularity Hub
 
--  `run <#id67>`_ : Run your image as an executable
+-  `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id7>`_ : Run your image as an executable
 
--  `shell <#id72>`_ : Shell into your image
+-  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ : Shell into your image
 
 | **Image Commands**
 
--  `image.import <#id75>`_ : import layers or other file content to your image
+-  `image.import <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-import>`_ : import layers or other file content to your image
 
--  `image.export <#id73>`_ : export the contents of the image to tar or stream
+-  `image.export <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-export>`_ : export the contents of the image to tar or stream
 
--  `image.create <#id76>`_ : create a new image, using the old ext3 filesystem
+-  `image.create <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-create>`_ : create a new image, using the old ext3 filesystem
 
--  `image.expand <#id74>`_ : increase the size of your image (old ext3)
+-  `image.expand <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-expand>`_ : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  `instances <#why-container-instances>`_ : Start, stop, and list container instances
+-  `instances <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#running-services>`_ : Start, stop, and list container instances
 
 | **Deprecated Commands**
 | The following commands are deprecated in 2.4 and will be removed in
   future releases.
 
--  `bootstrap <#id90>`_ : Bootstrap a container recipe
+-  `bootstrap <https://singularity-userdoc.readthedocs.io/en/latest/deprecated.html#bootstrap>`_ : Bootstrap a container recipe
 
 For the full usage, `see the bottom of this page <#command-usage>`_
 
