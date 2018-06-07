@@ -1,10 +1,11 @@
-**********
+==========
 Deprecated
-**********
+==========
 
     Note: The bootstrap command is deprecated for Singularity Version
     2.4. You should use `build <#build-a-container>`_ instead.
 
+---------
 bootstrap
 ---------
 
@@ -19,7 +20,7 @@ time. As of 2.4, bootstrap is still supported for Singularity, however
 we encourage you to use `build <#build-a-container>`_ instead.
 
 Quick Start
-~~~~~~~~~~~
+===========
 
 | A bootstrap is done based on a Singularity recipe file (a text file
   called Singularity) that describes how to specifically build the

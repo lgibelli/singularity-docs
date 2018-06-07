@@ -1,7 +1,8 @@
-*******************
+===================
 Image Command Group
-*******************
+===================
 
+------------
 image.export
 ------------
 
@@ -32,6 +33,7 @@ And here is the recommended way to compress your image:
 
     singularity image.export container.img | gzip -9 > container.img.tar.gz
 
+------------
 image.expand
 ------------
 
@@ -43,7 +45,7 @@ if you are building an ext3 image (pre Singularity 2.4) you want to
 expand it.
 
 Increasing the size of an existing image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+========================================
 
 | You can increase the size of an image after it has been instantiated
   by using the image.expand Singularity sub-command. In the example
@@ -89,6 +91,7 @@ Increasing the size of an existing image
 Similar to the create sub-command, you can override the default size
 increase (which is 768MiB) by using the ``--size`` option.
 
+------------
 image.import
 ------------
 
@@ -107,6 +110,7 @@ image.import
 
     singularity image.import container.img docker://ubuntu:latest
 
+------------
 image.create
 ------------
 
@@ -130,7 +134,7 @@ image.create
   access completely with a simple ``chmod`` command).
 
 Creating a new blank Singularity container image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+================================================
 
 Singularity will create a default container image of 768MiB using the
 following command:
@@ -192,6 +196,9 @@ size.
     45M container.simg
 
 Quite a difference! And one command instead of one.
+
+Overwriting an image with a new one
+-----------------------------------
 
 For any commands that If you have already created an image and wish to
 overwrite it, you can do so with the ``--force`` option.

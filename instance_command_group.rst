@@ -1,9 +1,10 @@
-**********************
+======================
 Instance Command Group
-**********************
+======================
 
 .. _sec:instances:
 
+--------------
 instance.start
 --------------
 
@@ -15,7 +16,7 @@ services like databases and web servers. The ``instance.start`` command lets you
 named instance in the background.
 
 Overview
-~~~~~~~~
+========
 
 To initiate a named instance of a container, you must call the ``instance.start`` command
 with 2 arguments: the name of the container that you want to start and a
@@ -38,15 +39,21 @@ like so:
     singularity help instance.start
 
 Examples
-~~~~~~~~
+========
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
 detailed look at ``instance`` usage see `Running Instances <#why-container-instances>`_.
 
+Start an instance called cow1 from a container on Singularity Hub
+-----------------------------------------------------------------
+
 ::
 
     $ singularity instance.start shub://GodloveD/lolcow cow1
+
+Start an interactive shell within the instance that you just started
+--------------------------------------------------------------------
 
 ::
 
@@ -57,6 +64,9 @@ detailed look at ``instance`` usage see `Running Instances <#why-container-insta
     ubuntu       3     0  0 20:04 pts/0    00:00:00 /bin/bash --norc
     ubuntu       4     3  0 20:04 pts/0    00:00:00 ps -ef
     Singularity GodloveD-lolcow-master.img:~> exit
+
+Execute the runscript within the instance
+-----------------------------------------
 
 ::
 
@@ -73,6 +83,9 @@ detailed look at ``instance`` usage see `Running Instances <#why-container-insta
                     ||----w |
                     ||     ||
 
+Run a command within a running instance
+---------------------------------------
+
 ::
 
     $ singularity exec instance://cow1 cowsay "I like blending into the background"
@@ -85,6 +98,7 @@ detailed look at ``instance`` usage see `Running Instances <#why-container-insta
                     ||----w |
                     ||     ||
 
+-------------
 instance.list
 -------------
 
@@ -96,23 +110,29 @@ services like databases and web servers. The ``instance.list`` command lets you 
 of the named instances running in the background.
 
 Overview
-~~~~~~~~
+========
 
 After initiating one or more named instances to run in the background
 with the ``instance.start`` command you can list them with the ``instance.list`` command.
 
 Examples
-~~~~~~~~
+========
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
 detailed look at ``instance`` usage see `Running Instances <#why-container-instances>`_.
+
+Start a few named instances from containers on Singularity Hub
+--------------------------------------------------------------
 
 ::
 
     $ singularity instance.start shub://GodloveD/lolcow cow1
     $ singularity instance.start shub://GodloveD/lolcow cow2
     $ singularity instance.start shub://vsoch/hello-world hiya
+
+List running instances
+----------------------
 
 ::
 
@@ -122,6 +142,7 @@ detailed look at ``instance`` usage see `Running Instances <#why-container-insta
     cow2             20558    /home/ubuntu/GodloveD-lolcow-master.img
     hiya             20595    /home/ubuntu/vsoch-hello-world-master.img
 
+-------------
 instance.stop
 -------------
 
@@ -133,17 +154,20 @@ services like databases and web servers. The ``instance.stop`` command lets you 
 instances once you are finished using them
 
 Overview
-~~~~~~~~
+========
 
 After initiating one or more named instances to run in the background
 with the ``instance.start`` command you can stop them with the ``instance.stop`` command.
 
 Examples
-~~~~~~~~
+========
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
 detailed look at ``instance`` usage see `Running Instances <#why-container-instances>`_.
+
+Start a few named instances from containers on Singularity Hub
+--------------------------------------------------------------
 
 ::
 
@@ -151,10 +175,16 @@ detailed look at ``instance`` usage see `Running Instances <#why-container-insta
     $ singularity instance.start shub://GodloveD/lolcow cow2
     $ singularity instance.start shub://vsoch/hello-world hiya
 
+Stop a single instance
+----------------------
+
 ::
 
     $ singularity instance.stop cow1
     Stopping cow1 instance of /home/ubuntu/GodloveD-lolcow-master.img (PID=20522)
+
+Stop all running instances
+--------------------------
 
 ::
 
