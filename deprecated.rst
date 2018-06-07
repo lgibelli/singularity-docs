@@ -2,7 +2,8 @@
 Deprecated
 ==========
 
-    Note: The bootstrap command is deprecated for Singularity Version
+.. note::
+    The bootstrap command is deprecated for Singularity Version
     2.4. You should use `build <http://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_ instead.
 
 ---------
