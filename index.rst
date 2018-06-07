@@ -1,4 +1,3 @@
-.. include:: getting_started.rst
 
 .. toctree::
    :caption: User Guide
