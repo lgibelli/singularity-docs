@@ -28,13 +28,13 @@ The Singularity command
 
 -  `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ : Execute a command to your container
 
--  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id3>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id4>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id4>`_ : pull an image from Docker or Singularity Hub
+-  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ : pull an image from Docker or Singularity Hub
 
--  `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id6>`_ : Run your image as an executable
+-  `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id7>`_ : Run your image as an executable
 
--  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id11>`_ : Shell into your image
+-  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ : Shell into your image
 
 | **Image Commands**
 
@@ -58,7 +58,7 @@ The Singularity command
 
 -  `bootstrap <https://singularity-userdoc.readthedocs.io/en/latest/deprecated.html#bootstrap>`_ : Bootstrap a container recipe
 
-For the full usage, `see the bottom of this page <#command-usage>`_
+For the full usage, `see the bottom of this page <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#commands-usage>`_
 
 Options and argument processing
 -------------------------------
@@ -152,7 +152,7 @@ Commands Usage
 Support
 =======
 
-Have a question, or need further information? `Reach out to us`_.
+Have a question, or need further information? `Reach out to us <https://www.sylabs.io/bug-report/>`_.
 
 -----
 build
@@ -161,7 +161,7 @@ build
 .. _sec:build:
 
 Use ``build`` to download and assemble existing containers, convert containers
-from one format to another, or build a container from a `Singularity recipe <#container-recipes>`_.
+from one format to another, or build a container from a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_.
 
 Overview
 ========
@@ -171,7 +171,7 @@ Overview
   to an existing container, or a path to a Singularity Recipe file. The
   output container can be in squashfs, ext3, or directory format.
 | For a complete list of ``build`` options type ``singularity help build``. For more info on building
-  containers see `Build a Container <#build-a-container>`_.
+  containers see `Build a Container <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_.
 
 Examples
 ========
@@ -259,7 +259,7 @@ Runtime Flags
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the ``singularity run help`` and our
-documentation on `flags`_ to better customize this command.
+documentation on `flags <http://singularity-userdoc.readthedocs.io/en/latest/#singularity-action-flags>`_ to better customize this command.
 
 Special Characters
 ------------------
@@ -641,7 +641,7 @@ or with ``--json`` output.
 The goal of these commands is to bring more transparency to containers,
 and to help better integrate them into common workflows by having them
 expose their guts to the world! If you have feedback for how we can
-improve or amend this, `please let us know`_!
+improve or amend this, `please let us know <https://github.com/singularityware/singularity/issues>`_!
 
 ----
 pull
@@ -653,7 +653,7 @@ pull
   with a container registry. The command does exactly as it says - there
   exists an image external to my host, and I want to pull it here. We
   currently support pull for both `Docker <https://hub.docker.com/>`_ and `Singularity Hub
-  images`_, and will review usage for both.
+  images <https://singularity-hub.org/>`_, and will review usage for both.
 
 Singularity Hub
 ===============
@@ -682,7 +682,7 @@ above would be equivalent to doing:
     singularity pull shub://vsoch/hello-world:master
 
 To enable other branches to build, they must be turned on in your
-collection (more details are available in the `Singularity Hub docs`_).
+collection (more details are available in the `Singularity Hub docs <https://singularity-hub.org/faq>`_).
 If you then put another Singularity file in a branch called development,
 you would pull it as follows:
 
@@ -886,7 +886,7 @@ Runtime Flags
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the ``singularity run help`` and our
-documentation on `flags`_ to better customize this command.
+documentation on `flags <http://singularity-userdoc.readthedocs.io/en/latest/#singularity-action-flags>`_ to better customize this command.
 
 Examples
 ========
@@ -924,7 +924,7 @@ following order of operations:
 #. If the user has not defined a runscript, and there is no ``ENTRYPOINT`` or ``CMD`` (or we
    aren’t importing Docker at all) then we default to ``/bin/bash``
 
-Here is how you would define the runscript section when you `build <#build-a-container>`_ an image:
+Here is how you would define the runscript section when you `build <http://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_ an image:
 
 ::
 
@@ -1010,7 +1010,7 @@ Additionally any arguments passed to the Singularity command (after the
 container name) will be passed to the called shell within the container,
 and shell can be used across image types. Here is a quick example of
 shelling into a container assembled from Docker layers. We highly
-recommend that you look at the ``singularity shell help`` and our documentation on `flags`_ to
+recommend that you look at the ``singularity shell help`` and our documentation on `flags <http://singularity-userdoc.readthedocs.io/en/latest/#singularity-action-flags>`_ to
 better customize this command.
 
 Change your shell

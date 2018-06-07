@@ -3,7 +3,7 @@ Deprecated
 ==========
 
     Note: The bootstrap command is deprecated for Singularity Version
-    2.4. You should use `build <#build-a-container>`_ instead.
+    2.4. You should use `build <http://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_ instead.
 
 ---------
 bootstrap
@@ -97,7 +97,7 @@ user would be you, and the cache your ``$HOME``.
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
-For details and best practices for creating your Singularity recipe, `read about them here <#container-recipes>`_.
+For details and best practices for creating your Singularity recipe, `read about them here <http://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_.
 
 
 .. _Singularity Hub: https://singularity-hub.org/
