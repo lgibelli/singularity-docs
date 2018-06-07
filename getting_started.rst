@@ -909,9 +909,11 @@ repo <https://github.com/singularityware/singularity>`_ master branch to ``/usr/
     $ make
     $ sudo make install
 
-| Note that the installation prefix is ``/usr/local`` but the configuration directory
-  is ``/etc``. This ensures that the configuration file ``singularity.conf`` is placed in the
-  standard location.
+.. note::
+    Note that the installation prefix is ``/usr/local`` but the configuration directory
+    is ``/etc``. This ensures that the configuration file ``singularity.conf`` is placed in the
+    standard location.
+
 | If you omit the ``--sysconfdir`` option , the configuration file will be installed in ``/usr/local/etc``.
   If you omit the ``--prefix`` option, Singularity will be installed in the ``/usr/local`` directory
   hierarchy by default. And if you specify a custom directory with the ``--prefix``
@@ -2710,8 +2712,9 @@ When you are finished with your instance you can clean it up with the
     $ singularity instance.stop \*
     $ singularity instance.stop -a
 
-Note that you must escape the wildcard with a backslash like this to
-pass it properly.
+.. note::
+    Note that you must escape the wildcard with a backslash like this to
+    pass it properly.
 
 Nginx “Hello-world” in Singularity
 ==================================
@@ -2967,9 +2970,10 @@ running instances.
 Important Notes
 ===============
 
--  The instances are linked with your user. So if you start an instance
-   with sudo, that is going to go under root, and you will need to call ``sudo singularity instance.list``
-   in order to see it.
+.. note::
+    The instances are linked with your user. So if you start an instance
+    with sudo, that is going to go under root, and you will need to call ``sudo singularity instance.list``
+    in order to see it.
 
 ----------------
 Container Checks
@@ -3026,10 +3030,11 @@ you can specify with ``--low`` , ``--med`` , or ``--high`` :
         -m/--med       Perform medium and high checks
         -h/--high      Perform only checks at level high
 
+.. note::
 
-Note that some checks will require sudo, and you will be alerted if this
-is the case and you didn’t use it. Finally, if you want to run all
-default checks, just don’t specify a tag or level.
+    Note that some checks will require sudo, and you will be alerted if this
+    is the case and you didn’t use it. Finally, if you want to run all
+    default checks, just don’t specify a tag or level.
 
 What checks are available?
 ==========================
@@ -3873,8 +3878,10 @@ that to the docker uri:
     Bootstrap: docker
     From: ubuntu:latest
 
-Note that the default is ``latest`` . If you want to customize the Registry or
-Namespace, just add those to the header:
+.. note::
+
+    Note that the default is ``latest`` . If you want to customize the Registry or
+    Namespace, just add those to the header:
 
 ::
 
