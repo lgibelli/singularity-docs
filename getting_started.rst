@@ -2326,7 +2326,7 @@ extended.
 Recommended Production Build
 ````````````````````````````
 
-What we want for production is a build into a `squashfs image`_ .
+What we want for production is a build into a `squashfs image <https://en.wikipedia.org/wiki/SquashFS>`_ .
 Squashfs is a read only, and compressed filesystem, and well suited for
 confident archive and re-use of your hello-world. To build a production
 image, just remove the extra options:
@@ -2696,7 +2696,7 @@ instance. Similarly with ``exec``, it will execute the given command in the
 instance.
 
 When you are finished with your instance you can clean it up with the
-`instance.stop <#id85>`_ command like so:
+`instance.stop <https://singularity-userdoc.readthedocs.io/en/latest/instance_command_group.html#instance-stop>`_ command like so:
 
 ::
 
@@ -2779,7 +2779,7 @@ In this section, we will demonstrate an example of packaging a service
 into a container and running it. The service we will be packaging is an
 API server that converts a web page into a PDF, and can be found
 `here <https://github.com/alvarcarto/url-to-pdf-api>`__. The final
-example can be found `here on GitHub`_, and `here on SingularityHub`_.
+example can be found `here on GitHub <https://github.com/bauerm97/instance-example>`_, and `here on SingularityHub <https://singularity-hub.org/collections/bauerm97/instance-example/>`_.
 If you wish to just download the final image directly from Singularity
 Hub, simply run ``singularity pull shub://bauerm97/instance-example``.
 
@@ -3040,7 +3040,7 @@ and we anticipate adding an ability to view tags that are available,
 along with your own custom checks. You should also ask your
 administration if new checks have been added not supported by
 Singularity. If you want to request adding a new check, please `tell
-us!`_.
+us! <https://github.com/singularityware/singularity/issues>`_.
 
 ------------------------
 Environment and Metadata
@@ -3071,10 +3071,10 @@ also define custom environment variables in your Recipe file like so:
         export VARIABLE_NAME
 
 | You may need to add environment variables to your container during the
-  %post section. For instance, maybe you will not know the appropriate
+  ``%post`` section. For instance, maybe you will not know the appropriate
   value of a variable until you have installed some software.
-| To add variables to the environment during %post you can use the
-  $SINGULARITY\_ENVIRONMENT variable with the following syntax:
+| To add variables to the environment during ``%post`` you can use the
+  ``$SINGULARITY_ENVIRONMENT`` variable with the following syntax:
 
 ::
 
@@ -3087,7 +3087,7 @@ also define custom environment variables in your Recipe file like so:
   variables added using ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via the ``%environment``
   section.
 | Need to define a variable at runtime? You can set variables inside the
-  container by prefixing them with “SINGULARITYENV_”. They will be
+  container by prefixing them with "SINGULARITYENV_". They will be
   transposed automatically and the prefix will be stripped. For example,
   let’s say we want to set the variable ``HELLO`` to have value ``WORLD``. We can do that
   as follows:
@@ -3124,7 +3124,7 @@ Labels
 | Your container stores metadata about it’s build, along with Docker
   labels, and custom labels that you define during build in a ``%labels`` section.
   For containers that are generated with Singularity version 2.4 and
-  later, labels are represented using the `rc1 Label Schema`_. For
+  later, labels are represented using the `rc1 Label Schema <http://label-schema.org/rc1/>`_. For
   example:
 
 ::
@@ -3654,7 +3654,7 @@ Cowsay Container
 | **Important!** This tutorial is for Singularity 2.4.
 | When you’ve installed 2.4, download the recipe, and save it to your
   present working directory. By the way, credit for anything and
-  everything lolcat and cowsay goes to `GodLoveD`_! Here is the recipe:
+  everything lolcat and cowsay goes to `GodLoveD <https://www.github.com/GodLoveD>`_! Here is the recipe:
 
 ::
 
@@ -3756,8 +3756,8 @@ an app:
 
 | If you want to see the full specification or create your own
   Scientific Filesystem integration (doesn’t have to be Singularity, or
-  Docker, or containers!) see the `full documentation`_.
-| If you haven’t yet, `take a look at these examples`_ with the
+  Docker, or containers!) see the `full documentation <https://sci-f.github.io/>`_.
+| If you haven’t yet, `take a look at these examples <https://asciinema.org/a/139153?speed=3>`_ with the
   asciinema!
 
 ----------------------
@@ -3799,7 +3799,7 @@ Import a Docker image into a Singularity Image
 ==============================================
 
 The core of a Docker image is basically a compressed set of files, a set
-of ``.tar.gz`` that (if you look in your `Docker image folder`_ on your host
+of ``.tar.gz`` that (if you look in your `Docker image folder <http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine>`_ on your host
 machine, you will see. The Docker Registry, which you probably interact
 with via `Docker Hub`_, serves these layers. These are the layers that
 you see downloading when you interact with the docker daemon. We are
@@ -3809,7 +3809,7 @@ Quick Start: The Docker Registry
 ================================
 
 | The Docker engine communicates with the Docker Hub via the `Docker
-  Remote API`_, and guess what, we can too! The easiest thing to do is
+  Remote API <https://docs.docker.com/engine/reference/api/docker_remote_api/>`_, and guess what, we can too! The easiest thing to do is
   create an image, and then pipe a Docker image directly into it from
   the Docker Registry. You don’t need Docker installed on your machine,
   but you will need a working internet connection. Let’s create an
