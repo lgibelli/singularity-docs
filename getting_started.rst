@@ -615,7 +615,7 @@ The Singularity container image
    any other program on the host
 
 *Copying, sharing, branching, and distributing your image*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | A primary goal of Singularity is mobility. The single file image
   format makes mobility easy. Because Singularity images are single
@@ -632,7 +632,7 @@ The Singularity container image
   reproducible science, please `reach out!`_.
 
 *Supported container formats*
-*****************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  **squashfs**: the default container format is a compressed read-only
    file system that is widely used for things like live CDs/USBs and
@@ -652,7 +652,7 @@ The Singularity container image
 -  **tar**: uncompressed tar archive
 
 *Supported URIs*
-++++++++++++++++
+^^^^^^^^^^^^^^^^
 
 Singularity also supports several different mechanisms for obtaining the
 images using a standard URI format.
