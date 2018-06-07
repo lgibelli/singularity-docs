@@ -614,8 +614,8 @@ The Singularity container image
 -  Images can serve as stand-alone programs, and can be executed like
    any other program on the host
 
-*Copying, sharing, branching, and distributing your image*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Copying, sharing, branching, and distributing your image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | A primary goal of Singularity is mobility. The single file image
   format makes mobility easy. Because Singularity images are single
