@@ -1196,8 +1196,8 @@ You can do so with the following command.
 The command requires ``sudo`` just as installing software on your local machine
 requires root privileges.
 
-- -force
--------
+``--force``
+-----------
 
 | You can build into the same container multiple times (though the
   results may be unpredictable and it is generally better to delete your
