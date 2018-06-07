@@ -1521,7 +1521,7 @@ A Singularity Recipe file is divided into several parts:
    sections that produce scripts to be executed at runtime can accept
    options intended for ``/bin/sh``
 
-| Please see the `examples`_ directory in the `Singularity source code`_
+| Please see the `examples`_ directory in the `Singularity source code <https://github.com/singularityware/singularity>`_
   for some ideas on how to get started.
 
 Header
@@ -1561,21 +1561,21 @@ A build that uses a mirror to install Centos-7 might look like this:
 | Each build base requires particular details during build time. You can
   read about them and see examples at the following links:
 
--  `shub`_ (images hosted on Singularity Hub)
+-  `shub <http://singularity-userdoc.readthedocs.io/en/latest/#build-shub>`_ (images hosted on Singularity Hub)
 
 -  `docker <http://singularity-userdoc.readthedocs.io/en/latest/#build-docker-module>`_ (images hosted on Docker Hub)
 
--  `localimage`_ (images saved on your machine)
+-  `localimage <http://singularity-userdoc.readthedocs.io/en/latest/#build-localimage>`_ (images saved on your machine)
 
--  `yum`_ (yum based systems such as CentOS and Scientific Linux)
+-  `yum <http://singularity-userdoc.readthedocs.io/en/latest/#build-yum>`_ (yum based systems such as CentOS and Scientific Linux)
 
--  `debootstrap`_ (apt based systems such as Debian and Ubuntu)
+-  `debootstrap <http://singularity-userdoc.readthedocs.io/en/latest/#build-debootstrap>`_ (apt based systems such as Debian and Ubuntu)
 
--  `arch`_ (Arch Linux)
+-  `arch <http://singularity-userdoc.readthedocs.io/en/latest/#build-arch>`_ (Arch Linux)
 
--  `busybox`_ (BusyBox)
+-  `busybox <http://singularity-userdoc.readthedocs.io/en/latest/#build-busybox>`_ (BusyBox)
 
--  `zypper`_ (zypper based systems such as Suse and OpenSuse)
+-  `zypper <http://singularity-userdoc.readthedocs.io/en/latest/#build-zypper>`_ (zypper based systems such as Suse and OpenSuse)
 
 Sections
 --------
@@ -1668,7 +1668,7 @@ directory:
   the source is a path on your host system, and the destination is a
   path in the container.
 | The ``%files`` section uses the traditional ``cp`` command, so the `same conventions
-  apply`_
+  apply <https://linux.die.net/man/1/cp>`_
 | Files are copied **before** any ``%post`` or installation procedures for
   Singularity versions >2.3. If you are using a legacy version, files
   are copied after ``%post`` so you must do this via ``%setup``. Let’s add the avocado.txt
@@ -1991,7 +1991,7 @@ Apps
   different containers for each app with almost equivalent dependencies.
 | Starting in Singularity 2.4 all of the above commands can also be used
   in the context of internal modules called `apps <#reproducible-sci-f-apps>`_ based on the `Standard
-  Container Integration Format`_. For details on apps, see the `apps <#reproducible-sci-f-apps>`_
+  Container Integration Format <https://sci-f.github.io/>`_. For details on apps, see the `apps <#reproducible-sci-f-apps>`_
   documentation. For a quick rundown of adding an app to your container,
   here is an example runscript:
 
@@ -2102,7 +2102,7 @@ Examples
   look at other containers on `Singularity Hub <https://singularity-hub.org/>`_. For examples of
   different bases, look at the examples folder for the most up-to-date
   examples. For apps, including snippets and tutorial with more walk
-  throughs, see `SCI-F Apps Home`_.
+  throughs, see `SCI-F Apps Home <https://sci-f.github.io/>`_.
 
 Best Practices for Build Recipes
 ================================
@@ -2372,7 +2372,7 @@ Bind Paths and Mounts
 
 .. _sec:bindpaths:
 
-If `enabled by the system administrator`_, Singularity allows you to map
+If `enabled by the system administrator <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes>`_, Singularity allows you to map
 directories on your host system to directories within your container
 using bind mounts. This allows you to read and write data on the host
 system with ease.
@@ -2402,7 +2402,7 @@ bind points.
 User-defined bind points
 ------------------------
 
-| If the system administrator has `enabled user control of binds`_, you
+| If the system administrator has `enabled user control of binds <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes>`_, you
   will be able to request your own bind points within your container.
 | To *mount* a bind path inside the container, a **bind point** must be
   defined within the container. The bind point is a directory within the
@@ -2412,7 +2412,7 @@ User-defined bind points
   container.
 | It is, however, possible that the system administrator has enabled a
   Singularity feature called `overlay in the Singularity configuration
-  file`_. This will cause the bind points to be created on an as-needed
+  file <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#enable-overlay-boolean-default-no>`_. This will cause the bind points to be created on an as-needed
   basis in an overlay file system so that the underlying container is
   not modified. But because the overlay feature is not always enabled or
   is unavailable in the kernels of some older host systems, it may be
@@ -2625,7 +2625,7 @@ file like so:
 
 Now let’s say we build a container with that startscript into an image
 called ``nginx.img`` and we want to run an nginx service. All we need to do is start
-the instance with the `instance.start <#id78>`_ command, and the
+the instance with the `instance.start <https://singularity-userdoc.readthedocs.io/en/latest/instance_command_group.html#instance-start>`_ command, and the
 startscript will run inside the container automatically:
 
 ::
@@ -4332,9 +4332,9 @@ directive with corresponding path:
     .. _SCI-F Apps Home: https://sci-f.github.io/
     .. _squashfs image: https://en.wikipedia.org/wiki/SquashFS
     .. _singularity hub: https://github.com/singularityhub/singularityhub.github.io/wiki
-    .. _enabled by the system administrator: https://singularity-admindoc.readthedocs.io/en/latest/#parameters
-    .. _enabled user control of binds: https://singularity-admindoc.readthedocs.io/en/latest/#parameters
-    .. _overlay in the Singularity configuration file: https://singularity-admindoc.readthedocs.io/en/latest/#parameters
+    .. _enabled by the system administrator: https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes
+    .. _enabled user control of binds: https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes
+    .. _overlay in the Singularity configuration file: https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#enable-overlay-boolean-default-no
     .. _here on GitHub: https://github.com/bauerm97/instance-example
     .. _here on SingularityHub: https://singularity-hub.org/collections/bauerm97/instance-example/
     .. _Puppeteer: https://github.com/GoogleChrome/puppeteer
