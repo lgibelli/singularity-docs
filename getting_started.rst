@@ -42,7 +42,7 @@ Singularity must be installed as root to function properly.
 Overview of the Singularity Interface
 =====================================
 
-| Singularity’s `command line interface <#command-usage>`_ allows you to build and interact with containers
+| Singularity’s `command line interface <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#command-usage>`_ allows you to build and interact with containers
   transparently. You can run programs inside a container as if they were
   running on your host system. You can easily redirect IO, use pipes,
   pass arguments, and access files, sockets, and ports on the host
