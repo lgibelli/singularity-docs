@@ -297,7 +297,7 @@ Build images from scratch
   Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
-read about the `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id27>`_.
+read about the `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id29>`_.
 
 Sandbox Directory
 -----------------
@@ -427,7 +427,7 @@ named Singularity), you would call build like so:
   `Singularity
   Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
   instead. If you want a more detailed rundown and examples for
-  different build options, see our `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id27>`_ page.
+  different build options, see our `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id29>`_ page.
 
 ------------
 Introduction
@@ -576,7 +576,7 @@ Security and privilege escalation
   Singularity prevents user context escalation within the container, and
   thus makes it possible to run user supplied containers on shared
   infrastructures.
-| This mitigation dictates the Singularity `workflow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id27>`_. If a user needs to be root
+| This mitigation dictates the Singularity `workflow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id29>`_. If a user needs to be root
   in order to make changes to their containers, then they need to have
   an endpoint (a local workstation, laptop, or server) where they have
   root access. Considering almost everybody at least has a laptop, this
@@ -1351,7 +1351,7 @@ Environment Variables
 =====================
 
 | All environmental variables are parsed by Singularity python helper
-  functions, and specifically the file `defaults.py`_ is a gateway
+  functions, and specifically the file `defaults.py <https://github.com/singularityware/singularity/blob/master/libexec/python/defaults.py>`_ is a gateway
   between variables defined at runtime, and pre-defined defaults. By way
   of import from the file, variables set at runtime do not change if
   re-imported. This was done intentionally to prevent changes during the
@@ -1561,21 +1561,21 @@ A build that uses a mirror to install Centos-7 might look like this:
 | Each build base requires particular details during build time. You can
   read about them and see examples at the following links:
 
--  `shub <http://singularity-userdoc.readthedocs.io/en/latest/#build-shub>`_ (images hosted on Singularity Hub)
+-  `shub <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-shub>`_ (images hosted on Singularity Hub)
 
--  `docker <http://singularity-userdoc.readthedocs.io/en/latest/#build-docker-module>`_ (images hosted on Docker Hub)
+-  `docker <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-docker-module>`_ (images hosted on Docker Hub)
 
--  `localimage <http://singularity-userdoc.readthedocs.io/en/latest/#build-localimage>`_ (images saved on your machine)
+-  `localimage <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-localimage>`_ (images saved on your machine)
 
--  `yum <http://singularity-userdoc.readthedocs.io/en/latest/#build-yum>`_ (yum based systems such as CentOS and Scientific Linux)
+-  `yum <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-yum>`_ (yum based systems such as CentOS and Scientific Linux)
 
--  `debootstrap <http://singularity-userdoc.readthedocs.io/en/latest/#build-debootstrap>`_ (apt based systems such as Debian and Ubuntu)
+-  `debootstrap <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-debootstrap>`_ (apt based systems such as Debian and Ubuntu)
 
--  `arch <http://singularity-userdoc.readthedocs.io/en/latest/#build-arch>`_ (Arch Linux)
+-  `arch <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-arch>`_ (Arch Linux)
 
--  `busybox <http://singularity-userdoc.readthedocs.io/en/latest/#build-busybox>`_ (BusyBox)
+-  `busybox <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-busybox>`_ (BusyBox)
 
--  `zypper <http://singularity-userdoc.readthedocs.io/en/latest/#build-zypper>`_ (zypper based systems such as Suse and OpenSuse)
+-  `zypper <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-zypper>`_ (zypper based systems such as Suse and OpenSuse)
 
 Sections
 --------
