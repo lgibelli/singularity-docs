@@ -2,7 +2,7 @@
 
 .. toctree::
    :caption: User Guide
-   :maxdepth: 2
+   :maxdepth: 5
 
    Getting Started <getting_started>
    Commands <commands>
