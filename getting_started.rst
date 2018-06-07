@@ -2788,7 +2788,7 @@ Building the image
 
 To begin, we need to build the image. When looking at the GitHub page of
 the ``url-to-pdf-api``, we can see that it is a Node 8 server that uses headless Chromium
-called `Puppeteer`_. Let’s first choose a base from which to build our
+called `Puppeteer <https://github.com/GoogleChrome/puppeteer>`_. Let’s first choose a base from which to build our
 container, in this case I used the docker image ``node:8`` which comes
 pre-installed with Node 8:
 
@@ -4097,7 +4097,7 @@ ventures please `let us know <https://www.github.com/singularityware/singularity
 2. Library Configurations
 -------------------------
 
-| The command `ldconfig`_ is used to update the shared library cache. If
+| The command `ldconfig <https://codeyarns.com/2014/01/14/how-to-add-library-directory-to-ldconfig-cache/>`_ is used to update the shared library cache. If
   you have software that requires symbolic linking of libraries and you
   do the installation without updating the cache, then the Singularity
   image (in read only) will likely give you an error that the library is
