@@ -1593,7 +1593,7 @@ Sections
     $ sudo singularity build roar.simg Singularity
 
 %help
-`````
+"""""
 
 | You don’t need to do much programming to add a ``%help``
   section to your container. Just write it into a section:
@@ -1615,7 +1615,7 @@ And it will work when the user asks the container for help.
     Help me. I'm in the container.
 
 %setup
-``````
+""""""
 
 | Commands in the %setup section are executed on the host system outside
   of the container after the base OS has been installed. For versions
@@ -1661,7 +1661,7 @@ directory:
     avocados.txt   roar.simg   Singularity
 
 %files
-``````
+""""""
 
 | If you want to copy files from your host system into the container,
   you should do so using the ``%files`` section. Each line is a pair of ``<source>`` and ``<destination>``, where
@@ -1712,7 +1712,7 @@ second, I’m adding it to opt. Does it work?
 We have avocados!
 
 %labels
-```````
+"""""""
 
 To store metadata with your container, you can add them to the ``%labels`` section.
 They will be stored in the file ``/.singularity.d/labels.json`` as metadata within your container. The
@@ -1762,7 +1762,7 @@ You’ll notice some other labels that are captured automatically from the
 build process. You can read more about labels and metadata `here <#id37>`_.
 
 %environment
-````````````
+""""""""""""
 
 | As of Singularity 2.3, you can add environment variables to your
   Singularity Recipe in a section called ``%environment``. Keep in mind that these
@@ -1849,7 +1849,7 @@ When we rebuild, is it added to the environment?
 the ``%labels`` and ``%environment`` sections.
 
 %post
-`````
+"""""
 
 Commands in the ``%post`` section are executed within the container after the base
 OS has been installed at build time. This is where the meat of your
@@ -1881,7 +1881,7 @@ You cannot copy files from the host to your container in this section,
 but you can of course download with commands like ``git clone`` and ``wget`` and ``curl``.
 
 %runscript
-``````````
+""""""""""
 
 .. _sec:runscript:
 
@@ -1953,7 +1953,7 @@ analysis script. Running it, it works as expected:
     one two
 
 %test
-`````
+"""""
 
 You may choose to add a ``%test`` section to your definition file. This section
 will be run at the very end of the build process and will give you a
