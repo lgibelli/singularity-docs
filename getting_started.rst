@@ -615,7 +615,7 @@ The Singularity container image
    any other program on the host
 
 *Copying, sharing, branching, and distributing your image*
-..........................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | A primary goal of Singularity is mobility. The single file image
   format makes mobility easy. Because Singularity images are single
