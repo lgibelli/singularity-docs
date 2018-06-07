@@ -1420,7 +1420,7 @@ The following variables have defaults that can be customized by you via
 environment variables at runtime.
 
 Docker
-``````
+""""""
 
 |
 | **DOCKER\_API\_BASE** Set as ``index.docker.io``, which is the name of the registry. In
@@ -1434,7 +1434,7 @@ Docker
   currently being used, by default now is ``v2``.
 | **DOCKER\_OS** This is exposed via the exported environment variable ``SINGULARITY_DOCKER_OS``
   and pertains to images that reveal a version 2 manifest with a
-  `manifest list`_. In the case that the list is present, we must choose
+  `manifest list <https://docs.docker.com/registry/spec/manifest-v2-2/#manifest-list>`_. In the case that the list is present, we must choose
   an operating system (this variable) and an architecture (below). The
   default is ``linux``.
 | **DOCKER\_ARCHITECTURE** This is exposed via the exported environment
@@ -1456,7 +1456,7 @@ Docker
   of a local registry.
 
 Singularity Hub
-```````````````
+"""""""""""""""
 
 | **SHUB\_API\_BASE** The default base for the Singularity Hub API,
   which is ``https://singularity-hub.org/api``
@@ -1500,7 +1500,7 @@ point for designing any custom container. It includes specifics about
 installation software, environment variables, files to add, and
 container metadata. You can even write a help section, or define modular
 components in the container called based on the `Scientific
-Filesystem`_.
+Filesystem <https://sci-f.github.io/>`_.
 
 Overview
 ========
@@ -3248,7 +3248,7 @@ Why do we need SCI-F?
   intended functions. This documentation will walk through some
   rationale, background, and examples of the SCIF integration for
   Singularity containers. For other examples (and a client that works
-  across container technologies) see the the `scientific filesystem`_.
+  across container technologies) see the the `scientific filesystem <https://sci-f.github.io/>`_.
   This page will primarily cover the native Singularity SCIF
   integration.
 | To start, let’s take a look at this series of steps to install
