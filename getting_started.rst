@@ -4081,7 +4081,7 @@ Best Practices
 While most docker images can import and run without a hitch, there are
 some special cases for which things can go wrong. Here is a general list
 of suggested practices, and if you discover a new one in your building
-ventures please `let us know`_.
+ventures please `let us know <https://www.github.com/singularityware/singularityware.github.io/issues>`_.
 
 1. Installation to Root
 -----------------------
@@ -4117,13 +4117,13 @@ ventures please `let us know`_.
 
     Don’t put container valuables in ``$TMP`` or ``$HOME``
 
-Have any more best practices? Please `let us know`_!
+Have any more best practices? Please `let us know <https://www.github.com/singularityware/singularityware.github.io/issues>`_!
 
 Troubleshooting
 ===============
 
 Why won’t my image build work? If you can’t find an answer on this site,
-please `ping us an issue`_. If you’ve found an answer and you’d like to
+please `ping us an issue <https://www.github.com/singularityware/singularity/issues>`_. If you’ve found an answer and you’d like to
 see it on the site for others to benefit from, then post to us
 `here <https://www.github.com/singularityware/singularityware.github.io/issues>`__.
 
@@ -4188,8 +4188,8 @@ and then update grub and reboot:
 
     update-grub && reboot
 
-Please note that this change might have `security implications`_ that
-you should be aware of. For more information, see the `original issue`_.
+Please note that this change might have `security implications <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/admin-guide/kernel-parameters.txt?h=v4.13-rc3#n4387>`_ that
+you should be aware of. For more information, see the `original issue <https://github.com/singularityware/singularity/issues/845>`_.
 
 How to use Singularity with GRSecurity enabled kernels
 ======================================================
@@ -4210,7 +4210,7 @@ The container isn’t working on a different host!
 | Singularity by default mounts your home directory. While this is great
   for seamless communication between your host and the container, it can
   introduce issues if you have software modules installed at ``$HOME``. For
-  example, we had a user `run into this issue`_.
+  example, we had a user `run into this issue <https://github.com/singularityware/singularity/issues/476>`_.
 | **Solution 1: Specify the home to mount**
 | A first thing to try is to point to some “sanitized home,” which is
   the purpose of the -H or –home option. For example, here we are
@@ -4240,7 +4240,7 @@ The container isn’t working on a different host!
     exec python "$@"
 
 This same idea would be useful if you are issuing the command to the
-container using ``exec``. Thanks to `yarikoptic`_ for the suggestions on this
+container using ``exec``. Thanks to `yarikoptic <https://github.com/yarikoptic>`_ for the suggestions on this
 issue.
 
 Invalid Argument or Unknown Option
