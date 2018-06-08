@@ -11,11 +11,12 @@ Singularity from source with the version and location of your choice.
 Before you begin
 ----------------
 
-| If you have an earlier version of Singularity installed, you should
-  remove it before executing the installation commands.
-| These instructions will build Singularity from source on your system.
-  So you will need to have some development tools installed. If you run
-  into missing dependencies, try installing them like so:
+If you have an earlier version of Singularity installed, you should
+remove it before executing the installation commands.
+
+These instructions will build Singularity from source on your system.
+So you will need to have some development tools installed. If you run
+into missing dependencies, try installing them like so:
 
 ::
 
@@ -53,21 +54,21 @@ repo <https://github.com/singularityware/singularity>`_ master branch to ``/usr/
     is ``/etc``. This ensures that the configuration file ``singularity.conf`` is placed in the
     standard location.
 
-| If you omit the ``--sysconfdir`` option , the configuration file will be installed in ``/usr/local/etc``.
-  If you omit the ``--prefix`` option, Singularity will be installed in the ``/usr/local`` directory
-  hierarchy by default. And if you specify a custom directory with the ``--prefix``
-  option, all of Singularity’s binaries and the configuration file will
-  be installed within that directory. This last option can be useful if
-  you want to install multiple versions of Singularity, install
-  Singularity on a shared system, or if you want to remove Singularity
-  easily after installing it.
+If you omit the ``--sysconfdir`` option , the configuration file will be installed in ``/usr/local/etc``.
+If you omit the ``--prefix`` option, Singularity will be installed in the ``/usr/local`` directory
+hierarchy by default. And if you specify a custom directory with the ``--prefix``
+option, all of Singularity’s binaries and the configuration file will
+be installed within that directory. This last option can be useful if
+you want to install multiple versions of Singularity, install
+Singularity on a shared system, or if you want to remove Singularity
+easily after installing it.
 
 --------------------------
 Install a specific release
 --------------------------
 
-| The following commands will install a specific release from `GitHub
-  releases <https://github.com/singularityware/singularity/releases>`_ page to ``/usr/local``.
+The following commands will install a specific release from `GitHub
+releases <https://github.com/singularityware/singularity/releases>`_ page to ``/usr/local``.
 
 ::
 
@@ -83,8 +84,8 @@ Install a specific release
 Install the development branch
 ------------------------------
 
-| If you want to test a development branch the routine above should be
-  tweaked slightly:
+If you want to test a development branch the routine above should be
+tweaked slightly:
 
 ::
 
@@ -116,12 +117,12 @@ you need to hit all of the following:
     $ sudo rm /usr/local/etc/bash_completion.d/singularity
     $ sudo rm /usr/local/man/man1/singularity.1
 
-| If you modified the system configuration directory, remove the ``singularity.conf`` file
-  there as well.
-| If you installed Singularity in a custom directory, you need only
-  remove that directory to uninstall Singularity. For instance if you
-  installed singularity with the ``--prefix=/some/temp/dir`` option argument pair, you can remove
-  Singularity like so:
+If you modified the system configuration directory, remove the ``singularity.conf`` file
+there as well.
+If you installed Singularity in a custom directory, you need only
+remove that directory to uninstall Singularity. For instance if you
+installed singularity with the ``--prefix=/some/temp/dir`` option argument pair, you can remove
+Singularity like so:
 
 ::
 

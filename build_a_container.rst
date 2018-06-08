@@ -15,10 +15,10 @@ create a container from scratch and customized it to fit your needs.
 Overview
 --------
 
-| The ``build`` command accepts a target as input and produces a container as
-  output.
-| The target defines the method that ``build`` uses to create the container. It
-  can be one of the following:
+The ``build`` command accepts a target as input and produces a container as output.
+
+The target defines the method that ``build`` uses to create the container. It
+can be one of the following:
 
 -  URI beginning with **shub://** to build from Singularity Hub
 
@@ -32,8 +32,8 @@ Overview
 
 -  path to a `Singularity recipe file <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_
 
-| In addition ``build`` can produce containers in three different formats. Formats
-  types can be specified by passing the following options to build.
+In addition ``build`` can produce containers in three different formats. Formats
+types can be specified by passing the following options to build.
 
 -  compressed read-only **squashfs** file system suitable for production
    (default)
@@ -44,15 +44,16 @@ Overview
 -  writable **(ch)root directory** called a sandbox for interactive
    development ( ``--sandbox`` option)
 
-| Because ``build`` can accept an existing container as a target and create a
-  container in any of these three formats you can convert existing
-  containers from one format to another.
-| The following diagram illustrates the targets that can be supplied to ``build``
-  as inputs and the containers ``build`` can produce as outputs. Green arrows
-  represent operations that can be carried out without root privileges
-  (though the container may not perform properly when run as root). Red
-  arrows represent operations that must be carried out with root
-  privileges.
+Because ``build`` can accept an existing container as a target and create a
+container in any of these three formats you can convert existing
+containers from one format to another.
+
+The following diagram illustrates the targets that can be supplied to ``build``
+as inputs and the containers ``build`` can produce as outputs. Green arrows
+represent operations that can be carried out without root privileges
+(though the container may not perform properly when run as root). Red
+arrows represent operations that must be carried out with root
+privileges.
 
 .. figure:: build_input_output.png
    :alt: Singularity build process
@@ -70,12 +71,11 @@ Hub.
 
     $ singularity build lolcow.simg shub://GodloveD/lolcow
 
-| The first argument (``lolvow.simg``) specifies a path and name for your container.
-  The second argument
-| (``shub://GodloveD/lolcow``) gives the Singularity Hub URI from which to download.
-| But default the container will be converted to a compressed, read-only
-  squashfs file. If you want your container in a different format use
-  the ``--writable`` or ``--sandbox`` options.
+The first argument (``lolvow.simg``) specifies a path and name for your container.
+The second argument (``shub://GodloveD/lolcow``) gives the Singularity Hub URI from which to download.
+But default the container will be converted to a compressed, read-only
+squashfs file. If you want your container in a different format use
+the ``--writable`` or ``--sandbox`` options.
 
 ------------------------------------------------
 Downloading a existing container from Docker Hub
@@ -95,22 +95,24 @@ Creating - -writable images and - -sandbox directories
 - -writable
 ===========
 
-| If you wanted to create a writable ext3 image similar to those used by
-  Singularity version < 2.4, you could do so with the ``--writable`` option. You must
-  create writable containers as root.
-| Extending the Singularity Hub example from above:
+If you wanted to create a writable ext3 image similar to those used by
+Singularity version < 2.4, you could do so with the ``--writable`` option. You must
+create writable containers as root.
+
+Extending the Singularity Hub example from above:
 
 ::
 
     $ sudo singularity build --writable lolcow.img shub://GodloveD/lolcow
 
-| The resulting container is writable, but is still mounted as read-only
-  when executed with commands such as ``run``, ``exec``, and ``shell``. To mount the container
-  as read-write when using these commands add the ``--writable`` option to them as
-  well.
-| To ensure that you have the proper permissions to write to the
-  container as you like, it is also a good idea to make changes as root.
-  For example:
+The resulting container is writable, but is still mounted as read-only
+when executed with commands such as ``run``, ``exec``, and ``shell``. To mount the container
+as read-write when using these commands add the ``--writable`` option to them as
+well.
+
+To ensure that you have the proper permissions to write to the
+container as you like, it is also a good idea to make changes as root.
+For example:
 
 ::
 
@@ -128,14 +130,14 @@ it is recommended to do so as root.
 
     $ sudo singularity build --sandbox lolcow/ shub://GodloveD/lolcow
 
-| The resulting directory operates just like a container in an image
-  file. You are permitted to make changes and write files within the
-  directory, but those changes will not persist when you are finished
-  using the container. To make your changes persistent, use the ``--writable`` flag
-  when you invoke your container.
-| Once again, it’s a good idea to do this as root to ensure you have
-  permission to access the files and directories that you want to
-  change.
+The resulting directory operates just like a container in an image
+file. You are permitted to make changes and write files within the
+directory, but those changes will not persist when you are finished
+using the container. To make your changes persistent, use the ``--writable`` flag
+when you invoke your container.
+Once again, it’s a good idea to do this as root to ensure you have
+permission to access the files and directories that you want to
+change.
 
 ::
 
@@ -155,7 +157,7 @@ could:
 
     $ sudo singularity build --writable development.img production.simg
 
-| Similarly, to convert it to a writable directory (a sandbox):
+Similarly, to convert it to a writable directory (a sandbox):
 
 ::
 
@@ -169,24 +171,25 @@ environment:
 
     $ singularity build production2 development/
 
-| You can convert the three supported container formats using any
-  combination.
-| Use care when converting writable ext3 images or sandbox directories
-  to the default squashfs file format. If changes were made to the
-  writable container before conversion, there is no record of those
-  changes in the Singularity recipe file rendering your container
-  non-reproducible. It is a best practice to build your immutable
-  production containers directly from a Singularity recipe file instead.
+You can convert the three supported container formats using any
+combination.
+
+Use care when converting writable ext3 images or sandbox directories
+to the default squashfs file format. If changes were made to the
+writable container before conversion, there is no record of those
+changes in the Singularity recipe file rendering your container
+non-reproducible. It is a best practice to build your immutable
+production containers directly from a Singularity recipe file instead.
 
 -------------------------------------------------
 Building containers from Singularity recipe files
 -------------------------------------------------
 
-| Of course, Singularity recipe files can be used as the target when
-  building a container. For detailed information on writing Singularity
-  recipe files, please see the `Container Recipes docs <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_.
-| Let’s say you already have the following container recipe file called ``Singularity``
-  , and you want to use it to build a container.
+Of course, Singularity recipe files can be used as the target when
+building a container. For detailed information on writing Singularity
+recipe files, please see the `Container Recipes docs <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_.
+Let’s say you already have the following container recipe file called ``Singularity``
+, and you want to use it to build a container.
 
 ::
 
@@ -216,16 +219,18 @@ requires root privileges.
 ``--force``
 ===========
 
-| You can build into the same container multiple times (though the
-  results may be unpredictable and it is generally better to delete your
-  container and start from scratch).
-| By default if you build into an existing container, the ``build`` command will
-  skip the steps involved in adding a new base. You can override this
-  default with the ``--force`` option requiring that a new base OS is bootstrapped
-  into the existing container. This behavior does not delete the
-  existing OS, it just adds the new OS on top of the existing one.
-| Use care with this option: you may get results that you did not
-  expect.
+You can build into the same container multiple times (though the
+results may be unpredictable and it is generally better to delete your
+container and start from scratch).
+
+By default if you build into an existing container, the ``build`` command will
+skip the steps involved in adding a new base. You can override this
+default with the ``--force`` option requiring that a new base OS is bootstrapped
+into the existing container. This behavior does not delete the
+existing OS, it just adds the new OS on top of the existing one.
+
+Use care with this option: you may get results that you did not
+expect.
 
 ``--section``
 =============
@@ -261,10 +266,10 @@ build to exit with an error because it cannot find a GPU on your system.
 ``--checks``
 ============
 
-| Checks are a new feature (in 2.4) that offer an easy way for an admin
-  to define a security (or any other kind of check) to be run on demand
-  for a Singularity image. They are defined (and run) via different
-  tags.
+Checks are a new feature (in 2.4) that offer an easy way for an admin
+to define a security (or any other kind of check) to be run on demand
+for a Singularity image. They are defined (and run) via different
+tags.
 
 ::
 

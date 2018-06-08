@@ -35,37 +35,40 @@ bind points.
 User-defined bind points
 ========================
 
-| If the system administrator has `enabled user control of binds <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes>`_, you
-  will be able to request your own bind points within your container.
-| To *mount* a bind path inside the container, a **bind point** must be
-  defined within the container. The bind point is a directory within the
-  container that Singularity can use to bind a directory on the host
-  system. This means that if you want to bind to a point within the
-  container such as ``/global``, that directory must already exist within the
-  container.
-| It is, however, possible that the system administrator has enabled a
-  Singularity feature called `overlay in the Singularity configuration
-  file <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#enable-overlay-boolean-default-no>`_. This will cause the bind points to be created on an as-needed
-  basis in an overlay file system so that the underlying container is
-  not modified. But because the overlay feature is not always enabled or
-  is unavailable in the kernels of some older host systems, it may be
-  necessary for container standards to exist to ensure portability from
-  host to host.
+If the system administrator has `enabled user control of binds <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes>`_, you
+will be able to request your own bind points within your container.
+
+To *mount* a bind path inside the container, a **bind point** must be
+defined within the container. The bind point is a directory within the
+container that Singularity can use to bind a directory on the host
+system. This means that if you want to bind to a point within the
+container such as ``/global``, that directory must already exist within the
+container.
+
+It is, however, possible that the system administrator has enabled a
+Singularity feature called `overlay in the Singularity configuration
+file <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#enable-overlay-boolean-default-no>`_. This will cause the bind points to be created on an as-needed
+basis in an overlay file system so that the underlying container is
+not modified. But because the overlay feature is not always enabled or
+is unavailable in the kernels of some older host systems, it may be
+necessary for container standards to exist to ensure portability from
+host to host.
 
 Specifying Bind Paths
 ---------------------
 
-| Many of the Singularity commands such as ``run``, ``exec`` , and ``shell`` take the ``--bind /
-  command-line`` option to specify bind paths, in addition to the ``SINGULARITY_BINDPATH``
-  environment variable. This option’s argument is a comma-delimited
-  string of bind path specifications in the format ``src[:dest[:opts]]``, where ``src`` and ``dest`` are
-  outside and inside paths. If ``dest`` is not given, it is set equal to ``src`` . Mount
-  options (``opts``) may be specified as ``ro`` (read-only) or ``rw`` (read/write, which is
-  the default). The ``--bind/-B`` option can be specified multiple times, or a
-  comma-delimited string of bind path specifications can be used.
-| Here’s an example of using the ``-B`` option and binding ``/tmp`` on the host to ``/scratch`` in
-  the container (``/scratch`` does not need to already exist in the container if
-  file system overlay is enabled):
+Many of the Singularity commands such as ``run``, ``exec`` , and ``shell`` take the ``--bind /
+command-line`` option to specify bind paths, in addition to the ``SINGULARITY_BINDPATH``
+environment variable. This option’s argument is a comma-delimited
+string of bind path specifications in the format ``src[:dest[:opts]]``, where ``src`` and ``dest`` are
+outside and inside paths. If ``dest`` is not given, it is set equal to ``src`` . Mount
+options (``opts``) may be specified as ``ro`` (read-only) or ``rw`` (read/write, which is
+the default). The ``--bind/-B`` option can be specified multiple times, or a
+comma-delimited string of bind path specifications can be used.
+
+Here’s an example of using the ``-B`` option and binding ``/tmp`` on the host to ``/scratch`` in
+the container (``/scratch`` does not need to already exist in the container if
+file system overlay is enabled):
 
 ::
 
@@ -75,8 +78,8 @@ Specifying Bind Paths
     Singularity.Centos7-ompi.img> ls /scratch
     ssh-7vywtVeOez  systemd-private-cd84c81dda754fe4a7a593647d5a5765-ntpd.service-12nMO4
 
-| You can bind multiple directories in a single command with this
-  syntax:
+You can bind multiple directories in a single command with this
+syntax:
 
 ::
 

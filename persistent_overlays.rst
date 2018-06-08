@@ -10,20 +10,23 @@ container for the illusion of read-write access.
 Overview
 --------
 
-| A persistent overlay is an image that “sits on top” of your
-  compressed, immutable squashfs container. When you install new
-  software or create and modify files the overlay image stores the
-  changes.
-| In Singularity versions 2.4 and later an overlay file system is
-  automatically added to your squashfs or sandbox container when it is
-  mounted. This means you can install new software and create and modify
-  files even though your container is read-only. But your changes will
-  disappear as soon as you exit the container.
-| If you want your changes to persist in your container across uses, you
-  can create a writable image to use as a persistent overlay. Then you
-  can specify that you want to use the image as an overlay at runtime
-  with the ``--overlay`` option.
-| You can use a persistent overlays with the following commands:
+A persistent overlay is an image that “sits on top” of your
+compressed, immutable squashfs container. When you install new
+software or create and modify files the overlay image stores the
+changes.
+
+In Singularity versions 2.4 and later an overlay file system is
+automatically added to your squashfs or sandbox container when it is
+mounted. This means you can install new software and create and modify
+files even though your container is read-only. But your changes will
+disappear as soon as you exit the container.
+
+If you want your changes to persist in your container across uses, you
+can create a writable image to use as a persistent overlay. Then you
+can specify that you want to use the image as an overlay at runtime
+with the ``--overlay`` option.
+
+You can use a persistent overlays with the following commands:
 
 - ``run``
 - ``exec``
@@ -60,8 +63,8 @@ ensure that we have write privileges where we want them.
     /usr/bin/vim
     Singularity ubuntu.simg:~> exit
 
-| You will find that your changes persist across sessions as though you
-  were using a writable container.
+You will find that your changes persist across sessions as though you
+were using a writable container.
 
 ::
 

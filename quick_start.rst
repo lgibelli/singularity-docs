@@ -16,7 +16,7 @@ system administrator.
 Installation
 ------------
 
-| There are many ways to `install Singularity <#installation>`_ but this quick start guide will only cover one.
+There are many ways to `install Singularity <#installation>`_ but this quick start guide will only cover one.
 
 ::
 
@@ -33,13 +33,13 @@ Singularity must be installed as root to function properly.
 Overview of the Singularity Interface
 -------------------------------------
 
-| Singularity’s `command line interface <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#command-usage>`_ allows you to build and interact with containers
-  transparently. You can run programs inside a container as if they were
-  running on your host system. You can easily redirect IO, use pipes,
-  pass arguments, and access files, sockets, and ports on the host
-  system from within a container.
-| The ``--help`` option gives an overview of Singularity options and subcommands as
-  follows:
+Singularity’s `command line interface <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#command-usage>`_ allows you to build and interact with containers
+transparently. You can run programs inside a container as if they were
+running on your host system. You can easily redirect IO, use pipes,
+pass arguments, and access files, sockets, and ports on the host
+system from within a container.
+The ``--help`` option gives an overview of Singularity options and subcommands as
+follows:
 
 ::
 
@@ -85,13 +85,13 @@ Overview of the Singularity Interface
     For any additional help or support visit the Singularity
     website: https://github.com/singularityware/singularity
 
-| For any additional help or support visit the Singularity website:
-  https://www.sylabs.io/contact/
-| Singularity uses positional syntax. Global options follow the ``singularity``
-  invocation and affect the way that Singularity runs any command. Then
-  commands are passed followed by their options.
-| For example, to pass the ``--debug`` option to the main ``singularity`` command and run
-  Singularity with debugging messages on:
+For any additional help or support visit the Singularity website:
+https://www.sylabs.io/contact/
+Singularity uses positional syntax. Global options follow the ``singularity``
+invocation and affect the way that Singularity runs any command. Then
+commands are passed followed by their options.
+For example, to pass the ``--debug`` option to the main ``singularity`` command and run
+Singularity with debugging messages on:
 
 ::
 
@@ -115,8 +115,8 @@ following:
     $ singularity <command> --help
     $ singularity <command> -h
 
-| Users can also `write help docs specific to a container <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#help>`_ or for an internal module called an . If those help
-  docs exist for a particular container, you can view them like so.
+Users can also `write help docs specific to a container <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#help>`_ or for an internal module called an . If those help
+docs exist for a particular container, you can view them like so.
 
 ::
 
@@ -137,26 +137,26 @@ simply downloads the image file to your system.
     $ singularity pull shub://vsoch/hello-world   # pull with default name, vsoch-hello-world-master.simg
     $ singularity pull --name hello.simg shub://vsoch/hello-world   # pull with custom name
 
-| Singularity images can also be pulled and named by an associated
-  GitHub commit or content hash.
-| You can also use ``pull`` with the ``docker://`` uri to reference Docker images served from a
-  registry. In this case ``pull`` does not just download an image file. Docker
-  images are stored in layers, so ``pull`` must also combine those layers into a
-  usable Singularity file.
+Singularity images can also be pulled and named by an associated
+GitHub commit or content hash.
+You can also use ``pull`` with the ``docker://`` uri to reference Docker images served from a
+registry. In this case ``pull`` does not just download an image file. Docker
+images are stored in layers, so ``pull`` must also combine those layers into a
+usable Singularity file.
 
 ::
 
     $ singularity pull docker://godlovedc/lolcow  # with default name
     $ singularity pull --name funny.simg docker://godlovedc/lolcow # with custom name
 
-| Pulling Docker images reduces reproducibility. If you were to pull a
-  Docker image today and then wait six months and pull again, you are
-  not guaranteed to get the same image. If any of the source layers has
-  changed the image will be altered. If reproducibility is a priority
-  for you, try building your images from Singularity Hub.
-| You can also use the ``build`` command to download pre-built images from an
-  external resource. When using ``build`` you must specify a name for your
-  container like so:
+Pulling Docker images reduces reproducibility. If you were to pull a
+Docker image today and then wait six months and pull again, you are
+not guaranteed to get the same image. If any of the source layers has
+changed the image will be altered. If reproducibility is a priority
+for you, try building your images from Singularity Hub.
+You can also use the ``build`` command to download pre-built images from an
+external resource. When using ``build`` you must specify a name for your
+container like so:
 
 ::
 
@@ -253,7 +253,7 @@ and then disappears.
 Working with Files
 ==================
 
-| Files on the host are reachable from within the container.
+Files on the host are reachable from within the container.
 
 ::
 
@@ -261,12 +261,12 @@ Working with Files
     $ singularity exec vsoch-hello-world-master.simg cat $HOME/hello-kitty.txt
     Hello World
 
-| This example works because ``hello-kitty.txt`` exists in the user’s home directory. By
-  default singularity bind mounts ``/home/$USER``, ``/tmp``, and ``$PWD`` into your container at
-  runtime.
-| You can specify additional directories to bind mount into your
-  container with the `- -bind <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#bind-paths-and-mounts>`_ option. In this example, the ``data`` directory on the host
-  system is bind mounted to the ``/mnt`` directory inside the container.
+This example works because ``hello-kitty.txt`` exists in the user’s home directory. By
+default singularity bind mounts ``/home/$USER``, ``/tmp``, and ``$PWD`` into your container at
+runtime.
+You can specify additional directories to bind mount into your
+container with the `- -bind <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#bind-paths-and-mounts>`_ option. In this example, the ``data`` directory on the host
+system is bind mounted to the ``/mnt`` directory inside the container.
 
 ::
 
@@ -280,15 +280,15 @@ Build images from scratch
 
 .. _sec:buildimagesfromscratch:
 
-| As of Singularity v2.4 by default ``build`` produces immutable images in the
-  squashfs file format. This ensures reproducible and verifiable images.
-| However, during testing and debugging you may want an image format
-  that is writable. This way you can ``shell`` into the image and install software
-  and dependencies until you are satisfied that your container will
-  fulfill your needs. For these scenarios, Singularity supports two
-  other image formats: a ``sandbox`` format (which is really just a chroot
-  directory), and a ``writable`` format (the ext3 file system that was used in
-  Singularity versions less than 2.4).
+As of Singularity v2.4 by default ``build`` produces immutable images in the
+squashfs file format. This ensures reproducible and verifiable images.
+However, during testing and debugging you may want an image format
+that is writable. This way you can ``shell`` into the image and install software
+and dependencies until you are satisfied that your container will
+fulfill your needs. For these scenarios, Singularity supports two
+other image formats: a ``sandbox`` format (which is really just a chroot
+directory), and a ``writable`` format (the ext3 file system that was used in
+Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
 read about the `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id29>`_.
@@ -296,39 +296,39 @@ read about the `singularity flow <https://singularity-userdoc.readthedocs.io/en/
 Sandbox Directory
 =================
 
-| To build into a ``sandbox`` (container in a directory) use the ``build --sandbox`` command and option:
+To build into a ``sandbox`` (container in a directory) use the ``build --sandbox`` command and option:
 
 ::
 
     $ sudo singularity build --sandbox ubuntu/ docker://ubuntu
 
-| This command creates a directory called ``ubuntu/`` with an entire Ubuntu
-  Operating System and some Singularity metadata in your current working
-  directory.
-| You can use commands like ``shell``, ``exec`` , and ``run`` with this directory just as you
-  would with a Singularity image. You can also write files to this
-  directory from within a Singularity session (provided you have the
-  permissions to do so). These files will be ephemeral and will
-  disappear when the container is finished executing. However if you use
-  the ``--writable`` option the changes will be saved into your directory so that you
-  can use them the next time you use your container.
+This command creates a directory called ``ubuntu/`` with an entire Ubuntu
+Operating System and some Singularity metadata in your current working
+directory.
+You can use commands like ``shell``, ``exec`` , and ``run`` with this directory just as you
+would with a Singularity image. You can also write files to this
+directory from within a Singularity session (provided you have the
+permissions to do so). These files will be ephemeral and will
+disappear when the container is finished executing. However if you use
+the ``--writable`` option the changes will be saved into your directory so that you
+can use them the next time you use your container.
 
 Writable Image
 ==============
 
-| If you prefer to have a writable image file, you can ``build`` a container with
-  the ``--writable`` option.
+If you prefer to have a writable image file, you can ``build`` a container with
+the ``--writable`` option.
 
 ::
 
     $ sudo singularity build --writable ubuntu.img docker://ubuntu
 
-| This produces an image that is writable with an ext3 file system.
-  Unlike the sandbox, it is a single image file. Also by convention this
-  file name has an “.img” extension instead of “.simg” .
-| When you want to alter your image, you can use commands like ``shell``, ``exec``, ``run``,
-  with the ``--writable`` option. Because of permission issues it may be necessary to
-  execute the container as root to modify it.
+This produces an image that is writable with an ext3 file system.
+Unlike the sandbox, it is a single image file. Also by convention this
+file name has an “.img” extension instead of “.simg” .
+When you want to alter your image, you can use commands like ``shell``, ``exec``, ``run``,
+with the ``--writable`` option. Because of permission issues it may be necessary to
+execute the container as root to modify it.
 
 ::
 
@@ -347,26 +347,26 @@ Converting images from one format to another
 
     $ singularity build new-squashfs sandbox
 
-| Doing so may break reproducibility if you have altered your sandbox
-  outside of the context of a recipe file, so you are advised to
-  exercise care.
-| You can use ``build`` to convert containers to and from ``writable``, ``sandbox``, and default
-  (squashfs) file formats via any of the six possible combinations.
+Doing so may break reproducibility if you have altered your sandbox
+outside of the context of a recipe file, so you are advised to
+exercise care.
+You can use ``build`` to convert containers to and from ``writable``, ``sandbox``, and default
+(squashfs) file formats via any of the six possible combinations.
 
 Singularity Recipes
 ===================
 
-| For a reproducible, production-quality container, we recommend that
-  you build a container with the default (squashfs) file format using a
-  Singularity recipe file. This also makes it easy to add files,
-  environment variables, and install custom software, and still start
-  from your base of choice (e.g., Singularity Hub).
-| A recipe file has a header and a body. The header determines what kind
-  of base container to begin with, and the body is further divided into
-  sections (called scriptlets) that do things like install software,
-  setup the environment, and copy files into the container from the host
-  system.
-| Here is an example of a recipe file:
+For a reproducible, production-quality container, we recommend that
+you build a container with the default (squashfs) file format using a
+Singularity recipe file. This also makes it easy to add files,
+environment variables, and install custom software, and still start
+from your base of choice (e.g., Singularity Hub).
+A recipe file has a header and a body. The header determines what kind
+of base container to begin with, and the body is further divided into
+sections (called scriptlets) that do things like install software,
+setup the environment, and copy files into the container from the host
+system.
+Here is an example of a recipe file:
 
 ::
 
@@ -400,25 +400,24 @@ named Singularity), you would call build like so:
 
     $ sudo singularity build ubuntu.simg Singularity
 
-| In this example, the header tells singularity to use a base Ubuntu
-  image from Singularity Hub. The ``%runscript`` section defines actions for the
-  container to take when it is executed (in this case a simple message).
-  The ``%files`` section copies some files into the container from the host system
-  at build time. The ``%environment`` section defines some environment variables that
-  will be available to the container at runtime. The ``%labels`` section allows for
-  custom metadata to be added to the container. And finally the ``%post`` section
-  executes within the container at build time after the base OS has been
-  installed. The ``%post`` section is therefore the place to perform installations
-  of custom apps.
-| This is a very small example of the things that you can do with a `recipe file <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ . In
-  addition to building a container from Singularity Hub, you can start
-  with base images from Docker Hub, use images directly from official
-  repositories such as Ubuntu, Debian, Centos, Arch, and BusyBox, use an
-  existing container on your host system as a base, or even take a
-  snapshot of the host system itself and use that as a base image.
-| If you want to build Singularity images without having singularity
-  installed in a build environment, you can build images using
-  `Singularity
-  Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
-  instead. If you want a more detailed rundown and examples for
-  different build options, see our `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id29>`_ page.
+In this example, the header tells singularity to use a base Ubuntu
+image from Singularity Hub. The ``%runscript`` section defines actions for the
+container to take when it is executed (in this case a simple message).
+The ``%files`` section copies some files into the container from the host system
+at build time. The ``%environment`` section defines some environment variables that
+will be available to the container at runtime. The ``%labels`` section allows for
+custom metadata to be added to the container. And finally the ``%post`` section
+executes within the container at build time after the base OS has been
+installed. The ``%post`` section is therefore the place to perform installations
+of custom apps.
+This is a very small example of the things that you can do with a `recipe file <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ . In
+addition to building a container from Singularity Hub, you can start
+with base images from Docker Hub, use images directly from official
+repositories such as Ubuntu, Debian, Centos, Arch, and BusyBox, use an
+existing container on your host system as a base, or even take a
+snapshot of the host system itself and use that as a base image.
+If you want to build Singularity images without having singularity
+installed in a build environment, you can build images using
+`Singularity Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
+instead. If you want a more detailed rundown and examples for
+different build options, see our `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id29>`_ page.

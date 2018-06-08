@@ -19,15 +19,15 @@ that is pretty simple, I install nginx and start the service:
     apt-get update && apt-get install -y nginx
     service nginx start
 
-| With older versions of Singularity, if you were to do something like
-  this, from inside the container you would happily see the service
-  start, and the web server running! But then if you were to log out of
-  the container what would happen?
-| Orphan process within unreachable namespaces!
-| You would lose control of the process. It would still be running, but
-  you couldn’t easily kill or interface with it. This is a called an
-  orphan process. Singularity versions less than 2.4 were not designed
-  to handle running services properly.
+With older versions of Singularity, if you were to do something like
+this, from inside the container you would happily see the service
+start, and the web server running! But then if you were to log out of
+the container what would happen?
+Orphan process within unreachable namespaces!
+You would lose control of the process. It would still be running, but
+you couldn’t easily kill or interface with it. This is a called an
+orphan process. Singularity versions less than 2.4 were not designed
+to handle running services properly.
 
 ----------------------------------
 Container Instances in Singularity
@@ -124,8 +124,8 @@ When you are finished with your instance you can clean it up with the
 
     $ singularity instance.stop web1
 
-| If you have multiple instances running and you want to stop all of
-  them, you can do so with a wildcard or the -a flag:
+If you have multiple instances running and you want to stop all of
+them, you can do so with a wildcard or the -a flag:
 
 ::
 

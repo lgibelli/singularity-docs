@@ -8,24 +8,25 @@ Reproducible SCI-F Apps
 Why do we need SCI-F?
 ---------------------
 
-| The Scientific Filesystem (SCIF) provides internal modularity of
-  containers, and it makes it easy for the creator to give the container
-  implied metadata about software. For example, installing a set of
-  libraries, defining environment variables, or adding labels that
-  belong to app ``foo`` makes a strong assertion that those dependencies belong
-  to ``foo`` . When I run foo, I can be confident that the container is running
-  in this context, meaning with ``foo's`` custom environment, and with ``foo's`` libraries
-  and executables on the path. This is drastically different from
-  serving many executables in a single container, because there is no
-  way to know which are associated with which of the container’s
-  intended functions. This documentation will walk through some
-  rationale, background, and examples of the SCIF integration for
-  Singularity containers. For other examples (and a client that works
-  across container technologies) see the the `scientific filesystem <https://sci-f.github.io/>`_.
-  This page will primarily cover the native Singularity SCIF
-  integration.
-| To start, let’s take a look at this series of steps to install
-  dependencies for software foo and bar.
+The Scientific Filesystem (SCIF) provides internal modularity of
+containers, and it makes it easy for the creator to give the container
+implied metadata about software. For example, installing a set of
+libraries, defining environment variables, or adding labels that
+belong to app ``foo`` makes a strong assertion that those dependencies belong
+to ``foo`` . When I run foo, I can be confident that the container is running
+in this context, meaning with ``foo's`` custom environment, and with ``foo's`` libraries
+and executables on the path. This is drastically different from
+serving many executables in a single container, because there is no
+way to know which are associated with which of the container’s
+intended functions. This documentation will walk through some
+rationale, background, and examples of the SCIF integration for
+Singularity containers. For other examples (and a client that works
+across container technologies) see the the `scientific filesystem <https://sci-f.github.io/>`_.
+This page will primarily cover the native Singularity SCIF
+integration.
+
+To start, let’s take a look at this series of steps to install
+dependencies for software foo and bar.
 
 ::
 

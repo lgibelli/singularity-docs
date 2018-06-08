@@ -2,12 +2,13 @@
 Singularity Flow
 ================
 
-| This document describes a suggested “best-practices” workflow for
-  building, running, and managing your containers.
-| There are generally two ways to get images. You either want to pull an
-  image file as is, or (more likely) build your own custom image. We
-  will start with talking about build, and the many different use cases
-  it affords.
+This document describes a suggested “best-practices” workflow for
+building, running, and managing your containers.
+
+There are generally two ways to get images. You either want to pull an
+image file as is, or (more likely) build your own custom image. We
+will start with talking about build, and the many different use cases
+it affords.
 
 .. _sec:singularityflow:
 
@@ -15,10 +16,10 @@ Singularity Flow
 Building Images
 ---------------
 
-| If you read the `quick start <#quick-start>`_, you probably remember that building images from a
-  Docker base does not require a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_. However, if you do want to build and
-  customize your image, you can create a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ text file, which is a simple
-  text file that describes how the container should be made.
+If you read the `quick start <#quick-start>`_, you probably remember that building images from a
+Docker base does not require a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_. However, if you do want to build and
+customize your image, you can create a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ text file, which is a simple
+text file that describes how the container should be made.
 
 The Singularity Flow
 ====================
@@ -58,7 +59,7 @@ runtime for your changes to be persistent.
 Sandbox Folder
 --------------
 
-| To build into a folder (we call this a “sandbox”) just ask for it:
+To build into a folder (we call this a “sandbox”) just ask for it:
 
 ::
 
@@ -75,8 +76,8 @@ Sandbox Folder
     Building image from sandbox: ubuntu/
     Singularity container built: ubuntu/
 
-| We now have a folder with the entire ubuntu OS, plus some Singularity
-  metadata, plopped in our present working directory.
+We now have a folder with the entire ubuntu OS, plus some Singularity
+metadata, plopped in our present working directory.
 
 ::
 
@@ -114,11 +115,11 @@ And you can shell into it just like a normal container.
     Singularity ubuntu:~/Desktop> touch /hello.txt
     touch: cannot touch '/hello.txt': Permission denied
 
-| You can make changes to the container (assuming you have the proper
-  permissions to do so) but those changes will disappear as soon as you
-  exit. To make your changes persistent across sessions, use the ``--writable`` option.
-  It’s also a good practice to shell into your container as root to
-  ensure you have permissions to write where you like.
+You can make changes to the container (assuming you have the proper
+permissions to do so) but those changes will disappear as soon as you
+exit. To make your changes persistent across sessions, use the ``--writable`` option.
+It’s also a good practice to shell into your container as root to
+ensure you have permissions to write where you like.
 
 ::
 
@@ -222,9 +223,10 @@ approach, we support this use case. To do this, given our folder called
 
     sudo singularity build ubuntu.simg ubuntu/
 
-| It could be the case that a cluster maintains a “working” base of
-  container folders (with writable) and then builds and provides
-  production containers to its users.
-| If you want to go through this entire process without having
-  singularity installed locally, or without leaving your cluster, you
-  can build images using `Singularity Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`_.
+It could be the case that a cluster maintains a “working” base of
+container folders (with writable) and then builds and provides
+production containers to its users.
+
+If you want to go through this entire process without having
+singularity installed locally, or without leaving your cluster, you
+can build images using `Singularity Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`_.

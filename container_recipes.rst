@@ -68,8 +68,8 @@ A build that uses a mirror to install Centos-7 might look like this:
     MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
     Include: yum
 
-| Each build base requires particular details during build time. You can
-  read about them and see examples at the following links:
+Each build base requires particular details during build time. You can
+read about them and see examples at the following links:
 
 -  `shub <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-shub>`_ (images hosted on Singularity Hub)
 
@@ -90,13 +90,13 @@ A build that uses a mirror to install Centos-7 might look like this:
 Sections
 ========
 
-| The main content of the bootstrap file is broken into sections.
-  Different sections add different content or execute commands at
-  different times during the build process. Note that if any command
-  fails, the build process will halt.
-| Let’s add each section to our container to see how it works. For each
-  section, we will build the container from the recipe (a file called
-  Singularity) as follows:
+The main content of the bootstrap file is broken into sections.
+Different sections add different content or execute commands at
+different times during the build process. Note that if any command
+fails, the build process will halt.
+Let’s add each section to our container to see how it works. For each
+section, we will build the container from the recipe (a file called
+Singularity) as follows:
 
 ::
 
@@ -105,8 +105,8 @@ Sections
 %help
 -----
 
-| You don’t need to do much programming to add a ``%help``
-  section to your container. Just write it into a section:
+You don’t need to do much programming to add a ``%help``
+section to your container. Just write it into a section:
 
 ::
 
@@ -127,17 +127,18 @@ And it will work when the user asks the container for help.
 %setup
 ------
 
-| Commands in the %setup section are executed on the host system outside
-  of the container after the base OS has been installed. For versions
-  earlier than 2.3 if you need files during %post, you should copy files
-  from your host to $SINGULARITY\_ROOTFS to move them into the
-  container. For >2.3 you can add files to the container (added before
-  %post) using the %files section. We can see the difference between
-  %setup and %post in the following asciicast:
-| In the above, we see that copying something to ``$SINGULARITY_ROOTFS`` during ``%setup`` was successful
-  to move the file into the container, but copying during ``%post`` was not. Let’s
-  add a setup to our current container, just writing a file to the root
-  of the image:
+Commands in the %setup section are executed on the host system outside
+of the container after the base OS has been installed. For versions
+earlier than 2.3 if you need files during %post, you should copy files
+from your host to $SINGULARITY\_ROOTFS to move them into the
+container. For >2.3 you can add files to the container (added before
+%post) using the %files section. We can see the difference between
+%setup and %post in the following asciicast:
+
+In the above, we see that copying something to ``$SINGULARITY_ROOTFS`` during ``%setup`` was successful
+to move the file into the container, but copying during ``%post`` was not. Let’s
+add a setup to our current container, just writing a file to the root
+of the image:
 
 ::
 
@@ -173,16 +174,17 @@ directory:
 %files
 ------
 
-| If you want to copy files from your host system into the container,
-  you should do so using the ``%files`` section. Each line is a pair of ``<source>`` and ``<destination>``, where
-  the source is a path on your host system, and the destination is a
-  path in the container.
-| The ``%files`` section uses the traditional ``cp`` command, so the `same conventions
-  apply <https://linux.die.net/man/1/cp>`_
-| Files are copied **before** any ``%post`` or installation procedures for
-  Singularity versions >2.3. If you are using a legacy version, files
-  are copied after ``%post`` so you must do this via ``%setup``. Let’s add the avocado.txt
-  into the container, to join tacos.txt.
+If you want to copy files from your host system into the container,
+you should do so using the ``%files`` section. Each line is a pair of ``<source>`` and ``<destination>``, where
+the source is a path on your host system, and the destination is a
+path in the container.
+
+The ``%files`` section uses the traditional ``cp`` command, so the `same conventions
+apply <https://linux.die.net/man/1/cp>`_
+Files are copied **before** any ``%post`` or installation procedures for
+Singularity versions >2.3. If you are using a legacy version, files
+are copied after ``%post`` so you must do this via ``%setup``. Let’s add the avocado.txt
+into the container, to join tacos.txt.
 
 ::
 
@@ -347,15 +349,15 @@ When we rebuild, is it added to the environment?
     singularity exec roar.simg env | grep JAWA
     JAWA_SEZ=wutini
 
-| Where are all these environment variables going? Inside the container
-  is a metadata folder located at ``/.singularity.d``, and a subdirectory ``env`` for environment
-  scripts that are sourced. Text in the ``%environment`` section is appended to a file
-  called ``/.singularity.d/env/90-environment.sh``. Text redirected to the ``SINGULARITY_ENVIRONMENT`` variable will added to a file called ``/.singularity.d/env/91-environment.sh``.
-  At runtime, scripts in ``/.singularity/env`` are sourced in order. This means that variables
-  in ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via ``%environment``. Note that you won’t see
-  these variables in the inspect output, as inspect only shows the
-  contents added from ``%environment``.
-| See `Environment and Metadata <#id37>`_ for more information about
+Where are all these environment variables going? Inside the container
+is a metadata folder located at ``/.singularity.d``, and a subdirectory ``env`` for environment
+scripts that are sourced. Text in the ``%environment`` section is appended to a file
+called ``/.singularity.d/env/90-environment.sh``. Text redirected to the ``SINGULARITY_ENVIRONMENT`` variable will added to a file called ``/.singularity.d/env/91-environment.sh``.
+At runtime, scripts in ``/.singularity/env`` are sourced in order. This means that variables
+in ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via ``%environment``. Note that you won’t see
+these variables in the inspect output, as inspect only shows the
+contents added from ``%environment``.
+See `Environment and Metadata <#id37>`_ for more information about
 the ``%labels`` and ``%environment`` sections.
 
 %post
@@ -395,15 +397,15 @@ but you can of course download with commands like ``git clone`` and ``wget`` and
 
 .. _sec:runscript:
 
-| The ``%runscript`` is another scriptlet, but it does not get executed during
-  bootstrapping. Instead it gets persisted within the container to a
-  file (or symlink for later versions) called ``singularity`` which is the execution
-  driver when the container image is run (either via the ``singularity run`` command or via
-  executing the container directly).
-| When the ``%runscript`` is executed, all options are passed along to the executing
-  script at runtime, this means that you can (and should) manage
-  argument processing from within your runscript. Here is an example of
-  how to do that, adding to our work in progress:
+The ``%runscript`` is another scriptlet, but it does not get executed during
+bootstrapping. Instead it gets persisted within the container to a
+file (or symlink for later versions) called ``singularity`` which is the execution
+driver when the container image is run (either via the ``singularity run`` command or via
+executing the container directly).
+When the ``%runscript`` is executed, all options are passed along to the executing
+script at runtime, this means that you can (and should) manage
+argument processing from within your runscript. Here is an example of
+how to do that, adding to our work in progress:
 
 ::
 
@@ -478,11 +480,11 @@ world example:
     %test
         /usr/local/bin/mpirun --allow-run-as-root /usr/bin/mpi_test
 
-| This is a simple Open MPI test to ensure that the MPI is build
-  properly and communicates between processes as it should.
-| If you want to build without running tests (for example, if the test
-  needs to be done in a different environment), you can do so with the
-  ``--notest`` argument:
+This is a simple Open MPI test to ensure that the MPI is build
+properly and communicates between processes as it should.
+If you want to build without running tests (for example, if the test
+needs to be done in a different environment), you can do so with the
+``--notest`` argument:
 
 ::
 
@@ -496,15 +498,16 @@ building the image.
 Apps
 ----
 
-| What if you want to build a single container with two or three
-  different apps that each have their own runscripts and custom
-  environments? In some circumstances, it may be redundant to build
-  different containers for each app with almost equivalent dependencies.
-| Starting in Singularity 2.4 all of the above commands can also be used
-  in the context of internal modules called `apps <#reproducible-sci-f-apps>`_ based on the `Standard
-  Container Integration Format <https://sci-f.github.io/>`_. For details on apps, see the `apps <#reproducible-sci-f-apps>`_
-  documentation. For a quick rundown of adding an app to your container,
-  here is an example runscript:
+What if you want to build a single container with two or three
+different apps that each have their own runscripts and custom
+environments? In some circumstances, it may be redundant to build
+different containers for each app with almost equivalent dependencies.
+
+Starting in Singularity 2.4 all of the above commands can also be used
+in the context of internal modules called `apps <#reproducible-sci-f-apps>`_ based on the `Standard
+Container Integration Format <https://sci-f.github.io/>`_. For details on apps, see the `apps <#reproducible-sci-f-apps>`_
+documentation. For a quick rundown of adding an app to your container,
+here is an example runscript:
 
 ::
 
@@ -563,15 +566,16 @@ Apps
         SOFTWARE=bar
         export SOFTWARE
 
-| Importantly, note that the apps can exist alongside any and all of the
-  primary sections (e.g. ``%post`` or ``%runscript`` ), and the new ``%appinstall`` section is the equivalent of
-  %post but for an app. The title sections (``######``) aren’t necessary or
-  required, they are just comments to show you the different apps. The
-  ordering isn’t important either, you can have any mixture of sections
-  anywhere in the file after the header. The primary difference is now
-  the container can perform any of it’s primary functions in the context
-  of an app:
-| **What apps are installed in the container?**
+Importantly, note that the apps can exist alongside any and all of the
+primary sections (e.g. ``%post`` or ``%runscript`` ), and the new ``%appinstall`` section is the equivalent of
+%post but for an app. The title sections (``######``) aren’t necessary or
+required, they are just comments to show you the different apps. The
+ordering isn’t important either, you can have any mixture of sections
+anywhere in the file after the header. The primary difference is now
+the container can perform any of it’s primary functions in the context
+of an app:
+
+**What apps are installed in the container?**
 
 ::
 
@@ -593,11 +597,13 @@ Apps
     singularity run --app foo roar.simg
     RUNNING FOO
 
-| **Show me the custom environments**
-| Remember how we defined the same environment variable, SOFTWARE for
-  each of foo and bar? We can execute a command to search the list of
-  active environment variables with grep to see if the variable changes
-  depending on the app we specify:
+
+**Show me the custom environments**
+
+Remember how we defined the same environment variable, SOFTWARE for
+each of foo and bar? We can execute a command to search the list of
+active environment variables with grep to see if the variable changes
+depending on the app we specify:
 
 ::
 
@@ -610,11 +616,11 @@ Apps
 Examples
 --------
 
-| For more examples, for real world scientific recipes we recommend you
-  look at other containers on `Singularity Hub <https://singularity-hub.org/>`_. For examples of
-  different bases, look at the examples folder for the most up-to-date
-  examples. For apps, including snippets and tutorial with more walk
-  throughs, see `SCI-F Apps Home <https://sci-f.github.io/>`_.
+For more examples, for real world scientific recipes we recommend you
+look at other containers on `Singularity Hub <https://singularity-hub.org/>`_. For examples of
+different bases, look at the examples folder for the most up-to-date
+examples. For apps, including snippets and tutorial with more walk
+throughs, see `SCI-F Apps Home <https://sci-f.github.io/>`_.
 
 --------------------------------
 Best Practices for Build Recipes

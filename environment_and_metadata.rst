@@ -27,27 +27,29 @@ also define custom environment variables in your Recipe file like so:
         VARIABLE_NAME=VARIABLE_VALUE
         export VARIABLE_NAME
 
-| You may need to add environment variables to your container during the
-  ``%post`` section. For instance, maybe you will not know the appropriate
-  value of a variable until you have installed some software.
-| To add variables to the environment during ``%post`` you can use the
-  ``$SINGULARITY_ENVIRONMENT`` variable with the following syntax:
+You may need to add environment variables to your container during the
+``%post`` section. For instance, maybe you will not know the appropriate
+value of a variable until you have installed some software.
+To add variables to the environment during ``%post`` you can use the
+``$SINGULARITY_ENVIRONMENT`` variable with the following syntax:
 
 ::
 
     %post
         echo 'export VARIABLE_NAME=VARIABLE_VALUE' >>$SINGULARITY_ENVIRONMENT
 
-| Text in the ``%environment`` section will be appended to the file ``/.singularity.d/env/90-environment.sh`` while text redirected
-  to ``$SINGULARITY_ENVIRONMENT`` will end up in the file /.singularity.d/env/91-environment.sh.
-| Because files in ``/.singularity.d/env`` are sourced in alpha-numerical order, this means that
-  variables added using ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via the ``%environment``
-  section.
-| Need to define a variable at runtime? You can set variables inside the
-  container by prefixing them with "SINGULARITYENV_". They will be
-  transposed automatically and the prefix will be stripped. For example,
-  let’s say we want to set the variable ``HELLO`` to have value ``WORLD``. We can do that
-  as follows:
+Text in the ``%environment`` section will be appended to the file ``/.singularity.d/env/90-environment.sh`` while text redirected
+to ``$SINGULARITY_ENVIRONMENT`` will end up in the file /.singularity.d/env/91-environment.sh.
+
+Because files in ``/.singularity.d/env`` are sourced in alpha-numerical order, this means that
+variables added using ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via the ``%environment``
+section.
+
+Need to define a variable at runtime? You can set variables inside the
+container by prefixing them with "SINGULARITYENV_". They will be
+transposed automatically and the prefix will be stripped. For example,
+let’s say we want to set the variable ``HELLO`` to have value ``WORLD``. We can do that
+as follows:
 
 ::
 
@@ -62,12 +64,13 @@ also define custom environment variables in your Recipe file like so:
     SINGULARITY_INIT=1
     SINGULARITY_CONTAINER=test.img
 
-| Notice the ``--cleanenv`` in the example above? That argument specifies that we want
-  to remove the host environment from the container. If we remove the ``--cleanenv``,
-  we will still pass forward ``HELLO=WORLD``, and the list shown above, but we will
-  also pass forward all the other environment variables from the host.
-| If you need to change the $PATH of your container at runtime there are
-  a few environmental variables you can use:
+Notice the ``--cleanenv`` in the example above? That argument specifies that we want
+to remove the host environment from the container. If we remove the ``--cleanenv``,
+we will still pass forward ``HELLO=WORLD``, and the list shown above, but we will
+also pass forward all the other environment variables from the host.
+
+If you need to change the $PATH of your container at runtime there are
+a few environmental variables you can use:
 
 -  ``SINGULARITYENV_PREPEND_PATH=/good/stuff/at/beginning`` to prepend directories to the beginning of the
 
@@ -79,11 +82,12 @@ also define custom environment variables in your Recipe file like so:
 Labels
 ------
 
-| Your container stores metadata about it’s build, along with Docker
-  labels, and custom labels that you define during build in a ``%labels`` section.
-  For containers that are generated with Singularity version 2.4 and
-  later, labels are represented using the `rc1 Label Schema <http://label-schema.org/rc1/>`_. For
-  example:
+Your container stores metadata about it’s build, along with Docker
+labels, and custom labels that you define during build in a ``%labels`` section.
+
+For containers that are generated with Singularity version 2.4 and
+later, labels are represented using the `rc1 Label Schema <http://label-schema.org/rc1/>`_. For
+example:
 
 ::
 
