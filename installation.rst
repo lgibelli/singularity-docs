@@ -128,6 +128,6 @@ Singularity like so:
 
     $ sudo rm -rf /some/temp/dir
 
-What should you do next? You can check out the `quickstart <#quick-start>`_ guide, or learn how to
+What should you do next? You can check out the `quickstart <https://singularity-userdoc.readthedocs.io/en/latest/quick_start.html#quick-start>`_ guide, or learn how to
 interact with your container via the `shell <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id36>`_ , `exec <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id25>`_ , or `run <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id30>`_ commands. Or click **next**
 below to continue reading.
