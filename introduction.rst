@@ -147,7 +147,7 @@ or enabling themselves to have sudo access. For these reasons,
 Singularity prevents user context escalation within the container, and
 thus makes it possible to run user supplied containers on shared
 infrastructures.
-This mitigation dictates the Singularity `workflow <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#id29>`_. If a user needs to be root
+This mitigation dictates the Singularity `workflow <https://singularity-userdoc.readthedocs.io/en/latest/singularity_flow.html#singularity-flow>`_. If a user needs to be root
 in order to make changes to their containers, then they need to have
 an endpoint (a local workstation, laptop, or server) where they have
 root access. Considering almost everybody at least has a laptop, this
@@ -196,7 +196,7 @@ copying any other file you control!
 
 If you want an automated solution for building and hosting your image,
 you can use our container registry `Singularity Hub <https://singularity-hub.org/>`_. Singularity Hub
-can automatically build `Singularity recipe files <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_ from
+can automatically build `Singularity recipe files <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html#container-recipes>`_ from
 a GitHub repository each time that you push. It provides a simple cloud
 solution for storing and sharing your image. If you want to host your own
 Registry, then you should check out `Singularity Registry <https://www.github.com/singularityhub/sregistry>`_.
@@ -354,7 +354,7 @@ to run, which is fast enough to seem instantaneous.
 The Singularity Usage Workflow
 ------------------------------
 
-The security model of Singularity (as described above, `"A user inside a Singularity container is the same user as outside the container" <#a-high-level-view-of-singularity>`_) defines the
+The security model of Singularity (as described above, `"A user inside a Singularity container is the same user as outside the container" <https://singularity-userdoc.readthedocs.io/en/latest/introduction.html#security-and-privilege-escalation>`_) defines the
 Singularity workflow. There are generally two groups of actions you
 must implement on a container; management (building your container)
 and usage.
@@ -399,38 +399,38 @@ How do the commands work?
 
 Here is where to look for more information:
 
--  `build <http://singularity-userdoc.readthedocs.io/en/latest/commands.html#id1>`_ : Build a container on your user endpoint or build environment
+-  `build <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id22>`_ : Build a container on your user endpoint or build environment
 
--  `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ : Execute a command to your container
+-  `exec <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id25>`_ : Execute a command to your container
 
--  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id4>`_ : See labels, run and test scripts, and environment variables
+-  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id27>`_ : See labels, run and test scripts, and environment variables
 
--  `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ : pull an image from Docker or Singularity Hub
+-  `pull <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id28>`_ : pull an image from Docker or Singularity Hub
 
--  `run <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id7>`_ : Run your image as an executable
+-  `run <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id30>`_ : Run your image as an executable
 
--  `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ : Shell into your image
+-  `shell <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id36>`_ : Shell into your image
 
 **Image Commands**
 
--  `image.import <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-import>`_ : import layers or other file content to your image
+-  `image.import <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id40>`_ : import layers or other file content to your image
 
--  `image.export <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-export>`_ : export the contents of the image to tar or stream
+-  `image.export <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id38>`_ : export the contents of the image to tar or stream
 
--  `image.create <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-create>`_ : create a new image, using the old ext3 filesystem
+-  `image.create <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id41>`_ : create a new image, using the old ext3 filesystem
 
--  `image.expand <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-expand>`_ : increase the size of your image (old ext3)
+-  `image.expand <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id39>`_ : increase the size of your image (old ext3)
 
 | **Instance Commands**
 | Instances were added in 2.4. This list is brief, and likely to expand
   with further development.
 
--  `instances <#why-container-instances>`_ : Start, stop, and list container instances
+-  `instances <https://singularity-userdoc.readthedocs.io/en/latest/running_services.html#why-container-instances>`_ : Start, stop, and list container instances
 
 **Deprecated Commands** The following commands are deprecated in 2.4 and
 will be removed in future releases.
 
--  `bootstrap <https://singularity-userdoc.readthedocs.io/en/latest/deprecated.html#bootstrap>`_ : Bootstrap a container recipe
+-  `bootstrap <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id53>`_ : Bootstrap a container recipe
 
 -------
 Support
