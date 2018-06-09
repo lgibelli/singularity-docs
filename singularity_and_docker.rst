@@ -48,12 +48,12 @@ going to use these same layers for Singularity!
 Quick Start: The Docker Registry
 --------------------------------
 
-| The Docker engine communicates with the Docker Hub via the `Docker
-  Remote API <https://docs.docker.com/engine/reference/api/docker_remote_api/>`_, and guess what, we can too! The easiest thing to do is
-  create an image, and then pipe a Docker image directly into it from
-  the Docker Registry. You don’t need Docker installed on your machine,
-  but you will need a working internet connection. Let’s create an
-  ubuntu operating system, from Docker. We will pull, then build:
+The Docker engine communicates with the Docker Hub via the `Docker
+Remote API <https://docs.docker.com/engine/reference/api/docker_remote_api/>`_, and guess what, we can too! The easiest thing to do is
+create an image, and then pipe a Docker image directly into it from
+the Docker Registry. You don’t need Docker installed on your machine,
+but you will need a working internet connection. Let’s create an
+ubuntu operating system, from Docker. We will pull, then build:
 
 ::
 
@@ -181,13 +181,13 @@ Hub <https://singularity-hub.org/>`_?. This will ensure maximum reproducibility 
 How does the runscript work?
 ----------------------------
 
-| Docker has two commands in the ``Dockerfile`` that have something to do with
-  execution, ``CMD`` and ``ENTRYPOINT``. The differences are subtle, but the best description
-  I’ve found is the following:
+Docker has two commands in the ``Dockerfile`` that have something to do with
+execution, ``CMD`` and ``ENTRYPOINT``. The differences are subtle, but the best description
+I’ve found is the following:
 
     A ``CMD`` is to provide defaults for an executing container.
 
-| and
+and
 
     An ``ENTRYPOINT`` helps you to configure a container that you can run as an
     executable.
@@ -248,10 +248,11 @@ If you provide a version instead of a tag, that will be used instead:
 
     docker://index.docker.io/library/ubuntu@sha256:1235...
 
-| You can have one or the other, both are considered a “digest” in
-  Docker speak.
-| If you want to change any of those fields and are having trouble with
-  the uri, you can also just state them explicitly:
+You can have one or the other, both are considered a “digest” in
+Docker speak.
+
+If you want to change any of those fields and are having trouble with
+the uri, you can also just state them explicitly:
 
 ::
 
@@ -264,16 +265,16 @@ If you provide a version instead of a tag, that will be used instead:
 Custom Authentication
 ---------------------
 
-| For both import and build using a build spec file, by default we use
-  the Docker Registry ``index.docker.io`` . Singularity first tries the call without a
-  token, and then asks for one with pull permissions if the request is
-  defined. However, it may be the case that you want to provide a custom
-  token for a private registry. You have two options. You can either
-  provide a ``Username`` and ``Password`` in the build specification file (if stored locally and
-  there is no need to share), or (in the case of doing an import or
-  needing to secure the credentials) you can export these variables to
-  environmental variables. We provide instructions for each of these
-  cases:
+For both import and build using a build spec file, by default we use
+the Docker Registry ``index.docker.io`` . Singularity first tries the call without a
+token, and then asks for one with pull permissions if the request is
+defined. However, it may be the case that you want to provide a custom
+token for a private registry. You have two options. You can either
+provide a ``Username`` and ``Password`` in the build specification file (if stored locally and
+there is no need to share), or (in the case of doing an import or
+needing to secure the credentials) you can export these variables to
+environmental variables. We provide instructions for each of these
+cases:
 
 Authentication in the Singularity Build File
 ============================================
@@ -344,25 +345,25 @@ ventures please `let us know <https://www.github.com/singularityware/singularity
 2. Library Configurations
 =========================
 
-| The command `ldconfig <https://codeyarns.com/2014/01/14/how-to-add-library-directory-to-ldconfig-cache/>`_ is used to update the shared library cache. If
-  you have software that requires symbolic linking of libraries and you
-  do the installation without updating the cache, then the Singularity
-  image (in read only) will likely give you an error that the library is
-  not found. If you look in the image, the library will exist but the
-  symbolic link will not. This leads us to best practice #2:
+The command `ldconfig <https://codeyarns.com/2014/01/14/how-to-add-library-directory-to-ldconfig-cache/>`_ is used to update the shared library cache. If
+you have software that requires symbolic linking of libraries and you
+do the installation without updating the cache, then the Singularity
+image (in read only) will likely give you an error that the library is
+not found. If you look in the image, the library will exist but the
+symbolic link will not. This leads us to best practice #2:
 
-    Update the library cache at the end of your Dockerfile with a call
-    to ldconfig.
+Update the library cache at the end of your Dockerfile with a call
+to ldconfig.
 
 3. Don't install to $HOME or $TMP
 =================================
 
-| We can assume that the most common Singularity use case has the $USER
-  home being automatically mounted to ``$HOME``, and ``$TMP`` also mounted. Thus, given
-  the potential for some kind of conflict or missing files, for best
-  practice #3 we suggest the following:
+We can assume that the most common Singularity use case has the $USER
+home being automatically mounted to ``$HOME``, and ``$TMP`` also mounted. Thus, given
+the potential for some kind of conflict or missing files, for best
+practice #3 we suggest the following:
 
-    Don’t put container valuables in ``$TMP`` or ``$HOME``
+Don’t put container valuables in ``$TMP`` or ``$HOME``
 
 Have any more best practices? Please `let us know <https://www.github.com/singularityware/singularityware.github.io/issues>`_!
 

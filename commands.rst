@@ -11,18 +11,18 @@ Command Usage
 The Singularity command
 =======================
 
-| Singularity uses a primary command wrapper called ``singularity``. When you run ``singularity``
-  without any options or arguments it will dump the high level usage
-  syntax.
-| The general usage form is:
+Singularity uses a primary command wrapper called ``singularity``. When you run ``singularity``
+without any options or arguments it will dump the high level usage
+syntax.
+The general usage form is:
 
 ::
 
     $ singularity (opts1) [subcommand] (opts2) ...
 
-| If you type ``singularity`` without any arguments, you will see a high
-  level help for all arguments. The main options include:
-| **Container Actions**
+If you type ``singularity`` without any arguments, you will see a high
+level help for all arguments. The main options include:
+**Container Actions**
 
 -  `build <http://singularity-userdoc.readthedocs.io/en/latest/commands.html#id1>`_ : Build a container on your user endpoint or build environment
 
@@ -46,15 +46,15 @@ The Singularity command
 
 -  `image.expand <https://singularity-userdoc.readthedocs.io/en/latest/image_command_group.html#image-expand>`_ : increase the size of your image (old ext3)
 
-| **Instance Commands**
-| Instances were added in 2.4. This list is brief, and likely to expand
-  with further development.
+**Instance Commands**
+Instances were added in 2.4. This list is brief, and likely to expand
+with further development.
 
 -  `instances <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#running-services>`_ : Start, stop, and list container instances
 
-| **Deprecated Commands**
-| The following commands are deprecated in 2.4 and will be removed in
-  future releases.
+**Deprecated Commands**
+The following commands are deprecated in 2.4 and will be removed in
+future releases.
 
 -  `bootstrap <https://singularity-userdoc.readthedocs.io/en/latest/deprecated.html#bootstrap>`_ : Bootstrap a container recipe
 
@@ -63,18 +63,19 @@ For the full usage, `see the bottom of this page <https://singularity-userdoc.re
 Options and argument processing
 -------------------------------
 
-| Because of the nature of how Singularity cascades commands and
-  sub-commands, argument processing is done with a mandatory order.
-  **This means that where you place arguments is important!** In the
-  above usage example, ``opts1`` are the global Singularity run-time options.
-  These options are always applicable no matter what subcommand you
-  select (e.g. ``--verbose`` or ``--debug`` ). But subcommand specific options must be passed
-  after the relevant subcommand.
-| To further clarify this example, the ``exec`` Singularity subcommand will
-  execute a program within the container and pass the arguments passed
-  to the program. So to mitigate any argument clashes, Singularity must
-  not interpret or interfere with any of the command arguments or
-  options that are not relevant for that particular function.
+Because of the nature of how Singularity cascades commands and
+sub-commands, argument processing is done with a mandatory order.
+**This means that where you place arguments is important!** In the
+above usage example, ``opts1`` are the global Singularity run-time options.
+These options are always applicable no matter what subcommand you
+select (e.g. ``--verbose`` or ``--debug`` ). But subcommand specific options must be passed
+after the relevant subcommand.
+
+To further clarify this example, the ``exec`` Singularity subcommand will
+execute a program within the container and pass the arguments passed
+to the program. So to mitigate any argument clashes, Singularity must
+not interpret or interfere with any of the command arguments or
+options that are not relevant for that particular function.
 
 Singularity Help
 ----------------
@@ -166,12 +167,13 @@ from one format to another, or build a container from a `Singularity recipe <htt
 Overview
 ========
 
-| The ``build`` command accepts a target as input and produces a container as
-  output. The target can be a Singularity Hub or Docker Hub URI, a path
-  to an existing container, or a path to a Singularity Recipe file. The
-  output container can be in squashfs, ext3, or directory format.
-| For a complete list of ``build`` options type ``singularity help build``. For more info on building
-  containers see `Build a Container <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_.
+The ``build`` command accepts a target as input and produces a container as
+output. The target can be a Singularity Hub or Docker Hub URI, a path
+to an existing container, or a path to a Singularity Recipe file. The
+output container can be in squashfs, ext3, or directory format.
+
+For a complete list of ``build`` options type ``singularity help build``. For more info on building
+containers see `Build a Container <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_.
 
 Examples
 ========
@@ -274,7 +276,7 @@ container.
     world
     $
 
-| And a demonstration using pipes:
+And a demonstration using pipes:
 
 ::
 
@@ -393,11 +395,12 @@ inspect
 
 .. _sec:inspect:
 
-| How can you sniff an image? We have provided the inspect command for
-  you to easily see the runscript, test script, environment, help, and
-  metadata labels.
-| This command is essential for making containers understandable by
-  other tools and applications.
+How can you sniff an image? We have provided the inspect command for
+you to easily see the runscript, test script, environment, help, and
+metadata labels.
+
+This command is essential for making containers understandable by
+other tools and applications.
 
 JSON Api Standard
 =================
@@ -483,7 +486,7 @@ bootstrap. For example, here we are inspecting labels for ``ubuntu.img``
         "SINGULARITY_DEFFILE_FROM": "ubuntu:latest"
     }
 
-| This is the equivalent of both of:
+This is the equivalent of both of:
 
 ::
 
@@ -521,8 +524,8 @@ or in a human friendly, readable print to the screen:
 Help
 ----
 
-| The commands ``--helpfile`` or ``--hf`` will show you the runscript helpfile, if it exists.
-  With ``--json`` you can also see it as such:
+The commands ``--helpfile`` or ``--hf`` will show you the runscript helpfile, if it exists.
+With ``--json`` you can also see it as such:
 
 ::
 
@@ -586,9 +589,9 @@ variables set.
 Test
 ----
 
-| The equivalent ``--test`` or ``-t`` commands will print any test defined for the
-  container, which comes from the  ``%test`` section of the bootstrap specification
-  Singularity file. Again, we can ask for ``--json`` or human friendly (default):
+The equivalent ``--test`` or ``-t`` commands will print any test defined for the
+container, which comes from the  ``%test`` section of the bootstrap specification
+Singularity file. Again, we can ask for ``--json`` or human friendly (default):
 
 ::
 
@@ -649,11 +652,11 @@ pull
 
 .. _sec:pull:
 
-| Singularity ``pull`` is the command that you would want to use to communicate
-  with a container registry. The command does exactly as it says - there
-  exists an image external to my host, and I want to pull it here. We
-  currently support pull for both `Docker <https://hub.docker.com/>`_ and `Singularity Hub
-  images <https://singularity-hub.org/>`_, and will review usage for both.
+Singularity ``pull`` is the command that you would want to use to communicate
+with a container registry. The command does exactly as it says - there
+exists an image external to my host, and I want to pull it here. We
+currently support pull for both `Docker <https://hub.docker.com/>`_ and `Singularity Hub
+images <https://singularity-hub.org/>`_, and will review usage for both.
 
 Singularity Hub
 ===============
@@ -745,12 +748,12 @@ If you prefer the hash of the file itself, you can do that too.
 Pull to different folder
 ------------------------
 
-| For any of the above, if you want to specify a different folder for
-  your image, you can define the variable ``SINGULARITY_PULLFOLDER``. By default, we will first
-  check if you have the ``SINGULARITY_CACHEDIR`` defined, and pull images there. If not, we look
-  for ``SINGULARITY_PULLFOLDER``. If neither of these are defined, the image is pulled to the
-  present working directory, as we showed above. Here is an example of
-  pulling to ``/tmp`` .
+For any of the above, if you want to specify a different folder for
+your image, you can define the variable ``SINGULARITY_PULLFOLDER``. By default, we will first
+check if you have the ``SINGULARITY_CACHEDIR`` defined, and pull images there. If not, we look
+for ``SINGULARITY_PULLFOLDER``. If neither of these are defined, the image is pulled to the
+present working directory, as we showed above. Here is an example of
+pulling to ``/tmp`` .
 
 ::
 
@@ -762,8 +765,8 @@ Pull to different folder
 Pull by commit
 --------------
 
-| You can also pull different versions of your container by using their
-  commit id ( ``version`` ).
+You can also pull different versions of your container by using their
+commit id ( ``version`` ).
 
 ::
 
@@ -877,9 +880,9 @@ or to the actual file in the container’s metadata folder, ``/.singularity.d``
 
     exec /bin/bash "$@"
 
-| Notice how the runscript has bash followed by ``\$@`` ? This is good practice
-  to include in a runscript, as any arguments passed by the user will be
-  given to the container.
+Notice how the runscript has bash followed by ``\$@`` ? This is good practice
+to include in a runscript, as any arguments passed by the user will be
+given to the container.
 
 Runtime Flags
 =============
@@ -1024,7 +1027,7 @@ the container.
 Bash
 ----
 
-| The correct way to do it:
+The correct way to do it:
 
 ::
 
@@ -1083,7 +1086,7 @@ Shell Help
     Type `/bin/bash -c "help set"' for more information about shell options.
     Type `/bin/bash -c help' for more information about shell builtin commands.
 
-| And thus we should be able to do:
+And thus we should be able to do:
 
 ::
 

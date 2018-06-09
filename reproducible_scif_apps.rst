@@ -84,11 +84,11 @@ and maybe your environment looks like this:
         BEST_GUY=bar
         export BEST_GUY
 
-| You obviously can’t have them at separate times. You’d have to source
-  some custom environment file (that you make on your own) and it gets
-  hard easily with issues of using shell and sourcing. We don’t know who
-  the best guy is! You probably get the general idea. Without internal
-  organization and modularity:
+You obviously can’t have them at separate times. You’d have to source
+some custom environment file (that you make on your own) and it gets
+hard easily with issues of using shell and sourcing. We don’t know who
+the best guy is! You probably get the general idea. Without internal
+organization and modularity:
 
 -  You have to do a lot of manual work to expose the different software
    to the user via a custom runscript (and be a generally decent
@@ -241,10 +241,11 @@ Also provided are more global paths for data and apps:
     SCIF_APPS=/scif/apps
     SCIF_DATA=/scif/data
 
-| Importantly, each app has its own modular location. When you do an ``%appinstall foo``,
-  the commands are all done in context of that base. The bin and lib are
-  also automatically generated. So what would be a super simple app?
-  Just add a script and name it:
+Importantly, each app has its own modular location. When you do an ``%appinstall foo``,
+the commands are all done in context of that base. The bin and lib are
+also automatically generated. So what would be a super simple app?
+
+Just add a script and name it:
 
 ::
 
@@ -284,33 +285,40 @@ We can summarize these observations about using apps:
 Sections
 ========
 
-| Finding the section ``%appinstall`` , ``%apphelp`` , or ``%apprun`` is indication of an application command.
-  The following string is parsed as the name of the application, and
-  this folder is created, in lowercase, under ``/scif/apps`` if it doesn’t exist. A
-  singularity metadata folder, .singularity.d, equivalent to the
-  container’s main folder, is generated inside the application. An
-  application thus is like a smaller image inside of it’s parent.
-| Specifically, SCI-F defines the following new sections for the build
-  recipe, where each is optional for 0 or more apps:
-| **%appinstall** corresponds to executing commands within the folder to
-  install the application. These commands would previously belong in
-  %post, but are now attributable to the application.
-| **%apphelp** is written as a file called runscript.help in the
-  application’s metadata folder, where the Singularity software knows
-  where to find it. If no help section is provided, the software simply
-  will alert the user and show the files provided for inspection.
-| **%apprun** is also written as a file called runscript.exec in the
-  application’s metadata folder, and again looked for when the user asks
-  to run the software. If not found, the container should default to
-  shelling into that location.
-| **%applabels** will write a labels.json in the application’s metadata
-  folder, allowing for application specific labels.
-| **%appenv** will write an environment file in the application’s base
-  folder, allowing for definition of application specific environment
-  variables.
-| **%apptest** will run tests specific to the application, with present
-  working directory assumed to be the software module’s folder
-| **%appfiles** will add files to the app’s base at ``/scif/apps/<app>``
+Finding the section ``%appinstall`` , ``%apphelp`` , or ``%apprun`` is indication of an application command.
+The following string is parsed as the name of the application, and
+this folder is created, in lowercase, under ``/scif/apps`` if it doesn’t exist. A
+singularity metadata folder, .singularity.d, equivalent to the
+container’s main folder, is generated inside the application. An
+application thus is like a smaller image inside of it’s parent.
+Specifically, SCI-F defines the following new sections for the build
+recipe, where each is optional for 0 or more apps:
+
+**%appinstall** corresponds to executing commands within the folder to
+install the application. These commands would previously belong in
+%post, but are now attributable to the application.
+
+**%apphelp** is written as a file called runscript.help in the
+application’s metadata folder, where the Singularity software knows
+where to find it. If no help section is provided, the software simply
+will alert the user and show the files provided for inspection.
+
+**%apprun** is also written as a file called runscript.exec in the
+application’s metadata folder, and again looked for when the user asks
+to run the software. If not found, the container should default to
+shelling into that location.
+
+**%applabels** will write a labels.json in the application’s metadata
+folder, allowing for application specific labels.
+
+**%appenv** will write an environment file in the application’s base
+folder, allowing for definition of application specific environment
+variables.
+
+**%apptest** will run tests specific to the application, with present
+working directory assumed to be the software module’s folder
+
+**%appfiles** will add files to the app’s base at ``/scif/apps/<app>``
 
 Interaction
 ===========
@@ -379,9 +387,9 @@ environment for “moo” and the result is what we would want:
     $ singularity run --app moo /tmp/one.simg
     The COW goes moo
 
-| The same is true for each of the labels, environment, runscript, bin,
-  and lib. The following variables are available to you, for each app in
-  the container, whenever any app is being run:
+The same is true for each of the labels, environment, runscript, bin,
+and lib. The following variables are available to you, for each app in
+the container, whenever any app is being run:
 
 -  \*\*SCIF\_APPBIN\_\*: the path to the bin folder, if you want to add
    an app that isn’t active to your ‘PATH‘
@@ -452,7 +460,7 @@ Ask for help for a specific app!
     singularity help --app fortune moo.simg
     fortune is the best app
 
-| Ask for help for all apps, without knowing in advance what they are:
+Ask for help for all apps, without knowing in advance what they are:
 
 ::
 
@@ -464,7 +472,7 @@ Ask for help for a specific app!
     fortune is the best app
     lolcat is the best app
 
-| Run a particular app
+Run a particular app
 
 ::
 
@@ -477,8 +485,8 @@ Ask for help for a specific app!
     one hundred and eleventh birthday: I am eleventy-one today!"
             -- J. R. R. Tolkien
 
-| Advanced running - pipe the output of fortune into lolcat, and make a
-  fortune that is beautifully colored!
+Advanced running - pipe the output of fortune into lolcat, and make a
+fortune that is beautifully colored!
 
 ::
 
@@ -529,8 +537,9 @@ an app:
         "SCIF_APP_SIZE": "1MB"
     }
 
-| If you want to see the full specification or create your own
-  Scientific Filesystem integration (doesn’t have to be Singularity, or
-  Docker, or containers!) see the `full documentation <https://sci-f.github.io/>`_.
-| If you haven’t yet, `take a look at these examples <https://asciinema.org/a/139153?speed=3>`_ with the
-  asciinema!
+If you want to see the full specification or create your own
+Scientific Filesystem integration (doesn’t have to be Singularity, or
+Docker, or containers!) see the `full documentation <https://sci-f.github.io/>`_.
+
+If you haven’t yet, `take a look at these examples <https://asciinema.org/a/139153?speed=3>`_ with the
+asciinema!

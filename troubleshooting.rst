@@ -8,8 +8,8 @@ A little bit of help.
 No space left on device
 -----------------------
 
-| Sometimes when you are building an image, Singularity tells you that
-  it runs out of space on the device:
+Sometimes when you are building an image, Singularity tells you that
+it runs out of space on the device:
 
 ::
 
@@ -26,16 +26,16 @@ this is the issue, then the sandbox should work.
 
     sudo singularity build --sandbox [fatty] Singularity
 
-| **Solution**
-| You simply need to set the ``$SINGULARITY_CACHEDIR`` to a different location that you have more
-  room.
+**Solution**
+You simply need to set the ``$SINGULARITY_CACHEDIR`` to a different location that you have more
+room.
 
 -------------------------------------
 Segfault on Bootstrap of Centos Image
 -------------------------------------
 
-| If you are bootstrapping a centos 6 docker image from a debian host,
-  you might hit a segfault:
+If you are bootstrapping a centos 6 docker image from a debian host,
+you might hit a segfault:
 
 ::
 
@@ -82,27 +82,28 @@ How to use Singularity with GRSecurity enabled kernels
 The container isn’t working on a different host!
 ------------------------------------------------
 
-| Singularity by default mounts your home directory. While this is great
-  for seamless communication between your host and the container, it can
-  introduce issues if you have software modules installed at ``$HOME``. For
-  example, we had a user `run into this issue <https://github.com/singularityware/singularity/issues/476>`_.
-| **Solution 1: Specify the home to mount**
-| A first thing to try is to point to some “sanitized home,” which is
-  the purpose of the -H or –home option. For example, here we are
-  creating a home directory under /tmp/homie, and then telling the
-  container to mount it as home:
+Singularity by default mounts your home directory. While this is great
+for seamless communication between your host and the container, it can
+introduce issues if you have software modules installed at ``$HOME``. For
+example, we had a user `run into this issue <https://github.com/singularityware/singularity/issues/476>`_.
+
+**Solution 1: Specify the home to mount**
+A first thing to try is to point to some “sanitized home,” which is
+the purpose of the -H or –home option. For example, here we are
+creating a home directory under /tmp/homie, and then telling the
+container to mount it as home:
 
 ::
 
     rm -rf /tmp/homie && mkdir -p /tmp/homie && \
     singularity exec -H /tmp/homie analysis.img /bin/bash
 
-| **Solution 2: Specify the executable to use**
-| It may be the issue that there is an executable in your host
-  environment (eg, python) that is being called in preference to the
-  containers. To avoid this, in your runscript (the ``%runscript`` section of the
-  bootstrap file) you should specify the path to the executable exactly.
-  This means:
+**Solution 2: Specify the executable to use**
+It may be the issue that there is an executable in your host
+environment (eg, python) that is being called in preference to the
+containers. To avoid this, in your runscript (the ``%runscript`` section of the
+bootstrap file) you should specify the path to the executable exactly.
+This means:
 
 ::
 
@@ -122,11 +123,11 @@ issue.
 Invalid Argument or Unknown Option
 ----------------------------------
 
-| When I try mounting my container with the ``-B`` or ``--bind`` option I receive an
-  unknown option or Invalid argument error.
-| Make sure that you are using the most recent Singularity release to
-  mount your container to the host system, and that the ``--bind`` argument is
-  placed after the execution command. An example might look like this:
+When I try mounting my container with the ``-B`` or ``--bind`` option I receive an
+unknown option or Invalid argument error.
+Make sure that you are using the most recent Singularity release to
+mount your container to the host system, and that the ``--bind`` argument is
+placed after the execution command. An example might look like this:
 
 ::
 
@@ -148,14 +149,14 @@ the default compiled prefix of /usr/local:
     $ sudo singularity instance.start container.img daemon1
     sudo: singularity: command not found
 
-| The cause of the problem is that ``sudo`` sanitizes the PATH environment
-  variable and does not include /usr/local/bin in the default search
-  path. Considering this program path is by default owned by root, it is
-  reasonable to extend the default sudo PATH to include this directory.
-| To add /usr/local/bin to the default sudo search path, run the program
-  visudo which will edit the sudoers file, and search for the string
-  ‘secure\_path’. Once found, append :/usr/local/bin to that line so it
-  looks like this:
+The cause of the problem is that ``sudo`` sanitizes the PATH environment
+variable and does not include /usr/local/bin in the default search
+path. Considering this program path is by default owned by root, it is
+reasonable to extend the default sudo PATH to include this directory.
+To add /usr/local/bin to the default sudo search path, run the program
+visudo which will edit the sudoers file, and search for the string
+‘secure\_path’. Once found, append :/usr/local/bin to that line so it
+looks like this:
 
 ::
 
@@ -165,8 +166,8 @@ the default compiled prefix of /usr/local:
 How to resolve “Too many levels of symbolic links” error
 --------------------------------------------------------
 
-| Running singularity failed with “Too many levels of symbolic links”
-  error
+Running singularity failed with “Too many levels of symbolic links”
+error
 
 ::
 

@@ -318,17 +318,18 @@ If you shell into the instance, you can see the running processes:
 Making it Pretty
 ================
 
-| Now that we have confirmation that the server is working, let’s make
-  it a little cleaner. It’s difficult to remember the exact curl command
-  and URL syntax each time you want to request a PDF, so let’s automate
-  that. To do that, we’re going to be using Standard Container
-  Integration Format (SCIF) apps, which are integrated directly into
-  singularity. If you haven’t already, check out the `Singularity app documentation <#reproducible-sci-f-apps>`_ to come up to
-  speed.
-| First off, we’re going to move the installation of the url-to-pdf-api
-  into an app, so that there is a designated spot to place output files.
-  To do that, we want to add a section to our definition file to build
-  the server:
+Now that we have confirmation that the server is working, let’s make
+it a little cleaner. It’s difficult to remember the exact curl command
+and URL syntax each time you want to request a PDF, so let’s automate
+that. To do that, we’re going to be using Standard Container
+Integration Format (SCIF) apps, which are integrated directly into
+singularity. If you haven’t already, check out the `Singularity app documentation <#reproducible-sci-f-apps>`_ to come up to
+speed.
+
+First off, we’re going to move the installation of the url-to-pdf-api
+into an app, so that there is a designated spot to place output files.
+To do that, we want to add a section to our definition file to build
+the server:
 
 ::
 

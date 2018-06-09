@@ -28,11 +28,12 @@ like so:
 
     $ singularity shell instance://<instance_name>
 
-| You can specify options such as bind mounts, overlays, or custom
-  namespaces when you initiate a new instance of a container with
-  instance.start. These options will persist as long as the container
-  runs.
-| For a complete list of options see the output of:
+You can specify options such as bind mounts, overlays, or custom
+namespaces when you initiate a new instance of a container with
+instance.start. These options will persist as long as the container
+runs.
+
+For a complete list of options see the output of:
 
 ::
 

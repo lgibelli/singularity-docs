@@ -64,16 +64,16 @@ and will be used as a runscript. Note that the ``IncludeCmd`` keyword is conside
  See `Singularity and Docker <#singularity-and-docker>`_ for more info on order of operations for determining a runscript.
 
 
- Notes
- ~~~~~
+Notes
+~~~~~
 
- Docker containers are stored as a collection of tarballs called layers. When building from a Docker container the layers must be downloaded and then
- assembled in the proper order to produce a viable file system. Then the file system must be converted to squashfs or ext3 format.
+Docker containers are stored as a collection of tarballs called layers. When building from a Docker container the layers must be downloaded and then
+assembled in the proper order to produce a viable file system. Then the file system must be converted to squashfs or ext3 format.
 
- Building from Docker Hub is not considered reproducible because if any of the layers of the image are changed, the container will change.
- If reproducibility is important to you, consider hosting a base container on Singularity Hub and building from it instead.
+Building from Docker Hub is not considered reproducible because if any of the layers of the image are changed, the container will change.
+If reproducibility is important to you, consider hosting a base container on Singularity Hub and building from it instead.
 
- For detailed information about setting your build environment see `Build Customization <#id15>`_.
+For detailed information about setting your build environment see `Build Customization <#id15>`_.
 
 build-shub
 ----------

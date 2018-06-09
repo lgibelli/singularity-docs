@@ -23,25 +23,26 @@ we encourage you to use `build <#build-a-container>`_ instead.
 Quick Start
 ===========
 
-| A bootstrap is done based on a Singularity recipe file (a text file
-  called Singularity) that describes how to specifically build the
-  container. Here we will overview the sections, best practices, and a
-  quick example.
+A bootstrap is done based on a Singularity recipe file (a text file
+called Singularity) that describes how to specifically build the
+container. Here we will overview the sections, best practices, and a
+quick example.
 
 ::
 
     $ singularity bootstrap
     USAGE: singularity [...] bootstrap <container path> <definition file>
 
-| The ``<container path>`` is the path to the Singularity image file, and the ``<definition file>`` is the location
-  of the definition file (the recipe) we will use to create this
-  container. The process of building a container should always be done
-  by root so that the correct file ownership and permissions are
-  maintained. Also, so installation programs check to ensure they are
-  the root user before proceeding. The bootstrap process may take
-  anywhere from one minute to one hour depending on what needs to be
-  done and how fast your network connection is.
-| Let’s continue with our quick start example. Here is your spec file, ``Singularity`` ,
+The ``<container path>`` is the path to the Singularity image file, and the ``<definition file>`` is the location
+of the definition file (the recipe) we will use to create this
+container. The process of building a container should always be done
+by root so that the correct file ownership and permissions are
+maintained. Also, so installation programs check to ensure they are
+the root user before proceeding. The bootstrap process may take
+anywhere from one minute to one hour depending on what needs to be
+done and how fast your network connection is.
+
+Let’s continue with our quick start example. Here is your spec file, ``Singularity`` ,
 
 ::
 

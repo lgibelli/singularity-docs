@@ -8,14 +8,15 @@ image.export
 
 .. _sec:imageexport:
 
-| Export is a way to dump the contents of your container into a ``.tar.gz``, or a
-  stream to put into some other place. For example, you could stream
-  this into an in memory tar in python. Importantly, this command was
-  originally intended for Singularity version less than 2.4 in the case
-  of exporting an ext3 filesystem. For Singularity greater than 2.4, the
-  resulting export file is likely to be larger than the original
-  squashfs counterpart. An example with an ext3 image is provided.
-| Here we export an image into a ``.tar`` file:
+Export is a way to dump the contents of your container into a ``.tar.gz``, or a
+stream to put into some other place. For example, you could stream
+this into an in memory tar in python. Importantly, this command was
+originally intended for Singularity version less than 2.4 in the case
+of exporting an ext3 filesystem. For Singularity greater than 2.4, the
+resulting export file is likely to be larger than the original
+squashfs counterpart. An example with an ext3 image is provided.
+
+Here we export an image into a ``.tar`` file:
 
 ::
 
@@ -47,9 +48,9 @@ expand it.
 Increasing the size of an existing image
 ========================================
 
-| You can increase the size of an image after it has been instantiated
-  by using the image.expand Singularity sub-command. In the example
-  below, we:
+You can increase the size of an image after it has been instantiated
+by using the image.expand Singularity sub-command. In the example
+below, we:
 
 #. create an empty image
 
@@ -97,14 +98,15 @@ image.import
 
 .. _sec:imageimport:
 
-| Singularity import is essentially taking a dump of files and folders
-  and adding them to your image. This works for local compressed things
-  (e.g., tar.gz) but also for docker image layers that you don’t have on
-  your system. As of version 2.3, import of docker layers includes the
-  environment and metadata without needing sudo. It’s generally very
-  intuitive.
-| As an example, here is a common use case: wanting to import a Docker
-  image:
+Singularity import is essentially taking a dump of files and folders
+and adding them to your image. This works for local compressed things
+(e.g., tar.gz) but also for docker image layers that you don’t have on
+your system. As of version 2.3, import of docker layers includes the
+environment and metadata without needing sudo. It’s generally very
+intuitive.
+
+As an example, here is a common use case: wanting to import a Docker
+image:
 
 ::
 
@@ -116,22 +118,23 @@ image.create
 
 .. _sec:imagecreate:
 
-| A Singularity image, which can be referred to as a “container,” is a
-  single file that contains a virtual file system. As of Singularity
-  2.4, we strongly recommend that you build (create and install) an
-  image using `build <http://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_. If you have reason to create an empty image, or use
-  create for any other reason, the original ``create`` command is replaced with a
-  more specific ``image.create``. After creating an image you can install an operating
-  system, applications, and save meta-data with it.
-| Whereas Docker assembles images from layers that are stored on your
-  computer (viewed with the ``docker history`` command), a Singularity image is just one
-  file that can sit on your Desktop, in a folder on your cluster, or
-  anywhere. Having Singularity containers housed within a single image
-  file greatly simplifies management tasks such as sharing, copying, and
-  branching your containers. It also means that standard Linux file
-  system concepts like permissions, ownership, and ACLs apply to the
-  container (e.g. I can give read only access to a colleague, or block
-  access completely with a simple ``chmod`` command).
+A Singularity image, which can be referred to as a “container,” is a
+single file that contains a virtual file system. As of Singularity
+2.4, we strongly recommend that you build (create and install) an
+image using `build <http://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_. If you have reason to create an empty image, or use
+create for any other reason, the original ``create`` command is replaced with a
+more specific ``image.create``. After creating an image you can install an operating
+system, applications, and save meta-data with it.
+
+Whereas Docker assembles images from layers that are stored on your
+computer (viewed with the ``docker history`` command), a Singularity image is just one
+file that can sit on your Desktop, in a folder on your cluster, or
+anywhere. Having Singularity containers housed within a single image
+file greatly simplifies management tasks such as sharing, copying, and
+branching your containers. It also means that standard Linux file
+system concepts like permissions, ownership, and ACLs apply to the
+container (e.g. I can give read only access to a colleague, or block
+access completely with a simple ``chmod`` command).
 
 Creating a new blank Singularity container image
 ================================================
@@ -146,7 +149,7 @@ following command:
     Formatting image with ext3 file system
     Image is done: container.img
 
-| How big is it?
+How big is it?
 
 ::
 
