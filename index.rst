@@ -18,5 +18,4 @@
    Reproducible SCI-F Apps <reproducible_scif_apps>
    Singularity and Docker <singularity_and_docker>
    Troubleshooting <troubleshooting>
-   Deprecated <deprecated>
    Appendix <appendix>
