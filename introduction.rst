@@ -436,4 +436,4 @@ will be removed in future releases.
 Support
 -------
 
-Have a question, or need further information? `Reach out to us <https://www.sylabs.io/bug-report/>`_.
+Have a question, or need further information? `Reach out to us <https://www.sylabs.io/contact/>`_.
