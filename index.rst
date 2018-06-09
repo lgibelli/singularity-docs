@@ -18,6 +18,5 @@
    Reproducible SCI-F Apps <reproducible_scif_apps>
    Singularity and Docker <singularity_and_docker>
    Troubleshooting <troubleshooting>
-   Instance Command Group <instance_command_group>
    Deprecated <deprecated>
    Appendix <appendix>
