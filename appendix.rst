@@ -660,10 +660,10 @@ different from the Docker exec, as it does not require a container to be
 “running” before using it.
 
 Examples
-========
+--------
 
 Printing the OS release inside the container
---------------------------------------------
+''''''''''''''''''''''''''''''''''''''''''''
 
 ::
 
@@ -679,7 +679,7 @@ Printing the OS release inside the container
     $
 
 Printing the OS release for a running instance
-----------------------------------------------
+''''''''''''''''''''''''''''''''''''''''''''''
 
 Use the ``instance://<instance name>`` syntax like so:
 
@@ -688,14 +688,14 @@ Use the ``instance://<instance name>`` syntax like so:
     $ singularity exec instance://my-instance cat /etc/os-release
 
 Runtime Flags
--------------
+'''''''''''''
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the ``singularity run help`` and our
 documentation on `flags <http://singularity-userdoc.readthedocs.io/en/latest/#singularity-action-flags>`_ to better customize this command.
 
 Special Characters
-------------------
+''''''''''''''''''
 
 And properly passing along special characters to the program within the
 container.
@@ -716,7 +716,7 @@ And a demonstration using pipes:
     $
 
 A Python example
-----------------
+''''''''''''''''
 
 Starting with the file ``hello.py`` in the current directory with the contents of:
 
@@ -768,7 +768,7 @@ container which exists in DockerHub to run this script:
     Hello World: The Python version is 3.5.2
 
 A GPU example
--------------
+'''''''''''''
 
 If your host system has an NVIDIA GPU card and a driver installed you
 can leverage the card with the ``--nv`` option. (This example requires a fairly
@@ -820,9 +820,9 @@ version of TensorFlow.
     Validation error: 0.9%
     Test error: 0.8%
 
--------
+
 inspect
--------
+=======
 
 .. _sec:inspect:
 
@@ -834,7 +834,7 @@ This command is essential for making containers understandable by
 other tools and applications.
 
 JSON Api Standard
-=================
+-----------------
 
 For any inspect command, by adding –json you can be assured to get a
 JSON API standardized response, for example:
@@ -857,7 +857,7 @@ JSON API standardized response, for example:
     }
 
 Inspect Flags
-=============
+-------------
 
 The default, if run without any arguments, will show you the container
 labels file
@@ -899,7 +899,7 @@ be:
     }
 
 Labels
-------
+''''''
 
 The default, if run without any arguments, will show you the container
 labels file (located at ``/.singularity.d/labels.json`` in the container. These labels are the ones that
@@ -925,7 +925,7 @@ This is the equivalent of both of:
     $ singularity inspect --labels ubuntu.img
 
 Runscript
----------
+'''''''''
 
 The commands ``--runscript`` or ``--r`` will show you the runscript, which also can be shown in ``--json``:
 
@@ -952,7 +952,7 @@ or in a human friendly, readable print to the screen:
     exec /bin/bash "$@"
 
 Help
-----
+''''
 
 The commands ``--helpfile`` or ``--hf`` will show you the runscript helpfile, if it exists.
 With ``--json`` you can also see it as such:
@@ -986,7 +986,7 @@ Hi there! This is my image help section.
      --boo/b eeeeeuzzz where is the honey?
 
 Environment
------------
+'''''''''''
 
 The commands ``--environment`` and ``-e`` will show you the container’s environment, again
 specified by the ``%environment`` section of a bootstrap file, and other ENV labels that
@@ -1017,7 +1017,7 @@ The container in the example above did not have any custom environment
 variables set.
 
 Test
-----
+''''
 
 The equivalent ``--test`` or ``-t`` commands will print any test defined for the
 container, which comes from the  ``%test`` section of the bootstrap specification
@@ -1043,7 +1043,7 @@ Singularity file. Again, we can ask for ``--json`` or human friendly (default):
     }
 
 Deffile
--------
+'''''''
 
 Want to know where your container came from? You can see the entire
 Singularity definition file, if the container was created with a
@@ -1076,9 +1076,9 @@ and to help better integrate them into common workflows by having them
 expose their guts to the world! If you have feedback for how we can
 improve or amend this, `please let us know <https://github.com/singularityware/singularity/issues>`_!
 
-----
+
 pull
-----
+====
 
 .. _sec:pull:
 
@@ -1089,7 +1089,7 @@ currently support pull for both `Docker <https://hub.docker.com/>`_ and `Singula
 images <https://singularity-hub.org/>`_, and will review usage for both.
 
 Singularity Hub
-===============
+---------------
 
 Singularity differs from Docker in that we serve entire images, as
 opposed to layers. This means that pulling a Singularity Hub means
@@ -1103,7 +1103,7 @@ extract on your local machine. The basic command is the following:
     Done. Container is at: ./vsoch-hello-world-master.img
 
 How do tags work?
------------------
+'''''''''''''''''
 
 On Singularity Hub, a ``tag`` coincide with a branch. So if you have a repo
 called ``vsoch/hello-world`` , by default the file called ``Singularity`` (your build recipe file) will be
@@ -1128,7 +1128,7 @@ branches, the most recent image. If ``development`` is more recent than
 ``master``, it would be pulled, for example.
 
 Image Names
------------
+'''''''''''
 
 As you can see, since we didn’t specify anything special, the default
 naming convention is to use the username, reponame, and the branch
@@ -1142,7 +1142,7 @@ naming convention is to use the username, reponame, and the branch
         -H/--hash   Name container based on file hash (second priority)
 
 Custom Name
------------
+'''''''''''
 
 ::
 
@@ -1151,7 +1151,7 @@ Custom Name
     Done. Container is at: ./meatballs.img
 
 Name by commit
---------------
+''''''''''''''
 
 Each container build on Singularity Hub is associated with the GitHub
 commit of the repo that was used to build it. You can specify to name
@@ -1165,7 +1165,7 @@ want to match containers to their build files:
     Done. Container is at: ./4187993b8b44cbfa51c7e38e6b527918fcdf0470.img
 
 Name by hash
-------------
+''''''''''''
 
 If you prefer the hash of the file itself, you can do that too.
 
@@ -1176,7 +1176,7 @@ If you prefer the hash of the file itself, you can do that too.
     Done. Container is at: ./4db5b0723cfd378e332fa4806dd79e31.img
 
 Pull to different folder
-------------------------
+''''''''''''''''''''''''
 
 For any of the above, if you want to specify a different folder for
 your image, you can define the variable ``SINGULARITY_PULLFOLDER``. By default, we will first
@@ -1193,7 +1193,7 @@ pulling to ``/tmp`` .
     Done. Container is at: /tmp/vsoch-hello-world-master.img
 
 Pull by commit
---------------
+''''''''''''''
 
 You can also pull different versions of your container by using their
 commit id ( ``version`` ).
@@ -1207,7 +1207,7 @@ commit id ( ``version`` ).
 In this example, the first build of this container will be pulled.
 
 Docker
-======
+------
 
 Docker pull is similar (on the surface) to a Singularity Hub pull, and
 we would do the following:
@@ -1265,9 +1265,9 @@ you notice that the output looks similar to if we did the following?
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
     Done. Container is at: jellybelly.img
 
----
+
 run
----
+===
 
 .. _sec:run:
 
@@ -1278,7 +1278,7 @@ execute a command, or run an executable that gives access to many
 different functions for the user.
 
 Overview
-========
+--------
 
 First, how do we run a container? We can do that in one of two ways -
 the commands below are identical:
@@ -1315,14 +1315,14 @@ to include in a runscript, as any arguments passed by the user will be
 given to the container.
 
 Runtime Flags
-=============
+-------------
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the ``singularity run help`` and our
 documentation on `flags <http://singularity-userdoc.readthedocs.io/en/latest/#singularity-action-flags>`_ to better customize this command.
 
 Examples
-========
+--------
 
 In this example the container has a very simple runscript defined.
 
@@ -1337,7 +1337,7 @@ In this example the container has a very simple runscript defined.
     motorbot
 
 Defining the Runscript
-----------------------
+''''''''''''''''''''''
 
 When you first create a container, the runscript is defined using the
 following order of operations:
@@ -1414,9 +1414,9 @@ tells your user how to use the container, and gives access to the
 important executables. Regardless of your strategy. a reproducible
 container is one that tells the user how to interact with it.
 
------
+
 shell
------
+=====
 
 .. _sec:shell:
 
@@ -1447,7 +1447,7 @@ recommend that you look at the ``singularity shell help`` and our documentation 
 better customize this command.
 
 Change your shell
-=================
+-----------------
 
 The ``shell`` sub-command allows you to set or change the default shell using the ``--shell``
 argument. As of Singularity version 2.2, you can also use the
@@ -1455,7 +1455,7 @@ environment variable ``SINGULARITY_SHELL`` which will use that as your shell ent
 the container.
 
 Bash
-----
+''''
 
 The correct way to do it:
 
@@ -1482,7 +1482,7 @@ Depending on your shell, you might also want the ``--noprofile`` flag. How can y
 more about a shell? Ask it for help, of course!
 
 Shell Help
-==========
+----------
 
 ::
 
