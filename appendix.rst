@@ -492,7 +492,7 @@ future releases.
 For the full usage, `see the bottom of this page <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#commands-usage>`_
 
 Options and argument processing
--------------------------------
+'''''''''''''''''''''''''''''''
 
 Because of the nature of how Singularity cascades commands and
 sub-commands, argument processing is done with a mandatory order.
@@ -509,7 +509,7 @@ not interpret or interfere with any of the command arguments or
 options that are not relevant for that particular function.
 
 Singularity Help
-----------------
+''''''''''''''''
 
 Singularity comes with some internal documentation by using the ``help``
 subcommand followed by the subcommand you want more information about.
@@ -534,7 +534,7 @@ For example:
             https://www.sylabs.io/docs/
 
 Commands Usage
-==============
+--------------
 
     .. _sec:commandsusage:
 
@@ -582,13 +582,13 @@ Commands Usage
         website: https://www.sylabs.io/contact/
 
 Support
-=======
+-------
 
 Have a question, or need further information? `Reach out to us <https://www.sylabs.io/bug-report/>`_.
 
------
+
 build
------
+=====
 
 .. _sec:build:
 
@@ -596,7 +596,7 @@ Use ``build`` to download and assemble existing containers, convert containers
 from one format to another, or build a container from a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#container-recipes>`_.
 
 Overview
-========
+--------
 
 The ``build`` command accepts a target as input and produces a container as
 output. The target can be a Singularity Hub or Docker Hub URI, a path
@@ -607,10 +607,10 @@ For a complete list of ``build`` options type ``singularity help build``. For mo
 containers see `Build a Container <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_.
 
 Examples
-========
+--------
 
 Download an existing container from Singularity Hub or Docker Hub
------------------------------------------------------------------
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 ::
 
@@ -618,7 +618,7 @@ Download an existing container from Singularity Hub or Docker Hub
     $ singularity build lolcow.simg docker://godlovedc/lolcow
 
 Create --writable images and --sandbox directories
---------------------------------------------------
+''''''''''''''''''''''''''''''''''''''''''''''''''
 
 ::
 
@@ -626,7 +626,7 @@ Create --writable images and --sandbox directories
     $ sudo singularity build --sandbox lolcow/ shub://GodloveD/lolcow
 
 Convert containers from one format to another
----------------------------------------------
+'''''''''''''''''''''''''''''''''''''''''''''
 
 You can convert the three supported container formats using any
 combination.
@@ -638,7 +638,7 @@ combination.
     $ singularity build production2 development/
 
 Build a container from a Singularity recipe
--------------------------------------------
+'''''''''''''''''''''''''''''''''''''''''''
 
 Given a Singularity Recipe called ``Singularity`` :
 
@@ -646,9 +646,9 @@ Given a Singularity Recipe called ``Singularity`` :
 
     $ sudo singularity build lolcow.simg Singularity
 
-----
+
 exec
-----
+====
 
 .. _sec:exec:
 
