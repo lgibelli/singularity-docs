@@ -212,7 +212,7 @@ disappears when the shell is exited.
 Executing Commands
 ==================
 
-The `exec <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id2>`_ command allows you to execute a custom command within a container by
+The `exec <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id25>`_ command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
@@ -265,7 +265,7 @@ This example works because ``hello-kitty.txt`` exists in the user’s home direc
 default singularity bind mounts ``/home/$USER``, ``/tmp``, and ``$PWD`` into your container at
 runtime.
 You can specify additional directories to bind mount into your
-container with the `- -bind <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#bind-paths-and-mounts>`_ option. In this example, the ``data`` directory on the host
+container with the `- -bind <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_ option. In this example, the ``data`` directory on the host
 system is bind mounted to the ``/mnt`` directory inside the container.
 
 ::
