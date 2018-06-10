@@ -13,7 +13,7 @@ discuss those things
 Cache Folders
 -------------
 
-To make download of layers for build and `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_ faster and less redundant, we
+To make download of layers for build and `pull <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id28>`_ faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
 a set of folders in your ``$HOME`` directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
@@ -69,8 +69,8 @@ The above runtime folder would be created under ``/tmp/pancakes/.singularity-run
 Pull Folder
 -----------
 
-For details about customizing the output location of `pull <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_, see the
-`pull docs <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id5>`_. You have the similar ability to set it to be something
+For details about customizing the output location of `pull <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id28>`_, see the
+`pull docs <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id28>`_. You have the similar ability to set it to be something
 different, or to customize the name of the pulled image.
 
 ---------------------
