@@ -47,8 +47,8 @@ you can specify with ``--low`` , ``--med`` , or ``--high`` :
 
     USAGE: singularity [...] check [exec options...] <container path>
 
-This command will run security checks for an image.
-Note that some checks require sudo.
+    This command will run security checks for an image.
+    Note that some checks require sudo.
 
         -l/--low       Specify low threshold (all checks, default)
         -m/--med       Perform medium and high checks
