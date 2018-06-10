@@ -40,7 +40,7 @@ Import a Docker image into a Singularity Image
 The core of a Docker image is basically a compressed set of files, a set
 of ``.tar.gz`` that (if you look in your `Docker image folder <http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine>`_ on your host
 machine, you will see. The Docker Registry, which you probably interact
-with via `Docker Hub`_, serves these layers. These are the layers that
+with via `Docker Hub <https://hub.docker.com/>`_, serves these layers. These are the layers that
 you see downloading when you interact with the docker daemon. We are
 going to use these same layers for Singularity!
 
