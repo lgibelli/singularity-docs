@@ -130,7 +130,7 @@ And it will work when the user asks the container for help.
 Commands in the %setup section are executed on the host system outside
 of the container after the base OS has been installed. For versions
 earlier than 2.3 if you need files during %post, you should copy files
-from your host to $SINGULARITY\_ROOTFS to move them into the
+from your host to ``$SINGULARITY_ROOTFS`` to move them into the
 container. For >2.3 you can add files to the container (added before
 %post) using the %files section. We can see the difference between
 %setup and %post in the following asciicast:
@@ -357,7 +357,7 @@ At runtime, scripts in ``/.singularity/env`` are sourced in order. This means th
 in ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via ``%environment``. Note that you won’t see
 these variables in the inspect output, as inspect only shows the
 contents added from ``%environment``.
-See `Environment and Metadata <#id37>`_ for more information about
+See `Environment and Metadata <https://singularity-userdoc.readthedocs.io/en/latest/environment_and_metadata.html>`_ for more information about
 the ``%labels`` and ``%environment`` sections.
 
 %post
@@ -504,8 +504,8 @@ environments? In some circumstances, it may be redundant to build
 different containers for each app with almost equivalent dependencies.
 
 Starting in Singularity 2.4 all of the above commands can also be used
-in the context of internal modules called `apps <#reproducible-sci-f-apps>`_ based on the `Standard
-Container Integration Format <https://sci-f.github.io/>`_. For details on apps, see the `apps <#reproducible-sci-f-apps>`_
+in the context of internal modules called `apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html>`_ based on the `Standard
+Container Integration Format <https://sci-f.github.io/>`_. For details on apps, see the `apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html>`_
 documentation. For a quick rundown of adding an app to your container,
 here is an example runscript:
 
@@ -628,7 +628,7 @@ Best Practices for Build Recipes
 
 When crafting your recipe, it is best to consider the following:
 
-#. To make your container internally modular, use `SCI-F apps <#reproducible-sci-f-apps>`_. Shared dependencies
+#. To make your container internally modular, use `SCI-F apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html#reproducible-sci-f-apps>`_. Shared dependencies
    (between app modules) can go under ``%post``.
 
 #. For global installs to ``%post``, install packages, programs, data, and files
@@ -653,4 +653,4 @@ When crafting your recipe, it is best to consider the following:
    possibility of reproducibility and mitigates the black box effect.
 
 Are you a recipe pro and now ready to build? Take a look at the
-`build <#build-a-container>`_ documentation.
+`build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_ documentation.
