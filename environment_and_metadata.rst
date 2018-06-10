@@ -46,7 +46,7 @@ variables added using ``$SINGULARITY_ENVIRONMENT`` take precedence over those ad
 section.
 
 Need to define a variable at runtime? You can set variables inside the
-container by prefixing them with "SINGULARITYENV_". They will be
+container by prefixing them with ``SINGULARITYENV_``. They will be
 transposed automatically and the prefix will be stripped. For example,
 let’s say we want to set the variable ``HELLO`` to have value ``WORLD``. We can do that
 as follows:
