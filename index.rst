@@ -1,6 +1,8 @@
+==========
+User Guide
+==========
 
 .. toctree::
-   :caption: User Guide
    :maxdepth: 5
 
    Quick Start <quick_start>
