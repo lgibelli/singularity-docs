@@ -6,7 +6,7 @@ Build a Container
 
 ``build`` is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
-`Singularity Hub <https://singularity-hub.org/>`_ and `Docker Hub`_. You can use it to convert
+`Singularity Hub <https://singularity-hub.org/>`_ and `Docker Hub <https://hub.docker.com/>`_. You can use it to convert
 containers between the various formats supported by Singularity. And you
 can use it in conjunction with a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_ file to
 create a container from scratch and customized it to fit your needs.

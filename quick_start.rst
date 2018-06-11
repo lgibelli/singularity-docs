@@ -187,7 +187,7 @@ Singularity Hub like so.
 Shell
 =====
 
-The `shell <https://singularity-userdoc.readthedocs.io/en/latest/commands.html#id12>`_ command allows you to spawn a new shell within your container and
+The `shell <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id36>`_ command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
 ::

@@ -1649,7 +1649,7 @@ image.create
 A Singularity image, which can be referred to as a “container,” is a
 single file that contains a virtual file system. As of Singularity
 2.4, we strongly recommend that you build (create and install) an
-image using `build <http://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#build-a-container>`_. If you have reason to create an empty image, or use
+image using `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_. If you have reason to create an empty image, or use
 create for any other reason, the original ``create`` command is replaced with a
 more specific ``image.create``. After creating an image you can install an operating
 system, applications, and save meta-data with it.
@@ -1915,7 +1915,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at ``instance`` usage see `Running Instances <https://singularity-userdoc.readthedocs.io/en/latest/getting_started.html#why-container-instances>`_.
+detailed look at ``instance`` usage see `Running Instances <https://singularity-userdoc.readthedocs.io/en/latest/running_services.html#running-services>`_.
 
 Start a few named instances from containers on Singularity Hub
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''

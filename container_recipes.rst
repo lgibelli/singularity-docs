@@ -44,7 +44,7 @@ composed of several keywords. Specifically:
 -  ``Bootstrap``: references the kind of base you want to use (e.g., docker,
    debootstrap, shub). For example, a shub bootstrap will pull
    containers for shub as bases. A Docker bootstrap will pull docker
-   layers to start your image. For a full list see `build <#build-a-container>`_
+   layers to start your image. For a full list see `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_
 
 -  ``From``: is the named container (shub) or reference to layers (Docker) that
    you want to use (e.g., vsoch/hello-world)
@@ -271,7 +271,7 @@ The easiest way to see labels is to inspect the image:
     }
 
 You’ll notice some other labels that are captured automatically from the
-build process. You can read more about labels and metadata `here <#id37>`_.
+build process. You can read more about labels and metadata `here <https://singularity-userdoc.readthedocs.io/en/latest/environment_and_metadata.html>`_.
 
 %environment
 ------------

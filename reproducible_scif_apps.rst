@@ -433,9 +433,12 @@ and execute our scientific containers.
 Cowsay Container
 ----------------
 
-| Now let’s go through the tutorial to build our `cowsay container`_.
-| **Important!** This tutorial is for Singularity 2.4.
-| When you’ve installed 2.4, download the recipe, and save it to your
+Now let’s go through the tutorial to build our `cowsay container`_.
+
+.. warning::
+    **Important!** This tutorial is for Singularity 2.4.
+
+When you’ve installed 2.4, download the recipe, and save it to your
   present working directory. By the way, credit for anything and
   everything lolcat and cowsay goes to `GodLoveD <https://www.github.com/GodLoveD>`_! Here is the recipe:
 
