@@ -4,7 +4,7 @@ Bind Paths and Mounts
 
 .. _sec:bindpaths:
 
-If `enabled by the system administrator <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes>`_, Singularity allows you to map
+If `enabled by the system administrator <https://singularity-admindoc.readthedocs.io/en/latest/the_singularity_config_file.html#user-bind-control-boolean-default-yes>`_, Singularity allows you to map
 directories on your host system to directories within your container
 using bind mounts. This allows you to read and write data on the host
 system with ease.
@@ -35,7 +35,7 @@ bind points.
 User-defined bind points
 ========================
 
-If the system administrator has `enabled user control of binds <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#user-bind-control-boolean-default-yes>`_, you
+If the system administrator has `enabled user control of binds <https://singularity-admindoc.readthedocs.io/en/latest/the_singularity_config_file.html#user-bind-control-boolean-default-yes>`_, you
 will be able to request your own bind points within your container.
 
 To *mount* a bind path inside the container, a **bind point** must be
@@ -47,7 +47,7 @@ container.
 
 It is, however, possible that the system administrator has enabled a
 Singularity feature called `overlay in the Singularity configuration
-file <https://singularity-admindoc.readthedocs.io/en/latest/quickstart.html#enable-overlay-boolean-default-no>`_. This will cause the bind points to be created on an as-needed
+file <https://singularity-admindoc.readthedocs.io/en/latest/the_singularity_config_file.html#enable-overlay-boolean-default-no>`_. This will cause the bind points to be created on an as-needed
 basis in an overlay file system so that the underlying container is
 not modified. But because the overlay feature is not always enabled or
 is unavailable in the kernels of some older host systems, it may be
