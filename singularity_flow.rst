@@ -67,17 +67,29 @@ To build into a folder (we call this a “sandbox”) just ask for it:
 ::
 
     $ sudo singularity build --sandbox ubuntu/ docker://ubuntu
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /root/.singularity/docker
+
     Importing: base Singularity environment
+
     Importing: /root/.singularity/docker/sha256:9fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118.tar.gz
+
     Importing: /root/.singularity/docker/sha256:3b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a.tar.gz
+
     Importing: /root/.singularity/docker/sha256:9d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2.tar.gz
+
     Importing: /root/.singularity/docker/sha256:d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e.tar.gz
+
     Importing: /root/.singularity/docker/sha256:7fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9.tar.gz
+
     Importing: /root/.singularity/metadata/sha256:22e289880847a9a2f32c62c237d2f7e3f4eae7259bf1d5c7ec7ffa19c1a483c8.tar.gz
+
     Building image from sandbox: ubuntu/
+
     Singularity container built: ubuntu/
+
 
 We now have a folder with the entire ubuntu OS, plus some Singularity
 metadata, plopped in our present working directory.
@@ -85,6 +97,7 @@ metadata, plopped in our present working directory.
 ::
 
      $ tree -L 1 ubuntu
+
     ubuntu
     ├── bin
     ├── boot
@@ -113,10 +126,14 @@ And you can shell into it just like a normal container.
 ::
 
     $ singularity shell ubuntu
+
     Singularity: Invoking an interactive shell within container...
 
+
     Singularity ubuntu:~/Desktop> touch /hello.txt
+
     touch: cannot touch '/hello.txt': Permission denied
+
 
 You can make changes to the container (assuming you have the proper
 permissions to do so) but those changes will disappear as soon as you
@@ -127,9 +144,12 @@ ensure you have permissions to write where you like.
 ::
 
     $ sudo singularity shell ubuntu
+
     Singularity: Invoking an interactive shell within container...
 
+
     Singularity ubuntu:/home/vanessa/Desktop> touch /hello.txt
+
 
 Writable Image
 --------------
@@ -143,23 +163,43 @@ system. Unlike the sandbox, it is a single image file.
 
 
     $ sudo singularity build --writable ubuntu.img docker://ubuntu
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /root/.singularity/docker
+
     Importing: base Singularity environment
+
     Importing: /root/.singularity/docker/sha256:9fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118.tar.gz
+
     Importing: /root/.singularity/docker/sha256:3b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a.tar.gz
+
     Importing: /root/.singularity/docker/sha256:9d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2.tar.gz
+
     Importing: /root/.singularity/docker/sha256:d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e.tar.gz
+
     Importing: /root/.singularity/docker/sha256:7fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9.tar.gz
+
     Importing: /root/.singularity/metadata/sha256:22e289880847a9a2f32c62c237d2f7e3f4eae7259bf1d5c7ec7ffa19c1a483c8.tar.gz
+
     Building image from sandbox: /tmp/.singularity-build.VCHPpP
+
     Creating empty Singularity writable container 130MB
+
     Creating empty 162MiB image file: ubuntu.img
+
     Formatting image with ext3 file system
+
     Image is done: ubuntu.img
+
     Building Singularity image...
+
+
     Cleaning up...
+
+
     Singularity container built: ubuntu.img
+
 
 You can use this image with commands like ``shell``, ``exec`` , ``run`` , and if you want to
 change the image you must use the ``--writable`` flag. As before, it’s a good idea to
@@ -170,12 +210,19 @@ to write.
 
     $ sudo singularity shell --writable ubuntu.img
 
+
     Development Tip! When building containers, it often is the case that
+
     you will have a lot of testing of installation commands, and if
+
     building a production image, one error will stop the entire build.
+
     If you interactively write the build recipe with one of these
+
     writable containers, you can debug as you go, and then build the
+
     production (squashfs) container without worrying that it will error
+
     and need to be started again.
 
 2. Production Commands
@@ -201,18 +248,31 @@ image, just remove the extra options:
 ::
 
     sudo singularity build ubuntu.simg docker://ubuntu
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /root/.singularity/docker
+
     Importing: base Singularity environment
+
     Importing: /root/.singularity/docker/sha256:9fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118.tar.gz
+
     Importing: /root/.singularity/docker/sha256:3b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a.tar.gz
+
     Importing: /root/.singularity/docker/sha256:9d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2.tar.gz
+
     Importing: /root/.singularity/docker/sha256:d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e.tar.gz
+
     Importing: /root/.singularity/docker/sha256:7fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9.tar.gz
+
     Importing: /root/.singularity/metadata/sha256:22e289880847a9a2f32c62c237d2f7e3f4eae7259bf1d5c7ec7ffa19c1a483c8.tar.gz
+
     Building Singularity image...
+
     Cleaning up...
+
     Singularity container built: ubuntu.simg
+    
 
 Production Build from Sandbox
 -----------------------------

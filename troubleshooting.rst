@@ -14,7 +14,9 @@ it runs out of space on the device:
 ::
 
     sudo singularity build fatty.simg Singularity
+
     IOError: [Errno 28] No space left on device
+
     ABORT: Aborting with RETVAL=255
 
 The issue here is that during build of a squashfs image, Singularity is
@@ -40,10 +42,15 @@ you might hit a segfault:
 ::
 
     $ singularity shell docker://centos:6
+
     Docker image path: index.docker.io/library/centos:6
+
     Cache folder set to /home/jbdenis/.singularity/docker
+
     Creating container runtime...
+
     Singularity: Invoking an interactive shell within container...
+
 
     Segmentation fault
 
@@ -74,9 +81,13 @@ How to use Singularity with GRSecurity enabled kernels
 ::
 
     $ sudo sysctl -w kernel.grsecurity.chroot_caps=0
+
     $ sudo sysctl -w kernel.grsecurity.chroot_deny_mount=0
+
     $ sudo sysctl -w kernel.grsecurity.chroot_deny_chmod=0
+
     $ sudo sysctl -w kernel.grsecurity.chroot_deny_fchdir=0
+
 
 ------------------------------------------------
 The container isn’t working on a different host!
@@ -96,6 +107,7 @@ container to mount it as home:
 ::
 
     rm -rf /tmp/homie && mkdir -p /tmp/homie && \
+
     singularity exec -H /tmp/homie analysis.img /bin/bash
 
 **Solution 2: Specify the executable to use**
@@ -109,11 +121,16 @@ This means:
 
     %runscript
 
+
     # This specifies the python in the container
+
     exec /usr/bin/python "$@"
 
+
     # This may pick up a different one
+
     exec python "$@"
+
 
 This same idea would be useful if you are issuing the command to the
 container using ``exec``. Thanks to `yarikoptic <https://github.com/yarikoptic>`_ for the suggestions on this
@@ -147,6 +164,7 @@ the default compiled prefix of /usr/local:
 ::
 
     $ sudo singularity instance.start container.img daemon1
+
     sudo: singularity: command not found
 
 The cause of the problem is that ``sudo`` sanitizes the PATH environment
@@ -172,8 +190,11 @@ error
 ::
 
     $ singularity run -B /apps container.img
+
     ERROR : There was an error binding the path /apps: Too many levels of symbolic links
+
     ABORT : Retval = 255
+    
 
 You got this error because /apps directory is an autofs mount point. You
 can fix it by editing singularity.conf and adding the following

@@ -117,6 +117,7 @@ follows:
         see singularity help <command>
 
     For any additional help or support visit the Singularity
+
     website: https://github.com/singularityware/singularity
 
 For any additional help or support visit the Singularity website:
@@ -463,7 +464,7 @@ Here is an example of a recipe file:
         mkdir /data
 
         echo "The post section is where you can install, and configure your container."
-        
+
 
 To build a container from this definition file (assuming it is a file
 named Singularity), you would call build like so:

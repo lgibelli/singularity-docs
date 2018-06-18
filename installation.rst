@@ -21,17 +21,26 @@ into missing dependencies, try installing them like so:
 ::
 
     $ sudo apt-get update && \
+
         sudo apt-get install \
+
         python \
+
         dh-autoreconf \
+
         build-essential \
+
         libarchive-dev
+
 
 ::
 
     $ sudo yum update && \
+
         sudo yum groupinstall 'Development Tools' && \
+
         sudo yum install libarchive-devel
+
 
 -------------------------
 Install the master branch
@@ -43,11 +52,17 @@ repo <https://github.com/singularityware/singularity>`_ master branch to ``/usr/
 ::
 
     $ git clone https://github.com/singularityware/singularity.git
+
     $ cd singularity
+
     $ ./autogen.sh
+
     $ ./configure --prefix=/usr/local --sysconfdir=/etc
+
     $ make
+
     $ sudo make install
+
 
 .. note::
     Note that the installation prefix is ``/usr/local`` but the configuration directory
@@ -73,12 +88,19 @@ releases <https://github.com/singularityware/singularity/releases>`_ page to ``/
 ::
 
     $ VER=2.5.1
+
     $ wget https://github.com/singularityware/singularity/releases/download/$VER/singularity-$VER.tar.gz
+
     $ tar xvf singularity-$VER.tar.gz
+
     $ cd singularity-$VER
+
     $ ./configure --prefix=/usr/local --sysconfdir=/etc
+
     $ make
+
     $ sudo make install
+
 
 ------------------------------
 Install the development branch
@@ -90,13 +112,21 @@ tweaked slightly:
 ::
 
     $ git clone https://github.com/singularityware/singularity.git
+
     $ cd singularity
+
     $ git fetch
+
     $ git checkout development
+
     $ ./autogen.sh
+
     $ ./configure --prefix=/usr/local --sysconfdir=/etc
+
     $ make
+
     $ sudo make install
+
 
 ---------------------
 Remove an old version
@@ -108,14 +138,23 @@ you need to hit all of the following:
 ::
 
     $ sudo rm -rf /usr/local/libexec/singularity
+
     $ sudo rm -rf /usr/local/etc/singularity
+
     $ sudo rm -rf /usr/local/include/singularity
+
     $ sudo rm -rf /usr/local/lib/singularity
+
     $ sudo rm -rf /usr/local/var/lib/singularity/
+
     $ sudo rm /usr/local/bin/singularity
+
     $ sudo rm /usr/local/bin/run-singularity
+
     $ sudo rm /usr/local/etc/bash_completion.d/singularity
+
     $ sudo rm /usr/local/man/man1/singularity.1
+    
 
 If you modified the system configuration directory, remove the ``singularity.conf`` file
 there as well.

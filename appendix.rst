@@ -404,6 +404,7 @@ Here we are cleaning the environment. In the first command, we see that the vari
 ::
 
     PEANUTBUTTER=JELLY singularity exec Centos7.img env | grep PEANUT
+
     PEANUTBUTTER=JELLY
 
 And now here we add ``--cleanenv`` to see that it doesn’t.
@@ -417,14 +418,21 @@ Here we will test contain. We can first confirm that there are a lot of files on
 ::
 
     # On the host
+
     $ ls /tmp | wc -l
+
     17
 
+
     # And then /tmp is mounted to the container, by default
+
     $ singularity exec Centos7.img  ls /tmp | wc -l
 
+
     # ..but not if we use --contain
+
     $ singularity exec --contain Centos7.img  ls /tmp | wc -l
+
     0
 
 --------
@@ -518,20 +526,31 @@ For example:
     ::
 
         $ singularity help create
+
         CREATE OPTIONS:
+
             -s/--size   Specify a size for an operation in MiB, i.e. 1024*1024B
+
                         (default 768MiB)
+
             -F/--force  Overwrite an image file if it exists
+
 
         EXAMPLES:
 
+
             $ singularity create /tmp/Debian.img
+
             $ singularity create -s 4096 /tmp/Debian.img
 
+
         For additional help, please visit our public documentation pages which are
+
         found at:
 
+
             https://www.sylabs.io/docs/
+
 
 Commands Usage
 --------------
@@ -542,44 +561,76 @@ Commands Usage
 
         USAGE: singularity [global options...] <command> [command options...] ...
 
+
         GLOBAL OPTIONS:
+
             -d|--debug    Print debugging information
+
             -h|--help     Display usage summary
+
             -s|--silent   Only print errors
+
             -q|--quiet    Suppress all normal output
+
                --version  Show application version
+
             -v|--verbose  Increase verbosity +1
+
             -x|--sh-debug Print shell wrapper debugging information
 
+
         GENERAL COMMANDS:
+
             help       Show additional help for a command or container
+
             selftest   Run some self tests for singularity install
 
+
         CONTAINER USAGE COMMANDS:
+
             exec       Execute a command within container
+
             run        Launch a runscript within container
+
             shell      Run a Bourne shell within container
+
             test       Launch a testscript within container
 
+
         CONTAINER MANAGEMENT COMMANDS:
+
             apps       List available apps within a container
+
             bootstrap  *Deprecated* use build instead
+
             build      Build a new Singularity container
+
             check      Perform container lint checks
+
             inspect    Display a container's metadata
+
             mount      Mount a Singularity container image
+
             pull       Pull a Singularity/Docker container to $PWD
 
+
         COMMAND GROUPS:
+
             image      Container image command group
+
             instance   Persistent instance command group
 
 
+
         CONTAINER USAGE OPTIONS:
+
             see singularity help <command>
 
+
         For any additional help or support visit the Singularity
+
         website: https://www.sylabs.io/contact/
+
 
 Support
 -------
@@ -615,6 +666,7 @@ Download an existing container from Singularity Hub or Docker Hub
 ::
 
     $ singularity build lolcow.simg shub://GodloveD/lolcow
+
     $ singularity build lolcow.simg docker://godlovedc/lolcow
 
 Create --writable images and --sandbox directories
@@ -623,6 +675,7 @@ Create --writable images and --sandbox directories
 ::
 
     $ sudo singularity build --writable lolcow.img shub://GodloveD/lolcow
+
     $ sudo singularity build --sandbox lolcow/ shub://GodloveD/lolcow
 
 Convert containers from one format to another
@@ -634,7 +687,9 @@ combination.
 ::
 
     $ sudo singularity build --writable development.img production.simg
+
     $ singularity build --sandbox development/ production.simg
+
     $ singularity build production2 development/
 
 Build a container from a Singularity recipe
@@ -668,14 +723,23 @@ Printing the OS release inside the container
 ::
 
     $ singularity exec container.img cat /etc/os-release
+
     PRETTY_NAME="Debian GNU/Linux 8 (jessie)"
+
     NAME="Debian GNU/Linux"
+
     VERSION_ID="8"
+
     VERSION="8 (jessie)"
+
     ID=debian
+
     HOME_URL="http://www.debian.org/"
+
     SUPPORT_URL="http://www.debian.org/support"
+
     BUG_REPORT_URL="https://bugs.debian.org/"
+
     $
 
 Printing the OS release for a running instance
@@ -703,8 +767,11 @@ container.
 ::
 
     $ singularity exec container.img echo -ne "hello\nworld\n\n"
+
     hello
+
     world
+
     $
 
 And a demonstration using pipes:
@@ -712,7 +779,9 @@ And a demonstration using pipes:
 ::
 
     $ cat debian.def | singularity exec container.img grep 'MirrorURL'
+
     MirrorURL "http://ftp.us.debian.org/debian/"
+
     $
 
 A Python example
@@ -724,8 +793,11 @@ Starting with the file ``hello.py`` in the current directory with the contents o
 
     #!/usr/bin/python
 
+
     import sys
+
     print("Hello World: The Python version is %s.%s.%s" % sys.version_info[:3])
+
 
 Because our home directory is automatically bound into the container,
 and we are running this from our home directory, we can easily execute
@@ -734,7 +806,9 @@ that script using the Python within the container:
 ::
 
     $ singularity exec /tmp/Centos7-ompi.img /usr/bin/python hello.py
+
     Hello World: The Python version is 2.7.5
+
 
 We can also pipe that script through the container and into the Python
 binary which exists inside the container using the following command:
@@ -742,7 +816,9 @@ binary which exists inside the container using the following command:
 ::
 
     $ cat hello.py | singularity exec /tmp/Centos7-ompi.img /usr/bin/python
+
     Hello World: The Python version is 2.7.5
+
 
 For demonstration purposes, let’s also try to use the latest Python
 container which exists in DockerHub to run this script:
@@ -750,22 +826,39 @@ container which exists in DockerHub to run this script:
 ::
 
     $ singularity exec docker://python:latest /usr/local/bin/python hello.py
+
     library/python:latest
+
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+
     Downloading layer: sha256:fbd06356349dd9fb6af91f98c398c0c5d05730a9996bbf88ff2f2067d59c70c4
+
     Downloading layer: sha256:644eaeceac9ff6195008c1e20dd693346c35b0b65b9a90b3bcba18ea4bcef071
+
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+
     Downloading layer: sha256:766692404ca72f4e31e248eb82f8eca6b2fcc15b22930ec50e3804cc3efe0aba
+
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+
     Downloading layer: sha256:6a3d69edbe90ef916e1ecd8d197f056de873ed08bcfd55a1cd0b43588f3dbb9a
+
     Downloading layer: sha256:ff18e19c2db42055e6f34323700737bde3c819b413997cddace2c1b7180d7efd
+
     Downloading layer: sha256:7b9457ec39de00bc70af1c9631b9ae6ede5a3ab715e6492c0a2641868ec1deda
+
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+
     Downloading layer: sha256:6a5a5368e0c2d3e5909184fa28ddfd56072e7ff3ee9a945876f7eee5896ef5bb
+
     Hello World: The Python version is 3.5.2
+
 
 A GPU example
 '''''''''''''
@@ -778,46 +871,87 @@ version of TensorFlow.
 ::
 
     $ git clone https://github.com/tensorflow/models.git
+
     $ singularity exec --nv docker://tensorflow/tensorflow:latest-gpu \
+
         python ./models/tutorials/image/mnist/convolutional.py
+
     Docker image path: index.docker.io/tensorflow/tensorflow:latest-gpu
+
     Cache folder set to /home/david/.singularity/docker
+
     [19/19] |===================================| 100.0%
+
     Creating container runtime...
+
     Extracting data/train-images-idx3-ubyte.gz
+
     Extracting data/train-labels-idx1-ubyte.gz
+
     Extracting data/t10k-images-idx3-ubyte.gz
+
     Extracting data/t10k-labels-idx1-ubyte.gz
+
     2017-08-18 20:33:59.677580: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+
     2017-08-18 20:33:59.677620: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+
     2017-08-18 20:34:00.148531: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+
     2017-08-18 20:34:00.148926: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties:
+
     name: GeForce GTX 760 (192-bit)
+
     major: 3 minor: 0 memoryClockRate (GHz) 0.8885
+
     pciBusID 0000:03:00.0
+
     Total memory: 2.95GiB
+
     Free memory: 2.92GiB
+
     2017-08-18 20:34:00.148954: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0
+
     2017-08-18 20:34:00.148965: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y
+
     2017-08-18 20:34:00.148979: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 760 (192-bit), pci bus id: 0000:03:00.0)
+
     Initialized!
+
     Step 0 (epoch 0.00), 21.7 ms
+
     Minibatch loss: 8.334, learning rate: 0.010000
+
     Minibatch error: 85.9%
+
     Validation error: 84.6%
+
     Step 100 (epoch 0.12), 20.9 ms
+
     Minibatch loss: 3.235, learning rate: 0.010000
+
     Minibatch error: 4.7%
+
     Validation error: 7.8%
+
     Step 200 (epoch 0.23), 20.5 ms
+
     Minibatch loss: 3.363, learning rate: 0.010000
+
     Minibatch error: 9.4%
+
     Validation error: 4.2%
+
     [...snip...]
+
     Step 8500 (epoch 9.89), 20.5 ms
+
     Minibatch loss: 1.602, learning rate: 0.006302
+
     Minibatch error: 0.0%
+
     Validation error: 0.9%
+
     Test error: 0.8%
 
 
@@ -842,19 +976,33 @@ JSON API standardized response, for example:
 ::
 
     singularity inspect -l --json ubuntu.img
+
     {
+
         "data": {
+
             "attributes": {
+
                 "labels": {
+
                     "SINGULARITY_DEFFILE_BOOTSTRAP": "docker",
+
                     "SINGULARITY_DEFFILE": "Singularity",
+
                     "SINGULARITY_BOOTSTRAP_VERSION": "2.2.99",
+
                     "SINGULARITY_DEFFILE_FROM": "ubuntu:latest"
+
                 }
+
             },
+
             "type": "container"
+
         }
+
     }
+
 
 Inspect Flags
 -------------
@@ -865,11 +1013,17 @@ labels file
 ::
 
     $ singularity inspect ubuntu.img
+
     {
+
         "SINGULARITY_DEFFILE_BOOTSTRAP": "docker",
+
         "SINGULARITY_DEFFILE": "Singularity",
+
         "SINGULARITY_BOOTSTRAP_VERSION": "2.2.99",
+
         "SINGULARITY_DEFFILE_FROM": "ubuntu:latest"
+
     }
 
 and as outlined in the usage, you can specify to see any combination of ``--labels``
@@ -879,23 +1033,41 @@ be:
 ::
 
     $ singularity inspect -l -r -d -t -e -j -hf ubuntu.img
+
     {
+
         "data": {
+
             "attributes": {
+
                 "test": null,
+
                 "help": "This is how you run the image!\n",
+
                 "environment": "# Custom environment shell code should follow\n\n",
+
                 "labels": {
+
                     "SINGULARITY_DEFFILE_BOOTSTRAP": "docker",
+
                     "SINGULARITY_DEFFILE": "Singularity",
+
                     "SINGULARITY_BOOTSTRAP_VERSION": "2.2.99",
+
                     "SINGULARITY_DEFFILE_FROM": "ubuntu:latest"
+
                 },
+
                 "deffile": "Bootstrap:docker\nFrom:ubuntu:latest\n",
+
                 "runscript": "#!/bin/sh\n\nexec /bin/bash \"$@\""
+
             },
+
             "type": "container"
+
         }
+
     }
 
 Labels
@@ -910,11 +1082,17 @@ bootstrap. For example, here we are inspecting labels for ``ubuntu.img``
 ::
 
     $ singularity inspect ubuntu.img
+
     {
+
         "SINGULARITY_DEFFILE_BOOTSTRAP": "docker",
+
         "SINGULARITY_DEFFILE": "Singularity",
+
         "SINGULARITY_BOOTSTRAP_VERSION": "2.2.99",
+
         "SINGULARITY_DEFFILE_FROM": "ubuntu:latest"
+
     }
 
 This is the equivalent of both of:
@@ -922,6 +1100,7 @@ This is the equivalent of both of:
 ::
 
     $ singularity inspect -l ubuntu.img
+
     $ singularity inspect --labels ubuntu.img
 
 Runscript
@@ -932,13 +1111,21 @@ The commands ``--runscript`` or ``--r`` will show you the runscript, which also 
 ::
 
     $ singularity inspect -r -j ubuntu.img{
+
         "data": {
+
             "attributes": {
+
                 "runscript": "#!/bin/sh\n\nexec /bin/bash \"$@\""
+
             },
+
             "type": "container"
+
         }
+
     }
+
 
 or in a human friendly, readable print to the screen:
 
@@ -946,10 +1133,14 @@ or in a human friendly, readable print to the screen:
 
     $ singularity inspect -r ubuntu.img
 
+
     ##runscript
+
     #!/bin/sh
 
+
     exec /bin/bash "$@"
+
 
 Help
 ''''
@@ -960,14 +1151,23 @@ With ``--json`` you can also see it as such:
 ::
 
     singularity inspect -hf -j dino.img
+
     {
+
         "data": {
+
             "attributes": {
+
                 "help": "\n\n\nHi there! This is my image help section.\n\nUsage:\n\nboobeep doo doo\n\n --arg/a arrrrg I'm a pirate!\n --boo/b eeeeeuzzz where is the honey?\n\n\n"
+
             },
+
             "type": "container"
+
         }
+
     }
+
 
 or in a human friendly, readable print to the screen, don’t use ``-j`` or ``--json``:
 
@@ -976,14 +1176,20 @@ or in a human friendly, readable print to the screen, don’t use ``-j`` or ``--
     $ singularity inspect -hf dino.img
 
 
-Hi there! This is my image help section.
+
+    Hi there! This is my image help section.
+
 
     Usage:
 
+
     boobeep doo doo
 
+
      --arg/a arrrrg I'm a pirate!
+
      --boo/b eeeeeuzzz where is the honey?
+
 
 Environment
 '''''''''''
@@ -995,14 +1201,23 @@ might have come from a Docker import. You can again choose to see ``--json`` :
 ::
 
     $ singularity inspect -e --json ubuntu.img
+
     {
+
         "data": {
+
             "attributes": {
+
                 "environment": "# Custom environment shell code should follow\n\n"
+
             },
+
             "type": "container"
+
         }
+
     }
+
 
 or human friendly:
 
@@ -1010,11 +1225,16 @@ or human friendly:
 
     $ singularity inspect -e ubuntu.img
 
+
     ##environment
+
     # Custom environment shell code should follow
 
+
 The container in the example above did not have any custom environment
+
 variables set.
+
 
 Test
 ''''
@@ -1026,21 +1246,36 @@ Singularity file. Again, we can ask for ``--json`` or human friendly (default):
 ::
 
     $ singularity --inspect -t --json ubuntu.img
+
     {
+
         "data": {
+
             "attributes": {
+
                 "test": null
+
             },
+
             "type": "container"
+
         }
+
     }
 
+
     $ singularity inspect -t  ubuntu.img
+
     {
+
         "status": 404,
+
         "detail": "This container does not have any tests defined",
+
         "title": "Tests Undefined"
+
     }
+
 
 Deffile
 '''''''
@@ -1053,22 +1288,34 @@ bootstrap, by using ``--deffile`` or ``-d``:
 
     $ singularity inspect -d  ubuntu.img
 
+
     ##deffile
+
     Bootstrap:docker
+
     From:ubuntu:latest
+
 
 or with ``--json`` output.
 
 ::
 
     $ singularity inspect -d --json ubuntu.img
+
     {
+
         "data": {
+
             "attributes": {
+
                 "deffile": "Bootstrap:docker\nFrom:ubuntu:latest\n"
+
             },
+
             "type": "container"
+
         }
+
     }
 
 The goal of these commands is to bring more transparency to containers,
@@ -1099,8 +1346,11 @@ extract on your local machine. The basic command is the following:
 ::
 
     singularity pull shub://vsoch/hello-world
+
     Progress |===================================| 100.0%
+
     Done. Container is at: ./vsoch-hello-world-master.img
+
 
 How do tags work?
 '''''''''''''''''
@@ -1137,9 +1387,13 @@ naming convention is to use the username, reponame, and the branch
 ::
 
     PULL OPTIONS:
+
         -n/--name   Specify a custom container name (first priority)
+
         -C/--commit Name container based on GitHub commit (second priority)
+
         -H/--hash   Name container based on file hash (second priority)
+
 
 Custom Name
 '''''''''''
@@ -1147,8 +1401,11 @@ Custom Name
 ::
 
     singularity pull --name meatballs.img shub://vsoch/hello-world
+
     Progress |===================================| 100.0%
+
     Done. Container is at: ./meatballs.img
+
 
 Name by commit
 ''''''''''''''
@@ -1161,8 +1418,11 @@ want to match containers to their build files:
 ::
 
     singularity pull --commit shub://vsoch/hello-world
+
     Progress |===================================| 100.0%
+
     Done. Container is at: ./4187993b8b44cbfa51c7e38e6b527918fcdf0470.img
+
 
 Name by hash
 ''''''''''''
@@ -1172,8 +1432,11 @@ If you prefer the hash of the file itself, you can do that too.
 ::
 
     singularity pull --hash shub://vsoch/hello-world
+
     Progress |===================================| 100.0%
+
     Done. Container is at: ./4db5b0723cfd378e332fa4806dd79e31.img
+
 
 Pull to different folder
 ''''''''''''''''''''''''
@@ -1188,9 +1451,13 @@ pulling to ``/tmp`` .
 ::
 
     SINGULARITY_PULLFOLDER=/tmp
+
     singularity pull shub://vsoch/hello-world
+
     Progress |===================================| 100.0%
+
     Done. Container is at: /tmp/vsoch-hello-world-master.img
+
 
 Pull by commit
 ''''''''''''''
@@ -1201,8 +1468,11 @@ commit id ( ``version`` ).
 ::
 
     singularity pull shub://vsoch/hello-world@42e1f04ed80217895f8c960bdde6bef4d34fab59
+
     Progress |===================================| 100.0%
+
     Done. Container is at: ./vsoch-hello-world-master.img
+
 
 In this example, the first build of this container will be pulled.
 
@@ -1215,21 +1485,37 @@ we would do the following:
 ::
 
     singularity pull docker://ubuntu
+
     Initializing Singularity image subsystem
+
     Opening image file: ubuntu.img
+
     Creating 223MiB image
+
     Binding image to loop
+
     Creating file system within image
+
     Image is done: ubuntu.img
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /home/vanessa/.singularity/docker
+
     Importing: base Singularity environment
+
     Importing: /home/vanessa/.singularity/docker/sha256:b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:55010f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:2955fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
+
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
+
     Done. Container is at: ubuntu.img
 
 If you specify the tag, the image would be named accordingly (eg, ``ubuntu-latest.img``). Did
@@ -1238,6 +1524,7 @@ you notice that the output looks similar to if we did the following?
 ::
 
     singularity create ubuntu.img
+
     singularity import ubuntu.img docker://ubuntu
 
 this is because the same logic is happening on the back end. Thus, the
@@ -1248,21 +1535,37 @@ else.
 ::
 
     singularity pull --size 2000 --name jellybelly.img docker://ubuntu
+
     Initializing Singularity image subsystem
+
     Opening image file: jellybelly.img
+
     Creating 2000MiB image
+
     Binding image to loop
+
     Creating file system within image
+
     Image is done: jellybelly.img
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /home/vanessa/.singularity/docker
+
     Importing: base Singularity environment
+
     Importing: /home/vanessa/.singularity/docker/sha256:b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:55010f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:2955fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
+
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
+
     Done. Container is at: jellybelly.img
 
 
@@ -1286,7 +1589,9 @@ the commands below are identical:
 ::
 
     $ singularity run centos7.img
+
     $ ./centos7.img
+
 
 In both cases, we are executing the container’s “runscript” (the
 executable ``/singularity`` at the root of the image) that is either an actual file
@@ -1297,16 +1602,21 @@ link:
 ::
 
     $ singularity exec centos7.img cat /singularity
+
     #!/bin/sh
 
+
     exec /bin/bash "$@"
+
 
 or to the actual file in the container’s metadata folder, ``/.singularity.d``
 
 ::
 
     $ singularity exec centos7.img cat /.singularity.d/runscript
+
     #!/bin/sh
+
 
     exec /bin/bash "$@"
 
@@ -1330,12 +1640,17 @@ In this example the container has a very simple runscript defined.
 ::
 
     $ singularity exec centos7.img cat /singularity
+
     #!/bin/sh
+
 
     echo motorbot
 
+
     $ singularity run centos7.img
+
     motorbot
+
 
 Defining the Runscript
 ''''''''''''''''''''''
@@ -1363,10 +1678,14 @@ Here is how you would define the runscript section when you `build <https://sing
 ::
 
     Bootstrap: docker
+
     From: ubuntu:latest
 
+
     %runscript
+
     exec /usr/bin/python "$@"
+
 
 and of course python should be installed as /usr/bin/python. The
 addition of ``$@`` ensures that arguments are passed along from the user. If
@@ -1376,10 +1695,14 @@ you want to use run instead of exec, you could also just do:
 ::
 
     Bootstrap: docker
+
     From: ubuntu:latest
 
+
     %runscript
+
     exec "$@"`
+
 
 If you want different entrypoints for your image, we recommend using the
 %apprun syntax (see `apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html#reproducible-sci-f-apps>`_). Here we have two entrypoints for foo and bar:
@@ -1387,13 +1710,19 @@ If you want different entrypoints for your image, we recommend using the
 ::
 
     %runscript
+
     exec echo "Try running with --app dog/cat"
 
+
     %apprun dog
+
     exec echo Hello "$@", this is Dog
 
+
     %apprun cat
+
     exec echo Meow "$@", this is Cat
+
 
 and then running (after build of a complete recipe) would look like:
 
@@ -1401,13 +1730,20 @@ and then running (after build of a complete recipe) would look like:
 
     sudo singularity build catdog.simg Singularity
 
+
     $ singularity run catdog.simg
+
     Try running with --app dog/cat
 
+
     $ singularity run --app cat catdog.simg
+
     Meow , this is Cat
+
     $ singularity run --app dog catdog.simg
+
     Hello , this is Dog
+
 
 Generally, it is advised to provide help for your container with ``%help`` or ``%apphelp``. If
 you find it easier, you can also provide help by way of a runscript that
@@ -1428,6 +1764,7 @@ shell command is ``/bin/bash`` if it exists otherwise ``/bin/sh`` is called.
 ::
 
     $ singularity shell
+
     USAGE: singularity (options) shell [container image] (options)
 
 Here we can see the default shell in action:
@@ -1435,10 +1772,14 @@ Here we can see the default shell in action:
 ::
 
     $ singularity shell centos7.img
+
     Singularity: Invoking an interactive shell within container...
 
+
     Singularity centos7.img:~> echo $SHELL
+
     /bin/bash
+
 
 Additionally any arguments passed to the Singularity command (after the
 container name) will be passed to the called shell within the container,
@@ -1463,21 +1804,31 @@ The correct way to do it:
 ::
 
         export SINGULARITY_SHELL="/bin/bash --norc"
+
         singularity shell centos7.img Singularity: Invoking an interactive shell within container...
+
         Singularity centos7.img:~/Desktop> echo $SHELL
+
         /bin/bash --norc
+
 
 Don’t do this, it can be confusing:
 
 ::
 
     $ export SINGULARITY_SHELL=/bin/bash
+
     $ singularity shell centos7.img
+
     Singularity: Invoking an interactive shell within container...
 
+
     # What? We are still on my Desktop? Actually no, but the uri says we are!
+
     vanessa@vanessa-ThinkPad-T460s:~/Desktop$ echo $SHELL
+
     /bin/bash
+
 
 Depending on your shell, you might also want the ``--noprofile`` flag. How can you learn
 more about a shell? Ask it for help, of course!
@@ -1488,41 +1839,71 @@ Shell Help
 ::
 
     $ singularity shell centos7.img --help
+
     Singularity: Invoking an interactive shell within container...
 
+
     GNU bash, version 4.2.46(1)-release-(x86_64-redhat-linux-gnu)
+
     Usage:  /bin/bash [GNU long option] [option] ...
+
         /bin/bash [GNU long option] [option] script-file ...
+
     GNU long options:
+
         --debug
+
         --debugger
+
         --dump-po-strings
+
         --dump-strings
+
         --help
+
         --init-file
+
         --login
+
         --noediting
+
         --noprofile
+
         --norc
+
         --posix
+
         --protected
+
         --rcfile
+
         --rpm-requires
+
         --restricted
+
         --verbose
+
         --version
+
     Shell options:
+
         -irsD or -c command or -O shopt_option      (invocation only)
+
         -abefhkmnptuvxBCHP or -o option
+
     Type `/bin/bash -c "help set"' for more information about shell options.
+
     Type `/bin/bash -c help' for more information about shell builtin commands.
+
 
 And thus we should be able to do:
 
 ::
 
     $ singularity shell centos7.img -c "echo hello world"
+
     Singularity: Invoking an interactive shell within container...
+
 
     hello world
 
@@ -1591,31 +1972,54 @@ below, we:
 ::
 
     $ singularity image.create container.img
+
     Creating empty 768MiB image file: container.imglarity image.create container.im
+
     Formatting image with ext3 file system
+
     Image is done: container.img
 
+
     $ ls -lh container.img
+
     -rw-rw-r-- 1 vanessa vanessa 768M Oct  2 18:48 container.img
 
+
     $ singularity image.expand container.img
+
     Expanding image by 768MB
+
     Checking image's file system
+
     e2fsck 1.42.13 (17-May-2015)
+
     Pass 1: Checking inodes, blocks, and sizes
+
     Pass 2: Checking directory structure
+
     Pass 3: Checking directory connectivity
+
     Pass 4: Checking reference counts
+
     Pass 5: Checking group summary information
+
     container.img: 11/49152 files (0.0% non-contiguous), 7387/196608 blocks
+
     Resizing image's file system
+
     resize2fs 1.42.13 (17-May-2015)
+
     Resizing the filesystem on container.img to 393216 (4k) blocks.
+
     The filesystem on container.img is now 393216 (4k) blocks long.
+
     Image is done: container.img
 
+
     $ ls -lh container.img
+
     -rw-rw-r-- 1 vanessa vanessa 1.5G Oct  2 18:48 container.img
+
 
 Similar to the create sub-command, you can override the default size
 increase (which is 768MiB) by using the ``--size`` option.
@@ -1673,15 +2077,20 @@ Creating a new blank Singularity container image
     ::
 
         singularity image.create container.img
+
         Creating empty 768MiB image file: container.img
+
         Formatting image with ext3 file system
+
         Image is done: container.img
+
 
     How big is it?
 
     ::
 
         $ du -sh container.img
+
         29M     container.img
 
     Create will make an ``ext3`` filesystem. Let’s create and import a docker base
@@ -1691,11 +2100,15 @@ Creating a new blank Singularity container image
     ::
 
         singularity create container.img
+
         sudo singularity bootstrap container.img docker://ubuntu
+
 
         ...
 
+
         $ du -sh container.img
+
         769M
 
     Prior to 2.4, you would need to provide a ``--size`` to change from the default:
@@ -1703,16 +2116,26 @@ Creating a new blank Singularity container image
     ::
 
         $ singularity create --size 2048 container2.img
+
         Initializing Singularity image subsystem
+
         Opening image file: container2.img
+
         Creating 2048MiB image
+
         Binding image to loop
+
         Creating file system within image
+
         Image is done: container2.img
 
+
         $ ls -lh container*.img
+
         -rwxr-xr-x 1 user group 2.1G Apr 15 11:34 container2.img
+
         -rwxr-xr-x 1 user group 769M Apr 15 11:11 container.img
+
 
     Now let’s compare to if we just built, without needing to specify a
     size.
@@ -1721,10 +2144,14 @@ Creating a new blank Singularity container image
 
         sudo singularity build container.simg docker://ubuntu
 
+
         ...
 
+
         du -sh container.simg
+
         45M container.simg
+
 
 Quite a difference! And one command instead of one.
 
@@ -1737,13 +2164,19 @@ Overwriting an image with a new one
     ::
 
         $ singularity image.create container.img
+
         ERROR: Image file exists, not overwriting.
 
 
+
         $ singularity image.create --force container.img
+
         Creating empty 768MiB image file: container.img
+
         Formatting image with ext3 file system
+
         Image is done: container.img
+
 
     ``@GodLoveD`` has provided a nice interactive demonstration of creating an image (pre
     2.4).
@@ -1809,12 +2242,19 @@ Start an interactive shell within the instance that you just started
 ::
 
     $ singularity shell instance://cow1
+
     Singularity GodloveD-lolcow-master.img:~> ps -ef
+
     UID        PID  PPID  C STIME TTY          TIME CMD
+
     ubuntu       1     0  0 20:03 ?        00:00:00 singularity-instance: ubuntu [cow1]
+
     ubuntu       3     0  0 20:04 pts/0    00:00:00 /bin/bash --norc
+
     ubuntu       4     3  0 20:04 pts/0    00:00:00 ps -ef
+
     Singularity GodloveD-lolcow-master.img:~> exit
+
 
 Execute the runscript within the instance
 '''''''''''''''''''''''''''''''''''''''''
@@ -1822,17 +2262,29 @@ Execute the runscript within the instance
 ::
 
     $ singularity run instance://cow1
+
      _________________________________________
+
     / Clothes make the man. Naked people have \
+
     | little or no influence on society.      |
+
     |                                         |
+
     \ -- Mark Twain                           /
+
      -----------------------------------------
+
             \   ^__^
+
              \  (oo)\_______
+
                 (__)\       )\/\
+
                     ||----w |
+
                     ||     ||
+
 
 Run a command within a running instance
 '''''''''''''''''''''''''''''''''''''''
@@ -1840,14 +2292,23 @@ Run a command within a running instance
 ::
 
     $ singularity exec instance://cow1 cowsay "I like blending into the background"
+
      _____________________________________
+
     < I like blending into the background >
+
      -------------------------------------
+
             \   ^__^
+
              \  (oo)\_______
+
                 (__)\       )\/\
+
                     ||----w |
+
                     ||     ||
+
 
 
 instance.list
@@ -1879,8 +2340,11 @@ Start a few named instances from containers on Singularity Hub
 ::
 
     $ singularity instance.start shub://GodloveD/lolcow cow1
+
     $ singularity instance.start shub://GodloveD/lolcow cow2
+
     $ singularity instance.start shub://vsoch/hello-world hiya
+
 
 List running instances
 ''''''''''''''''''''''
@@ -1888,10 +2352,15 @@ List running instances
 ::
 
     $ singularity instance.list
+
     DAEMON NAME      PID      CONTAINER IMAGE
+
     cow1             20522    /home/ubuntu/GodloveD-lolcow-master.img
+
     cow2             20558    /home/ubuntu/GodloveD-lolcow-master.img
+
     hiya             20595    /home/ubuntu/vsoch-hello-world-master.img
+
 
 
 instance.stop
@@ -1923,8 +2392,11 @@ Start a few named instances from containers on Singularity Hub
 ::
 
     $ singularity instance.start shub://GodloveD/lolcow cow1
+
     $ singularity instance.start shub://GodloveD/lolcow cow2
+
     $ singularity instance.start shub://vsoch/hello-world hiya
+
 
 Stop a single instance
 ''''''''''''''''''''''
@@ -1932,7 +2404,9 @@ Stop a single instance
 ::
 
     $ singularity instance.stop cow1
+
     Stopping cow1 instance of /home/ubuntu/GodloveD-lolcow-master.img (PID=20522)
+
 
 Stop all running instances
 ''''''''''''''''''''''''''
@@ -1940,8 +2414,11 @@ Stop all running instances
 ::
 
     $ singularity instance.stop --all
+
     Stopping cow2 instance of /home/ubuntu/GodloveD-lolcow-master.img (PID=20558)
+
     Stopping hiya instance of /home/ubuntu/vsoch-hello-world-master.img (PID=20595)
+
 
 ----------
 Deprecated
@@ -1976,6 +2453,7 @@ quick example.
 ::
 
     $ singularity bootstrap
+
     USAGE: singularity [...] bootstrap <container path> <definition file>
 
 The ``<container path>`` is the path to the Singularity image file, and the ``<definition file>`` is the location
@@ -1992,19 +2470,28 @@ Let’s continue with our quick start example. Here is your spec file, ``Singula
 ::
 
     Bootstrap:docker
+
     From:ubuntu:latest
+
 
 You next create an image:
 
 ::
 
     $ singularity image.create ubuntu.img
+
     Initializing Singularity image subsystem
+
     Opening image file: ubuntu.img
+
     Creating 768MiB image
+
     Binding image to loop
+
     Creating file system within image
+
     Image is done: ubuntu.img
+
 
 and finally run the bootstrap command, pointing to your image ( ``<container path>`` ) and
 the file Singularity ( ``<definition file>`` ).
@@ -2012,19 +2499,33 @@ the file Singularity ( ``<definition file>`` ).
 ::
 
     $ sudo singularity bootstrap ubuntu.img Singularity
+
     Sanitizing environment
+
     Building from bootstrap definition recipe
+
     Adding base Singularity environment to container
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /root/.singularity/docker
+
     [5/5] |===================================| 100.0%
+
     Exploding layer: sha256:b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b.tar.gz
+
     Exploding layer: sha256:55010f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1.tar.gz
+
     Exploding layer: sha256:2955fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845.tar.gz
+
     Exploding layer: sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505.tar.gz
+
     Exploding layer: sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
+
     Exploding layer: sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
+
     Finalizing Singularity container
+
 
 Notice that bootstrap does require sudo. If you do an import, with a
 docker uri for example, you would see a similar flow, but the calling
@@ -2033,15 +2534,26 @@ user would be you, and the cache your ``$HOME``.
 ::
 
     $ singularity image.create ubuntu.img
+
     singularity import ubuntu.img docker://ubuntu:latest
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /home/vanessa/.singularity/docker
+
     Importing: base Singularity environment
+
     Importing: /home/vanessa/.singularity/docker/sha256:b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:55010f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:2955fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
+
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
+    
 
 For details and best practices for creating your Singularity recipe, `read about them here <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html#container-recipes>`_.

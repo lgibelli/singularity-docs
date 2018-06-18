@@ -220,6 +220,7 @@ into the container, to join tacos.txt.
 
     # 1. This is how to copy files for legacy < 2.3
 
+
     %setup
 
         touch ${SINGULARITY_ROOTFS}/tacos.txt
@@ -228,6 +229,7 @@ into the container, to join tacos.txt.
 
 
     # 2. This is how to copy files for >= 2.3
+
 
     %files
 
@@ -307,6 +309,7 @@ The easiest way to see labels is to inspect the image:
 ::
 
     $ singularity inspect roar.simg
+
     {
 
         "org.label-schema.usage.singularity.deffile.bootstrap": "docker",
@@ -795,7 +798,7 @@ depending on the app we specify:
     $ singularity exec --app bar roar.simg env | grep SOFTWARE
 
     SOFTWARE=bar
-    
+
 
 --------
 Examples

@@ -17,6 +17,7 @@ that is pretty simple, I install nginx and start the service:
 ::
 
     apt-get update && apt-get install -y nginx
+
     service nginx start
 
 With older versions of Singularity, if you were to do something like
@@ -43,6 +44,7 @@ file like so:
 
     %startscript
 
+
     service nginx start
 
 Now let’s say we build a container with that startscript into an image
@@ -53,6 +55,7 @@ startscript will run inside the container automatically:
 ::
 
                   [command]        [image]    [name of instance]
+
     $ singularity instance.start   nginx.img  web
 
 When we run that command, Singularity creates an isolated environment
@@ -63,8 +66,11 @@ instance.list command like so:
 ::
 
     $ singularity instance.list
+
     INSTANCE NAME    PID      CONTAINER IMAGE
+
     web              790      /home/mibauer/nginx.img
+
 
 If we want to run multiple instances from the same image, it’s as simple
 as running the command multiple times. The instance names are an
@@ -74,18 +80,26 @@ repeated.
 ::
 
     $ singularity instance.start   nginx.img  web1
+
     $ singularity instance.start   nginx.img  web2
+
     $ singularity instance.start   nginx.img  web3
+
 
 And again to confirm that the instances are running as we expected:
 
 ::
 
     $ singularity instance.list
+
     INSTANCE NAME    PID      CONTAINER IMAGE
+
     web1             790      /home/mibauer/nginx.img
+
     web2             791      /home/mibauer/nginx.img
+
     web3             792      /home/mibauer/nginx.img
+
 
 If the service you want to run in your instance requires a bind mount,
 then you must pass the ``-B`` option when calling ``instance.start``. For example, if you wish to
@@ -102,16 +116,21 @@ command, but give it the instance URI:
 ::
 
     $ singularity shell instance://web1
+
     Singularity: Invoking an interactive shell within container...
 
+
     Singularity pdf_server.img:~/>
+
 
 Similarly, you can use the ``singularity run/exec`` commands on instances:
 
 ::
 
     $ singularity run instance://web1
+
     $ singularity exec instance://web1 ps -ef
+
 
 When using ``run`` with an instance URI, the ``runscript`` will be executed inside of the
 instance. Similarly with ``exec``, it will execute the given command in the
@@ -130,7 +149,9 @@ them, you can do so with a wildcard or the -a flag:
 ::
 
     $ singularity instance.stop \*
+
     $ singularity instance.stop -a
+
 
 .. note::
     Note that you must escape the wildcard with a backslash like this ``\*`` to
@@ -147,11 +168,16 @@ file:
 ::
 
     Bootstrap: docker
+
     From: nginx
+
     Includecmd: no
 
+
     %startscript
+
         nginx
+
 
 All this does is download the official nginx Docker container, convert
 it to a Singularity image, and tell it to run nginx when you start the
@@ -161,7 +187,9 @@ following commands as root.
 ::
 
     # singularity build nginx.img Singularity
+
     # singularity instance.start nginx.img web1
+
 
 Just like that we’ve downloaded, built, and ran an nginx Singularity
 image. And to confirm that it’s correctly running:
@@ -169,32 +197,57 @@ image. And to confirm that it’s correctly running:
 ::
 
     $ curl localhost
+
     127.0.0.1 - - [06/Oct/2017:21:46:43 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.47.0" "-"
+
     <!DOCTYPE html>
+
     <html>
+
     <head>
+
     <title>Welcome to nginx!</title>
+
     <style>
+
         body {
+
             width: 35em;
+
             margin: 0 auto;
+
             font-family: Tahoma, Verdana, Arial, sans-serif;
+
         }
+
     </style>
+
     </head>
+
     <body>
+
     <h1>Welcome to nginx!</h1>
+
     <p>If you see this page, the nginx web server is successfully installed and
+
     working. Further configuration is required.</p>
 
+
     <p>For online documentation and support please refer to
+
     <a href="http://nginx.org/">nginx.org</a>.<br/>
+
     Commercial support is available at
+
     <a href="http://nginx.com/">nginx.com</a>.</p>
 
+
     <p><em>Thank you for using nginx.</em></p>
+
     </body>
+
     </html>
+
 
 --------------------
 Putting all together
@@ -220,8 +273,11 @@ pre-installed with Node 8:
 ::
 
     Bootstrap: docker
+
     From: node:8
+
     Includecmd: no
+
 
 | Puppeteer also requires a few dependencies to be manually installed in
   addition to Node 8, so we can add those into the ``post`` section as well as
@@ -230,19 +286,33 @@ pre-installed with Node 8:
 ::
 
     %post
+
          apt-get update
+
          apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 \
+
          libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 \
+
          libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 \
+
          libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 \
+
          libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
+
          fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget curl
+
          rm -r /var/lib/apt/lists/*
+
          cd /
+
          git clone https://github.com/alvarcarto/url-to-pdf-api.git pdf_server
+
          cd pdf_server
+
          npm install
+
          chmod -R 0755 .
+
 
 And now we need to define what happens when we start an instance of the
 container. In this situation, we want to run the commands that starts up
@@ -251,9 +321,13 @@ the url-to-pdf-api server:
 ::
 
     %startscript
+
         cd /pdf_server
+
         # Use nohup and /dev/null to completely detach server process from terminal
+
         nohup npm start > /dev/null 2>&1 < /dev/null &
+
 
 Also, the ``url-to-pdf-api`` server requires ``environment`` some variables be set, which we can do in the
 environment section:
@@ -261,11 +335,17 @@ environment section:
 ::
 
     %environment
+
         NODE_ENV=development
+
         PORT=8000
+
         ALLOW_HTTP=true
+
         URL=localhost
+
         export NODE_ENV PORT ALLOW_HTTP URL
+
 
 Now we can build the definition file into an image! Simply run ``build`` and the
 image will be ready to go:
@@ -290,30 +370,49 @@ curl:
 ::
 
     $ curl -o google.pdf localhost:8000/api/render?url=http://google.com
+
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+
                                      Dload  Upload   Total   Spent    Left  Speed
+
     100 51664  100 51664    0     0  12443      0  0:00:04  0:00:04 --:--:-- 12446
+
 
 If you shell into the instance, you can see the running processes:
 
 ::
 
     $ singularity shell instance://pdf
+
     Singularity: Invoking an interactive shell within container...
 
+
     Singularity pdf_server.img:~/bauerm97/instance-example> ps auxf
+
     USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+
     node        87  0.2  0.0  20364  3384 pts/0    S    16:16   0:00 /bin/bash --norc
+
     node        88  0.0  0.0  17496  2144 pts/0    R+   16:16   0:00  \_ ps auxf
+
     node         1  0.0  0.0  13968  1904 ?        Ss   16:10   0:00 singularity-instance: mibauer [pdf]
+
     node         3  0.1  0.4 997452 40364 ?        Sl   16:10   0:00 npm
+
     node        13  0.0  0.0   4340   724 ?        S    16:10   0:00  \_ sh -c nodemon --watch ./src -e j
+
     node        14  0.0  0.4 1184492 37008 ?       Sl   16:10   0:00      \_ node /scif/apps/pdf_server/p
+
     node        26  0.0  0.0   4340   804 ?        S    16:10   0:00          \_ sh -c node src/index.js
+
     node        27  0.2  0.5 906108 43424 ?        Sl   16:10   0:00              \_ node src/index.js
+
     Singularity pdf_server.img:~/bauerm97/instance-example> ls
+
     LICENSE  README.md  Singularity  out  pdf_server.img
+
     Singularity pdf_server.img:~/bauerm97/instance-example> exit
+
 
 Making it Pretty
 ================
@@ -334,19 +433,28 @@ the server:
 ::
 
     %appinstall pdf_server
+
         git clone https://github.com/alvarcarto/url-to-pdf-api.git pdf_server
+
         cd pdf_server
+
         npm install
+
         chmod -R 0755 .
+
 
 And update our ``startscript`` to point to the app location:
 
 ::
 
     %startscript
+
         cd "${APPROOT_pdf_server}/pdf_server"
+
         # Use nohup and /dev/null to completely detach server process from terminal
+
         nohup npm start > /dev/null 2>&1 < /dev/null &
+
 
 Now we want to define the pdf\_client app, which we will run to send the
 requests to the server:
@@ -354,11 +462,17 @@ requests to the server:
 ::
 
     %apprun pdf_client
+
         if [ -z "${1:-}" ]; then
+
             echo "Usage: singularity run --app pdf <instance://name> <URL> [output file]"
+
             exit 1
+
         fi
+
         curl -o "${SINGULARITY_APPDATA}/output/${2:-output.pdf}" "${URL}:${PORT}/api/render?url=${1}"
+        
 
 As you can see, the ``pdf_client`` app checks to make sure that the user provides at
 least one argument. Now that we have an output directory in the

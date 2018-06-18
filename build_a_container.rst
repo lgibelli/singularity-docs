@@ -215,7 +215,7 @@ Let’s say you already have the following container recipe file called ``Singul
     %runscript
 
         fortune | cowsay | lolcat
-        
+
 
 You can do so with the following command.
 
@@ -284,11 +284,17 @@ tags.
 ::
 
     CHECKS OPTIONS:
+
         -c|--checks    enable checks
+
         -t|--tag       specify a check tag (not default)
+
         -l|--low       Specify low threshold (all checks, default)
+
         -m|--med       Perform medium and high checks
+
         -h|--high      Perform only checks at level high
+        
 
 When you add the ``--checks`` option along with applicable tags to the ``build`` command
 Singularity will run the desired checks on your container at build time.

@@ -21,9 +21,13 @@ images, and Docker metadata, respectively:
 ::
 
     $HOME/.singularity
+
     $HOME/.singularity/docker
+
     $HOME/.singularity/shub
+
     $HOME/.singularity/metadata
+
 
 Fear not, you have control to customize this behavior! If you don’t want
 the cache to be created (and a temporary directory will be used), set ``SINGULARITY_DISABLE_CACHE`` to
@@ -60,8 +64,11 @@ variable ``SINGULARITY_LOCALCACHEDIR``.
 ::
 
     SINGULARITY_LOCALCACHEDIR=/tmp/pancakes
+
     export SINGULARITY_LOCALCACHEDIR
+
     singularity exec docker://busybox /bin/sh
+    
 
 The above runtime folder would be created under ``/tmp/pancakes/.singularity-runtime.xxxxxxxx``
 
@@ -146,7 +153,7 @@ directory:”
     singularity --debug run docker://busybox echo "pizza!"
 
     ...
-    
+
     DEBUG   [U=1000,P=960]     s_rmdir()                                 Removing directory: /tmp/.singularity-runtime.oArO0k
 
 Defaults

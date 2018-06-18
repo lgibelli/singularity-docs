@@ -32,11 +32,17 @@ dependencies for software foo and bar.
 
     %post
 
+
     # install dependencies 1
+
     # install software A (foo)
+
     # install software B (bar)
+
     # install software C (foo)
+
     # install software D (bar)
+
 
 The creator may know that A and C were installed for ``foo`` and B and D for ``bar`` ,
 but down the road, when someone discovers the container, if they can
@@ -62,27 +68,39 @@ Mixed up Modules
     %runscript
 
     if some logic to choose foo:
+
        check arguments for foo
+
        run foo
+
     else if some logic to choose bar:
+
        run bar
+
 
 and maybe your environment looks like this:
 
 ::
 
     %environment
+
         BEST_GUY=foo
+
         export BEST_GUY
+
 
 | but what if you run into this issue, with foo and bar?
 
 ::
 
     %environment
+
         BEST_GUY=foo
+
         BEST_GUY=bar
+
         export BEST_GUY
+
 
 You obviously can’t have them at separate times. You’d have to source
 some custom environment file (that you make on your own) and it gets
@@ -113,21 +131,33 @@ could do this:
 ::
 
     Bootstrap:docker
+
     From: ubuntu:16.04
 
+
     %appenv foo
+
         BEST_GUY=foo
+
         export BEST_GUY
+
 
     %appenv bar
+
         BEST_GUY=bar
+
         export BEST_GUY
 
+
     %apprun foo
+
         echo The best guy is $BEST_GUY
 
+
     %apprun bar
+
         echo The best guy is $BEST_GUY
+
 
 Generate the container
 
@@ -140,9 +170,13 @@ and run it in the context of ``foo`` and then ``bar``
 ::
 
     $ singularity run --app bar foobar.simg
+
     The best guy is bar
+
     $ singularity run --app foo foobar.simg
+
     The best guy is foo
+
 
 Using SCI-F apps, a user can easily discover both ``foo`` and ``bar`` without knowing
 anything about the container:
@@ -150,7 +184,9 @@ anything about the container:
 ::
 
     singularity apps foobar.simg
+
     bar
+
     foo
 
 | and inspect each one:
@@ -158,9 +194,13 @@ anything about the container:
 ::
 
     singularity inspect --app foo  foobar.simg
+
     {
+
         "SCIF_APP_NAME": "foo",
+
         "SCIF_APP_SIZE": "1MB"
+
     }
 
 Container Modularity
@@ -177,15 +217,25 @@ you what the organization looks like, for each app:
 
     /scif/apps/
 
+
          foo/
+
             bin/
+
             lib/
+
             scif/
+
                 runscript.help
+
                 runscript
+
                 env/
+
                     01-base.sh
+
                     90-environment.sh
+
 
          bar/
 
@@ -213,6 +263,7 @@ either, they are created for you.
 ::
 
     LD_LIBRARY_PATH=/scif/apps/foo/lib::/.singularity.d/libs
+
     PATH=/scif/apps/foo/bin:/scif/apps/foo:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 Next, notice that we have environment variables relevant to the active
@@ -221,10 +272,15 @@ app’s (foo) data and metadata. They look like this:
 ::
 
     SCIF_APPOUTPUT=/scif/data/foo/output
+
     SCIF_APPDATA=/scif/data/foo
+
     SCIF_APPINPUT=/scif/data/foo/input
+
     SCIF_APPMETA=/scif/apps/foo/scif
+
     SCIF_APPROOT=/scif/apps/foo
+
     SCIF_APPNAME=foo
 
 We also have foo’s environment variables defined under ``%appenv foo`` , and
@@ -239,6 +295,7 @@ Also provided are more global paths for data and apps:
 ::
 
     SCIF_APPS=/scif/apps
+
     SCIF_DATA=/scif/data
 
 Importantly, each app has its own modular location. When you do an ``%appinstall foo``,
@@ -250,6 +307,7 @@ Just add a script and name it:
 ::
 
     %appfiles foo
+
         runfoo.sh   bin/runfoo.sh
 
 and then maybe for install I’d make it executable
@@ -257,6 +315,7 @@ and then maybe for install I’d make it executable
 ::
 
     %appinstall foo
+
         chmod u+x bin/runfoo.sh
 
 You don’t even need files! You could just do this.
@@ -264,7 +323,9 @@ You don’t even need files! You could just do this.
 ::
 
     %appinstall foo
+
         echo 'echo "Hello Foo."' >> bin/runfoo.sh
+
         chmod u+x bin/runfoo.sh
 
 We can summarize these observations about using apps:
@@ -334,22 +395,38 @@ also find:
 ::
 
     SCIF_APPDATA_bar=/scif/data/bar
+
     SCIF_APPRUN_bar=/scif/apps/bar/scif/runscript
+
     SCIF_APPROOT_bar=/scif/apps/bar
+
     SCIF_APPLIB_bar=/scif/apps/bar/lib
+
     SCIF_APPMETA_bar=/scif/apps/bar/scif
+
     SCIF_APPBIN_bar=/scif/apps/bar/bin
+
     SCIF_APPENV_bar=/scif/apps/bar/scif/env/90-environment.sh
+
     SCIF_APPLABELS_bar=/scif/apps/bar/scif/labels.json
 
+
     SCIF_APPENV_foo=/scif/apps/foo/scif/env/90-environment.sh
+
     SCIF_APPLABELS_foo=/scif/apps/foo/scif/labels.json
+
     SCIF_APPDATA_foo=/scif/data/foo
+
     SCIF_APPRUN_foo=/scif/apps/foo/scif/runscript
+
     SCIF_APPROOT_foo=/scif/apps/foo
+
     SCIF_APPLIB_foo=/scif/apps/foo/lib
+
     SCIF_APPMETA_foo=/scif/apps/foo/scif
+
     SCIF_APPBIN_foo=/scif/apps/foo/bin
+
 
 This is really great because it means that we can have apps interact
 with one another internally. For example, let’s modify the recipe a bit:
@@ -357,23 +434,37 @@ with one another internally. For example, let’s modify the recipe a bit:
 ::
 
     Bootstrap:docker
+
     From: ubuntu:16.04
 
+
     %appenv cow
+
         ANIMAL=COW
+
         NOISE=moo
+
         export ANIMAL NOISE
 
+
     %appenv bird
+
         NOISE=tweet
+
         ANIMAL=BIRD
+
         export ANIMAL
 
+
     %apprun moo
+
         echo The ${ANIMAL} goes ${NOISE}
 
+
     %appenv moo
+
         . ${APPENV_cow}
+
 
 In the above example, we have three apps. One for a cow, one for a bird,
 and a third that depends on the cow. We can’t define global functions or
@@ -385,6 +476,7 @@ environment for “moo” and the result is what we would want:
 ::
 
     $ singularity run --app moo /tmp/one.simg
+
     The COW goes moo
 
 The same is true for each of the labels, environment, runscript, bin,
@@ -445,6 +537,7 @@ When you’ve installed 2.4, download the recipe, and save it to your
 ::
 
     wget https://raw.githubusercontent.com/singularityware/singularity/master/examples/apps/Singularity.cowsay
+
     sudo singularity build moo.simg Singularity.cowsay
 
 What apps are installed?
@@ -452,41 +545,62 @@ What apps are installed?
 ::
 
     singularity apps moo.simg
+
     cowsay
+
     fortune
+
     lolcat
+
 
 Ask for help for a specific app!
 
 ::
 
     singularity help --app fortune moo.simg
+
     fortune is the best app
+
 
 Ask for help for all apps, without knowing in advance what they are:
 
 ::
 
     for app in $(singularity apps moo.simg)
+
        do
+
          singularity help --app $app moo.simg
+
     done
+
     cowsay is the best app
+
     fortune is the best app
+
     lolcat is the best app
+
 
 Run a particular app
 
 ::
 
     singularity run --app fortune moo.simg
+
         My dear People.
+
         My dear Bagginses and Boffins, and my dear Tooks and Brandybucks,
+
     and Grubbs, and Chubbs, and Burrowses, and Hornblowers, and Bolgers,
+
     Bracegirdles, Goodbodies, Brockhouses and Proudfoots.  Also my good
+
     Sackville Bagginses that I welcome back at last to Bag End.  Today is my
+
     one hundred and eleventh birthday: I am eleventy-one today!"
+
             -- J. R. R. Tolkien
+
 
 Advanced running - pipe the output of fortune into lolcat, and make a
 fortune that is beautifully colored!
@@ -494,7 +608,9 @@ fortune that is beautifully colored!
 ::
 
     singularity run --app fortune moo.simg | singularity run --app lolcat moo.simg
+
     You will be surrounded by luxury.
+
 
 This one might be easier to see - pipe the same fortune into the cowsay
 app:
@@ -502,15 +618,25 @@ app:
 ::
 
     singularity run --app fortune moo.simg | singularity run --app cowsay moo.simg
+
      ________________________________________
+
     / Executive ability is prominent in your \
+
     \ make-up.                               /
+
      ----------------------------------------
+
             \   ^__^
+
              \  (oo)\_______
+
                 (__)\       )\/\
+
                     ||----w |
+
                     ||     ||
+
 
 and the final shabang - do the same, but make it colored. Let’s even get
 lazy and use an environment variable for the command:
@@ -518,16 +644,27 @@ lazy and use an environment variable for the command:
 ::
 
     CMD="singularity run --app"
+
     $CMD fortune moo.simg | $CMD cowsay moo.simg | $CMD lolcat moo.simg
+
      _________________________________________
+
     / Ships are safe in harbor, but they were \
+
     \ never meant to stay there.              /
+
      -----------------------------------------
+
             \   ^__^
+
              \  (oo)\_______
+
                 (__)\       )\/\
+
                     ||----w |
+
                     ||     ||
+
 
 Yes, you need to watch the asciinema to see the colors. Finally, inspect
 an app:
@@ -535,10 +672,15 @@ an app:
 ::
 
     singularity inspect --app fortune moo.simg
+
     {
+
         "SCIF_APP_NAME": "fortune",
+
         "SCIF_APP_SIZE": "1MB"
+
     }
+    
 
 If you want to see the full specification or create your own
 Scientific Filesystem integration (doesn’t have to be Singularity, or

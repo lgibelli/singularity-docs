@@ -57,11 +57,17 @@ ensure that we have write privileges where we want them.
 ::
 
     $ sudo singularity shell --overlay my-overlay.img ubuntu.simg
+
     Singularity ubuntu.simg:~> touch /foo
+
     Singularity ubuntu.simg:~> apt-get install -y vim
+
     Singularity ubuntu.simg:~> which vim
+
     /usr/bin/vim
+
     Singularity ubuntu.simg:~> exit
+
 
 You will find that your changes persist across sessions as though you
 were using a writable container.
@@ -69,11 +75,17 @@ were using a writable container.
 ::
 
     $ sudo singularity shell --overlay my-overlay.img ubuntu.simg
+
     Singularity ubuntu.simg:~> ls /foo
+
     /foo
+
     Singularity ubuntu.simg:~> which vim
+
     /usr/bin/vim
+
     Singularity ubuntu.simg:~> exit
+
 
 If you mount your container without the ``--overlay`` option, your changes will be
 gone.
@@ -81,7 +93,12 @@ gone.
 ::
 
     $ sudo singularity shell ubuntu.simg
+
     Singularity ubuntu.simg:~> ls /foo
+
     ls: cannot access 'foo': No such file or directory
+
     Singularity ubuntu.simg:~> which vim
+
     Singularity ubuntu.simg:~> exit
+    

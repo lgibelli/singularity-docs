@@ -297,9 +297,13 @@ Some usage examples of Singularity can be seen as follows:
 ::
 
     $ singularity exec dummy.img xterm  # run xterm from within the container
+
     $ singularity exec dummy.img python script.py  # run a script on the host system using container's python
+
     $ singularity exec dummy.img python < /path/to/python/script.py  # do the same via redirection
+
     $ cat /path/to/python/script.py | singularity exec dummy.img python  # do the same via a pipe
+    
 
 You can even run MPI executables within the container as simply as:
 

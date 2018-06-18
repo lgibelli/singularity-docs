@@ -21,10 +21,14 @@ also define custom environment variables in your Recipe file like so:
 ::
 
     Bootstrap: shub
+
     From: vsoch/hello-world
 
+
     %environment
+
         VARIABLE_NAME=VARIABLE_VALUE
+
         export VARIABLE_NAME
 
 You may need to add environment variables to your container during the
@@ -36,6 +40,7 @@ To add variables to the environment during ``%post`` you can use the
 ::
 
     %post
+
         echo 'export VARIABLE_NAME=VARIABLE_VALUE' >>$SINGULARITY_ENVIRONMENT
 
 Text in the ``%environment`` section will be appended to the file ``/.singularity.d/env/90-environment.sh`` while text redirected
@@ -54,15 +59,25 @@ as follows:
 ::
 
     $ SINGULARITYENV_HELLO=WORLD singularity exec --cleanenv centos7.img env
+
     HELLO=WORLD
+
     LD_LIBRARY_PATH=:/usr/local/lib:/usr/local/lib64
+
     SINGULARITY_NAME=test.img
+
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
     PWD=/home/gmk/git/singularity
+
     LANG=en_US.UTF-8
+
     SHLVL=0
+
     SINGULARITY_INIT=1
+
     SINGULARITY_CONTAINER=test.img
+
 
 Notice the ``--cleanenv`` in the example above? That argument specifies that we want
 to remove the host environment from the container. If we remove the ``--cleanenv``,
@@ -92,17 +107,29 @@ example:
 ::
 
     $ singularity inspect dino.img
+
     {
+
         "org.label-schema.usage.singularity.deffile.bootstrap": "docker",
+
         "MAINTAINER": "Vanessasaurus",
+
         "org.label-schema.usage.singularity.deffile": "Singularity.help",
+
         "org.label-schema.usage": "/.singularity.d/runscript.help",
+
         "org.label-schema.schema-version": "1.0",
+
         "org.label-schema.usage.singularity.deffile.from": "ubuntu:latest",
+
         "org.label-schema.build-date": "2017-07-28T22:59:17-04:00",
+
         "org.label-schema.usage.singularity.runscript.help": "/.singularity.d/runscript.help",
+
         "org.label-schema.usage.singularity.version": "2.3.1-add/label-schema.g00f040f",
+
         "org.label-schema.build-size": "715MB"
+
     }
 
 You will notice that the one label doesn’t belong to the label schema, ``MAINTAINER`` .
@@ -114,11 +141,17 @@ containers did not use the label schema, and looked like this:
 ::
 
     singularity exec centos7.img cat /.singularity.d/labels.json
+
     { "name":
+
           "CentOS Base Image",
+
            "build-date": "20170315",
+
            "vendor": "CentOS",
+
            "license": "GPLv2"
+
     }
 
 You can add custom labels to your container in a bootstrap file:
@@ -126,11 +159,15 @@ You can add custom labels to your container in a bootstrap file:
 ::
 
     Bootstrap: docker
+
     From: ubuntu: latest
+
+
 
     %labels
 
     AUTHOR Vanessasaur
+
 
 The ``inspect`` command is useful for viewing labels and other container meta-data.
 
@@ -145,21 +182,38 @@ helpful to know where they are and what they do:
 ::
 
     /.singularity.d/
+
+
     ├── actions
+
     │   ├── exec
+
     │   ├── run
+
     │   ├── shell
+
     │   ├── start
+
     │   └── test
+
     ├── env
+
     │   ├── 01-base.sh
+
     │   ├── 90-environment.sh
+
     │   ├── 95-apps.sh
+
     │   └── 99-base.sh
+
     ├── labels.json
+
     ├── libs
+
     ├── runscript
+
     ├── Singularity
+
     └── startscript
 
 -  **actions**: This directory contains helper scripts to allow the
