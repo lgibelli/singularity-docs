@@ -18,9 +18,9 @@ goals was to support Docker. What can you do?
 -  You can build images with bases from assembled Docker layers that
    include environment, guts, and labels
 
---------------------------
-TLDR (Too Long Didn’t Read
---------------------------
+---------------------------
+TLDR (Too Long Didn’t Read)
+---------------------------
 
 You can shell, import, run, and exec.
 
