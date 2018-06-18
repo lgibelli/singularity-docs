@@ -73,11 +73,12 @@ file system overlay is enabled):
 ::
 
     $ singularity shell -B /tmp:/scratch /tmp/Centos7-ompi.img
-    ...
+
     Singularity: Invoking an interactive shell within container...
 
+
     Singularity.Centos7-ompi.img> ls /scratch
-    ...
+
     ssh-7vywtVeOez  systemd-private-cd84c81dda754fe4a7a593647d5a5765-ntpd.service-12nMO4
 
 You can bind multiple directories in a single command with this
@@ -94,6 +95,7 @@ argument, this would be:
 ::
 
     $ export SINGULARITY_BINDPATH="/opt,/data:/mnt"
+
     $ singularity shell /tmp/Centos7-ompi.img
 
 Using the environment variable ``$SINGULARITY_BINDPATH``, you can bind directories even when you
@@ -112,8 +114,11 @@ continue trying to start the container. For example:
 ::
 
     $ singularity shell --bind /global /tmp/Centos7-ompi.img
+
     WARNING: Non existent bind point (directory) in container: '/global'
+
     Singularity: Invoking an interactive shell within container...
+
 
     Singularity.Centos7-ompi.img>
 
@@ -125,7 +130,9 @@ accessible as expected:
 ::
 
     $ singularity shell --bind /global /tmp/Centos7-ompi.img
+
     Singularity: Invoking an interactive shell within container...
+    
 
     Singularity.Centos7-ompi.img>
 

@@ -144,7 +144,9 @@ directory:”
 ::
 
     singularity --debug run docker://busybox echo "pizza!"
+
     ...
+    
     DEBUG   [U=1000,P=960]     s_rmdir()                                 Removing directory: /tmp/.singularity-runtime.oArO0k
 
 Defaults

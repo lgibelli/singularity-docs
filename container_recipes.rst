@@ -57,6 +57,7 @@ composed of several keywords. Specifically:
 ::
 
     Bootstrap: shub
+
     From: vsoch/hello-world
 
 A build that uses a mirror to install Centos-7 might look like this:
@@ -64,8 +65,11 @@ A build that uses a mirror to install Centos-7 might look like this:
 ::
 
     Bootstrap: yum
+
     OSVersion: 7
+
     MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
+
     Include: yum
 
 Each build base requires particular details during build time. You can
@@ -111,9 +115,12 @@ section to your container. Just write it into a section:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
 
+
     %help
+
     Help me. I'm in the container.
 
 And it will work when the user asks the container for help.
@@ -143,13 +150,19 @@ of the image:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
 
+
     %help
+
     Help me. I'm in the container.
 
+
     %setup
+
         touch ${SINGULARITY_ROOTFS}/tacos.txt
+
         touch avocados.txt
 
 Importantly, notice that the avocados file isn’t relative to
@@ -159,9 +172,13 @@ tacos there?
 ::
 
     $ singularity exec roar.simg ls /
+
     bin   environment  lib    mnt   root  scif     sys        usr
+
     boot  etc      lib64  opt   run   singularity  **tacos.txt**  var
+
     dev   home     media  proc  sbin  srv      tmp
+
 
 Yes! And avocados.txt isn’t inside the image, but in our present working
 directory:
@@ -169,6 +186,7 @@ directory:
 ::
 
     $ ls
+
     avocados.txt   roar.simg   Singularity
 
 %files
@@ -189,21 +207,34 @@ into the container, to join tacos.txt.
 ::
 
     Bootstrap: docker
+
     From: ubuntu
 
+
     %help
+
     Help me. I'm in the container.
 
+
     # Both of the below are copied before %post
+
     # 1. This is how to copy files for legacy < 2.3
+
     %setup
+
         touch ${SINGULARITY_ROOTFS}/tacos.txt
+
         touch avocados.txt
 
+
     # 2. This is how to copy files for >= 2.3
+
     %files
+
         avocados.txt
+
         avocados.txt /opt
+
 
 Notice that I’m adding the same file to two different places. For the
 first, I’m adding the single file to the root of the image. For the
@@ -212,13 +243,20 @@ second, I’m adding it to opt. Does it work?
 ::
 
     $ singularity exec roar.simg ls /
+
      singularity exec roar.simg ls /
+
     **avocados.txt**  dev      home   media  proc  sbin     srv        tmp
+
     bin       environment  lib    mnt    root  scif     sys        usr
+
     boot          etc      lib64  opt    run   singularity  **tacos.txt**  var
 
+
     $ singularity exec roar.simg ls /opt
+
     **avocados.txt**
+
 
 
 We have avocados!
@@ -234,22 +272,35 @@ be carried forward here. Let’s add to our example:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
 
+
     %help
+
     Help me. I'm in the container.
 
+
     %setup
+
         touch ${SINGULARITY_ROOTFS}/tacos.txt
+
         touch avocados.txt
 
+
     %files
+
         avocados.txt
+
         avocados.txt /opt
 
+
     %labels
+
         Maintainer Vanessasaurus
+
         Version v1.0
+
 
 The easiest way to see labels is to inspect the image:
 
@@ -257,17 +308,29 @@ The easiest way to see labels is to inspect the image:
 
     $ singularity inspect roar.simg
     {
+
         "org.label-schema.usage.singularity.deffile.bootstrap": "docker",
+
         "MAINTAINER": "Vanessasaurus",
+
         "org.label-schema.usage.singularity.deffile": "Singularity",
+
         "org.label-schema.usage": "/.singularity.d/runscript.help",
+
         "org.label-schema.schema-version": "1.0",
+
         "VERSION": "v1.0",
+
         "org.label-schema.usage.singularity.deffile.from": "ubuntu",
+
         "org.label-schema.build-date": "2017-10-02T17:00:23-07:00",
+
         "org.label-schema.usage.singularity.runscript.help": "/.singularity.d/runscript.help",
+
         "org.label-schema.usage.singularity.version": "2.3.9-development.g3dafa39",
+
         "org.label-schema.build-size": "1760MB"
+
     }
 
 You’ll notice some other labels that are captured automatically from the
@@ -296,28 +359,46 @@ the container is finished and run:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
 
+
     %help
+
     Help me. I'm in the container.
 
+
     %setup
+
         touch ${SINGULARITY_ROOTFS}/tacos.txt
+
         touch avocados.txt
 
+
     %files
+
         avocados.txt
+
         avocados.txt /opt
 
+
     %labels
+
         Maintainer Vanessasaurus
+
         Version v1.0
 
+
     %environment
+
         VADER=badguy
+
         LUKE=goodguy
+
         SOLO=someguy
+
         export VADER LUKE SOLO
+
 
 For the rationale behind this approach and why we do not source the
 %environment section at build time, refer to this issue. When the
@@ -328,10 +409,15 @@ with inspect, and this is done by showing the file produced above:
 
     $ singularity inspect -e roar.simg # Custom environment shell code should follow
 
+
         VADER=badguy
+
         LUKE=goodguy
+
         SOLO=someguy
+
         export VADER LUKE SOLO
+
 
 or in the case of variables generated at build time, you can add
 environment variables to your container in the ``%post`` section (see below) using
@@ -340,13 +426,16 @@ the following syntax:
 ::
 
     %post
+
         echo 'export JAWA_SEZ=wutini' >> $SINGULARITY_ENVIRONMENT
+
 
 When we rebuild, is it added to the environment?
 
 ::
 
     singularity exec roar.simg env | grep JAWA
+
     JAWA_SEZ=wutini
 
 Where are all these environment variables going? Inside the container
@@ -373,21 +462,34 @@ other dependencies for a Centos7 bootstrap:
 ::
 
     %post
+
         echo "Installing Development Tools YUM group"
+
         yum -y groupinstall "Development Tools"
+
         echo "Installing OpenMPI into container..."
 
+
         # Here we are at the base, /, of the container
+
         git clone https://github.com/open-mpi/ompi.git
 
+
         # Now at /ompi
+
         cd ompi
+
         ./autogen.pl
+
         ./configure --prefix=/usr/local
+
         make
+
         make install
 
+
         /usr/local/bin/mpicc examples/ring_c.c -o /usr/bin/mpi_ring
+
 
 You cannot copy files from the host to your container in this section,
 but you can of course download with commands like ``git clone`` and ``wget`` and ``curl``.
@@ -410,37 +512,61 @@ how to do that, adding to our work in progress:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
 
+
     %help
+
     Help me. I'm in the container.
 
+
     %setup
+
         touch ${SINGULARITY_ROOTFS}/tacos.txt
+
         touch avocados.txt
 
+
     %files
+
         avocados.txt
+
         avocados.txt /opt
 
+
     %labels
+
         Maintainer Vanessasaurus
+
         Version v1.0
 
+
     %environment
+
         VADER=badguy
+
         LUKE=goodguy
+
         SOLO=someguy
+
         export VADER LUKE SOLO
 
 
+
     %post
+
         echo 'export JAWA_SEZ=wutini' >> $SINGULARITY_ENVIRONMENT
 
+
     %runscript
+
         echo "Rooooar!"
+
         echo "Arguments received: $*"
+
         exec echo "$@"
+
 
 In this particular runscript, the arguments are printed as a single
 string (``$*``) and then they are passed to echo via a quoted array (``$@``) which
@@ -456,13 +582,20 @@ analysis script. Running it, it works as expected:
 ::
 
     $ singularity run roar.simg
+
     Rooooar!
+
     Arguments received:
 
+
     $ singularity run roar.simg one two
+
     Rooooar!
+
     Arguments received: one two
+
     one two
+
 
 %test
 -----
@@ -478,7 +611,9 @@ world example:
 ::
 
     %test
+
         /usr/local/bin/mpirun --allow-run-as-root /usr/bin/mpi_test
+
 
 This is a simple Open MPI test to ensure that the MPI is build
 properly and communicates between processes as it should.
@@ -512,59 +647,98 @@ here is an example runscript:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
 
+
     %environment
+
         VADER=badguy
+
         LUKE=goodguy
+
         SOLO=someguy
+
         export VADER LUKE SOLO
 
+
     %labels
+
        Maintainer Vanessasaur
 
+
     ##############################
+
     # foo
+
     ##############################
+
 
     %apprun foo
+
         exec echo "RUNNING FOO"
 
+
     %applabels foo
+
        BESTAPP=FOO
+
        export BESTAPP
 
+
     %appinstall foo
+
        touch foo.exec
 
+
     %appenv foo
+
         SOFTWARE=foo
+
         export SOFTWARE
 
+
     %apphelp foo
+
         This is the help for foo.
 
+
     %appfiles foo
+
        avocados.txt
 
 
+
     ##############################
+
     # bar
+
     ##############################
+
 
     %apphelp bar
+
         This is the help for bar.
 
+
     %applabels bar
+
        BESTAPP=BAR
+
        export BESTAPP
 
+
     %appinstall bar
+
         touch bar.exec
 
+
     %appenv bar
+
         SOFTWARE=bar
+
         export SOFTWARE
+
 
 Importantly, note that the apps can exist alongside any and all of the
 primary sections (e.g. ``%post`` or ``%runscript`` ), and the new ``%appinstall`` section is the equivalent of
@@ -580,22 +754,29 @@ of an app:
 ::
 
     $ singularity apps roar.simg
+
     bar
+
     foo
+
 
 **Help me with bar!**
 
 ::
 
     $ singularity help --app bar roar.simg
+
     This is the help for bar.
+
 
 **Run foo**
 
 ::
 
     singularity run --app foo roar.simg
+
     RUNNING FOO
+
 
 
 **Show me the custom environments**
@@ -608,9 +789,13 @@ depending on the app we specify:
 ::
 
     $ singularity exec --app foo roar.simg env | grep SOFTWARE
+
     SOFTWARE=foo
+
     $ singularity exec --app bar roar.simg env | grep SOFTWARE
+
     SOFTWARE=bar
+    
 
 --------
 Examples

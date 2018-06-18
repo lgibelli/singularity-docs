@@ -12,6 +12,7 @@ Perform all default checks, these are the same
 ::
 
     $ singularity check ubuntu.img
+
     $ singularity check --tag default ubuntu.img
 
 Perform checks with tag “clean”
@@ -33,12 +34,14 @@ for containers with Docker imported layers, you can specify the tag:
     USAGE
 
         -t/--tag       tag to filter checks. default is "default"
+
                           Available: default, security, docker, clean
 
 
     EXAMPLE
 
     $ singularity check --tag docker ubuntu.img
+
 
 If you want to run checks associated with a different security level,
 you can specify with ``--low`` , ``--med`` , or ``--high`` :
@@ -48,11 +51,16 @@ you can specify with ``--low`` , ``--med`` , or ``--high`` :
     USAGE: singularity [...] check [exec options...] <container path>
 
     This command will run security checks for an image.
+
     Note that some checks require sudo.
 
+
         -l/--low       Specify low threshold (all checks, default)
+
         -m/--med       Perform medium and high checks
+
         -h/--high      Perform only checks at level high
+        
 
 .. note::
 
