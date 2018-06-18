@@ -172,18 +172,15 @@ customizing the environment. Here is a full Singularity file:
 
     %runscript
 
-
         exec /usr/bin/python "$@"
 
 
     %post
 
-
         echo "Post install stuffs!"
 
 
     %files
-
 
     /home/vanessa/Desktop/analysis.py /tmp/analysis.py
 
@@ -200,7 +197,6 @@ customizing the environment. Here is a full Singularity file:
 
 
     %labels
-
 
     AUTHOR Vanessasaur
 
