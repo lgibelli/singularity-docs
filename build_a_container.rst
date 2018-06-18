@@ -89,11 +89,11 @@ Singularity containers.
     $ singularity build lolcow.simg docker://godlovedc/lolcow
 
 ------------------------------------------------------
-Creating - -writable images and - -sandbox directories
+Creating ``--writable`` images and ``--sandbox`` directories
 ------------------------------------------------------
 
-- -writable
-===========
+``--writable``
+==============
 
 If you wanted to create a writable ext3 image similar to those used by
 Singularity version < 2.4, you could do so with the ``--writable`` option. You must
@@ -118,8 +118,8 @@ For example:
 
     $ sudo singularity shell --writable lolcow.img
 
-- -sandbox
-==========
+``--sandbox``
+=============
 
 If you wanted to create a container within a writable directory (called
 a sandbox) you could do so with the ``--sandbox`` option. It’s possible to create a
