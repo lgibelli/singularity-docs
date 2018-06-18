@@ -21,10 +21,15 @@ There are many ways to `install Singularity <#installation>`_ but this quick sta
 ::
 
     git clone https://github.com/singularityware/singularity.git
+
     cd singularity
+
     ./autogen.sh
+
     ./configure --prefix=/usr/local
+
     make
+
     sudo make install
 
 Singularity must be installed as root to function properly.
@@ -44,42 +49,71 @@ follows:
 ::
 
     $ singularity --help
+
     USAGE: singularity [global options...] <command> [command options...] ...
 
+
     GLOBAL OPTIONS:
+
         -d|--debug    Print debugging information
+
         -h|--help     Display usage summary
+
         -s|--silent   Only print errors
+
         -q|--quiet    Suppress all normal output
+
            --version  Show application version
+
         -v|--verbose  Increase verbosity +1
+
         -x|--sh-debug Print shell wrapper debugging information
 
+
     GENERAL COMMANDS:
+
         help       Show additional help for a command or container
+
         selftest   Run some self tests for singularity install
 
+
     CONTAINER USAGE COMMANDS:
+
         exec       Execute a command within container
+
         run        Launch a runscript within container
+
         shell      Run a Bourne shell within container
+
         test       Launch a testscript within container
 
+
     CONTAINER MANAGEMENT COMMANDS:
+
         apps       List available apps within a container
+
         bootstrap  *Deprecated* use build instead
+
         build      Build a new Singularity container
+
         check      Perform container lint checks
+
         inspect    Display a container's metadata
+
         mount      Mount a Singularity container image
+
         pull       Pull a Singularity/Docker container to $PWD
 
+
     COMMAND GROUPS:
+
         image      Container image command group
+
         instance   Persistent instance command group
 
 
     CONTAINER USAGE OPTIONS:
+
         see singularity help <command>
 
     For any additional help or support visit the Singularity
@@ -110,9 +144,13 @@ following:
 ::
 
     $ singularity help <command>
+
     $ singularity --help <command>
+
     $ singularity -h <command>
+
     $ singularity <command> --help
+
     $ singularity <command> -h
 
 Users can also `write help docs specific to a container <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html#help>`_ or for an internal module called an . If those help
@@ -121,6 +159,7 @@ docs exist for a particular container, you can view them like so.
 ::
 
     $ singularity help container.simg            # See the container's help, if provided
+
     $ singularity help --app foo container.simg  # See the help for foo, if provided
 
 -------------------------
@@ -135,6 +174,7 @@ simply downloads the image file to your system.
 ::
 
     $ singularity pull shub://vsoch/hello-world   # pull with default name, vsoch-hello-world-master.simg
+
     $ singularity pull --name hello.simg shub://vsoch/hello-world   # pull with custom name
 
 Singularity images can also be pulled and named by an associated
@@ -147,6 +187,7 @@ usable Singularity file.
 ::
 
     $ singularity pull docker://godlovedc/lolcow  # with default name
+
     $ singularity pull --name funny.simg docker://godlovedc/lolcow # with custom name
 
 Pulling Docker images reduces reproducibility. If you were to pull a
@@ -161,6 +202,7 @@ container like so:
 ::
 
     $ singularity build hello-world.simg shub://vsoch/hello-world
+
     $ singularity build lolcow.simg docker://godlovedc/lolcow
 
 Unlike ``pull``, ``build`` will convert your image to the latest Singularity image format
@@ -193,13 +235,19 @@ interact with it as though it were a small virtual machine.
 ::
 
     $ singularity shell hello-world.simg
+
     Singularity: Invoking an interactive shell within container...
 
+
     # I am the same user inside as outside!
+
     Singularity hello-world.simg:~/Desktop> whoami
+
     vanessa
 
+
     Singularity hello-world.simg:~/Desktop> id
+
     uid=1000(vanessa) gid=1000(vanessa) groups=1000(vanessa),4(adm),24,27,30(tape),46,113,128,999(input)
 
 ``shell`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
@@ -219,8 +267,11 @@ hello-world.simg image, we could do the following:
 ::
 
     $ singularity exec hello-world.simg ls /
+
     anaconda-post.log  etc   lib64       mnt   root  singularity  tmp
+
     bin        home  lost+found  opt   run   srv          usr
+
     dev        lib   media       proc  sbin  sys          var
 
 ``exec`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
@@ -241,6 +292,7 @@ the container as though it were an executable.
 ::
 
     $ singularity run hello-world.simg
+
     $ ./hello-world.simg
 
 ``run`` also works with ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that runs
@@ -258,7 +310,9 @@ Files on the host are reachable from within the container.
 ::
 
     $ echo "Hello World" > $HOME/hello-kitty.txt
+
     $ singularity exec vsoch-hello-world-master.simg cat $HOME/hello-kitty.txt
+
     Hello World
 
 This example works because ``hello-kitty.txt`` exists in the user’s home directory. By
@@ -271,7 +325,9 @@ system is bind mounted to the ``/mnt`` directory inside the container.
 ::
 
     $ echo "I am your father" >/data/vader.sez
+
     $ ~/sing-dev/bin/singularity exec --bind /data:/mnt hello-world.simg cat /mnt/vader.sez
+
     I am your father
 
 -------------------------
@@ -372,26 +428,42 @@ Here is an example of a recipe file:
 
 
     Bootstrap: shub
+
     From: singularityhub/ubuntu
 
+
     %runscript
+
         exec echo "The runscript is the containers default runtime command!"
 
+
     %files
+
        /home/vanessa/Desktop/hello-kitty.txt        # copied to root of container
+
        /home/vanessa/Desktop/party_dinosaur.gif     /opt/the-party-dino.gif #
 
+
     %environment
+
         VARIABLE=MEATBALLVALUE
+
         export VARIABLE
 
+
     %labels
+
        AUTHOR vsochat@stanford.edu
 
+
     %post
+
         apt-get update && apt-get -y install python3 git wget
+
         mkdir /data
+
         echo "The post section is where you can install, and configure your container."
+        
 
 To build a container from this definition file (assuming it is a file
 named Singularity), you would call build like so:
