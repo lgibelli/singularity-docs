@@ -73,9 +73,11 @@ file system overlay is enabled):
 ::
 
     $ singularity shell -B /tmp:/scratch /tmp/Centos7-ompi.img
+    ...
     Singularity: Invoking an interactive shell within container...
 
     Singularity.Centos7-ompi.img> ls /scratch
+    ...
     ssh-7vywtVeOez  systemd-private-cd84c81dda754fe4a7a593647d5a5765-ntpd.service-12nMO4
 
 You can bind multiple directories in a single command with this
