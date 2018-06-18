@@ -99,26 +99,47 @@ metadata, plopped in our present working directory.
      $ tree -L 1 ubuntu
 
     ubuntu
+
     ├── bin
+
     ├── boot
+
     ├── dev
+
     ├── environment -> .singularity.d/env/90-environment.sh
+
     ├── etc
+
     ├── home
+
     ├── lib
+
     ├── lib64
+
     ├── media
+
     ├── mnt
+
     ├── opt
+
     ├── proc
+
     ├── root
+
     ├── run
+
     ├── sbin
+
     ├── singularity -> .singularity.d/runscript
+
     ├── srv
+
     ├── sys
+
     ├── tmp
+
     ├── usr
+    
     └── var
 
 And you can shell into it just like a normal container.
@@ -272,7 +293,7 @@ image, just remove the extra options:
     Cleaning up...
 
     Singularity container built: ubuntu.simg
-    
+
 
 Production Build from Sandbox
 -----------------------------

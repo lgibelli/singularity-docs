@@ -472,7 +472,7 @@ requests to the server:
         fi
 
         curl -o "${SINGULARITY_APPDATA}/output/${2:-output.pdf}" "${URL}:${PORT}/api/render?url=${1}"
-        
+
 
 As you can see, the ``pdf_client`` app checks to make sure that the user provides at
 least one argument. Now that we have an output directory in the
@@ -495,6 +495,7 @@ And to confirm that it worked:
 ::
 
     $ ls out/
+    
     google.pdf
 
 When you are finished, use the instance.stop command to close all
