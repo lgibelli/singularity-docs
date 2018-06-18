@@ -27,11 +27,16 @@ You can shell, import, run, and exec.
 ::
 
     singularity shell docker://ubuntu:latest
+
     singularity run docker://ubuntu:latest
+
     singularity exec docker://ubuntu:latest echo "Hello Dinosaur!"
 
+
     singularity pull docker://ubuntu:latest
+
     singularity build ubuntu.img docker://ubuntu:latest
+
 
 ----------------------------------------------
 Import a Docker image into a Singularity Image
@@ -58,24 +63,43 @@ ubuntu operating system, from Docker. We will pull, then build:
 ::
 
     singularity pull docker://ubuntu
+
     WARNING: pull for Docker Hub is not guaranteed to produce the
+
     WARNING: same image on repeated pull. Use Singularity Registry
+
     WARNING: (shub://) to pull exactly equivalent images.
+
     Docker image path: index.docker.io/library/ubuntu:latest
+
     Cache folder set to /home/vanessa/.singularity/docker
+
     [5/5] |===================================| 100.0%
+
     Importing: base Singularity environment
+
     Importing: /home/vanessa/.singularity/docker/sha256:9fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:3b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:9d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e.tar.gz
+
     Importing: /home/vanessa/.singularity/docker/sha256:7fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9.tar.gz
+
     Importing: /home/vanessa/.singularity/metadata/sha256:77cece4ce6ef220f66747bb02205a00d9ca5ad0c0a6eea1760d34c744ef7b231.tar.gz
+
     WARNING: Building container as an unprivileged user. If you run this container as root
+
     WARNING: it may be missing some functionality.
+
     Building Singularity image...
+
     Cleaning up...
+
     Singularity container built: ./ubuntu.img
+
 
 The warnings mean well - it is to tell you that you are creating the
 image on the fly from layers, and if one of those layers changes, you
@@ -97,7 +121,9 @@ let’s look at the absolute minimum requirement:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
+
 
 We would save this content to a file called Singularity and then issue
 the following commands to bootstrap the image from the file
@@ -112,7 +138,9 @@ that to the docker uri:
 ::
 
     Bootstrap: docker
+
     From: ubuntu:latest
+
 
 .. note::
 
@@ -122,9 +150,13 @@ that to the docker uri:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
+
     Registry: pancakes.registry.index.io
+
     Namespace: blue/berry/cream
+
 
 The power of build comes with the other stuff that you can do! This
 means running specific install commands, specifying your containers
@@ -134,29 +166,44 @@ customizing the environment. Here is a full Singularity file:
 ::
 
     Bootstrap: docker
+
     From: tensorflow/tensorflow:latest
+
 
     %runscript
 
+
         exec /usr/bin/python "$@"
+
 
     %post
 
+
         echo "Post install stuffs!"
+
 
     %files
 
+
     /home/vanessa/Desktop/analysis.py /tmp/analysis.py
+
     relative_path.py /tmp/analysis2.py
 
+
     %environment
+
     TOPSECRET=pancakes
+
     HELLO=WORLD
+
     export HELLO TOPSECRET
+
 
     %labels
 
+
     AUTHOR Vanessasaur
+
 
 In the example above, I am overriding any Dockerfile ``ENTRYPOINT`` or ``CMD`` because I have
 defined a ``%runscript`` . If I want the Dockerfile ``ENTRYPOINT`` to take preference, I would remove
@@ -166,12 +213,17 @@ runscript, and add IncludeCmd to the header:
 ::
 
     Bootstrap: docker
+
     From: tensorflow/tensorflow:latest
+
     IncludeCmd: yes
+
 
     %post
 
+
         echo "Post install stuffs!"
+
 
 Did you know that you can commit this Singularity file to a GitHub repo
 and it will automatically build for you when you push to `Singularity
@@ -257,9 +309,13 @@ the uri, you can also just state them explicitly:
 ::
 
     Bootstrap: docker
+
     From: ubuntu
+
     Registry: index.docker.io
+
     Namespace: library
+
 
 ---------------------
 Custom Authentication
@@ -285,19 +341,22 @@ header with the labels ``Username`` and ``Password`` :
 ::
 
     Username: vanessa
+
     Password: [password]
 
-| Again, this can be in addition to specification of a custom registry
-  with the ``Registry`` parameter.
+
+Again, this can be in addition to specification of a custom registry
+with the ``Registry`` parameter.
 
 Authentication in the Environment
 =================================
 
-| You can export your username, and password for Singularity as follows:
+You can export your username, and password for Singularity as follows:
 
 ::
 
     export SINGULARITY_DOCKER_USERNAME=vanessasaur
+
     export SINGULARITY_DOCKER_PASSWORD=rawwwwwr
 
 Testing Authentication
@@ -309,6 +368,7 @@ the command line and putting it into an environmental variable, ``CREDENTIAL`` :
 ::
 
     CREDENTIAL=$(echo -n vanessa:[password] | base64)
+
     TOKEN=$(http 'https://auth.docker.io/token?service=registry.docker.io&scope=repository:vanessa/code-samples:pull' Authorization:"Basic $CREDENTIAL" | jq -r '.token')
 
 This should place the token in the environmental variable ``TOKEN`` . To test that
@@ -334,13 +394,13 @@ ventures please `let us know <https://www.github.com/singularityware/singularity
 1. Installation to Root
 =======================
 
-| When using Docker, you typically run as root, meaning that root’s home
-  at ``/root`` is where things will install given a specification of home. This is
-  fine when you stay in Docker, or if the content at ``/root`` doesn’t need any
-  kind of write access, but generally can lead to a lot of bugs because
-  it is, after all, root’s home. This leads us to best practice #1.
+When using Docker, you typically run as root, meaning that root’s home
+at ``/root`` is where things will install given a specification of home. This is
+fine when you stay in Docker, or if the content at ``/root`` doesn’t need any
+kind of write access, but generally can lead to a lot of bugs because
+it is, after all, root’s home. This leads us to best practice #1.
 
-    Don’t install anything to root’s home, ``/root``.
+Don’t install anything to root’s home, ``/root``.
 
 2. Library Configurations
 =========================
