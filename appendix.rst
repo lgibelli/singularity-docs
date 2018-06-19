@@ -1365,8 +1365,7 @@ above would be equivalent to doing:
     singularity pull shub://vsoch/hello-world:master
 
 To enable other branches to build, they must be turned on in your
-collection (more details are available in the `Singularity Hub docs <https://singularity-hub.org/faq>`_).
-If you then put another Singularity file in a branch called development,
+collection. If you then put another Singularity file in a branch called development,
 you would pull it as follows:
 
 ::
@@ -2554,6 +2553,6 @@ user would be you, and the cache your ``$HOME``.
     Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
 
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
-    
+
 
 For details and best practices for creating your Singularity recipe, `read about them here <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html#container-recipes>`_.
