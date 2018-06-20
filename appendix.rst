@@ -439,6 +439,7 @@ Here we will test contain. We can first confirm that there are a lot of files on
 Commands
 --------
 
+.. _command-usage:
 
 Command Usage
 =============
@@ -637,6 +638,8 @@ Support
 
 Have a question, or need further information? `Reach out to us <https://www.sylabs.io/contact/>`_.
 
+
+.. _build:
 
 build
 =====
@@ -1323,6 +1326,7 @@ and to help better integrate them into common workflows by having them
 expose their guts to the world! If you have feedback for how we can
 improve or amend this, `please let us know <https://github.com/singularityware/singularity/issues>`_!
 
+.. _pull:
 
 pull
 ====

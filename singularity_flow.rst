@@ -1,3 +1,6 @@
+
+.. _singularity-flow:
+
 ================
 Singularity Flow
 ================
@@ -139,7 +142,7 @@ metadata, plopped in our present working directory.
     ├── tmp
 
     ├── usr
-    
+
     └── var
 
 And you can shell into it just like a normal container.

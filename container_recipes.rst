@@ -1,3 +1,6 @@
+
+.. _container-recipes:
+
 =================
 Container Recipes
 =================
@@ -105,6 +108,8 @@ Singularity) as follows:
 ::
 
     $ sudo singularity build roar.simg Singularity
+
+.. _help-docs:
 
 %help
 -----
@@ -496,6 +501,8 @@ other dependencies for a Centos7 bootstrap:
 
 You cannot copy files from the host to your container in this section,
 but you can of course download with commands like ``git clone`` and ``wget`` and ``curl``.
+
+.. _runscript:
 
 %runscript
 ----------

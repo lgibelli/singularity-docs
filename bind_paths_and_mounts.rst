@@ -1,3 +1,6 @@
+
+.. _bind-paths-and-mounts:
+
 =====================
 Bind Paths and Mounts
 =====================
@@ -132,7 +135,7 @@ accessible as expected:
     $ singularity shell --bind /global /tmp/Centos7-ompi.img
 
     Singularity: Invoking an interactive shell within container...
-    
+
 
     Singularity.Centos7-ompi.img>
 

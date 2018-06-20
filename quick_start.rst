@@ -12,11 +12,13 @@ request an installation on your shared resource, check out our
 requesting an installation help page for information to send to your
 system administrator.
 
+.. _installation:
+
 ------------
 Installation
 ------------
 
-There are many ways to `install Singularity <#installation>`_ but this quick start guide will only cover one.
+There are many ways to :ref:`install Singularity <installation>` but this quick start guide will only cover one.
 
 ::
 
@@ -38,7 +40,7 @@ Singularity must be installed as root to function properly.
 Overview of the Singularity Interface
 -------------------------------------
 
-Singularity’s `command line interface <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#command-usage>`_ allows you to build and interact with containers
+Singularity’s :ref:`command line interface <command-usage>` allows you to build and interact with containers
 transparently. You can run programs inside a container as if they were
 running on your host system. You can easily redirect IO, use pipes,
 pass arguments, and access files, sockets, and ports on the host
@@ -154,7 +156,7 @@ following:
 
     $ singularity <command> -h
 
-Users can also `write help docs specific to a container <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html#help>`_ or for an internal module called an . If those help
+Users can also :ref:`write help docs specific to a container <help-docs>` or for an internal module called an . If those help
 docs exist for a particular container, you can view them like so.
 
 ::
@@ -167,7 +169,7 @@ docs exist for a particular container, you can view them like so.
 Download pre-built images
 -------------------------
 
-You can use the `pull <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id28>`_ and `build <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id22>`_ commands to download pre-built images from an
+You can use the :ref:`pull <pull>` and :ref:`build <build>` commands to download pre-built images from an
 external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
 on a native Singularity images like those provided on Singularity Hub, ``pull``
 simply downloads the image file to your system.
@@ -211,9 +213,9 @@ after downloading it.
 
 ``build`` is like a “Swiss Army knife” for container creation. In addition to
 downloading images, you can use ``build`` to create images from other images or
-from scratch using a `recipe file <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_. You can also use ``build`` to convert an image between the
+from scratch using a `recipe file <container-recipes>`. You can also use ``build`` to convert an image between the
 3 major container formats supported by Singularity. We discuss those
-image formats below in the `Build images from scratch <https://singularity-userdoc.readthedocs.io/en/latest/quick_start.html#id2>`_ section.
+image formats below in the :ref:`Build images from scratch <build-images-from-scratch>` section.
 
 --------------------
 Interact with images
@@ -285,7 +287,7 @@ executes a command and disappears.
 Running a container
 ===================
 
-Singularity containers contain “`runscripts <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html#runscript>`_”. These are user defined scripts that
+Singularity containers contain :ref:`runscripts <runscript>`. These are user defined scripts that
 define the actions a container should perform when someone runs it. The
 runscript can be triggered with the run command, or simply by calling
 the container as though it were an executable.
@@ -320,7 +322,7 @@ This example works because ``hello-kitty.txt`` exists in the user’s home direc
 default singularity bind mounts ``/home/$USER``, ``/tmp``, and ``$PWD`` into your container at
 runtime.
 You can specify additional directories to bind mount into your
-container with the `- -bind <https://singularity-userdoc.readthedocs.io/en/latest/bind_paths_and_mounts.html>`_ option. In this example, the ``data`` directory on the host
+container with the :ref:`- -bind <bind-paths-and-mounts>` option. In this example, the ``data`` directory on the host
 system is bind mounted to the ``/mnt`` directory inside the container.
 
 ::
@@ -330,6 +332,8 @@ system is bind mounted to the ``/mnt`` directory inside the container.
     $ ~/sing-dev/bin/singularity exec --bind /data:/mnt hello-world.simg cat /mnt/vader.sez
 
     I am your father
+
+.. _build-images-from-scratch:
 
 -------------------------
 Build images from scratch
@@ -348,7 +352,7 @@ directory), and a ``writable`` format (the ext3 file system that was used in
 Singularity versions less than 2.4).
 
 For more details about the different build options and best practices,
-read about the `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/singularity_flow.html>`_.
+read about the :ref:`singularity flow <singularity-flow>`.
 
 Sandbox Directory
 =================
@@ -483,7 +487,7 @@ custom metadata to be added to the container. And finally the ``%post`` section
 executes within the container at build time after the base OS has been
 installed. The ``%post`` section is therefore the place to perform installations
 of custom apps.
-This is a very small example of the things that you can do with a `recipe file <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_ . In
+This is a very small example of the things that you can do with a :ref:`recipe file <container-recipes>` . In
 addition to building a container from Singularity Hub, you can start
 with base images from Docker Hub, use images directly from official
 repositories such as Ubuntu, Debian, Centos, Arch, and BusyBox, use an
@@ -493,4 +497,4 @@ If you want to build Singularity images without having singularity
 installed in a build environment, you can build images using
 `Singularity Hub <https://github.com/singularityhub/singularityhub.github.io/wiki>`__
 instead. If you want a more detailed rundown and examples for
-different build options, see our `singularity flow <https://singularity-userdoc.readthedocs.io/en/latest/singularity_flow.html>`_ page.
+different build options, see our :ref:`singularity flow <singularity-flow>` page.
