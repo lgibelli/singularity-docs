@@ -1328,6 +1328,8 @@ improve or amend this, `please let us know <https://github.com/singularityware/s
 pull
 ====
 
+.. _sec:pull:
+
 Singularity ``pull`` is the command that you would want to use to communicate
 with a container registry. The command does exactly as it says - there
 exists an image external to my host, and I want to pull it here. We
