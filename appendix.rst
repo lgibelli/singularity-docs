@@ -2,6 +2,8 @@
 Appendix
 ========
 
+.. _build-docker-module:
+
 -------------------
 build-docker-module
 -------------------
@@ -76,6 +78,8 @@ If reproducibility is important to you, consider hosting a base container on Sin
 
 For detailed information about setting your build environment see `Build Customization <https://singularity-userdoc.readthedocs.io/en/latest/build_environment.html>`_.
 
+.. _build-shub:
+
 ----------
 build-shub
 ----------
@@ -112,6 +116,8 @@ Notes
 When bootstrapping from a Singularity Hub image, all previous definition files that led to the creation of the current image will be stored
 in a directory within the container called ``/.singularity.d/bootstrap_history``. Singularity will also alert you if environment variables have
 been changed between the base image and the new image during bootstrap.
+
+.. _build-localimage:
 
 ----------------
 build-localimage
@@ -151,6 +157,8 @@ Notes
 When building from a local container, all previous definition files that led to the creation of the current container will be stored in a
 directory within the container called ``/.singularity.d/bootstrap_history``. Singularity will also alert you if environment variables have been
 changed between the base image and the new image during bootstrap.
+
+.. _build-yum:
 
 ---------
 build-yum
@@ -212,6 +220,8 @@ that uses a different package manager, but you can do so. For instance, on Ubunt
     $ sudo apt-get update && sudo apt-get install yum
 
 
+.. _build-debootstrap:
+
 -----------------
 build-debootstrap
 -----------------
@@ -270,6 +280,7 @@ On CentOS you can install it from the epel repos like so:
 
     $ sudo yum update && sudo yum install epel-release && sudo yum install debootstrap.noarch
 
+.. _build-arch:
 
 ----------
 build-arch
@@ -304,6 +315,8 @@ Arch Linux is, by design, a very stripped down, light-weight OS. You may need to
 to this `README.md <https://github.com/singularityware/singularity/blob/master/examples/arch/README.md>`_ and
 the `Arch Linux example <https://github.com/singularityware/singularity/blob/master/examples/arch/Singularity>`_ for more info.
 
+.. _build-busybox:
+
 -------------
 build-busybox
 -------------
@@ -336,6 +349,8 @@ Notes
 =====
 
 You can build a fully functional BusyBox container that only takes up ~600kB of disk space!
+
+.. _build-zypper:
 
 ------------
 build-zypper

@@ -1,3 +1,5 @@
+.. _environment-and-metadata:
+
 ========================
 Environment and Metadata
 ========================

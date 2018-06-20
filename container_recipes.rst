@@ -47,7 +47,7 @@ composed of several keywords. Specifically:
 -  ``Bootstrap``: references the kind of base you want to use (e.g., docker,
    debootstrap, shub). For example, a shub bootstrap will pull
    containers for shub as bases. A Docker bootstrap will pull docker
-   layers to start your image. For a full list see `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_
+   layers to start your image. For a full list see :ref:`build <build-a-container>`
 
 -  ``From``: is the named container (shub) or reference to layers (Docker) that
    you want to use (e.g., vsoch/hello-world)
@@ -78,21 +78,21 @@ A build that uses a mirror to install Centos-7 might look like this:
 Each build base requires particular details during build time. You can
 read about them and see examples at the following links:
 
--  `shub <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-shub>`_ (images hosted on Singularity Hub)
+-  :ref:`shub <build-shub>` (images hosted on Singularity Hub)
 
--  `docker <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-docker-module>`_ (images hosted on Docker Hub)
+-  :ref:`docker <build-docker-module>` (images hosted on Docker Hub)
 
--  `localimage <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-localimage>`_ (images saved on your machine)
+-  :ref:`localimage <build-localimage>` (images saved on your machine)
 
--  `yum <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-yum>`_ (yum based systems such as CentOS and Scientific Linux)
+-  :ref:`yum <build-yum>` (yum based systems such as CentOS and Scientific Linux)
 
--  `debootstrap <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-debootstrap>`_ (apt based systems such as Debian and Ubuntu)
+-  :ref:`debootstrap <build-debootstrap>` (apt based systems such as Debian and Ubuntu)
 
--  `arch <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-arch>`_ (Arch Linux)
+-  :ref:`arch <build-arch>` (Arch Linux)
 
--  `busybox <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-busybox>`_ (BusyBox)
+-  :ref:`busybox <build-busybox>` (BusyBox)
 
--  `zypper <http://singularity-userdoc.readthedocs.io/en/latest/appendix.html#build-zypper>`_ (zypper based systems such as Suse and OpenSuse)
+-  :ref:`zypper <build-zypper>` (zypper based systems such as Suse and OpenSuse)
 
 Sections
 ========
@@ -344,7 +344,7 @@ The easiest way to see labels is to inspect the image:
     }
 
 You’ll notice some other labels that are captured automatically from the
-build process. You can read more about labels and metadata `here <https://singularity-userdoc.readthedocs.io/en/latest/environment_and_metadata.html>`_.
+build process. You can read more about labels and metadata :ref:`here <environment-and-metadata>`.
 
 %environment
 ------------
@@ -456,7 +456,7 @@ At runtime, scripts in ``/.singularity/env`` are sourced in order. This means th
 in ``$SINGULARITY_ENVIRONMENT`` take precedence over those added via ``%environment``. Note that you won’t see
 these variables in the inspect output, as inspect only shows the
 contents added from ``%environment``.
-See `Environment and Metadata <https://singularity-userdoc.readthedocs.io/en/latest/environment_and_metadata.html>`_ for more information about
+See :ref:`Environment and Metadata <environment-and-metadata>` for more information about
 the ``%labels`` and ``%environment`` sections.
 
 %post
@@ -651,8 +651,8 @@ environments? In some circumstances, it may be redundant to build
 different containers for each app with almost equivalent dependencies.
 
 Starting in Singularity 2.4 all of the above commands can also be used
-in the context of internal modules called `apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html>`_ based on the `Standard
-Container Integration Format <https://sci-f.github.io/>`_. For details on apps, see the `apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html>`_
+in the context of internal modules called :ref:`apps <reproducible-scif-apps>` based on the `Standard
+Container Integration Format <https://sci-f.github.io/>`_. For details on apps, see the :ref:`apps <reproducible-scif-apps>`
 documentation. For a quick rundown of adding an app to your container,
 here is an example runscript:
 
@@ -825,7 +825,7 @@ Best Practices for Build Recipes
 
 When crafting your recipe, it is best to consider the following:
 
-#. To make your container internally modular, use `SCI-F apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html#reproducible-sci-f-apps>`_. Shared dependencies
+#. To make your container internally modular, use :ref:`SCI-F apps <reproducible-scif-apps>`. Shared dependencies
    (between app modules) can go under ``%post``.
 
 #. For global installs to ``%post``, install packages, programs, data, and files
@@ -850,4 +850,4 @@ When crafting your recipe, it is best to consider the following:
    possibility of reproducibility and mitigates the black box effect.
 
 Are you a recipe pro and now ready to build? Take a look at the
-`build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_ documentation.
+:ref:`build <build-a-container>` documentation.

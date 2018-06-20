@@ -1,3 +1,5 @@
+.. _reproducible-scif-apps:
+
 =======================
 Reproducible SCI-F Apps
 =======================
@@ -680,7 +682,7 @@ an app:
         "SCIF_APP_SIZE": "1MB"
 
     }
-    
+
 
 If you want to see the full specification or create your own
 Scientific Filesystem integration (doesn’t have to be Singularity, or
