@@ -1,3 +1,5 @@
+.. _singularity-and-docker:
+
 ======================
 Singularity and Docker
 ======================

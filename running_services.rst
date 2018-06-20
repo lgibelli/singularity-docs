@@ -1,3 +1,5 @@
+.. _running-services:
+
 ================
 Running Services
 ================
@@ -49,7 +51,7 @@ file like so:
 
 Now let’s say we build a container with that startscript into an image
 called ``nginx.img`` and we want to run an nginx service. All we need to do is start
-the instance with the `instance.start <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#instance-start>`_ command, and the
+the instance with the :ref:`instance.start <instance-start>` command, and the
 startscript will run inside the container automatically:
 
 ::
@@ -137,7 +139,7 @@ instance. Similarly with ``exec``, it will execute the given command in the
 instance.
 
 When you are finished with your instance you can clean it up with the
-`instance.stop <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#instance-stop>`_ command like so:
+:ref:`instance.stop <instance-stop>` command like so:
 
 ::
 
@@ -422,7 +424,7 @@ it a little cleaner. It’s difficult to remember the exact curl command
 and URL syntax each time you want to request a PDF, so let’s automate
 that. To do that, we’re going to be using Standard Container
 Integration Format (SCIF) apps, which are integrated directly into
-singularity. If you haven’t already, check out the `Singularity app documentation <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html>`_ to come up to
+singularity. If you haven’t already, check out the :ref:`Singularity app documentation <reproducible-scif-apps>` to come up to
 speed.
 
 First off, we’re going to move the installation of the url-to-pdf-api

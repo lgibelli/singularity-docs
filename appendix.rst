@@ -41,7 +41,7 @@ The From keyword is mandatory. It specifies the container to use as a base. ``re
 ``namespace`` is optional and defaults to ``library``. This is the correct namespace to use for some official containers (ubuntu for example).
 ``tag`` is also optional and will default to ``latest``
 
-See `Singularity and Docker <https://singularity-userdoc.readthedocs.io/en/latest/singularity_and_docker.html#singularity-and-docker>`_ for more detailed info on using Docker registries.
+See :ref:`Singularity and Docker <singularity-and-docker>` for more detailed info on using Docker registries.
 
 ::
 
@@ -64,7 +64,7 @@ and will be used as a runscript. Note that the ``IncludeCmd`` keyword is conside
  ``IncludeCmd: yes`` and ``IncludeCmd: no`` are identical. In both cases the ``IncludeCmd`` keyword is not empty, so the Docker ``CMD`` will take precedence
  over an ``ENTRYPOINT``.
 
- See `Singularity and Docker <https://singularity-userdoc.readthedocs.io/en/latest/singularity_and_docker.html#singularity-and-docker>`_ for more info on order of operations for determining a runscript.
+ See :ref:`Singularity and Docker <singularity-and-docker>` for more info on order of operations for determining a runscript.
 
 
 Notes
@@ -76,7 +76,7 @@ assembled in the proper order to produce a viable file system. Then the file sys
 Building from Docker Hub is not considered reproducible because if any of the layers of the image are changed, the container will change.
 If reproducibility is important to you, consider hosting a base container on Singularity Hub and building from it instead.
 
-For detailed information about setting your build environment see `Build Customization <https://singularity-userdoc.readthedocs.io/en/latest/build_environment.html>`_.
+For detailed information about setting your build environment see :ref:`Build Customization <build-environment>`.
 
 .. _build-shub:
 
@@ -390,6 +390,8 @@ The Include keyword is optional. It allows you to install additional packages in
 It is a best practice to supply only the bare essentials such that the ``%post`` section has what it needs to properly complete the build.
 One common package you may want to install when using the zypper build module is ``zypper`` itself.
 
+.. _singularity-action-flags:
+
 ------------------------
 Singularity Action Flags
 ------------------------
@@ -478,42 +480,42 @@ If you type ``singularity`` without any arguments, you will see a high
 level help for all arguments. The main options include:
 **Container Actions**
 
--  `build <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id22>`_ : Build a container on your user endpoint or build environment
+-  :ref:`build <build-command>` : Build a container on your user endpoint or build environment
 
--  `exec <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id25>`_ : Execute a command to your container
+-  :ref:`exec <exec-command>` : Execute a command to your container
 
--  `inspect <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id27>`_ : See labels, run and test scripts, and environment variables
+-  :ref:`inspect <inspect-command>` : See labels, run and test scripts, and environment variables
 
--  `pull <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id28>`_ : pull an image from Docker or Singularity Hub
+-  :ref:`pull <pull-command>` : pull an image from Docker or Singularity Hub
 
--  `run <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id30>`_ : Run your image as an executable
+-  :ref:`run <run-command>` : Run your image as an executable
 
--  `shell <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id36>`_ : Shell into your image
+-  :ref:`shell <shell-command>` : Shell into your image
 
 **Image Commands**
 
--  `image.import <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id40>`_ : import layers or other file content to your image
+-  :ref:`image.import <image-import>` : import layers or other file content to your image
 
--  `image.export <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id38>`_ : export the contents of the image to tar or stream
+-  :ref:`image.export <image-export>` : export the contents of the image to tar or stream
 
--  `image.create <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id41>`_ : create a new image, using the old ext3 filesystem
+-  :ref:`image.create <image-create>` : create a new image, using the old ext3 filesystem
 
--  `image.expand <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id39>`_ : increase the size of your image (old ext3)
+-  :ref:`image.expand <image-expand>` : increase the size of your image (old ext3)
 
 **Instance Commands**
 
 Instances were added in 2.4. This list is brief, and likely to expand
 with further development.
 
--  `instances <https://singularity-userdoc.readthedocs.io/en/latest/running_services.html>`_ : Start, stop, and list container instances
+-  :ref:`instances <running-services>` : Start, stop, and list container instances
 
 **Deprecated Commands**
 The following commands are deprecated in 2.4 and will be removed in
 future releases.
 
--  `bootstrap <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id53>`_ : Bootstrap a container recipe
+-  :ref:`bootstrap <bootstrap>` : Bootstrap a container recipe
 
-For the full usage, `see the bottom of this page <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#command-usage>`_
+For the full usage, :ref:`see the bottom of this page <command-usage>`
 
 Options and argument processing
 '''''''''''''''''''''''''''''''
@@ -660,7 +662,7 @@ build
 =====
 
 Use ``build`` to download and assemble existing containers, convert containers
-from one format to another, or build a container from a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_.
+from one format to another, or build a container from a :ref:`Singularity recipe <container-recipes>`.
 
 Overview
 --------
@@ -671,7 +673,7 @@ to an existing container, or a path to a Singularity Recipe file. The
 output container can be in squashfs, ext3, or directory format.
 
 For a complete list of ``build`` options type ``singularity help build``. For more info on building
-containers see `Build a Container <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_.
+containers see :ref:`Build a Container <build-a-container>`.
 
 Examples
 --------
@@ -772,7 +774,7 @@ Runtime Flags
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the ``singularity run help`` and our
-documentation on `flags <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#singularity-action-flags>`_ to better customize this command.
+documentation on :ref:`flags <singularity-action-flags>` to better customize this command.
 
 Special Characters
 ''''''''''''''''''
@@ -1643,7 +1645,7 @@ Runtime Flags
 
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the ``singularity run help`` and our
-documentation on `flags <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#singularity-action-flags>`_
+documentation on :ref:`flags <singularity-action-flags>`
 to better customize this command.
 
 Examples
@@ -1687,7 +1689,7 @@ following order of operations:
 #. If the user has not defined a runscript, and there is no ``ENTRYPOINT`` or ``CMD`` (or we
    aren’t importing Docker at all) then we default to ``/bin/bash``
 
-Here is how you would define the runscript section when you `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html#build-a-container>`_ an image:
+Here is how you would define the runscript section when you :ref:`build <build-a-container>` an image:
 
 ::
 
@@ -1719,7 +1721,7 @@ you want to use run instead of exec, you could also just do:
 
 
 If you want different entrypoints for your image, we recommend using the
-%apprun syntax (see `apps <https://singularity-userdoc.readthedocs.io/en/latest/reproducible_scif_apps.html#reproducible-sci-f-apps>`_). Here we have two entrypoints for foo and bar:
+%apprun syntax (see :ref:`apps <reproducible-sci-f-apps>`). Here we have two entrypoints for foo and bar:
 
 ::
 
@@ -1798,7 +1800,7 @@ Additionally any arguments passed to the Singularity command (after the
 container name) will be passed to the called shell within the container,
 and shell can be used across image types. Here is a quick example of
 shelling into a container assembled from Docker layers. We highly
-recommend that you look at the ``singularity shell help`` and our documentation on `flags <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#singularity-action-flags>`_ to
+recommend that you look at the ``singularity shell help`` and our documentation on :ref:`flags <singularity-action-flags>` to
 better customize this command.
 
 Change your shell
@@ -2070,7 +2072,7 @@ image.create
 A Singularity image, which can be referred to as a “container,” is a
 single file that contains a virtual file system. As of Singularity
 2.4, we strongly recommend that you build (create and install) an
-image using `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_. If you have reason to create an empty image, or use
+image using :ref:`build <build-a-container>`. If you have reason to create an empty image, or use
 create for any other reason, the original ``create`` command is replaced with a
 more specific ``image.create``. After creating an image you can install an operating
 system, applications, and save meta-data with it.
@@ -2246,7 +2248,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at ``instance`` usage see `Running Instances <https://singularity-userdoc.readthedocs.io/en/latest/running_services.html#running-services>`_.
+detailed look at ``instance`` usage see :ref:`Running Instances <running-services>`.
 
 Start an instance called cow1 from a container on Singularity Hub
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -2351,7 +2353,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at ``instance`` usage see `Running Instances <https://singularity-userdoc.readthedocs.io/en/latest/running_services.html#running-services>`_.
+detailed look at ``instance`` usage see :ref:`Running Instances <running-services>`.
 
 Start a few named instances from containers on Singularity Hub
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -2403,7 +2405,7 @@ Examples
 
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at ``instance`` usage see `Running Instances <https://singularity-userdoc.readthedocs.io/en/latest/running_services.html#running-services>`_.
+detailed look at ``instance`` usage see :ref:`Running Instances <running-services>`.
 
 Start a few named instances from containers on Singularity Hub
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -2445,7 +2447,7 @@ Deprecated
 
 .. note::
     The bootstrap command is deprecated for Singularity Version
-    2.4. You should use `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html#build-a-container>`_ instead.
+    2.4. You should use :ref:`build <build-command>` instead.
 
 .. _bootstrap:
 
@@ -2460,7 +2462,7 @@ for a specified need. Bootstrap is very similar to build, except that it
 by default uses an `ext3 <https://en.wikipedia.org/wiki/Ext3>`_ filesystem and allows for writability. The
 images unfortunately are not immutable in this way, and can degrade over
 time. As of 2.4, bootstrap is still supported for Singularity, however
-we encourage you to use `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_ instead.
+we encourage you to use :ref:`build <build-a-container>` instead.
 
 Quick Start
 -----------
@@ -2576,4 +2578,4 @@ user would be you, and the cache your ``$HOME``.
     Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
 
-For details and best practices for creating your Singularity recipe, `read about them here <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html#container-recipes>`_.
+For details and best practices for creating your Singularity recipe, :ref:`read about them here <container-recipes>`.

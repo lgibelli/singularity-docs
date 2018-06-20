@@ -194,7 +194,7 @@ error
     ERROR : There was an error binding the path /apps: Too many levels of symbolic links
 
     ABORT : Retval = 255
-    
+
 
 You got this error because /apps directory is an autofs mount point. You
 can fix it by editing singularity.conf and adding the following

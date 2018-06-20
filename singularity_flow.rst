@@ -19,9 +19,9 @@ it affords.
 Building Images
 ---------------
 
-If you read the `quick start <https://singularity-userdoc.readthedocs.io/en/latest/quick_start.html>`_, you probably remember that building images from a
-Docker base does not require a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_. However, if you do want to build and
-customize your image, you can create a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_ text file, which is a simple
+If you read the :ref:`quick start <quick-start>`, you probably remember that building images from a
+Docker base does not require a :ref:`Singularity recipe <container-recipes>`. However, if you do want to build and
+customize your image, you can create a :ref:`Singularity recipe <container-recipes>` text file, which is a simple
 text file that describes how the container should be made.
 
 The Singularity Flow
@@ -42,7 +42,7 @@ to build images. The high level idea is that we have two environments:
 
 Singularity production images are immutable. This is a feature added as
 of Singularity 2.4, and it ensures a higher level of reproducibility and
-verification of images. To read more about the details, check out the `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html>`_
+verification of images. To read more about the details, check out the :ref:`build <build-a-container>`
 docs. However, immutability is not so great when you are testing,
 debugging, or otherwise want to quickly change your image. We will
 proceed by describing a typical workflow of developing first, building a
