@@ -109,12 +109,12 @@ Singularity) as follows:
 
     $ sudo singularity build roar.simg Singularity
 
-.. _help-docs:
+.. _help:
 
 %help
 -----
 
-.. _sec:help-docs:
+.. _sec:help:
 
 You don’t need to do much programming to add a ``%help``
 section to your container. Just write it into a section:

@@ -158,7 +158,7 @@ following:
 
     $ singularity <command> -h
 
-Users can also :ref:`write help docs specific to a container <help-docs>` or for an internal module called an ``app``. If those help
+Users can also :ref:`write help docs specific to a container <help>` or for an internal module called an ``app``. If those help
 docs exist for a particular container, you can view them like so.
 
 ::
