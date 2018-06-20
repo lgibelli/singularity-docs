@@ -644,8 +644,6 @@ Have a question, or need further information? `Reach out to us <https://www.syla
 build
 =====
 
-.. _sec:build:
-
 Use ``build`` to download and assemble existing containers, convert containers
 from one format to another, or build a container from a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_.
 
@@ -709,8 +707,6 @@ Given a Singularity Recipe called ``Singularity`` :
 
 exec
 ====
-
-.. _sec:exec:
 
 The ``exec`` Singularity sub-command allows you to spawn an arbitrary command
 within your container image as if it were running directly on the host
@@ -963,8 +959,6 @@ version of TensorFlow.
 
 inspect
 =======
-
-.. _sec:inspect:
 
 How can you sniff an image? We have provided the inspect command for
 you to easily see the runscript, test script, environment, help, and
@@ -1330,12 +1324,9 @@ expose their guts to the world! If you have feedback for how we can
 improve or amend this, `please let us know <https://github.com/singularityware/singularity/issues>`_!
 
 .. _pull:
-.. _pull2:
 
 pull
 ====
-
-.. _sec:pull:
 
 Singularity ``pull`` is the command that you would want to use to communicate
 with a container registry. The command does exactly as it says - there
@@ -1580,8 +1571,6 @@ else.
 run
 ===
 
-.. _sec:run:
-
 It’s common to want your container to “do a thing.” Singularity ``run`` allows
 you to define a custom action to be taken when a container is either ``run`` or
 executed directly by file name. Specifically, you might want it to
@@ -1763,8 +1752,6 @@ container is one that tells the user how to interact with it.
 
 shell
 =====
-
-.. _sec:shell:
 
 The ``shell`` Singularity sub-command will automatically spawn an interactive
 shell within a container. As of v2.3 the default that is spawned via the
