@@ -411,7 +411,7 @@ Here is where to look for more information:
 
 -  :ref:`inspect <inspect>` : See labels, run and test scripts, and environment variables
 
--  :ref:`pull <pull>` : pull an image from Docker or Singularity Hub
+-  :ref:`pull <pull2>` : pull an image from Docker or Singularity Hub
 
 -  :ref:`run <run>` : Run your image as an executable
 

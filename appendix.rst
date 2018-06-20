@@ -1330,6 +1330,7 @@ expose their guts to the world! If you have feedback for how we can
 improve or amend this, `please let us know <https://github.com/singularityware/singularity/issues>`_!
 
 .. _pull:
+.. _pull2:
 
 pull
 ====
