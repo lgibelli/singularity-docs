@@ -705,6 +705,8 @@ Given a Singularity Recipe called ``Singularity`` :
     $ sudo singularity build lolcow.simg Singularity
 
 
+.. _exec:
+
 exec
 ====
 
@@ -957,6 +959,7 @@ version of TensorFlow.
 
     Test error: 0.8%
 
+.. _inspect:
 
 inspect
 =======
@@ -1571,6 +1574,7 @@ else.
 
     Done. Container is at: jellybelly.img
 
+.. _run:
 
 run
 ===
@@ -1754,6 +1758,7 @@ tells your user how to use the container, and gives access to the
 important executables. Regardless of your strategy. a reproducible
 container is one that tells the user how to interact with it.
 
+.. _shell:
 
 shell
 =====
@@ -1914,6 +1919,7 @@ And thus we should be able to do:
 Image Command Group
 -------------------
 
+.. _image-export:
 
 image.export
 ============
@@ -1946,6 +1952,7 @@ And here is the recommended way to compress your image:
 
     singularity image.export container.img | gzip -9 > container.img.tar.gz
 
+.. _image-expand:
 
 image.expand
 ============
@@ -2027,6 +2034,7 @@ below, we:
 Similar to the create sub-command, you can override the default size
 increase (which is 768MiB) by using the ``--size`` option.
 
+.. _image-import:
 
 image.import
 ============
@@ -2047,6 +2055,7 @@ image:
 
     singularity image.import container.img docker://ubuntu:latest
 
+.. _image-create:
 
 image.create
 ============
@@ -2183,6 +2192,8 @@ Overwriting an image with a new one
 
     ``@GodLoveD`` has provided a nice interactive demonstration of creating an image (pre
     2.4).
+
+.. _instance-command-group:
 
 ----------------------
 Instance Command Group
@@ -2431,6 +2442,7 @@ Deprecated
     The bootstrap command is deprecated for Singularity Version
     2.4. You should use `build <https://singularity-userdoc.readthedocs.io/en/latest/build_a_container.html#build-a-container>`_ instead.
 
+.. _bootstrap:
 
 bootstrap
 =========
