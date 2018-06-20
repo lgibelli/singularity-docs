@@ -114,6 +114,8 @@ Singularity) as follows:
 %help
 -----
 
+.. _sec:help-docs:
+
 You don’t need to do much programming to add a ``%help``
 section to your container. Just write it into a section:
 
