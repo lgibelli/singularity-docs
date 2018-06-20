@@ -639,7 +639,7 @@ Support
 Have a question, or need further information? `Reach out to us <https://www.sylabs.io/contact/>`_.
 
 
-.. _build:
+.. _build-command:
 
 build
 =====
@@ -703,7 +703,7 @@ Given a Singularity Recipe called ``Singularity`` :
     $ sudo singularity build lolcow.simg Singularity
 
 
-.. _exec:
+.. _exec-command:
 
 exec
 ====
@@ -955,7 +955,7 @@ version of TensorFlow.
 
     Test error: 0.8%
 
-.. _inspect:
+.. _inspect-command:
 
 inspect
 =======
@@ -1323,7 +1323,7 @@ and to help better integrate them into common workflows by having them
 expose their guts to the world! If you have feedback for how we can
 improve or amend this, `please let us know <https://github.com/singularityware/singularity/issues>`_!
 
-.. _pull:
+.. _pull-command:
 
 pull
 ====
@@ -1566,7 +1566,7 @@ else.
 
     Done. Container is at: jellybelly.img
 
-.. _run:
+.. _run-command:
 
 run
 ===
@@ -1748,7 +1748,7 @@ tells your user how to use the container, and gives access to the
 important executables. Regardless of your strategy. a reproducible
 container is one that tells the user how to interact with it.
 
-.. _shell:
+.. _shell-command:
 
 shell
 =====

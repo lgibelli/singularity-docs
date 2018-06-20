@@ -171,7 +171,7 @@ docs exist for a particular container, you can view them like so.
 Download pre-built images
 -------------------------
 
-You can use the :ref:`pull <pull>` and :ref:`build <build>` commands to download pre-built images from an
+You can use the :ref:`pull <pull-command>` and :ref:`build <build-command>` commands to download pre-built images from an
 external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Docker Hub <https://hub.docker.com/>`_. When called
 on a native Singularity images like those provided on Singularity Hub, ``pull``
 simply downloads the image file to your system.
@@ -234,7 +234,7 @@ Singularity Hub like so.
 Shell
 =====
 
-The `shell <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id36>`_ command allows you to spawn a new shell within your container and
+The :ref:`shell <shell-command>` command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
 ::
@@ -265,7 +265,7 @@ disappears when the shell is exited.
 Executing Commands
 ==================
 
-The `exec <https://singularity-userdoc.readthedocs.io/en/latest/appendix.html#id25>`_ command allows you to execute a custom command within a container by
+The :ref:`exec <exec>` command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 

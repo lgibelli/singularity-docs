@@ -405,17 +405,17 @@ How do the commands work?
 
 Here is where to look for more information:
 
--  :ref:`build <build>` : Build a container on your user endpoint or build environment
+-  :ref:`build <build-command>` : Build a container on your user endpoint or build environment
 
--  :ref:`exec <exec>` : Execute a command to your container
+-  :ref:`exec <exec-command>` : Execute a command to your container
 
--  :ref:`inspect <inspect>` : See labels, run and test scripts, and environment variables
+-  :ref:`inspect <inspect-command>` : See labels, run and test scripts, and environment variables
 
--  :ref:`pull <image-import>` : pull an image from Docker or Singularity Hub
+-  :ref:`pull <pull-command>` : pull an image from Docker or Singularity Hub
 
--  :ref:`run <run>` : Run your image as an executable
+-  :ref:`run <run-command>` : Run your image as an executable
 
--  :ref:`shell <shell>` : Shell into your image
+-  :ref:`shell <shell-command>` : Shell into your image
 
 **Image Commands**
 
