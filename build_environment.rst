@@ -1,3 +1,5 @@
+.. _build-environment:
+
 =================
 Build Environment
 =================
@@ -68,7 +70,7 @@ variable ``SINGULARITY_LOCALCACHEDIR``.
     export SINGULARITY_LOCALCACHEDIR
 
     singularity exec docker://busybox /bin/sh
-    
+
 
 The above runtime folder would be created under ``/tmp/pancakes/.singularity-runtime.xxxxxxxx``
 

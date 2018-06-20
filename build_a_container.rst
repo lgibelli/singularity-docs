@@ -8,7 +8,7 @@ Build a Container
 download and assemble existing containers from external resources like
 `Singularity Hub <https://singularity-hub.org/>`_ and `Docker Hub <https://hub.docker.com/>`_. You can use it to convert
 containers between the various formats supported by Singularity. And you
-can use it in conjunction with a `Singularity recipe <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_ file to
+can use it in conjunction with a :ref:`Singularity recipe <container-recipes>` file to
 create a container from scratch and customized it to fit your needs.
 
 --------
@@ -30,7 +30,7 @@ can be one of the following:
 
 -  path to an **archive** in .tar or compressed .tar.gz format
 
--  path to a `Singularity recipe file <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_
+-  path to a :ref:`Singularity recipe file <container-recipes>`
 
 In addition ``build`` can produce containers in three different formats. Formats
 types can be specified by passing the following options to build.
@@ -187,7 +187,7 @@ Building containers from Singularity recipe files
 
 Of course, Singularity recipe files can be used as the target when
 building a container. For detailed information on writing Singularity
-recipe files, please see the `Container Recipes docs <https://singularity-userdoc.readthedocs.io/en/latest/container_recipes.html>`_.
+recipe files, please see the :ref:`Container Recipes docs <container-recipes>`.
 Let’s say you already have the following container recipe file called ``Singularity``
 , and you want to use it to build a container.
 
@@ -294,7 +294,7 @@ tags.
         -m|--med       Perform medium and high checks
 
         -h|--high      Perform only checks at level high
-        
+
 
 When you add the ``--checks`` option along with applicable tags to the ``build`` command
 Singularity will run the desired checks on your container at build time.
@@ -306,7 +306,7 @@ More Build topics
 
 -  If you want to **customize the cache location** (where Docker layers
    are downloaded on your system), specify Docker credentials, or any
-   custom tweaks to your build environment, see `build environment <https://singularity-userdoc.readthedocs.io/en/latest/build_environment.html>`_.
+   custom tweaks to your build environment, see :ref:`build environment <build-environment>`.
 
 -  If you want to make internally **modular containers**, check out the
    getting started guide `here <https://sci-f.github.io/tutorials>`_
