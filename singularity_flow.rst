@@ -67,7 +67,7 @@ Sandbox Folder
 
 To build into a folder (we call this a “sandbox”) just ask for it:
 
-::
+.. code-block:: none
 
     $ sudo singularity build --sandbox ubuntu/ docker://ubuntu
 
@@ -97,7 +97,7 @@ To build into a folder (we call this a “sandbox”) just ask for it:
 We now have a folder with the entire ubuntu OS, plus some Singularity
 metadata, plopped in our present working directory.
 
-::
+.. code-block:: none
 
      $ tree -L 1 ubuntu
 
@@ -147,7 +147,7 @@ metadata, plopped in our present working directory.
 
 And you can shell into it just like a normal container.
 
-::
+.. code-block:: none
 
     $ singularity shell ubuntu
 
@@ -165,7 +165,7 @@ exit. To make your changes persistent across sessions, use the ``--writable`` op
 It’s also a good practice to shell into your container as root to
 ensure you have permissions to write where you like.
 
-::
+.. code-block:: none
 
     $ sudo singularity shell ubuntu
 
@@ -183,7 +183,7 @@ directory, you can perform a similar development build and specify the ``--writa
 option. This will produce an image that is writable with an ext3 file
 system. Unlike the sandbox, it is a single image file.
 
-::
+.. code-block:: none
 
 
     $ sudo singularity build --writable ubuntu.img docker://ubuntu
@@ -230,7 +230,7 @@ change the image you must use the ``--writable`` flag. As before, it’s a good 
 issue these commands as root to ensure you have the proper permissions
 to write.
 
-::
+.. code-block:: none
 
     $ sudo singularity shell --writable ubuntu.img
 
@@ -269,7 +269,7 @@ Squashfs is a read only, and compressed filesystem, and well suited for
 confident archive and re-use of your hello-world. To build a production
 image, just remove the extra options:
 
-::
+.. code-block:: none
 
     sudo singularity build ubuntu.simg docker://ubuntu
 
@@ -306,7 +306,7 @@ from a previous development image. While we advocate for the first
 approach, we support this use case. To do this, given our folder called
 “ubuntu/” we made above:
 
-::
+.. code-block:: none
 
     sudo singularity build ubuntu.simg ubuntu/
 

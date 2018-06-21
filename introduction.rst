@@ -296,7 +296,7 @@ can also be executed from a batch script or other program (e.g. an HPC
 system’s resource manager) natively.
 Some usage examples of Singularity can be seen as follows:
 
-::
+.. code-block:: none
 
     $ singularity exec dummy.img xterm  # run xterm from within the container
 
@@ -309,7 +309,7 @@ Some usage examples of Singularity can be seen as follows:
 
 You can even run MPI executables within the container as simply as:
 
-::
+.. code-block:: none
 
     $ mpirun -np X singularity exec /path/to/container.img /usr/bin/mpi_program_inside_container (mpi program args)
 

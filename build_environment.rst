@@ -20,7 +20,7 @@ use a caching strategy. By default, the Singularity software will create
 a set of folders in your ``$HOME`` directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
 
-::
+.. code-block:: none
 
     $HOME/.singularity
 
@@ -52,7 +52,7 @@ environment.
 
 If you are building an image on the fly, for example
 
-::
+.. code-block:: none
 
     singularity exec docker://busybox /bin/sh
 
@@ -63,7 +63,7 @@ Jetstream/OpenStack, Azure, and possibly EC2, which are very small. If
 you need to change the location of this runtime, then **export** the
 variable ``SINGULARITY_LOCALCACHEDIR``.
 
-::
+.. code-block:: none
 
     SINGULARITY_LOCALCACHEDIR=/tmp/pancakes
 
@@ -107,7 +107,7 @@ order of operations works as follows:
 For boolean variables, the following are acceptable for True, with any
 kind of capitalization or not:
 
-::
+.. code-block:: none
 
     ("yes", "true", "t", "1","y")
 
@@ -150,7 +150,7 @@ or a ``docker://`` image. This is different from where downloaded layers are cac
 setting by running a command with ``--debug`` , and seeing the last line “Removing
 directory:”
 
-::
+.. code-block:: none
 
     singularity --debug run docker://busybox echo "pizza!"
 
@@ -221,13 +221,13 @@ so we want to prefix whatever the Docker command or entrypoint is with
 ``exec``. We also want to make sure that following arguments get passed, so we
 append ``"$@"``. Thus, some entrypoint or cmd might look like this:
 
-::
+.. code-block:: none
 
     /usr/bin/python
 
 and we would parse it into the runscript as:
 
-::
+.. code-block:: none
 
     exec /usr/bin/python "$@"
 

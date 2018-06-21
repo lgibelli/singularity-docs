@@ -27,13 +27,13 @@ Singularity with the ``docker`` bootstrap module.
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
-::
+.. code-block:: none
 
     From: <registry>/<namespace>/<container>:<tag>@<digest>
 
@@ -43,19 +43,19 @@ The From keyword is mandatory. It specifies the container to use as a base. ``re
 
 See :ref:`Singularity and Docker <singularity-and-docker>` for more detailed info on using Docker registries.
 
-::
+.. code-block:: none
 
     Registry: http://custom_registry
 
 The Registry keyword is optional. It will default to ``index.docker.io``.
 
-::
+.. code-block:: none
 
     Namespace: namespace
 
 The Namespace keyword is optional. It will default to ``library``.
 
-::
+.. code-block:: none
 
     IncludeCmd: yes
 
@@ -97,13 +97,13 @@ Singularity Hub and then build new containers from that existing base container 
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: shub
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
-::
+.. code-block:: none
 
     From: shub://<registry>/<username>/<container-name>:<tag>@digest
 
@@ -139,13 +139,13 @@ base container and then customize the new container in ``%post``, ``%environment
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: localimage
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
-::
+.. code-block:: none
 
     From: /path/to/container/file/or/directory
 
@@ -176,27 +176,27 @@ Use the ``yum`` module to specify a base for a CentOS-like container. You must a
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: yum
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
-::
+.. code-block:: none
 
     OSVersion: 7
 
 The OSVersion keyword is optional. It specifies the OS version you would like to use. It is only required if you have specified a %{OSVERSION}
 variable in the ``MirrorURL`` keyword.
 
-::
+.. code-block:: none
 
     MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
 
 The MirrorURL keyword is mandatory. It specifies the URL to use as a mirror to download the OS. If you define the ``OSVersion`` keyword, than you
 can use it in the URL as in the example above.
 
-::
+.. code-block:: none
 
     Include: yum
 
@@ -215,7 +215,7 @@ by bootstrapping an older RHEL compatible image by a newer one (e.g. bootstrap a
 In order to use the ``debootstrap`` build module, you must have ``yum`` installed on your system. It may seem counter-intuitive to install YUM on a system
 that uses a different package manager, but you can do so. For instance, on Ubuntu you can install it like so:
 
-::
+.. code-block:: none
 
     $ sudo apt-get update && sudo apt-get install yum
 
@@ -239,26 +239,26 @@ Use the ``debootstrap`` module to specify a base for a Debian-like container. Yo
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: debootstrap
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
-::
+.. code-block:: none
 
     OSVersion: xenial
 
 The OSVersion keyword is mandatory. It specifies the OS version you would like to use. For Ubuntu you can use code words like ``trusty`` (14.04), ``xenial`` (16.04),
 and ``yakkety`` (17.04). For Debian you can use values like ``stable``, ``oldstable``, ``testing``, and ``unstable`` or code words like ``wheezy`` (7), ``jesse`` (8), and ``stretch`` (9).
 
- ::
+ .. code-block:: none
 
      MirrorURL:  http://us.archive.ubuntu.com/ubuntu/
 
 The MirrorURL keyword is mandatory. It specifies a URL to use as a mirror when downloading the OS.
 
-::
+.. code-block:: none
 
     Include: somepackage
 
@@ -270,13 +270,13 @@ Notes
 
 In order to use the ``debootstrap`` build module, you must have ``debootstrap`` installed on your system. On Ubuntu you can install it like so:
 
-::
+.. code-block:: none
 
     $ sudo apt-get update && sudo apt-get install debootstrap
 
 On CentOS you can install it from the epel repos like so:
 
-::
+.. code-block:: none
 
     $ sudo yum update && sudo yum install epel-release && sudo yum install debootstrap.noarch
 
@@ -299,7 +299,7 @@ Use the ``arch`` module to specify a base for an Arch Linux based container. Arc
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: arch
 
@@ -333,13 +333,13 @@ Use the ``busybox`` module to specify a BusyBox base for container. You must als
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: busybox
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
-::
+.. code-block:: none
 
     MirrorURL: https://www.busybox.net/downloads/binaries/1.26.1-defconfig-multiarch/busybox-x86_64
 
@@ -369,20 +369,20 @@ the mirror you would like to use.
 Keywords
 ========
 
-::
+.. code-block:: none
 
     Bootstrap: zypper
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
-::
+.. code-block:: none
 
     OSVersion: 42.2
 
 The OSVersion keyword is optional. It specifies the OS version you would like to use.
 It is only required if you have specified a %{OSVERSION} variable in the ``MirrorURL`` keyword.
 
-::
+.. code-block:: none
 
     Include: somepackage
 
@@ -418,7 +418,7 @@ Examples
 
 Here we are cleaning the environment. In the first command, we see that the variable ``PEANUTBUTTER`` gets passed into the container.
 
-::
+.. code-block:: none
 
     PEANUTBUTTER=JELLY singularity exec Centos7.img env | grep PEANUT
 
@@ -426,13 +426,13 @@ Here we are cleaning the environment. In the first command, we see that the vari
 
 And now here we add ``--cleanenv`` to see that it doesn’t.
 
-::
+.. code-block:: none
 
     PEANUTBUTTER=JELLY singularity exec --cleanenv Centos7.img env | grep PEANUT
 
 Here we will test contain. We can first confirm that there are a lot of files on our host in /tmp, and the same files are found in the container.
 
-::
+.. code-block:: none
 
     # On the host
 
@@ -472,7 +472,7 @@ syntax.
 
 The general usage form is:
 
-::
+.. code-block:: none
 
     $ singularity (opts1) [subcommand] (opts2) ...
 
@@ -541,7 +541,7 @@ Singularity comes with some internal documentation by using the ``help``
 subcommand followed by the subcommand you want more information about.
 For example:
 
-    ::
+    .. code-block:: none
 
         $ singularity help create
 
@@ -575,7 +575,7 @@ Commands Usage
 
     .. _sec:commandsusage:
 
-    ::
+    .. code-block:: none
 
         USAGE: singularity [global options...] <command> [command options...] ...
 
@@ -681,7 +681,7 @@ Examples
 Download an existing container from Singularity Hub or Docker Hub
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity build lolcow.simg shub://GodloveD/lolcow
 
@@ -690,7 +690,7 @@ Download an existing container from Singularity Hub or Docker Hub
 Create --writable images and --sandbox directories
 ''''''''''''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ sudo singularity build --writable lolcow.img shub://GodloveD/lolcow
 
@@ -702,7 +702,7 @@ Convert containers from one format to another
 You can convert the three supported container formats using any
 combination.
 
-::
+.. code-block:: none
 
     $ sudo singularity build --writable development.img production.simg
 
@@ -715,7 +715,7 @@ Build a container from a Singularity recipe
 
 Given a Singularity Recipe called ``Singularity`` :
 
-::
+.. code-block:: none
 
     $ sudo singularity build lolcow.simg Singularity
 
@@ -738,7 +738,7 @@ Examples
 Printing the OS release inside the container
 ''''''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity exec container.img cat /etc/os-release
 
@@ -765,7 +765,7 @@ Printing the OS release for a running instance
 
 Use the ``instance://<instance name>`` syntax like so:
 
-::
+.. code-block:: none
 
     $ singularity exec instance://my-instance cat /etc/os-release
 
@@ -782,7 +782,7 @@ Special Characters
 And properly passing along special characters to the program within the
 container.
 
-::
+.. code-block:: none
 
     $ singularity exec container.img echo -ne "hello\nworld\n\n"
 
@@ -794,7 +794,7 @@ container.
 
 And a demonstration using pipes:
 
-::
+.. code-block:: none
 
     $ cat debian.def | singularity exec container.img grep 'MirrorURL'
 
@@ -807,7 +807,7 @@ A Python example
 
 Starting with the file ``hello.py`` in the current directory with the contents of:
 
-::
+.. code-block:: none
 
     #!/usr/bin/python
 
@@ -821,7 +821,7 @@ Because our home directory is automatically bound into the container,
 and we are running this from our home directory, we can easily execute
 that script using the Python within the container:
 
-::
+.. code-block:: none
 
     $ singularity exec /tmp/Centos7-ompi.img /usr/bin/python hello.py
 
@@ -831,7 +831,7 @@ that script using the Python within the container:
 We can also pipe that script through the container and into the Python
 binary which exists inside the container using the following command:
 
-::
+.. code-block:: none
 
     $ cat hello.py | singularity exec /tmp/Centos7-ompi.img /usr/bin/python
 
@@ -841,7 +841,7 @@ binary which exists inside the container using the following command:
 For demonstration purposes, let’s also try to use the latest Python
 container which exists in DockerHub to run this script:
 
-::
+.. code-block:: none
 
     $ singularity exec docker://python:latest /usr/local/bin/python hello.py
 
@@ -886,7 +886,7 @@ can leverage the card with the ``--nv`` option. (This example requires a fairly
 recent version of the NVIDIA driver on the host system to run the latest
 version of TensorFlow.
 
-::
+.. code-block:: none
 
     $ git clone https://github.com/tensorflow/models.git
 
@@ -990,7 +990,7 @@ JSON Api Standard
 For any inspect command, by adding ``--json`` you can be assured to get a
 JSON API standardized response, for example:
 
-::
+.. code-block:: none
 
     singularity inspect -l --json ubuntu.img
 
@@ -1027,7 +1027,7 @@ Inspect Flags
 The default, if run without any arguments, will show you the container
 labels file
 
-::
+.. code-block:: none
 
     $ singularity inspect ubuntu.img
 
@@ -1047,7 +1047,7 @@ and as outlined in the usage, you can specify to see any combination of ``--labe
 , ``--environment`` , ``--runscript`` , ``--test`` , and ``--deffile``. The quick command to see everything, in json format, would
 be:
 
-::
+.. code-block:: none
 
     $ singularity inspect -l -r -d -t -e -j -hf ubuntu.img
 
@@ -1096,7 +1096,7 @@ you define in the ``%labels`` section of your bootstrap file, along with any Doc
 that came with an image that you imported, and other metadata about the
 bootstrap. For example, here we are inspecting labels for ``ubuntu.img``
 
-::
+.. code-block:: none
 
     $ singularity inspect ubuntu.img
 
@@ -1114,7 +1114,7 @@ bootstrap. For example, here we are inspecting labels for ``ubuntu.img``
 
 This is the equivalent of both of:
 
-::
+.. code-block:: none
 
     $ singularity inspect -l ubuntu.img
 
@@ -1125,7 +1125,7 @@ Runscript
 
 The commands ``--runscript`` or ``--r`` will show you the runscript, which also can be shown in ``--json``:
 
-::
+.. code-block:: none
 
     $ singularity inspect -r -j ubuntu.img{
 
@@ -1146,7 +1146,7 @@ The commands ``--runscript`` or ``--r`` will show you the runscript, which also 
 
 or in a human friendly, readable print to the screen:
 
-::
+.. code-block:: none
 
     $ singularity inspect -r ubuntu.img
 
@@ -1165,7 +1165,7 @@ Help
 The commands ``--helpfile`` or ``--hf`` will show you the runscript helpfile, if it exists.
 With ``--json`` you can also see it as such:
 
-::
+.. code-block:: none
 
     singularity inspect -hf -j dino.img
 
@@ -1188,7 +1188,7 @@ With ``--json`` you can also see it as such:
 
 or in a human friendly, readable print to the screen, don’t use ``-j`` or ``--json``:
 
-::
+.. code-block:: none
 
     $ singularity inspect -hf dino.img
 
@@ -1215,7 +1215,7 @@ The commands ``--environment`` and ``-e`` will show you the container’s enviro
 specified by the ``%environment`` section of a bootstrap file, and other ENV labels that
 might have come from a Docker import. You can again choose to see ``--json`` :
 
-::
+.. code-block:: none
 
     $ singularity inspect -e --json ubuntu.img
 
@@ -1238,7 +1238,7 @@ might have come from a Docker import. You can again choose to see ``--json`` :
 
 or human friendly:
 
-::
+.. code-block:: none
 
     $ singularity inspect -e ubuntu.img
 
@@ -1260,7 +1260,7 @@ The equivalent ``--test`` or ``-t`` commands will print any test defined for the
 container, which comes from the  ``%test`` section of the bootstrap specification
 Singularity file. Again, we can ask for ``--json`` or human friendly (default):
 
-::
+.. code-block:: none
 
     $ singularity --inspect -t --json ubuntu.img
 
@@ -1301,7 +1301,7 @@ Want to know where your container came from? You can see the entire
 Singularity definition file, if the container was created with a
 bootstrap, by using ``--deffile`` or ``-d``:
 
-::
+.. code-block:: none
 
     $ singularity inspect -d  ubuntu.img
 
@@ -1315,7 +1315,7 @@ bootstrap, by using ``--deffile`` or ``-d``:
 
 or with ``--json`` output.
 
-::
+.. code-block:: none
 
     $ singularity inspect -d --json ubuntu.img
 
@@ -1361,7 +1361,7 @@ opposed to layers. This means that pulling a Singularity Hub means
 downloading the entire (compressed) container file, and then having it
 extract on your local machine. The basic command is the following:
 
-::
+.. code-block:: none
 
     singularity pull shub://vsoch/hello-world
 
@@ -1378,7 +1378,7 @@ called ``vsoch/hello-world`` , by default the file called ``Singularity`` (your 
 looked for in the base of the master branch. The command that we issued
 above would be equivalent to doing:
 
-::
+.. code-block:: none
 
     singularity pull shub://vsoch/hello-world:master
 
@@ -1386,7 +1386,7 @@ To enable other branches to build, they must be turned on in your
 collection. If you then put another Singularity file in a branch called development,
 you would pull it as follows:
 
-::
+.. code-block:: none
 
     singularity pull shub://vsoch/hello-world:development
 
@@ -1401,7 +1401,7 @@ As you can see, since we didn’t specify anything special, the default
 naming convention is to use the username, reponame, and the branch
 (tag). You have three options for changing this:
 
-::
+.. code-block:: none
 
     PULL OPTIONS:
 
@@ -1415,7 +1415,7 @@ naming convention is to use the username, reponame, and the branch
 Custom Name
 '''''''''''
 
-::
+.. code-block:: none
 
     singularity pull --name meatballs.img shub://vsoch/hello-world
 
@@ -1432,7 +1432,7 @@ commit of the repo that was used to build it. You can specify to name
 your container based on the commit with the ``--commit`` flag, if, for example, you
 want to match containers to their build files:
 
-::
+.. code-block:: none
 
     singularity pull --commit shub://vsoch/hello-world
 
@@ -1446,7 +1446,7 @@ Name by hash
 
 If you prefer the hash of the file itself, you can do that too.
 
-::
+.. code-block:: none
 
     singularity pull --hash shub://vsoch/hello-world
 
@@ -1465,7 +1465,7 @@ for ``SINGULARITY_PULLFOLDER``. If neither of these are defined, the image is pu
 present working directory, as we showed above. Here is an example of
 pulling to ``/tmp`` .
 
-::
+.. code-block:: none
 
     SINGULARITY_PULLFOLDER=/tmp
 
@@ -1482,7 +1482,7 @@ Pull by commit
 You can also pull different versions of your container by using their
 commit id ( ``version`` ).
 
-::
+.. code-block:: none
 
     singularity pull shub://vsoch/hello-world@42e1f04ed80217895f8c960bdde6bef4d34fab59
 
@@ -1499,7 +1499,7 @@ Docker
 Docker pull is similar (on the surface) to a Singularity Hub pull, and
 we would do the following:
 
-::
+.. code-block:: none
 
     singularity pull docker://ubuntu
 
@@ -1538,7 +1538,7 @@ we would do the following:
 If you specify the tag, the image would be named accordingly (eg, ``ubuntu-latest.img``). Did
 you notice that the output looks similar to if we did the following?
 
-::
+.. code-block:: none
 
     singularity create ubuntu.img
 
@@ -1549,7 +1549,7 @@ pull command with a docker uri also supports arguments ``--size`` and ``--name``
 would pull an ubuntu image, but make it bigger, and name it something
 else.
 
-::
+.. code-block:: none
 
     singularity pull --size 2000 --name jellybelly.img docker://ubuntu
 
@@ -1602,7 +1602,7 @@ Overview
 First, how do we run a container? We can do that in one of two ways -
 the commands below are identical:
 
-::
+.. code-block:: none
 
     $ singularity run centos7.img
 
@@ -1615,7 +1615,7 @@ executable ``/singularity`` at the root of the image) that is either an actual f
 looking at a 2.3 image, I can see the runscript via the path to the
 link:
 
-::
+.. code-block:: none
 
     $ singularity exec centos7.img cat /singularity
 
@@ -1627,7 +1627,7 @@ link:
 
 or to the actual file in the container’s metadata folder, ``/.singularity.d``
 
-::
+.. code-block:: none
 
     $ singularity exec centos7.img cat /.singularity.d/runscript
 
@@ -1653,7 +1653,7 @@ Examples
 
 In this example the container has a very simple runscript defined.
 
-::
+.. code-block:: none
 
     $ singularity exec centos7.img cat /singularity
 
@@ -1691,7 +1691,7 @@ following order of operations:
 
 Here is how you would define the runscript section when you :ref:`build <build-a-container>` an image:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -1708,7 +1708,7 @@ addition of ``$@`` ensures that arguments are passed along from the user. If
 you want your container to run absolutely any command given to it, and
 you want to use run instead of exec, you could also just do:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -1723,7 +1723,7 @@ you want to use run instead of exec, you could also just do:
 If you want different entrypoints for your image, we recommend using the
 %apprun syntax (see :ref:`apps <reproducible-sci-f-apps>`). Here we have two entrypoints for foo and bar:
 
-::
+.. code-block:: none
 
     %runscript
 
@@ -1742,7 +1742,7 @@ If you want different entrypoints for your image, we recommend using the
 
 and then running (after build of a complete recipe) would look like:
 
-::
+.. code-block:: none
 
     sudo singularity build catdog.simg Singularity
 
@@ -1776,7 +1776,7 @@ The ``shell`` Singularity sub-command will automatically spawn an interactive
 shell within a container. As of v2.3 the default that is spawned via the
 shell command is ``/bin/bash`` if it exists otherwise ``/bin/sh`` is called.
 
-::
+.. code-block:: none
 
     $ singularity shell
 
@@ -1784,7 +1784,7 @@ shell command is ``/bin/bash`` if it exists otherwise ``/bin/sh`` is called.
 
 Here we can see the default shell in action:
 
-::
+.. code-block:: none
 
     $ singularity shell centos7.img
 
@@ -1816,7 +1816,7 @@ Bash
 
 The correct way to do it:
 
-::
+.. code-block:: none
 
         export SINGULARITY_SHELL="/bin/bash --norc"
 
@@ -1829,7 +1829,7 @@ The correct way to do it:
 
 Don’t do this, it can be confusing:
 
-::
+.. code-block:: none
 
     $ export SINGULARITY_SHELL=/bin/bash
 
@@ -1851,7 +1851,7 @@ more about a shell? Ask it for help, of course!
 Shell Help
 ----------
 
-::
+.. code-block:: none
 
     $ singularity shell centos7.img --help
 
@@ -1913,7 +1913,7 @@ Shell Help
 
 And thus we should be able to do:
 
-::
+.. code-block:: none
 
     $ singularity shell centos7.img -c "echo hello world"
 
@@ -1943,19 +1943,19 @@ squashfs counterpart. An example with an ext3 image is provided.
 
 Here we export an image into a ``.tar`` file:
 
-::
+.. code-block:: none
 
     singularity image.export container.img > container.tar
 
 We can also specify the file with ``--file``
 
-::
+.. code-block:: none
 
   singularity image.export --file container.tar container.img
 
 And here is the recommended way to compress your image:
 
-::
+.. code-block:: none
 
     singularity image.export container.img | gzip -9 > container.img.tar.gz
 
@@ -1986,7 +1986,7 @@ below, we:
 
 #. confirm it’s larger
 
-::
+.. code-block:: none
 
     $ singularity image.create container.img
 
@@ -2058,7 +2058,7 @@ intuitive.
 As an example, here is a common use case: wanting to import a Docker
 image:
 
-::
+.. code-block:: none
 
     singularity image.import container.img docker://ubuntu:latest
 
@@ -2093,7 +2093,7 @@ Creating a new blank Singularity container image
     Singularity will create a default container image of 768MiB using the
     following command:
 
-    ::
+    .. code-block:: none
 
         singularity image.create container.img
 
@@ -2106,7 +2106,7 @@ Creating a new blank Singularity container image
 
     How big is it?
 
-    ::
+    .. code-block:: none
 
         $ du -sh container.img
 
@@ -2116,7 +2116,7 @@ Creating a new blank Singularity container image
     (the pre-2.4 way with two commands), and then compare to just building
     (one command) from the same base.
 
-    ::
+    .. code-block:: none
 
         singularity create container.img
 
@@ -2132,7 +2132,7 @@ Creating a new blank Singularity container image
 
     Prior to 2.4, you would need to provide a ``--size`` to change from the default:
 
-    ::
+    .. code-block:: none
 
         $ singularity create --size 2048 container2.img
 
@@ -2159,7 +2159,7 @@ Creating a new blank Singularity container image
     Now let’s compare to if we just built, without needing to specify a
     size.
 
-    ::
+    .. code-block:: none
 
         sudo singularity build container.simg docker://ubuntu
 
@@ -2180,7 +2180,7 @@ Overwriting an image with a new one
     For any commands that If you have already created an image and wish to
     overwrite it, you can do so with the ``--force`` option.
 
-    ::
+    .. code-block:: none
 
         $ singularity image.create container.img
 
@@ -2228,7 +2228,7 @@ unique name for an instance of that container. Once the new instance is
 running, you can join the container’s namespace using a URI style syntax
 like so:
 
-::
+.. code-block:: none
 
     $ singularity shell instance://<instance_name>
 
@@ -2239,7 +2239,7 @@ runs.
 
 For a complete list of options see the output of:
 
-::
+.. code-block:: none
 
     singularity help instance.start
 
@@ -2253,14 +2253,14 @@ detailed look at ``instance`` usage see :ref:`Running Instances <running-service
 Start an instance called cow1 from a container on Singularity Hub
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity instance.start shub://GodloveD/lolcow cow1
 
 Start an interactive shell within the instance that you just started
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity shell instance://cow1
 
@@ -2280,7 +2280,7 @@ Start an interactive shell within the instance that you just started
 Execute the runscript within the instance
 '''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity run instance://cow1
 
@@ -2310,7 +2310,7 @@ Execute the runscript within the instance
 Run a command within a running instance
 '''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity exec instance://cow1 cowsay "I like blending into the background"
 
@@ -2358,7 +2358,7 @@ detailed look at ``instance`` usage see :ref:`Running Instances <running-service
 Start a few named instances from containers on Singularity Hub
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity instance.start shub://GodloveD/lolcow cow1
 
@@ -2370,7 +2370,7 @@ Start a few named instances from containers on Singularity Hub
 List running instances
 ''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity instance.list
 
@@ -2410,7 +2410,7 @@ detailed look at ``instance`` usage see :ref:`Running Instances <running-service
 Start a few named instances from containers on Singularity Hub
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity instance.start shub://GodloveD/lolcow cow1
 
@@ -2422,7 +2422,7 @@ Start a few named instances from containers on Singularity Hub
 Stop a single instance
 ''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity instance.stop cow1
 
@@ -2432,7 +2432,7 @@ Stop a single instance
 Stop all running instances
 ''''''''''''''''''''''''''
 
-::
+.. code-block:: none
 
     $ singularity instance.stop --all
 
@@ -2445,7 +2445,7 @@ Stop all running instances
 Deprecated
 ----------
 
-.. note::
+.. note.. code-block:: none
     The bootstrap command is deprecated for Singularity Version
     2.4. You should use :ref:`build <build-command>` instead.
 
@@ -2472,7 +2472,7 @@ called Singularity) that describes how to specifically build the
 container. Here we will overview the sections, best practices, and a
 quick example.
 
-::
+.. code-block:: none
 
     $ singularity bootstrap
 
@@ -2489,7 +2489,7 @@ done and how fast your network connection is.
 
 Let’s continue with our quick start example. Here is your spec file, ``Singularity`` ,
 
-::
+.. code-block:: none
 
     Bootstrap:docker
 
@@ -2498,7 +2498,7 @@ Let’s continue with our quick start example. Here is your spec file, ``Singula
 
 You next create an image:
 
-::
+.. code-block:: none
 
     $ singularity image.create ubuntu.img
 
@@ -2518,7 +2518,7 @@ You next create an image:
 and finally run the bootstrap command, pointing to your image ( ``<container path>`` ) and
 the file Singularity ( ``<definition file>`` ).
 
-::
+.. code-block:: none
 
     $ sudo singularity bootstrap ubuntu.img Singularity
 
@@ -2553,7 +2553,7 @@ Notice that bootstrap does require sudo. If you do an import, with a
 docker uri for example, you would see a similar flow, but the calling
 user would be you, and the cache your ``$HOME``.
 
-::
+.. code-block:: none
 
     $ singularity image.create ubuntu.img
 

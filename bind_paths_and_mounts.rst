@@ -73,7 +73,7 @@ Here’s an example of using the ``-B`` option and binding ``/tmp`` on the host 
 the container (``/scratch`` does not need to already exist in the container if
 file system overlay is enabled):
 
-::
+.. code-block:: none
 
     $ singularity shell -B /tmp:/scratch /tmp/Centos7-ompi.img
 
@@ -87,7 +87,7 @@ file system overlay is enabled):
 You can bind multiple directories in a single command with this
 syntax:
 
-::
+.. code-block:: none
 
     $ singularity shell -B /opt,/data:/mnt /tmp/Centos7-ompi.img
 
@@ -95,7 +95,7 @@ This will bind ``/opt`` on the host to ``/opt`` in the container and ``/data`` o
 container. Using the environment variable instead of the command line
 argument, this would be:
 
-::
+.. code-block:: none
 
     $ export SINGULARITY_BINDPATH="/opt,/data:/mnt"
 
@@ -114,7 +114,7 @@ If a bind path is requested and the bind point does not exist within the
 container, a warning message will be displayed and Singularity will
 continue trying to start the container. For example:
 
-::
+.. code-block:: none
 
     $ singularity shell --bind /global /tmp/Centos7-ompi.img
 
@@ -130,7 +130,7 @@ printed a warning but continued on. If overlay is available and enabled,
 you will find that we no longer get the error and ``/global`` is created and
 accessible as expected:
 
-::
+.. code-block:: none
 
     $ singularity shell --bind /global /tmp/Centos7-ompi.img
 

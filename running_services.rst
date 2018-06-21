@@ -16,7 +16,7 @@ Why container instances?
 .. _sec:instances: Let’s say I want to run a web server. With nginx,
 that is pretty simple, I install nginx and start the service:
 
-::
+.. code-block:: none
 
     apt-get update && apt-get install -y nginx
 
@@ -42,7 +42,7 @@ here. First, let’s put some commands that we want our instance to
 execute into a script. Let’s call it a ``startscript``. This fits into a definition
 file like so:
 
-::
+.. code-block:: none
 
     %startscript
 
@@ -54,7 +54,7 @@ called ``nginx.img`` and we want to run an nginx service. All we need to do is s
 the instance with the :ref:`instance.start <instance-start>` command, and the
 startscript will run inside the container automatically:
 
-::
+.. code-block:: none
 
                   [command]        [image]    [name of instance]
 
@@ -65,7 +65,7 @@ for the container instances’ processes/services to live inside. We can
 confirm that this command started an instance by running the
 instance.list command like so:
 
-::
+.. code-block:: none
 
     $ singularity instance.list
 
@@ -79,7 +79,7 @@ as running the command multiple times. The instance names are an
 identifier used to uniquely describe an instance, so they cannot be
 repeated.
 
-::
+.. code-block:: none
 
     $ singularity instance.start   nginx.img  web1
 
@@ -90,7 +90,7 @@ repeated.
 
 And again to confirm that the instances are running as we expected:
 
-::
+.. code-block:: none
 
     $ singularity instance.list
 
@@ -108,14 +108,14 @@ then you must pass the ``-B`` option when calling ``instance.start``. For exampl
 capture the output of the ``web1`` container instance which is placed at ``/output/`` inside
 the container you could do:
 
-::
+.. code-block:: none
 
     $ singularity instance.start -B output/dir/outside/:/output/ nginx.img  web1
 
 If you want to poke around inside of your instance, you can do a normal ``singularity shell``
 command, but give it the instance URI:
 
-::
+.. code-block:: none
 
     $ singularity shell instance://web1
 
@@ -127,7 +127,7 @@ command, but give it the instance URI:
 
 Similarly, you can use the ``singularity run/exec`` commands on instances:
 
-::
+.. code-block:: none
 
     $ singularity run instance://web1
 
@@ -141,14 +141,14 @@ instance.
 When you are finished with your instance you can clean it up with the
 :ref:`instance.stop <instance-stop>` command like so:
 
-::
+.. code-block:: none
 
     $ singularity instance.stop web1
 
 If you have multiple instances running and you want to stop all of
 them, you can do so with a wildcard or the -a flag:
 
-::
+.. code-block:: none
 
     $ singularity instance.stop \*
 
@@ -167,7 +167,7 @@ Let’s take a look at setting up a sample nginx web server using
 instances in Singularity. First we will just create a basic definition
 file:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -186,7 +186,7 @@ it to a Singularity image, and tell it to run nginx when you start the
 instance. Since we’re running a web server, we’re going to run the
 following commands as root.
 
-::
+.. code-block:: none
 
     # singularity build nginx.img Singularity
 
@@ -196,7 +196,7 @@ following commands as root.
 Just like that we’ve downloaded, built, and ran an nginx Singularity
 image. And to confirm that it’s correctly running:
 
-::
+.. code-block:: none
 
     $ curl localhost
 
@@ -272,7 +272,7 @@ called `Puppeteer <https://github.com/GoogleChrome/puppeteer>`_. Let’s first c
 container, in this case I used the docker image ``node:8`` which comes
 pre-installed with Node 8:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -285,7 +285,7 @@ pre-installed with Node 8:
   addition to Node 8, so we can add those into the ``post`` section as well as
   the installation script for the ``url-to-pdf-api``:
 
-::
+.. code-block:: none
 
     %post
 
@@ -320,7 +320,7 @@ And now we need to define what happens when we start an instance of the
 container. In this situation, we want to run the commands that starts up
 the url-to-pdf-api server:
 
-::
+.. code-block:: none
 
     %startscript
 
@@ -334,7 +334,7 @@ the url-to-pdf-api server:
 Also, the ``url-to-pdf-api`` server requires ``environment`` some variables be set, which we can do in the
 environment section:
 
-::
+.. code-block:: none
 
     %environment
 
@@ -352,7 +352,7 @@ environment section:
 Now we can build the definition file into an image! Simply run ``build`` and the
 image will be ready to go:
 
-::
+.. code-block:: none
 
     $ sudo singularity build url-to-pdf-api.img Singularity
 
@@ -362,14 +362,14 @@ Running the Server
 Now that we have an image, we are ready to start an instance and run the
 server:
 
-::
+.. code-block:: none
 
     $ singularity instance.start url-to-pdf-api.img pdf
 
 We can confirm it’s working by sending the server an http request using
 curl:
 
-::
+.. code-block:: none
 
     $ curl -o google.pdf localhost:8000/api/render?url=http://google.com
 
@@ -382,7 +382,7 @@ curl:
 
 If you shell into the instance, you can see the running processes:
 
-::
+.. code-block:: none
 
     $ singularity shell instance://pdf
 
@@ -432,7 +432,7 @@ into an app, so that there is a designated spot to place output files.
 To do that, we want to add a section to our definition file to build
 the server:
 
-::
+.. code-block:: none
 
     %appinstall pdf_server
 
@@ -447,7 +447,7 @@ the server:
 
 And update our ``startscript`` to point to the app location:
 
-::
+.. code-block:: none
 
     %startscript
 
@@ -461,7 +461,7 @@ And update our ``startscript`` to point to the app location:
 Now we want to define the pdf\_client app, which we will run to send the
 requests to the server:
 
-::
+.. code-block:: none
 
     %apprun pdf_client
 
@@ -482,19 +482,19 @@ container, we need to expose it to the host using a bind mount. Once
 we’ve rebuilt the container, make a new directory callout ``out`` for the
 generated PDF’s to go. Now we simply start the instance like so:
 
-::
+.. code-block:: none
 
     $ singularity instance.start -B out/:/scif/data/pdf_client/output/ url-to-pdf-api.img pdf
 
 And to request a pdf simply do:
 
-::
+.. code-block:: none
 
     $ singularity run --app pdf_client instance://pdf http://google.com google.pdf
 
 And to confirm that it worked:
 
-::
+.. code-block:: none
 
     $ ls out/
 
@@ -503,7 +503,7 @@ And to confirm that it worked:
 When you are finished, use the instance.stop command to close all
 running instances.
 
-::
+.. code-block:: none
 
     $ singularity instance.stop \*
 
@@ -511,7 +511,7 @@ running instances.
 Important Notes
 ---------------
 
-.. note::
+.. note.. code-block:: none
     The instances are linked with your user. So if you start an instance
     with sudo, that is going to go under root, and you will need to call ``sudo singularity instance.list``
     in order to see it.

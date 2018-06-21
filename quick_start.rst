@@ -22,7 +22,7 @@ Installation
 
 There are many ways to :ref:`install Singularity <installation>` but this quick start guide will only cover one.
 
-::
+.. code-block:: none
 
     git clone https://github.com/singularityware/singularity.git
 
@@ -50,7 +50,7 @@ system from within a container.
 The ``--help`` option gives an overview of Singularity options and subcommands as
 follows:
 
-::
+.. code-block:: none
 
     $ singularity --help
 
@@ -132,21 +132,21 @@ commands are passed followed by their options.
 For example, to pass the ``--debug`` option to the main ``singularity`` command and run
 Singularity with debugging messages on:
 
-::
+.. code-block:: none
 
     $ singularity --debug run shub://GodloveD/lolcow
 
 And to pass the ``--containall`` option to the ``run`` command and run a Singularity image in an
 isolated manner:
 
-::
+.. code-block:: none
 
     $ singularity run --containall shub://GodloveD/lolcow
 
 To learn more about a specific Singularity command, type one of the
 following:
 
-::
+.. code-block:: none
 
     $ singularity help <command>
 
@@ -161,7 +161,7 @@ following:
 Users can also :ref:`write help docs specific to a container <help>` or for an internal module called an ``app``. If those help
 docs exist for a particular container, you can view them like so.
 
-::
+.. code-block:: none
 
     $ singularity help container.simg            # See the container's help, if provided
 
@@ -176,7 +176,7 @@ external resource like `Singularity Hub <https://singularity-hub.org/>`_ or `Doc
 on a native Singularity images like those provided on Singularity Hub, ``pull``
 simply downloads the image file to your system.
 
-::
+.. code-block:: none
 
     $ singularity pull shub://vsoch/hello-world   # pull with default name, vsoch-hello-world-master.simg
 
@@ -189,7 +189,7 @@ registry. In this case ``pull`` does not just download an image file. Docker
 images are stored in layers, so ``pull`` must also combine those layers into a
 usable Singularity file.
 
-::
+.. code-block:: none
 
     $ singularity pull docker://godlovedc/lolcow  # with default name
 
@@ -204,7 +204,7 @@ You can also use the ``build`` command to download pre-built images from an
 external resource. When using ``build`` you must specify a name for your
 container like so:
 
-::
+.. code-block:: none
 
     $ singularity build hello-world.simg shub://vsoch/hello-world
 
@@ -227,7 +227,7 @@ Once you have an image, you can interact with it in several ways. For
 these examples we will use a ``hello-world.simg`` image that can be downloaded from
 Singularity Hub like so.
 
-::
+.. code-block:: none
 
     $ singularity pull --name hello-world.simg shub://vsoch/hello-world
 
@@ -237,7 +237,7 @@ Shell
 The :ref:`shell <shell-command>` command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
-::
+.. code-block:: none
 
     $ singularity shell hello-world.simg
 
@@ -258,7 +258,7 @@ interact with it as though it were a small virtual machine.
 ``shell`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
 disappears when the shell is exited.
 
-::
+.. code-block:: none
 
     $ singularity shell shub://vsoch/hello-world
 
@@ -269,7 +269,7 @@ The :ref:`exec <exec>` command allows you to execute a custom command within a c
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
-::
+.. code-block:: none
 
     $ singularity exec hello-world.simg ls /
 
@@ -282,7 +282,7 @@ hello-world.simg image, we could do the following:
 ``exec`` also works with the ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that
 executes a command and disappears.
 
-::
+.. code-block:: none
 
     $ singularity exec shub://singularityhub/ubuntu cat /etc/os-release
 
@@ -294,7 +294,7 @@ define the actions a container should perform when someone runs it. The
 runscript can be triggered with the run command, or simply by calling
 the container as though it were an executable.
 
-::
+.. code-block:: none
 
     $ singularity run hello-world.simg
 
@@ -303,7 +303,7 @@ the container as though it were an executable.
 ``run`` also works with ``shub://`` and ``docker://`` URIs. This creates an ephemeral container that runs
 and then disappears.
 
-::
+.. code-block:: none
 
     $ singularity run shub://GodloveD/lolcow
 
@@ -312,7 +312,7 @@ Working with Files
 
 Files on the host are reachable from within the container.
 
-::
+.. code-block:: none
 
     $ echo "Hello World" > $HOME/hello-kitty.txt
 
@@ -327,7 +327,7 @@ You can specify additional directories to bind mount into your
 container with the :ref:`- -bind <bind-paths-and-mounts>` option. In this example, the ``data`` directory on the host
 system is bind mounted to the ``/mnt`` directory inside the container.
 
-::
+.. code-block:: none
 
     $ echo "I am your father" >/data/vader.sez
 
@@ -361,7 +361,7 @@ Sandbox Directory
 
 To build into a ``sandbox`` (container in a directory) use the ``build --sandbox`` command and option:
 
-::
+.. code-block:: none
 
     $ sudo singularity build --sandbox ubuntu/ docker://ubuntu
 
@@ -382,7 +382,7 @@ Writable Image
 If you prefer to have a writable image file, you can ``build`` a container with
 the ``--writable`` option.
 
-::
+.. code-block:: none
 
     $ sudo singularity build --writable ubuntu.img docker://ubuntu
 
@@ -393,7 +393,7 @@ When you want to alter your image, you can use commands like ``shell``, ``exec``
 with the ``--writable`` option. Because of permission issues it may be necessary to
 execute the container as root to modify it.
 
-::
+.. code-block:: none
 
     $ sudo singularity shell --writable ubuntu.img
 
@@ -406,7 +406,7 @@ Converting images from one format to another
   sandbox (directory) and want to convert it to the default immutable
   image format (squashfs) you can do so:
 
-::
+.. code-block:: none
 
     $ singularity build new-squashfs sandbox
 
@@ -431,7 +431,7 @@ setup the environment, and copy files into the container from the host
 system.
 Here is an example of a recipe file:
 
-::
+.. code-block:: none
 
 
     Bootstrap: shub
@@ -475,7 +475,7 @@ Here is an example of a recipe file:
 To build a container from this definition file (assuming it is a file
 named Singularity), you would call build like so:
 
-::
+.. code-block:: none
 
     $ sudo singularity build ubuntu.simg Singularity
 

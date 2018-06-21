@@ -57,7 +57,7 @@ composed of several keywords. Specifically:
 | For example, a very minimal Singularity Hub build might look like
   this:
 
-::
+.. code-block:: none
 
     Bootstrap: shub
 
@@ -65,7 +65,7 @@ composed of several keywords. Specifically:
 
 A build that uses a mirror to install Centos-7 might look like this:
 
-::
+.. code-block:: none
 
     Bootstrap: yum
 
@@ -105,7 +105,7 @@ Let’s add each section to our container to see how it works. For each
 section, we will build the container from the recipe (a file called
 Singularity) as follows:
 
-::
+.. code-block:: none
 
     $ sudo singularity build roar.simg Singularity
 
@@ -119,7 +119,7 @@ Singularity) as follows:
 You don’t need to do much programming to add a ``%help``
 section to your container. Just write it into a section:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -132,7 +132,7 @@ section to your container. Just write it into a section:
 
 And it will work when the user asks the container for help.
 
-::
+.. code-block:: none
 
     $ singularity help roar.simg
 
@@ -154,7 +154,7 @@ to move the file into the container, but copying during ``%post`` was not. Let�
 add a setup to our current container, just writing a file to the root
 of the image:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -176,7 +176,7 @@ Importantly, notice that the avocados file isn’t relative to
 $SINGULARITY\_ROOTFS, so we would expect it not to be in the image. Is
 tacos there?
 
-::
+.. code-block:: none
 
     $ singularity exec roar.simg ls /
 
@@ -190,7 +190,7 @@ tacos there?
 Yes! And avocados.txt isn’t inside the image, but in our present working
 directory:
 
-::
+.. code-block:: none
 
     $ ls
 
@@ -211,7 +211,7 @@ Singularity versions >2.3. If you are using a legacy version, files
 are copied after ``%post`` so you must do this via ``%setup``. Let’s add the avocado.txt
 into the container, to join tacos.txt.
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -249,7 +249,7 @@ Notice that I’m adding the same file to two different places. For the
 first, I’m adding the single file to the root of the image. For the
 second, I’m adding it to opt. Does it work?
 
-::
+.. code-block:: none
 
     $ singularity exec roar.simg ls /
 
@@ -278,7 +278,7 @@ They will be stored in the file ``/.singularity.d/labels.json`` as metadata with
 general format is a ``LABELNAME`` followed by a ``LABELVALUE``. Labels from Docker bootstraps will
 be carried forward here. Let’s add to our example:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -313,7 +313,7 @@ be carried forward here. Let’s add to our example:
 
 The easiest way to see labels is to inspect the image:
 
-::
+.. code-block:: none
 
     $ singularity inspect roar.simg
 
@@ -366,7 +366,7 @@ conventions that you might use in a bashrc or profile. In the example
 below, the variables ``VADER`` and ``LUKE`` would not be available during build, but when
 the container is finished and run:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -415,7 +415,7 @@ For the rationale behind this approach and why we do not source the
 container is finished, you can easily see environment variables also
 with inspect, and this is done by showing the file produced above:
 
-::
+.. code-block:: none
 
     $ singularity inspect -e roar.simg # Custom environment shell code should follow
 
@@ -433,7 +433,7 @@ or in the case of variables generated at build time, you can add
 environment variables to your container in the ``%post`` section (see below) using
 the following syntax:
 
-::
+.. code-block:: none
 
     %post
 
@@ -442,7 +442,7 @@ the following syntax:
 
 When we rebuild, is it added to the environment?
 
-::
+.. code-block:: none
 
     singularity exec roar.simg env | grep JAWA
 
@@ -469,7 +469,7 @@ and libraries. We will jump from our simple use case to show a more
 realistic scientific container. Here we are installing yum, openMPI, and
 other dependencies for a Centos7 bootstrap:
 
-::
+.. code-block:: none
 
     %post
 
@@ -521,7 +521,7 @@ script at runtime, this means that you can (and should) manage
 argument processing from within your runscript. Here is an example of
 how to do that, adding to our work in progress:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -591,7 +591,7 @@ exist, and the only process running inside this container is the called
 echo command. This could easily be another program like python, or an
 analysis script. Running it, it works as expected:
 
-::
+.. code-block:: none
 
     $ singularity run roar.simg
 
@@ -620,7 +620,7 @@ can always test the validity of the container itself as you transport it
 to different hosts. Extending on the above Open MPI ``%post``, consider this real
 world example:
 
-::
+.. code-block:: none
 
     %test
 
@@ -633,7 +633,7 @@ If you want to build without running tests (for example, if the test
 needs to be done in a different environment), you can do so with the
 ``--notest`` argument:
 
-::
+.. code-block:: none
 
     $ sudo singularity build --notest mpirun.simg Singularity
 
@@ -656,7 +656,7 @@ Container Integration Format <https://sci-f.github.io/>`_. For details on apps, 
 documentation. For a quick rundown of adding an app to your container,
 here is an example runscript:
 
-::
+.. code-block:: none
 
     Bootstrap: docker
 
@@ -763,7 +763,7 @@ of an app:
 
 **What apps are installed in the container?**
 
-::
+.. code-block:: none
 
     $ singularity apps roar.simg
 
@@ -774,7 +774,7 @@ of an app:
 
 **Help me with bar!**
 
-::
+.. code-block:: none
 
     $ singularity help --app bar roar.simg
 
@@ -783,7 +783,7 @@ of an app:
 
 **Run foo**
 
-::
+.. code-block:: none
 
     singularity run --app foo roar.simg
 
@@ -798,7 +798,7 @@ each of foo and bar? We can execute a command to search the list of
 active environment variables with grep to see if the variable changes
 depending on the app we specify:
 
-::
+.. code-block:: none
 
     $ singularity exec --app foo roar.simg env | grep SOFTWARE
 
