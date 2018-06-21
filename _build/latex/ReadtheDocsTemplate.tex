@@ -55,7 +55,7 @@
 
 
 \title{Singularity Container Documentation}
-\date{Jun 20, 2018}
+\date{Jun 21, 2018}
 \release{1.0}
 \author{User Docs}
 \newcommand{\sphinxlogo}{\sphinxincludegraphics{logo.png}\par}
@@ -71,7 +71,7 @@
 
 
 \chapter{Quick Start}
-\label{\detokenize{quick_start:quick-start}}\label{\detokenize{quick_start::doc}}\phantomsection\label{\detokenize{quick_start:sec-quickstart}}
+\label{\detokenize{quick_start:quick-start}}\label{\detokenize{quick_start:id1}}\label{\detokenize{quick_start::doc}}\phantomsection\label{\detokenize{quick_start:sec-quickstart}}
 This guide is intended for running Singularity on a computer where you
 have root (administrative) privileges. If you are learning about
 Singularity on a system where you lack root privileges, you can still
@@ -82,22 +82,22 @@ system administrator.
 
 
 \section{Installation}
-\label{\detokenize{quick_start:installation}}\label{\detokenize{quick_start:id1}}
+\label{\detokenize{quick_start:installation}}\label{\detokenize{quick_start:id2}}
 There are many ways to {\hyperref[\detokenize{quick_start:installation}]{\sphinxcrossref{\DUrole{std,std-ref}{install Singularity}}}} but this quick start guide will only cover one.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{singularityware}\PYG{o}{/}\PYG{n}{singularity}\PYG{o}{.}\PYG{n}{git}
+git clone https://github.com/singularityware/singularity.git
 
-\PYG{n}{cd} \PYG{n}{singularity}
+cd singularity
 
-\PYG{o}{.}\PYG{o}{/}\PYG{n}{autogen}\PYG{o}{.}\PYG{n}{sh}
+./autogen.sh
 
-\PYG{o}{.}\PYG{o}{/}\PYG{n}{configure} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{prefix}\PYG{o}{=}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{local}
+./configure \PYGZhy{}\PYGZhy{}prefix=/usr/local
 
-\PYG{n}{make}
+make
 
-\PYG{n}{sudo} \PYG{n}{make} \PYG{n}{install}
+sudo make install
 \end{sphinxVerbatim}
 
 Singularity must be installed as root to function properly.
@@ -225,7 +225,7 @@ following:
 \PYGZdl{} singularity \PYGZlt{}command\PYGZgt{} \PYGZhy{}h
 \end{sphinxVerbatim}
 
-Users can also {\hyperref[\detokenize{container_recipes:help-docs}]{\sphinxcrossref{\DUrole{std,std-ref}{write help docs specific to a container}}}} or for an internal module called an . If those help
+Users can also {\hyperref[\detokenize{container_recipes:help}]{\sphinxcrossref{\DUrole{std,std-ref}{write help docs specific to a container}}}} or for an internal module called an \sphinxcode{\sphinxupquote{app}}. If those help
 docs exist for a particular container, you can view them like so.
 
 \fvset{hllines={, ,}}%
@@ -238,7 +238,7 @@ docs exist for a particular container, you can view them like so.
 
 \section{Download pre-built images}
 \label{\detokenize{quick_start:download-pre-built-images}}
-You can use the \DUrole{xref,std,std-ref}{pull} and \DUrole{xref,std,std-ref}{build} commands to download pre-built images from an
+You can use the {\hyperref[\detokenize{appendix:pull-command}]{\sphinxcrossref{\DUrole{std,std-ref}{pull}}}} and {\hyperref[\detokenize{appendix:build-command}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}} commands to download pre-built images from an
 external resource like \sphinxhref{https://singularity-hub.org/}{Singularity Hub} or \sphinxhref{https://hub.docker.com/}{Docker Hub}. When called
 on a native Singularity images like those provided on Singularity Hub, \sphinxcode{\sphinxupquote{pull}}
 simply downloads the image file to your system.
@@ -304,7 +304,7 @@ Singularity Hub like so.
 
 \subsection{Shell}
 \label{\detokenize{quick_start:shell}}
-The \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id36}{shell} command allows you to spawn a new shell within your container and
+The {\hyperref[\detokenize{appendix:shell-command}]{\sphinxcrossref{\DUrole{std,std-ref}{shell}}}} command allows you to spawn a new shell within your container and
 interact with it as though it were a small virtual machine.
 
 \fvset{hllines={, ,}}%
@@ -337,7 +337,7 @@ disappears when the shell is exited.
 
 \subsection{Executing Commands}
 \label{\detokenize{quick_start:executing-commands}}
-The \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id25}{exec} command allows you to execute a custom command within a container by
+The \DUrole{xref,std,std-ref}{exec} command allows you to execute a custom command within a container by
 specifying the image file. For instance, to list the root (/) of our
 hello-world.simg image, we could do the following:
 
@@ -512,42 +512,42 @@ Here is an example of a recipe file:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{shub}
+Bootstrap: shub
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{singularityhub}\PYG{o}{/}\PYG{n}{ubuntu}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{runscript}
-
-    \PYG{n}{exec} \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{The runscript is the containers default runtime command!}\PYG{l+s+s2}{\PYGZdq{}}
+From: singularityhub/ubuntu
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{files}
+\PYGZpc{}runscript
 
-   \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{n}{Desktop}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{kitty}\PYG{o}{.}\PYG{n}{txt}        \PYG{c+c1}{\PYGZsh{} copied to root of container}
-
-   \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{n}{Desktop}\PYG{o}{/}\PYG{n}{party\PYGZus{}dinosaur}\PYG{o}{.}\PYG{n}{gif}     \PYG{o}{/}\PYG{n}{opt}\PYG{o}{/}\PYG{n}{the}\PYG{o}{\PYGZhy{}}\PYG{n}{party}\PYG{o}{\PYGZhy{}}\PYG{n}{dino}\PYG{o}{.}\PYG{n}{gif} \PYG{c+c1}{\PYGZsh{}}
+    exec echo \PYGZdq{}The runscript is the containers default runtime command!\PYGZdq{}
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{environment}
+\PYGZpc{}files
 
-    \PYG{n}{VARIABLE}\PYG{o}{=}\PYG{n}{MEATBALLVALUE}
+   /home/vanessa/Desktop/hello\PYGZhy{}kitty.txt        \PYGZsh{} copied to root of container
 
-    \PYG{n}{export} \PYG{n}{VARIABLE}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{labels}
-
-   \PYG{n}{AUTHOR} \PYG{n}{vsochat}\PYG{n+nd}{@stanford}\PYG{o}{.}\PYG{n}{edu}
+   /home/vanessa/Desktop/party\PYGZus{}dinosaur.gif     /opt/the\PYGZhy{}party\PYGZhy{}dino.gif \PYGZsh{}
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{post}
+\PYGZpc{}environment
 
-    \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{update} \PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{o}{\PYGZhy{}}\PYG{n}{y} \PYG{n}{install} \PYG{n}{python3} \PYG{n}{git} \PYG{n}{wget}
+    VARIABLE=MEATBALLVALUE
 
-    \PYG{n}{mkdir} \PYG{o}{/}\PYG{n}{data}
+    export VARIABLE
 
-    \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{The post section is where you can install, and configure your container.}\PYG{l+s+s2}{\PYGZdq{}}
+
+\PYGZpc{}labels
+
+   AUTHOR vsochat@stanford.edu
+
+
+\PYGZpc{}post
+
+    apt\PYGZhy{}get update \PYGZam{}\PYGZam{} apt\PYGZhy{}get \PYGZhy{}y install python3 git wget
+
+    mkdir /data
+
+    echo \PYGZdq{}The post section is where you can install, and configure your container.\PYGZdq{}
 \end{sphinxVerbatim}
 
 To build a container from this definition file (assuming it is a file
@@ -693,7 +693,7 @@ leverage GPU resources.
 \label{\detokenize{introduction:a-high-level-view-of-singularity}}
 
 \subsection{Security and privilege escalation}
-\label{\detokenize{introduction:security-and-privilege-escalation}}
+\label{\detokenize{introduction:security-and-privilege-escalation}}\label{\detokenize{introduction:security-and-priviledge-escalation}}
 A user inside a Singularity container
 is the same user as outside the container
 This is one of Singularities defining characteristics. It allows a
@@ -726,7 +726,7 @@ or enabling themselves to have sudo access. For these reasons,
 Singularity prevents user context escalation within the container, and
 thus makes it possible to run user supplied containers on shared
 infrastructures.
-This mitigation dictates the Singularity \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/singularity\_flow.html\#singularity-flow}{workflow}. If a user needs to be root
+This mitigation dictates the {\hyperref[\detokenize{singularity_flow:singularity-flow}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity workflow}}}}. If a user needs to be root
 in order to make changes to their containers, then they need to have
 an endpoint (a local workstation, laptop, or server) where they have
 root access. Considering almost everybody at least has a laptop, this
@@ -783,7 +783,7 @@ copying any other file you control!
 
 If you want an automated solution for building and hosting your image,
 you can use our container registry \sphinxhref{https://singularity-hub.org/}{Singularity Hub}. Singularity Hub
-can automatically build \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html\#container-recipes}{Singularity recipe files} from
+can automatically build {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity recipe files}}}} from
 a GitHub repository each time that you push. It provides a simple cloud
 solution for storing and sharing your image. If you want to host your own
 Registry, then you should check out \sphinxhref{https://www.github.com/singularityhub/sregistry}{Singularity Registry}.
@@ -974,7 +974,7 @@ to run, which is fast enough to seem instantaneous.
 
 \section{The Singularity Usage Workflow}
 \label{\detokenize{introduction:the-singularity-usage-workflow}}
-The security model of Singularity (as described above, \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/introduction.html\#security-and-privilege-escalation}{“A user inside a Singularity container is the same user as outside the container”}) defines the
+The security model of Singularity (as described above, \DUrole{xref,std,std-ref}{“A user inside a Singularity container is the same user as outside the container”}) defines the
 Singularity workflow. There are generally two groups of actions you
 must implement on a container; management (building your container)
 and usage.
@@ -1026,38 +1026,38 @@ How do the commands work?
 Here is where to look for more information:
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id22}{build} : Build a container on your user endpoint or build environment
+{\hyperref[\detokenize{appendix:build-command}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}} : Build a container on your user endpoint or build environment
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id25}{exec} : Execute a command to your container
+{\hyperref[\detokenize{appendix:exec-command}]{\sphinxcrossref{\DUrole{std,std-ref}{exec}}}} : Execute a command to your container
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id27}{inspect} : See labels, run and test scripts, and environment variables
+{\hyperref[\detokenize{appendix:inspect-command}]{\sphinxcrossref{\DUrole{std,std-ref}{inspect}}}} : See labels, run and test scripts, and environment variables
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id28}{pull} : pull an image from Docker or Singularity Hub
+{\hyperref[\detokenize{appendix:pull-command}]{\sphinxcrossref{\DUrole{std,std-ref}{pull}}}} : pull an image from Docker or Singularity Hub
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id30}{run} : Run your image as an executable
+{\hyperref[\detokenize{appendix:run-command}]{\sphinxcrossref{\DUrole{std,std-ref}{run}}}} : Run your image as an executable
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id36}{shell} : Shell into your image
+{\hyperref[\detokenize{appendix:shell-command}]{\sphinxcrossref{\DUrole{std,std-ref}{shell}}}} : Shell into your image
 
 \end{itemize}
 
 \sphinxstylestrong{Image Commands}
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id40}{image.import} : import layers or other file content to your image
+{\hyperref[\detokenize{appendix:image-import}]{\sphinxcrossref{\DUrole{std,std-ref}{image.import}}}} : import layers or other file content to your image
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id38}{image.export} : export the contents of the image to tar or stream
+{\hyperref[\detokenize{appendix:image-export}]{\sphinxcrossref{\DUrole{std,std-ref}{image.export}}}} : export the contents of the image to tar or stream
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id41}{image.create} : create a new image, using the old ext3 filesystem
+{\hyperref[\detokenize{appendix:image-create}]{\sphinxcrossref{\DUrole{std,std-ref}{image.create}}}} : create a new image, using the old ext3 filesystem
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id39}{image.expand} : increase the size of your image (old ext3)
+{\hyperref[\detokenize{appendix:image-expand}]{\sphinxcrossref{\DUrole{std,std-ref}{image.expand}}}} : increase the size of your image (old ext3)
 
 \end{itemize}
 
@@ -1068,7 +1068,7 @@ with further development.
 \end{DUlineblock}
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/running\_services.html\#why-container-instances}{instances} : Start, stop, and list container instances
+{\hyperref[\detokenize{appendix:instance-command-group}]{\sphinxcrossref{\DUrole{std,std-ref}{instances}}}} : Start, stop, and list container instances
 
 \end{itemize}
 
@@ -1076,7 +1076,7 @@ with further development.
 will be removed in future releases.
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id53}{bootstrap} : Bootstrap a container recipe
+{\hyperref[\detokenize{appendix:bootstrap}]{\sphinxcrossref{\DUrole{std,std-ref}{bootstrap}}}} : Bootstrap a container recipe
 
 \end{itemize}
 
@@ -1145,12 +1145,6 @@ repo} master branch to \sphinxcode{\sphinxupquote{/usr/local}}.
 
 \PYGZdl{} sudo make install
 \end{sphinxVerbatim}
-
-\begin{sphinxadmonition}{note}{Note:}
-Note that the installation prefix is \sphinxcode{\sphinxupquote{/usr/local}} but the configuration directory
-is \sphinxcode{\sphinxupquote{/etc}}. This ensures that the configuration file \sphinxcode{\sphinxupquote{singularity.conf}} is placed in the
-standard location.
-\end{sphinxadmonition}
 
 If you omit the \sphinxcode{\sphinxupquote{-{-}sysconfdir}} option , the configuration file will be installed in \sphinxcode{\sphinxupquote{/usr/local/etc}}.
 If you omit the \sphinxcode{\sphinxupquote{-{-}prefix}} option, Singularity will be installed in the \sphinxcode{\sphinxupquote{/usr/local}} directory
@@ -1248,18 +1242,18 @@ Singularity like so:
 \PYGZdl{} sudo rm \PYGZhy{}rf /some/temp/dir
 \end{sphinxVerbatim}
 
-What should you do next? You can check out the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/quick\_start.html\#quick-start}{quickstart} guide, or learn how to
-interact with your container via the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id36}{shell} , \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id25}{exec} , or \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id30}{run} commands. Or click \sphinxstylestrong{next}
+What should you do next? You can check out the {\hyperref[\detokenize{quick_start:quick-start}]{\sphinxcrossref{\DUrole{std,std-ref}{quickstart}}}} guide, or learn how to
+interact with your container via the \DUrole{xref,std,std-ref}{shell} , \DUrole{xref,std,std-ref}{exec} , or \DUrole{xref,std,std-ref}{run} commands. Or click \sphinxstylestrong{next}
 below to continue reading.
 
 
 \chapter{Build a Container}
-\label{\detokenize{build_a_container:build-a-container}}\label{\detokenize{build_a_container::doc}}\phantomsection\label{\detokenize{build_a_container:sec-buildcontainer}}
+\label{\detokenize{build_a_container:build-a-container}}\label{\detokenize{build_a_container:id1}}\label{\detokenize{build_a_container::doc}}\phantomsection\label{\detokenize{build_a_container:sec-buildcontainer}}
 \sphinxcode{\sphinxupquote{build}} is the “Swiss army knife” of container creation. You can use it to
 download and assemble existing containers from external resources like
 \sphinxhref{https://singularity-hub.org/}{Singularity Hub} and \sphinxhref{https://hub.docker.com/}{Docker Hub}. You can use it to convert
 containers between the various formats supported by Singularity. And you
-can use it in conjunction with a \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html}{Singularity recipe} file to
+can use it in conjunction with a {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity recipe}}}} file to
 create a container from scratch and customized it to fit your needs.
 
 
@@ -1286,7 +1280,7 @@ path to a \sphinxstylestrong{directory} to build from a sandbox
 path to an \sphinxstylestrong{archive} in .tar or compressed .tar.gz format
 
 \item {} 
-path to a \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html}{Singularity recipe file}
+path to a {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity recipe file}}}}
 
 \end{itemize}
 
@@ -1323,7 +1317,7 @@ privileges.
 \capstart
 
 \noindent\sphinxincludegraphics{{build_input_output}.png}
-\caption{Singularity build process}\label{\detokenize{build_a_container:id1}}\end{figure}
+\caption{Singularity build process}\label{\detokenize{build_a_container:id2}}\end{figure}
 
 
 \section{Downloading a existing container from Singularity Hub}
@@ -1456,7 +1450,7 @@ production containers directly from a Singularity recipe file instead.
 \label{\detokenize{build_a_container:building-containers-from-singularity-recipe-files}}
 Of course, Singularity recipe files can be used as the target when
 building a container. For detailed information on writing Singularity
-recipe files, please see the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html}{Container Recipes docs}.
+recipe files, please see the {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{Container Recipes docs}}}}.
 Let’s say you already have the following container recipe file called \sphinxcode{\sphinxupquote{Singularity}}
 , and you want to use it to build a container.
 
@@ -1555,17 +1549,17 @@ tags.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{CHECKS} \PYG{n}{OPTIONS}\PYG{p}{:}
+CHECKS OPTIONS:
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{c}\PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{checks}    \PYG{n}{enable} \PYG{n}{checks}
+    \PYGZhy{}c\textbar{}\PYGZhy{}\PYGZhy{}checks    enable checks
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{t}\PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{tag}       \PYG{n}{specify} \PYG{n}{a} \PYG{n}{check} \PYG{n}{tag} \PYG{p}{(}\PYG{o+ow}{not} \PYG{n}{default}\PYG{p}{)}
+    \PYGZhy{}t\textbar{}\PYGZhy{}\PYGZhy{}tag       specify a check tag (not default)
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{low}       \PYG{n}{Specify} \PYG{n}{low} \PYG{n}{threshold} \PYG{p}{(}\PYG{n+nb}{all} \PYG{n}{checks}\PYG{p}{,} \PYG{n}{default}\PYG{p}{)}
+    \PYGZhy{}l\textbar{}\PYGZhy{}\PYGZhy{}low       Specify low threshold (all checks, default)
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{m}\PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{med}       \PYG{n}{Perform} \PYG{n}{medium} \PYG{o+ow}{and} \PYG{n}{high} \PYG{n}{checks}
+    \PYGZhy{}m\textbar{}\PYGZhy{}\PYGZhy{}med       Perform medium and high checks
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{h}\PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{high}      \PYG{n}{Perform} \PYG{n}{only} \PYG{n}{checks} \PYG{n}{at} \PYG{n}{level} \PYG{n}{high}
+    \PYGZhy{}h\textbar{}\PYGZhy{}\PYGZhy{}high      Perform only checks at level high
 \end{sphinxVerbatim}
 
 When you add the \sphinxcode{\sphinxupquote{-{-}checks}} option along with applicable tags to the \sphinxcode{\sphinxupquote{build}} command
@@ -1578,7 +1572,7 @@ See \sphinxcode{\sphinxupquote{singularity check -{-}help}} for available tags.
 \item {} 
 If you want to \sphinxstylestrong{customize the cache location} (where Docker layers
 are downloaded on your system), specify Docker credentials, or any
-custom tweaks to your build environment, see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_environment.html}{build environment}.
+custom tweaks to your build environment, see {\hyperref[\detokenize{build_environment:build-environment}]{\sphinxcrossref{\DUrole{std,std-ref}{build environment}}}}.
 
 \item {} 
 If you want to make internally \sphinxstylestrong{modular containers}, check out the
@@ -1593,7 +1587,7 @@ container on the cloud) check out \sphinxhref{https://github.com/singularityhub/
 
 
 \chapter{Build Environment}
-\label{\detokenize{build_environment:build-environment}}\label{\detokenize{build_environment::doc}}\phantomsection\label{\detokenize{build_environment:sec-buildenv}}
+\label{\detokenize{build_environment:build-environment}}\label{\detokenize{build_environment:id1}}\label{\detokenize{build_environment::doc}}\phantomsection\label{\detokenize{build_environment:sec-buildenv}}
 It’s commonly the case that you want to customize your build
 environment, such as specifying a custom cache directory for layers, or
 sending your Docker Credentials to the registry endpoint. Here we will
@@ -1602,7 +1596,7 @@ discuss those things
 
 \section{Cache Folders}
 \label{\detokenize{build_environment:cache-folders}}
-To make download of layers for build and \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id28}{pull} faster and less redundant, we
+To make download of layers for build and {\hyperref[\detokenize{appendix:pull-command}]{\sphinxcrossref{\DUrole{std,std-ref}{pull}}}} faster and less redundant, we
 use a caching strategy. By default, the Singularity software will create
 a set of folders in your \sphinxcode{\sphinxupquote{\$HOME}} directory for docker layers, Singularity Hub
 images, and Docker metadata, respectively:
@@ -1640,7 +1634,7 @@ If you are building an image on the fly, for example
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{exec} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{busybox} \PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{sh}
+singularity exec docker://busybox /bin/sh
 \end{sphinxVerbatim}
 
 by default a temporary runtime directory is created that looks like \sphinxcode{\sphinxupquote{/tmp/.singularity-runtime.xxxxxxxx}}.
@@ -1652,11 +1646,11 @@ variable \sphinxcode{\sphinxupquote{SINGULARITY\_LOCALCACHEDIR}}.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SINGULARITY\PYGZus{}LOCALCACHEDIR}\PYG{o}{=}\PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{pancakes}
+SINGULARITY\PYGZus{}LOCALCACHEDIR=/tmp/pancakes
 
-\PYG{n}{export} \PYG{n}{SINGULARITY\PYGZus{}LOCALCACHEDIR}
+export SINGULARITY\PYGZus{}LOCALCACHEDIR
 
-\PYG{n}{singularity} \PYG{n}{exec} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{busybox} \PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{sh}
+singularity exec docker://busybox /bin/sh
 \end{sphinxVerbatim}
 
 The above runtime folder would be created under \sphinxcode{\sphinxupquote{/tmp/pancakes/.singularity-runtime.xxxxxxxx}}
@@ -1664,8 +1658,8 @@ The above runtime folder would be created under \sphinxcode{\sphinxupquote{/tmp/
 
 \section{Pull Folder}
 \label{\detokenize{build_environment:pull-folder}}
-For details about customizing the output location of \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id28}{pull}, see the
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id28}{pull docs}. You have the similar ability to set it to be something
+For details about customizing the output location of {\hyperref[\detokenize{appendix:pull-command}]{\sphinxcrossref{\DUrole{std,std-ref}{pull}}}}, see the
+{\hyperref[\detokenize{appendix:pull-command}]{\sphinxcrossref{\DUrole{std,std-ref}{pull docs}}}}. You have the similar ability to set it to be something
 different, or to customize the name of the pulled image.
 
 
@@ -1700,7 +1694,7 @@ kind of capitalization or not:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{yes}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{true}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{t}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{1}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{y}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+(\PYGZdq{}yes\PYGZdq{}, \PYGZdq{}true\PYGZdq{}, \PYGZdq{}t\PYGZdq{}, \PYGZdq{}1\PYGZdq{},\PYGZdq{}y\PYGZdq{})
 \end{sphinxVerbatim}
 
 
@@ -1743,11 +1737,11 @@ directory:”
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{debug} \PYG{n}{run} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{busybox} \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pizza!}\PYG{l+s+s2}{\PYGZdq{}}
+singularity \PYGZhy{}\PYGZhy{}debug run docker://busybox echo \PYGZdq{}pizza!\PYGZdq{}
 
-\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+...
 
-\PYG{n}{DEBUG}   \PYG{p}{[}\PYG{n}{U}\PYG{o}{=}\PYG{l+m+mi}{1000}\PYG{p}{,}\PYG{n}{P}\PYG{o}{=}\PYG{l+m+mi}{960}\PYG{p}{]}     \PYG{n}{s\PYGZus{}rmdir}\PYG{p}{(}\PYG{p}{)}                                 \PYG{n}{Removing} \PYG{n}{directory}\PYG{p}{:} \PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{\PYGZhy{}}\PYG{n}{runtime}\PYG{o}{.}\PYG{n}{oArO0k}
+DEBUG   [U=1000,P=960]     s\PYGZus{}rmdir()                                 Removing directory: /tmp/.singularity\PYGZhy{}runtime.oArO0k
 \end{sphinxVerbatim}
 
 
@@ -1815,14 +1809,14 @@ append \sphinxcode{\sphinxupquote{"\$@"}}. Thus, some entrypoint or cmd might lo
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{python}
+/usr/bin/python
 \end{sphinxVerbatim}
 
 and we would parse it into the runscript as:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{exec} \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{python} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}@}\PYG{l+s+s2}{\PYGZdq{}}
+exec /usr/bin/python \PYGZdq{}\PYGZdl{}@\PYGZdq{}
 \end{sphinxVerbatim}
 
 However, it might be the case that the user does not want this. For this
@@ -1878,7 +1872,7 @@ composed of several keywords. Specifically:
 \sphinxcode{\sphinxupquote{Bootstrap}}: references the kind of base you want to use (e.g., docker,
 debootstrap, shub). For example, a shub bootstrap will pull
 containers for shub as bases. A Docker bootstrap will pull docker
-layers to start your image. For a full list see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html}{build}
+layers to start your image. For a full list see {\hyperref[\detokenize{build_a_container:build-a-container}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}}
 
 \item {} 
 \sphinxcode{\sphinxupquote{From}}: is the named container (shub) or reference to layers (Docker) that
@@ -1895,9 +1889,9 @@ this:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{shub}
+Bootstrap: shub
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}
+From: vsoch/hello\PYGZhy{}world
 \end{sphinxVerbatim}
 
 A build that uses a mirror to install Centos-7 might look like this:
@@ -1917,28 +1911,28 @@ Each build base requires particular details during build time. You can
 read about them and see examples at the following links:
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-shub}{shub} (images hosted on Singularity Hub)
+{\hyperref[\detokenize{appendix:build-shub}]{\sphinxcrossref{\DUrole{std,std-ref}{shub}}}} (images hosted on Singularity Hub)
 
 \item {} 
-\sphinxhref{http://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-docker-module}{docker} (images hosted on Docker Hub)
+{\hyperref[\detokenize{appendix:build-docker-module}]{\sphinxcrossref{\DUrole{std,std-ref}{docker}}}} (images hosted on Docker Hub)
 
 \item {} 
-\sphinxhref{http://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-localimage}{localimage} (images saved on your machine)
+{\hyperref[\detokenize{appendix:build-localimage}]{\sphinxcrossref{\DUrole{std,std-ref}{localimage}}}} (images saved on your machine)
 
 \item {} 
-\sphinxhref{http://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-yum}{yum} (yum based systems such as CentOS and Scientific Linux)
+{\hyperref[\detokenize{appendix:build-yum}]{\sphinxcrossref{\DUrole{std,std-ref}{yum}}}} (yum based systems such as CentOS and Scientific Linux)
 
 \item {} 
-\sphinxhref{http://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-debootstrap}{debootstrap} (apt based systems such as Debian and Ubuntu)
+{\hyperref[\detokenize{appendix:build-debootstrap}]{\sphinxcrossref{\DUrole{std,std-ref}{debootstrap}}}} (apt based systems such as Debian and Ubuntu)
 
 \item {} 
-\sphinxhref{http://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-arch}{arch} (Arch Linux)
+{\hyperref[\detokenize{appendix:build-arch}]{\sphinxcrossref{\DUrole{std,std-ref}{arch}}}} (Arch Linux)
 
 \item {} 
-\sphinxhref{http://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-busybox}{busybox} (BusyBox)
+{\hyperref[\detokenize{appendix:build-busybox}]{\sphinxcrossref{\DUrole{std,std-ref}{busybox}}}} (BusyBox)
 
 \item {} 
-\sphinxhref{http://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#build-zypper}{zypper} (zypper based systems such as Suse and OpenSuse)
+{\hyperref[\detokenize{appendix:build-zypper}]{\sphinxcrossref{\DUrole{std,std-ref}{zypper}}}} (zypper based systems such as Suse and OpenSuse)
 
 \end{itemize}
 
@@ -1960,20 +1954,20 @@ Singularity) as follows:
 
 
 \subsubsection{\%help}
-\label{\detokenize{container_recipes:help}}\label{\detokenize{container_recipes:help-docs}}
+\label{\detokenize{container_recipes:help}}\label{\detokenize{container_recipes:id2}}\phantomsection\label{\detokenize{container_recipes:sec-help}}
 You don’t need to do much programming to add a \sphinxcode{\sphinxupquote{\%help}}
 section to your container. Just write it into a section:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}
+From: ubuntu
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{help}
+\PYGZpc{}help
 
-\PYG{n}{Help} \PYG{n}{me}\PYG{o}{.} \PYG{n}{I}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{m in the container.}
+Help me. I\PYGZsq{}m in the container.
 \end{sphinxVerbatim}
 
 And it will work when the user asks the container for help.
@@ -2193,7 +2187,7 @@ The easiest way to see labels is to inspect the image:
 \end{sphinxVerbatim}
 
 You’ll notice some other labels that are captured automatically from the
-build process. You can read more about labels and metadata \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/environment\_and\_metadata.html}{here}.
+build process. You can read more about labels and metadata {\hyperref[\detokenize{environment_and_metadata:environment-and-metadata}]{\sphinxcrossref{\DUrole{std,std-ref}{here}}}}.
 
 
 \subsubsection{\%environment}
@@ -2299,9 +2293,9 @@ When we rebuild, is it added to the environment?
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{exec} \PYG{n}{roar}\PYG{o}{.}\PYG{n}{simg} \PYG{n}{env} \PYG{o}{\textbar{}} \PYG{n}{grep} \PYG{n}{JAWA}
+singularity exec roar.simg env \textbar{} grep JAWA
 
-\PYG{n}{JAWA\PYGZus{}SEZ}\PYG{o}{=}\PYG{n}{wutini}
+JAWA\PYGZus{}SEZ=wutini
 \end{sphinxVerbatim}
 
 Where are all these environment variables going? Inside the container
@@ -2312,7 +2306,7 @@ At runtime, scripts in \sphinxcode{\sphinxupquote{/.singularity/env}} are source
 in \sphinxcode{\sphinxupquote{\$SINGULARITY\_ENVIRONMENT}} take precedence over those added via \sphinxcode{\sphinxupquote{\%environment}}. Note that you won’t see
 these variables in the inspect output, as inspect only shows the
 contents added from \sphinxcode{\sphinxupquote{\%environment}}.
-See \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/environment\_and\_metadata.html}{Environment and Metadata} for more information about
+See {\hyperref[\detokenize{environment_and_metadata:environment-and-metadata}]{\sphinxcrossref{\DUrole{std,std-ref}{Environment and Metadata}}}} for more information about
 the \sphinxcode{\sphinxupquote{\%labels}} and \sphinxcode{\sphinxupquote{\%environment}} sections.
 
 
@@ -2327,34 +2321,34 @@ other dependencies for a Centos7 bootstrap:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{post}
+\PYGZpc{}post
 
-    \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Installing Development Tools YUM group}\PYG{l+s+s2}{\PYGZdq{}}
+    echo \PYGZdq{}Installing Development Tools YUM group\PYGZdq{}
 
-    \PYG{n}{yum} \PYG{o}{\PYGZhy{}}\PYG{n}{y} \PYG{n}{groupinstall} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Development Tools}\PYG{l+s+s2}{\PYGZdq{}}
+    yum \PYGZhy{}y groupinstall \PYGZdq{}Development Tools\PYGZdq{}
 
-    \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Installing OpenMPI into container...}\PYG{l+s+s2}{\PYGZdq{}}
-
-
-    \PYG{c+c1}{\PYGZsh{} Here we are at the base, /, of the container}
-
-    \PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{mpi}\PYG{o}{/}\PYG{n}{ompi}\PYG{o}{.}\PYG{n}{git}
+    echo \PYGZdq{}Installing OpenMPI into container...\PYGZdq{}
 
 
-    \PYG{c+c1}{\PYGZsh{} Now at /ompi}
+    \PYGZsh{} Here we are at the base, /, of the container
 
-    \PYG{n}{cd} \PYG{n}{ompi}
-
-    \PYG{o}{.}\PYG{o}{/}\PYG{n}{autogen}\PYG{o}{.}\PYG{n}{pl}
-
-    \PYG{o}{.}\PYG{o}{/}\PYG{n}{configure} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{prefix}\PYG{o}{=}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{local}
-
-    \PYG{n}{make}
-
-    \PYG{n}{make} \PYG{n}{install}
+    git clone https://github.com/open\PYGZhy{}mpi/ompi.git
 
 
-    \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{local}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{mpicc} \PYG{n}{examples}\PYG{o}{/}\PYG{n}{ring\PYGZus{}c}\PYG{o}{.}\PYG{n}{c} \PYG{o}{\PYGZhy{}}\PYG{n}{o} \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{mpi\PYGZus{}ring}
+    \PYGZsh{} Now at /ompi
+
+    cd ompi
+
+    ./autogen.pl
+
+    ./configure \PYGZhy{}\PYGZhy{}prefix=/usr/local
+
+    make
+
+    make install
+
+
+    /usr/local/bin/mpicc examples/ring\PYGZus{}c.c \PYGZhy{}o /usr/bin/mpi\PYGZus{}ring
 \end{sphinxVerbatim}
 
 You cannot copy files from the host to your container in this section,
@@ -2362,7 +2356,7 @@ but you can of course download with commands like \sphinxcode{\sphinxupquote{git
 
 
 \subsubsection{\%runscript}
-\label{\detokenize{container_recipes:runscript}}\label{\detokenize{container_recipes:id2}}\phantomsection\label{\detokenize{container_recipes:sec-runscript}}
+\label{\detokenize{container_recipes:runscript}}\label{\detokenize{container_recipes:id3}}\phantomsection\label{\detokenize{container_recipes:sec-runscript}}
 The \sphinxcode{\sphinxupquote{\%runscript}} is another scriptlet, but it does not get executed during
 bootstrapping. Instead it gets persisted within the container to a
 file (or symlink for later versions) called \sphinxcode{\sphinxupquote{singularity}} which is the execution
@@ -2474,9 +2468,9 @@ world example:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{test}
+\PYGZpc{}test
 
-    \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{local}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{mpirun} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{allow}\PYG{o}{\PYGZhy{}}\PYG{n}{run}\PYG{o}{\PYGZhy{}}\PYG{k}{as}\PYG{o}{\PYGZhy{}}\PYG{n}{root} \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{mpi\PYGZus{}test}
+    /usr/local/bin/mpirun \PYGZhy{}\PYGZhy{}allow\PYGZhy{}run\PYGZhy{}as\PYGZhy{}root /usr/bin/mpi\PYGZus{}test
 \end{sphinxVerbatim}
 
 This is a simple Open MPI test to ensure that the MPI is build
@@ -2503,105 +2497,105 @@ environments? In some circumstances, it may be redundant to build
 different containers for each app with almost equivalent dependencies.
 
 Starting in Singularity 2.4 all of the above commands can also be used
-in the context of internal modules called \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/reproducible\_scif\_apps.html}{apps} based on the \sphinxhref{https://sci-f.github.io/}{Standard
-Container Integration Format}. For details on apps, see the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/reproducible\_scif\_apps.html}{apps}
+in the context of internal modules called {\hyperref[\detokenize{reproducible_scif_apps:reproducible-scif-apps}]{\sphinxcrossref{\DUrole{std,std-ref}{apps}}}} based on the \sphinxhref{https://sci-f.github.io/}{Standard
+Container Integration Format}. For details on apps, see the {\hyperref[\detokenize{reproducible_scif_apps:reproducible-scif-apps}]{\sphinxcrossref{\DUrole{std,std-ref}{apps}}}}
 documentation. For a quick rundown of adding an app to your container,
 here is an example runscript:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{environment}
-
-    \PYG{n}{VADER}\PYG{o}{=}\PYG{n}{badguy}
-
-    \PYG{n}{LUKE}\PYG{o}{=}\PYG{n}{goodguy}
-
-    \PYG{n}{SOLO}\PYG{o}{=}\PYG{n}{someguy}
-
-    \PYG{n}{export} \PYG{n}{VADER} \PYG{n}{LUKE} \PYG{n}{SOLO}
+From: ubuntu
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{labels}
+\PYGZpc{}environment
 
-   \PYG{n}{Maintainer} \PYG{n}{Vanessasaur}
+    VADER=badguy
 
+    LUKE=goodguy
 
-\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+    SOLO=someguy
 
-\PYG{c+c1}{\PYGZsh{} foo}
-
-\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{apprun} \PYG{n}{foo}
-
-    \PYG{n}{exec} \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{RUNNING FOO}\PYG{l+s+s2}{\PYGZdq{}}
+    export VADER LUKE SOLO
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{applabels} \PYG{n}{foo}
+\PYGZpc{}labels
 
-   \PYG{n}{BESTAPP}\PYG{o}{=}\PYG{n}{FOO}
-
-   \PYG{n}{export} \PYG{n}{BESTAPP}
+   Maintainer Vanessasaur
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{appinstall} \PYG{n}{foo}
+\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}
 
-   \PYG{n}{touch} \PYG{n}{foo}\PYG{o}{.}\PYG{n}{exec}
+\PYGZsh{} foo
 
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{appenv} \PYG{n}{foo}
-
-    \PYG{n}{SOFTWARE}\PYG{o}{=}\PYG{n}{foo}
-
-    \PYG{n}{export} \PYG{n}{SOFTWARE}
+\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{apphelp} \PYG{n}{foo}
+\PYGZpc{}apprun foo
 
-    \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{the} \PYG{n}{help} \PYG{k}{for} \PYG{n}{foo}\PYG{o}{.}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{appfiles} \PYG{n}{foo}
-
-   \PYG{n}{avocados}\PYG{o}{.}\PYG{n}{txt}
+    exec echo \PYGZdq{}RUNNING FOO\PYGZdq{}
 
 
+\PYGZpc{}applabels foo
 
-\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+   BESTAPP=FOO
 
-\PYG{c+c1}{\PYGZsh{} bar}
-
-\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{apphelp} \PYG{n}{bar}
-
-    \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{the} \PYG{n}{help} \PYG{k}{for} \PYG{n}{bar}\PYG{o}{.}
+   export BESTAPP
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{applabels} \PYG{n}{bar}
+\PYGZpc{}appinstall foo
 
-   \PYG{n}{BESTAPP}\PYG{o}{=}\PYG{n}{BAR}
-
-   \PYG{n}{export} \PYG{n}{BESTAPP}
+   touch foo.exec
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{appinstall} \PYG{n}{bar}
+\PYGZpc{}appenv foo
 
-    \PYG{n}{touch} \PYG{n}{bar}\PYG{o}{.}\PYG{n}{exec}
+    SOFTWARE=foo
+
+    export SOFTWARE
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{appenv} \PYG{n}{bar}
+\PYGZpc{}apphelp foo
 
-    \PYG{n}{SOFTWARE}\PYG{o}{=}\PYG{n}{bar}
+    This is the help for foo.
 
-    \PYG{n}{export} \PYG{n}{SOFTWARE}
+
+\PYGZpc{}appfiles foo
+
+   avocados.txt
+
+
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}
+
+\PYGZsh{} bar
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}
+
+
+\PYGZpc{}apphelp bar
+
+    This is the help for bar.
+
+
+\PYGZpc{}applabels bar
+
+   BESTAPP=BAR
+
+   export BESTAPP
+
+
+\PYGZpc{}appinstall bar
+
+    touch bar.exec
+
+
+\PYGZpc{}appenv bar
+
+    SOFTWARE=bar
+
+    export SOFTWARE
 \end{sphinxVerbatim}
 
 Importantly, note that the apps can exist alongside any and all of the
@@ -2637,9 +2631,9 @@ This is the help for bar.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{run} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{foo} \PYG{n}{roar}\PYG{o}{.}\PYG{n}{simg}
+singularity run \PYGZhy{}\PYGZhy{}app foo roar.simg
 
-\PYG{n}{RUNNING} \PYG{n}{FOO}
+RUNNING FOO
 \end{sphinxVerbatim}
 
 \sphinxstylestrong{Show me the custom environments}
@@ -2675,7 +2669,7 @@ throughs, see \sphinxhref{https://sci-f.github.io/}{SCI-F Apps Home}.
 When crafting your recipe, it is best to consider the following:
 \begin{enumerate}
 \item {} 
-To make your container internally modular, use \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/reproducible\_scif\_apps.html\#reproducible-sci-f-apps}{SCI-F apps}. Shared dependencies
+To make your container internally modular, use {\hyperref[\detokenize{reproducible_scif_apps:reproducible-scif-apps}]{\sphinxcrossref{\DUrole{std,std-ref}{SCI-F apps}}}}. Shared dependencies
 (between app modules) can go under \sphinxcode{\sphinxupquote{\%post}}.
 
 \item {} 
@@ -2708,7 +2702,7 @@ possibility of reproducibility and mitigates the black box effect.
 \end{enumerate}
 
 Are you a recipe pro and now ready to build? Take a look at the
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html}{build} documentation.
+{\hyperref[\detokenize{build_a_container:build-a-container}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}} documentation.
 
 
 \chapter{Singularity Flow}
@@ -2724,9 +2718,9 @@ it affords.
 
 \section{Building Images}
 \label{\detokenize{singularity_flow:building-images}}\label{\detokenize{singularity_flow:sec-singularityflow}}
-If you read the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/quick\_start.html}{quick start}, you probably remember that building images from a
-Docker base does not require a \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html}{Singularity recipe}. However, if you do want to build and
-customize your image, you can create a \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html}{Singularity recipe} text file, which is a simple
+If you read the {\hyperref[\detokenize{quick_start:quick-start}]{\sphinxcrossref{\DUrole{std,std-ref}{quick start}}}}, you probably remember that building images from a
+Docker base does not require a {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity recipe}}}}. However, if you do want to build and
+customize your image, you can create a {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity recipe}}}} text file, which is a simple
 text file that describes how the container should be made.
 
 
@@ -2749,11 +2743,11 @@ a \sphinxstylestrong{production} environment where you run your container
 \capstart
 
 \noindent\sphinxincludegraphics{{flow}.png}
-\caption{Singularity Workflow}\label{\detokenize{singularity_flow:id3}}\end{figure}
+\caption{Singularity Workflow}\label{\detokenize{singularity_flow:id2}}\end{figure}
 
 Singularity production images are immutable. This is a feature added as
 of Singularity 2.4, and it ensures a higher level of reproducibility and
-verification of images. To read more about the details, check out the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html}{build}
+verification of images. To read more about the details, check out the {\hyperref[\detokenize{build_a_container:build-a-container}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}}
 docs. However, immutability is not so great when you are testing,
 debugging, or otherwise want to quickly change your image. We will
 proceed by describing a typical workflow of developing first, building a
@@ -2987,31 +2981,31 @@ image, just remove the extra options:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{sudo} \PYG{n}{singularity} \PYG{n}{build} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{simg} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}
+sudo singularity build ubuntu.simg docker://ubuntu
 
-\PYG{n}{Docker} \PYG{n}{image} \PYG{n}{path}\PYG{p}{:} \PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}\PYG{o}{/}\PYG{n}{library}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+Docker image path: index.docker.io/library/ubuntu:latest
 
-\PYG{n}{Cache} \PYG{n}{folder} \PYG{n+nb}{set} \PYG{n}{to} \PYG{o}{/}\PYG{n}{root}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}
+Cache folder set to /root/.singularity/docker
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{n}{base} \PYG{n}{Singularity} \PYG{n}{environment}
+Importing: base Singularity environment
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{root}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{9}\PYG{n}{fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /root/.singularity/docker/sha256:9fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{root}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{n}{b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /root/.singularity/docker/sha256:3b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{root}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{9}\PYG{n}{d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /root/.singularity/docker/sha256:9d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{root}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /root/.singularity/docker/sha256:d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{root}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{7}\PYG{n}{fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /root/.singularity/docker/sha256:7fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{root}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{metadata}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mf}{22e289880847}\PYG{n}{a9a2f32c62c237d2f7e3f4eae7259bf1d5c7ec7ffa19c1a483c8}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /root/.singularity/metadata/sha256:22e289880847a9a2f32c62c237d2f7e3f4eae7259bf1d5c7ec7ffa19c1a483c8.tar.gz
 
-\PYG{n}{Building} \PYG{n}{Singularity} \PYG{n}{image}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+Building Singularity image...
 
-\PYG{n}{Cleaning} \PYG{n}{up}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+Cleaning up...
 
-\PYG{n}{Singularity} \PYG{n}{container} \PYG{n}{built}\PYG{p}{:} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{simg}
+Singularity container built: ubuntu.simg
 \end{sphinxVerbatim}
 
 
@@ -3024,7 +3018,7 @@ approach, we support this use case. To do this, given our folder called
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{sudo} \PYG{n}{singularity} \PYG{n}{build} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{simg} \PYG{n}{ubuntu}\PYG{o}{/}
+sudo singularity build ubuntu.simg ubuntu/
 \end{sphinxVerbatim}
 
 It could be the case that a cluster maintains a “working” base of
@@ -3293,7 +3287,7 @@ Singularity ubuntu.simg:\PYGZti{}\PYGZgt{} exit
 
 
 \chapter{Running Services}
-\label{\detokenize{running_services:running-services}}\label{\detokenize{running_services::doc}}
+\label{\detokenize{running_services:running-services}}\label{\detokenize{running_services:id1}}\label{\detokenize{running_services::doc}}
 Singularity 2.4 introduces the ability to run “container instances”,
 allowing you to run services (e.g. Nginx, MySQL, etc…) using
 Singularity. A container instance, simply put, is a persistent and
@@ -3306,9 +3300,9 @@ that is pretty simple, I install nginx and start the service:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{update} \PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{install} \PYG{o}{\PYGZhy{}}\PYG{n}{y} \PYG{n}{nginx}
+apt\PYGZhy{}get update \PYGZam{}\PYGZam{} apt\PYGZhy{}get install \PYGZhy{}y nginx
 
-\PYG{n}{service} \PYG{n}{nginx} \PYG{n}{start}
+service nginx start
 \end{sphinxVerbatim}
 
 With older versions of Singularity, if you were to do something like
@@ -3332,15 +3326,15 @@ file like so:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{startscript}
+\PYGZpc{}startscript
 
 
-\PYG{n}{service} \PYG{n}{nginx} \PYG{n}{start}
+service nginx start
 \end{sphinxVerbatim}
 
 Now let’s say we build a container with that startscript into an image
 called \sphinxcode{\sphinxupquote{nginx.img}} and we want to run an nginx service. All we need to do is start
-the instance with the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#instance-start}{instance.start} command, and the
+the instance with the \DUrole{xref,std,std-ref}{instance.start} command, and the
 startscript will run inside the container automatically:
 
 \fvset{hllines={, ,}}%
@@ -3430,7 +3424,7 @@ instance. Similarly with \sphinxcode{\sphinxupquote{exec}}, it will execute the 
 instance.
 
 When you are finished with your instance you can clean it up with the
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#instance-stop}{instance.stop} command like so:
+\DUrole{xref,std,std-ref}{instance.stop} command like so:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3461,16 +3455,16 @@ file:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{nginx}
+From: nginx
 
-\PYG{n}{Includecmd}\PYG{p}{:} \PYG{n}{no}
+Includecmd: no
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{startscript}
+\PYGZpc{}startscript
 
-    \PYG{n}{nginx}
+    nginx
 \end{sphinxVerbatim}
 
 All this does is download the official nginx Docker container, convert
@@ -3480,9 +3474,9 @@ following commands as root.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{\PYGZsh{} singularity build nginx.img Singularity}
+\PYGZsh{} singularity build nginx.img Singularity
 
-\PYG{c+c1}{\PYGZsh{} singularity instance.start nginx.img web1}
+\PYGZsh{} singularity instance.start nginx.img web1
 \end{sphinxVerbatim}
 
 Just like that we’ve downloaded, built, and ran an nginx Singularity
@@ -3565,11 +3559,11 @@ pre-installed with Node 8:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{node}\PYG{p}{:}\PYG{l+m+mi}{8}
+From: node:8
 
-\PYG{n}{Includecmd}\PYG{p}{:} \PYG{n}{no}
+Includecmd: no
 \end{sphinxVerbatim}
 
 \begin{DUlineblock}{0em}
@@ -3580,33 +3574,33 @@ the installation script for the \sphinxcode{\sphinxupquote{url-to-pdf-api}}:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{post}
+\PYGZpc{}post
 
-     \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{update}
+     apt\PYGZhy{}get update
 
-     \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{install} \PYG{o}{\PYGZhy{}}\PYG{n}{yq} \PYG{n}{gconf}\PYG{o}{\PYGZhy{}}\PYG{n}{service} \PYG{n}{libasound2} \PYG{n}{libatk1}\PYG{o}{.}\PYG{l+m+mi}{0}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0} \PYG{n}{libc6} \PYG{n}{libcairo2} \PYG{n}{libcups2} \PYGZbs{}
+     apt\PYGZhy{}get install \PYGZhy{}yq gconf\PYGZhy{}service libasound2 libatk1.0\PYGZhy{}0 libc6 libcairo2 libcups2 \PYGZbs{}
 
-     \PYG{n}{libdbus}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3} \PYG{n}{libexpat1} \PYG{n}{libfontconfig1} \PYG{n}{libgcc1} \PYG{n}{libgconf}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4} \PYG{n}{libgdk}\PYG{o}{\PYGZhy{}}\PYG{n}{pixbuf2}\PYG{o}{.}\PYG{l+m+mi}{0}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0} \PYGZbs{}
+     libdbus\PYGZhy{}1\PYGZhy{}3 libexpat1 libfontconfig1 libgcc1 libgconf\PYGZhy{}2\PYGZhy{}4 libgdk\PYGZhy{}pixbuf2.0\PYGZhy{}0 \PYGZbs{}
 
-     \PYG{n}{libglib2}\PYG{o}{.}\PYG{l+m+mi}{0}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0} \PYG{n}{libgtk}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0} \PYG{n}{libnspr4} \PYG{n}{libpango}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.0}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0} \PYG{n}{libpangocairo}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.0}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0} \PYG{n}{libstdc}\PYG{o}{+}\PYG{o}{+}\PYG{l+m+mi}{6} \PYGZbs{}
+     libglib2.0\PYGZhy{}0 libgtk\PYGZhy{}3\PYGZhy{}0 libnspr4 libpango\PYGZhy{}1.0\PYGZhy{}0 libpangocairo\PYGZhy{}1.0\PYGZhy{}0 libstdc++6 \PYGZbs{}
 
-     \PYG{n}{libx11}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{6} \PYG{n}{libx11}\PYG{o}{\PYGZhy{}}\PYG{n}{xcb1} \PYG{n}{libxcb1} \PYG{n}{libxcomposite1} \PYG{n}{libxcursor1} \PYG{n}{libxdamage1} \PYG{n}{libxext6} \PYGZbs{}
+     libx11\PYGZhy{}6 libx11\PYGZhy{}xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 \PYGZbs{}
 
-     \PYG{n}{libxfixes3} \PYG{n}{libxi6} \PYG{n}{libxrandr2} \PYG{n}{libxrender1} \PYG{n}{libxss1} \PYG{n}{libxtst6} \PYG{n}{ca}\PYG{o}{\PYGZhy{}}\PYG{n}{certificates} \PYGZbs{}
+     libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca\PYGZhy{}certificates \PYGZbs{}
 
-     \PYG{n}{fonts}\PYG{o}{\PYGZhy{}}\PYG{n}{liberation} \PYG{n}{libappindicator1} \PYG{n}{libnss3} \PYG{n}{lsb}\PYG{o}{\PYGZhy{}}\PYG{n}{release} \PYG{n}{xdg}\PYG{o}{\PYGZhy{}}\PYG{n}{utils} \PYG{n}{wget} \PYG{n}{curl}
+     fonts\PYGZhy{}liberation libappindicator1 libnss3 lsb\PYGZhy{}release xdg\PYGZhy{}utils wget curl
 
-     \PYG{n}{rm} \PYG{o}{\PYGZhy{}}\PYG{n}{r} \PYG{o}{/}\PYG{n}{var}\PYG{o}{/}\PYG{n}{lib}\PYG{o}{/}\PYG{n}{apt}\PYG{o}{/}\PYG{n}{lists}\PYG{o}{/}\PYG{o}{*}
+     rm \PYGZhy{}r /var/lib/apt/lists/*
 
-     \PYG{n}{cd} \PYG{o}{/}
+     cd /
 
-     \PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{alvarcarto}\PYG{o}{/}\PYG{n}{url}\PYG{o}{\PYGZhy{}}\PYG{n}{to}\PYG{o}{\PYGZhy{}}\PYG{n}{pdf}\PYG{o}{\PYGZhy{}}\PYG{n}{api}\PYG{o}{.}\PYG{n}{git} \PYG{n}{pdf\PYGZus{}server}
+     git clone https://github.com/alvarcarto/url\PYGZhy{}to\PYGZhy{}pdf\PYGZhy{}api.git pdf\PYGZus{}server
 
-     \PYG{n}{cd} \PYG{n}{pdf\PYGZus{}server}
+     cd pdf\PYGZus{}server
 
-     \PYG{n}{npm} \PYG{n}{install}
+     npm install
 
-     \PYG{n}{chmod} \PYG{o}{\PYGZhy{}}\PYG{n}{R} \PYG{l+m+mi}{0755} \PYG{o}{.}
+     chmod \PYGZhy{}R 0755 .
 \end{sphinxVerbatim}
 
 And now we need to define what happens when we start an instance of the
@@ -3615,13 +3609,13 @@ the url-to-pdf-api server:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{startscript}
+\PYGZpc{}startscript
 
-    \PYG{n}{cd} \PYG{o}{/}\PYG{n}{pdf\PYGZus{}server}
+    cd /pdf\PYGZus{}server
 
-    \PYG{c+c1}{\PYGZsh{} Use nohup and /dev/null to completely detach server process from terminal}
+    \PYGZsh{} Use nohup and /dev/null to completely detach server process from terminal
 
-    \PYG{n}{nohup} \PYG{n}{npm} \PYG{n}{start} \PYG{o}{\PYGZgt{}} \PYG{o}{/}\PYG{n}{dev}\PYG{o}{/}\PYG{n}{null} \PYG{l+m+mi}{2}\PYG{o}{\PYGZgt{}}\PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}} \PYG{o}{/}\PYG{n}{dev}\PYG{o}{/}\PYG{n}{null} \PYG{o}{\PYGZam{}}
+    nohup npm start \PYGZgt{} /dev/null 2\PYGZgt{}\PYGZam{}1 \PYGZlt{} /dev/null \PYGZam{}
 \end{sphinxVerbatim}
 
 Also, the \sphinxcode{\sphinxupquote{url-to-pdf-api}} server requires \sphinxcode{\sphinxupquote{environment}} some variables be set, which we can do in the
@@ -3629,17 +3623,17 @@ environment section:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{environment}
+\PYGZpc{}environment
 
-    \PYG{n}{NODE\PYGZus{}ENV}\PYG{o}{=}\PYG{n}{development}
+    NODE\PYGZus{}ENV=development
 
-    \PYG{n}{PORT}\PYG{o}{=}\PYG{l+m+mi}{8000}
+    PORT=8000
 
-    \PYG{n}{ALLOW\PYGZus{}HTTP}\PYG{o}{=}\PYG{n}{true}
+    ALLOW\PYGZus{}HTTP=true
 
-    \PYG{n}{URL}\PYG{o}{=}\PYG{n}{localhost}
+    URL=localhost
 
-    \PYG{n}{export} \PYG{n}{NODE\PYGZus{}ENV} \PYG{n}{PORT} \PYG{n}{ALLOW\PYGZus{}HTTP} \PYG{n}{URL}
+    export NODE\PYGZus{}ENV PORT ALLOW\PYGZus{}HTTP URL
 \end{sphinxVerbatim}
 
 Now we can build the definition file into an image! Simply run \sphinxcode{\sphinxupquote{build}} and the
@@ -3719,7 +3713,7 @@ it a little cleaner. It’s difficult to remember the exact curl command
 and URL syntax each time you want to request a PDF, so let’s automate
 that. To do that, we’re going to be using Standard Container
 Integration Format (SCIF) apps, which are integrated directly into
-singularity. If you haven’t already, check out the \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/reproducible\_scif\_apps.html}{Singularity app documentation} to come up to
+singularity. If you haven’t already, check out the {\hyperref[\detokenize{reproducible_scif_apps:reproducible-scif-apps}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity app documentation}}}} to come up to
 speed.
 
 First off, we’re going to move the installation of the url-to-pdf-api
@@ -3729,28 +3723,28 @@ the server:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{appinstall} \PYG{n}{pdf\PYGZus{}server}
+\PYGZpc{}appinstall pdf\PYGZus{}server
 
-    \PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{alvarcarto}\PYG{o}{/}\PYG{n}{url}\PYG{o}{\PYGZhy{}}\PYG{n}{to}\PYG{o}{\PYGZhy{}}\PYG{n}{pdf}\PYG{o}{\PYGZhy{}}\PYG{n}{api}\PYG{o}{.}\PYG{n}{git} \PYG{n}{pdf\PYGZus{}server}
+    git clone https://github.com/alvarcarto/url\PYGZhy{}to\PYGZhy{}pdf\PYGZhy{}api.git pdf\PYGZus{}server
 
-    \PYG{n}{cd} \PYG{n}{pdf\PYGZus{}server}
+    cd pdf\PYGZus{}server
 
-    \PYG{n}{npm} \PYG{n}{install}
+    npm install
 
-    \PYG{n}{chmod} \PYG{o}{\PYGZhy{}}\PYG{n}{R} \PYG{l+m+mi}{0755} \PYG{o}{.}
+    chmod \PYGZhy{}R 0755 .
 \end{sphinxVerbatim}
 
 And update our \sphinxcode{\sphinxupquote{startscript}} to point to the app location:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{startscript}
+\PYGZpc{}startscript
 
-    \PYG{n}{cd} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}}\PYG{l+s+si}{\PYGZob{}APPROOT\PYGZus{}pdf\PYGZus{}server\PYGZcb{}}\PYG{l+s+s2}{/pdf\PYGZus{}server}\PYG{l+s+s2}{\PYGZdq{}}
+    cd \PYGZdq{}\PYGZdl{}\PYGZob{}APPROOT\PYGZus{}pdf\PYGZus{}server\PYGZcb{}/pdf\PYGZus{}server\PYGZdq{}
 
-    \PYG{c+c1}{\PYGZsh{} Use nohup and /dev/null to completely detach server process from terminal}
+    \PYGZsh{} Use nohup and /dev/null to completely detach server process from terminal
 
-    \PYG{n}{nohup} \PYG{n}{npm} \PYG{n}{start} \PYG{o}{\PYGZgt{}} \PYG{o}{/}\PYG{n}{dev}\PYG{o}{/}\PYG{n}{null} \PYG{l+m+mi}{2}\PYG{o}{\PYGZgt{}}\PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}} \PYG{o}{/}\PYG{n}{dev}\PYG{o}{/}\PYG{n}{null} \PYG{o}{\PYGZam{}}
+    nohup npm start \PYGZgt{} /dev/null 2\PYGZgt{}\PYGZam{}1 \PYGZlt{} /dev/null \PYGZam{}
 \end{sphinxVerbatim}
 
 Now we want to define the pdf\_client app, which we will run to send the
@@ -3758,17 +3752,17 @@ requests to the server:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{apprun} \PYG{n}{pdf\PYGZus{}client}
+\PYGZpc{}apprun pdf\PYGZus{}client
 
-    \PYG{k}{if} \PYG{p}{[} \PYG{o}{\PYGZhy{}}\PYG{n}{z} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}}\PYG{l+s+si}{\PYGZob{}1:\PYGZhy{}\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}} \PYG{p}{]}\PYG{p}{;} \PYG{n}{then}
+    if [ \PYGZhy{}z \PYGZdq{}\PYGZdl{}\PYGZob{}1:\PYGZhy{}\PYGZcb{}\PYGZdq{} ]; then
 
-        \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Usage: singularity run \PYGZhy{}\PYGZhy{}app pdf \PYGZlt{}instance://name\PYGZgt{} \PYGZlt{}URL\PYGZgt{} [output file]}\PYG{l+s+s2}{\PYGZdq{}}
+        echo \PYGZdq{}Usage: singularity run \PYGZhy{}\PYGZhy{}app pdf \PYGZlt{}instance://name\PYGZgt{} \PYGZlt{}URL\PYGZgt{} [output file]\PYGZdq{}
 
-        \PYG{n}{exit} \PYG{l+m+mi}{1}
+        exit 1
 
-    \PYG{n}{fi}
+    fi
 
-    \PYG{n}{curl} \PYG{o}{\PYGZhy{}}\PYG{n}{o} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}}\PYG{l+s+si}{\PYGZob{}SINGULARITY\PYGZus{}APPDATA\PYGZcb{}}\PYG{l+s+s2}{/output/\PYGZdl{}}\PYG{l+s+s2}{\PYGZob{}}\PYG{l+s+s2}{2:\PYGZhy{}output.pdf\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}}\PYG{l+s+si}{\PYGZob{}URL\PYGZcb{}}\PYG{l+s+s2}{:\PYGZdl{}}\PYG{l+s+si}{\PYGZob{}PORT\PYGZcb{}}\PYG{l+s+s2}{/api/render?url=\PYGZdl{}}\PYG{l+s+si}{\PYGZob{}1\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+    curl \PYGZhy{}o \PYGZdq{}\PYGZdl{}\PYGZob{}SINGULARITY\PYGZus{}APPDATA\PYGZcb{}/output/\PYGZdl{}\PYGZob{}2:\PYGZhy{}output.pdf\PYGZcb{}\PYGZdq{} \PYGZdq{}\PYGZdl{}\PYGZob{}URL\PYGZcb{}:\PYGZdl{}\PYGZob{}PORT\PYGZcb{}/api/render?url=\PYGZdl{}\PYGZob{}1\PYGZcb{}\PYGZdq{}
 \end{sphinxVerbatim}
 
 As you can see, the \sphinxcode{\sphinxupquote{pdf\_client}} app checks to make sure that the user provides at
@@ -3809,12 +3803,6 @@ running instances.
 
 \section{Important Notes}
 \label{\detokenize{running_services:important-notes}}
-\begin{sphinxadmonition}{note}{Note:}
-The instances are linked with your user. So if you start an instance
-with sudo, that is going to go under root, and you will need to call \sphinxcode{\sphinxupquote{sudo singularity instance.list}}
-in order to see it.
-\end{sphinxadmonition}
-
 
 \chapter{Container Checks}
 \label{\detokenize{container_checks:container-checks}}\label{\detokenize{container_checks::doc}}
@@ -3865,18 +3853,18 @@ you can specify with \sphinxcode{\sphinxupquote{-{-}low}} , \sphinxcode{\sphinxu
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{USAGE}\PYG{p}{:} \PYG{n}{singularity} \PYG{p}{[}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{p}{]} \PYG{n}{check} \PYG{p}{[}\PYG{n}{exec} \PYG{n}{options}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{p}{]} \PYG{o}{\PYGZlt{}}\PYG{n}{container} \PYG{n}{path}\PYG{o}{\PYGZgt{}}
+USAGE: singularity [...] check [exec options...] \PYGZlt{}container path\PYGZgt{}
 
-\PYG{n}{This} \PYG{n}{command} \PYG{n}{will} \PYG{n}{run} \PYG{n}{security} \PYG{n}{checks} \PYG{k}{for} \PYG{n}{an} \PYG{n}{image}\PYG{o}{.}
+This command will run security checks for an image.
 
-\PYG{n}{Note} \PYG{n}{that} \PYG{n}{some} \PYG{n}{checks} \PYG{n}{require} \PYG{n}{sudo}\PYG{o}{.}
+Note that some checks require sudo.
 
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{o}{/}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{low}       \PYG{n}{Specify} \PYG{n}{low} \PYG{n}{threshold} \PYG{p}{(}\PYG{n+nb}{all} \PYG{n}{checks}\PYG{p}{,} \PYG{n}{default}\PYG{p}{)}
+    \PYGZhy{}l/\PYGZhy{}\PYGZhy{}low       Specify low threshold (all checks, default)
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{m}\PYG{o}{/}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{med}       \PYG{n}{Perform} \PYG{n}{medium} \PYG{o+ow}{and} \PYG{n}{high} \PYG{n}{checks}
+    \PYGZhy{}m/\PYGZhy{}\PYGZhy{}med       Perform medium and high checks
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{h}\PYG{o}{/}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{high}      \PYG{n}{Perform} \PYG{n}{only} \PYG{n}{checks} \PYG{n}{at} \PYG{n}{level} \PYG{n}{high}
+    \PYGZhy{}h/\PYGZhy{}\PYGZhy{}high      Perform only checks at level high
 \end{sphinxVerbatim}
 
 \begin{sphinxadmonition}{note}{Note:}
@@ -3898,7 +3886,7 @@ us!}.
 
 
 \chapter{Environment and Metadata}
-\label{\detokenize{environment_and_metadata:environment-and-metadata}}\label{\detokenize{environment_and_metadata::doc}}\phantomsection\label{\detokenize{environment_and_metadata:sec-envandmetadata}}
+\label{\detokenize{environment_and_metadata:environment-and-metadata}}\label{\detokenize{environment_and_metadata:id1}}\label{\detokenize{environment_and_metadata::doc}}\phantomsection\label{\detokenize{environment_and_metadata:sec-envandmetadata}}
 Singularity containers support environment variables and labels that you
 can add to your container during the build process. This page details
 general information about defining environments and labels. If you are
@@ -3914,16 +3902,16 @@ also define custom environment variables in your Recipe file like so:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{shub}
+Bootstrap: shub
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}
+From: vsoch/hello\PYGZhy{}world
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{environment}
+\PYGZpc{}environment
 
-    \PYG{n}{VARIABLE\PYGZus{}NAME}\PYG{o}{=}\PYG{n}{VARIABLE\PYGZus{}VALUE}
+    VARIABLE\PYGZus{}NAME=VARIABLE\PYGZus{}VALUE
 
-    \PYG{n}{export} \PYG{n}{VARIABLE\PYGZus{}NAME}
+    export VARIABLE\PYGZus{}NAME
 \end{sphinxVerbatim}
 
 You may need to add environment variables to your container during the
@@ -4041,34 +4029,34 @@ containers did not use the label schema, and looked like this:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{exec} \PYG{n}{centos7}\PYG{o}{.}\PYG{n}{img} \PYG{n}{cat} \PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{.}\PYG{n}{d}\PYG{o}{/}\PYG{n}{labels}\PYG{o}{.}\PYG{n}{json}
+singularity exec centos7.img cat /.singularity.d/labels.json
 
-\PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{name}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}
+\PYGZob{} \PYGZdq{}name\PYGZdq{}:
 
-      \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CentOS Base Image}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+      \PYGZdq{}CentOS Base Image\PYGZdq{},
 
-       \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{build\PYGZhy{}date}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{20170315}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+       \PYGZdq{}build\PYGZhy{}date\PYGZdq{}: \PYGZdq{}20170315\PYGZdq{},
 
-       \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{vendor}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CentOS}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+       \PYGZdq{}vendor\PYGZdq{}: \PYGZdq{}CentOS\PYGZdq{},
 
-       \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{license}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{GPLv2}\PYG{l+s+s2}{\PYGZdq{}}
+       \PYGZdq{}license\PYGZdq{}: \PYGZdq{}GPLv2\PYGZdq{}
 
-\PYG{p}{\PYGZcb{}}
+\PYGZcb{}
 \end{sphinxVerbatim}
 
 You can add custom labels to your container in a bootstrap file:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}\PYG{p}{:} \PYG{n}{latest}
+From: ubuntu: latest
 
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{labels}
+\PYGZpc{}labels
 
-\PYG{n}{AUTHOR} \PYG{n}{Vanessasaur}
+AUTHOR Vanessasaur
 \end{sphinxVerbatim}
 
 The \sphinxcode{\sphinxupquote{inspect}} command is useful for viewing labels and other container meta-data.
@@ -4156,7 +4144,7 @@ container is invoked with the \sphinxcode{\sphinxupquote{instance.start}} comman
 
 
 \chapter{Reproducible SCI-F Apps}
-\label{\detokenize{reproducible_scif_apps:reproducible-sci-f-apps}}\label{\detokenize{reproducible_scif_apps::doc}}
+\label{\detokenize{reproducible_scif_apps:reproducible-sci-f-apps}}\label{\detokenize{reproducible_scif_apps:reproducible-scif-apps}}\label{\detokenize{reproducible_scif_apps::doc}}
 
 \section{Why do we need SCI-F?}
 \label{\detokenize{reproducible_scif_apps:why-do-we-need-sci-f}}\label{\detokenize{reproducible_scif_apps:sec-scifapps}}
@@ -4182,18 +4170,18 @@ dependencies for software foo and bar.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{post}
+\PYGZpc{}post
 
 
-\PYG{c+c1}{\PYGZsh{} install dependencies 1}
+\PYGZsh{} install dependencies 1
 
-\PYG{c+c1}{\PYGZsh{} install software A (foo)}
+\PYGZsh{} install software A (foo)
 
-\PYG{c+c1}{\PYGZsh{} install software B (bar)}
+\PYGZsh{} install software B (bar)
 
-\PYG{c+c1}{\PYGZsh{} install software C (foo)}
+\PYGZsh{} install software C (foo)
 
-\PYG{c+c1}{\PYGZsh{} install software D (bar)}
+\PYGZsh{} install software D (bar)
 \end{sphinxVerbatim}
 
 The creator may know that A and C were installed for \sphinxcode{\sphinxupquote{foo}} and B and D for \sphinxcode{\sphinxupquote{bar}} ,
@@ -4219,28 +4207,28 @@ you probably have something like this.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{runscript}
+\PYGZpc{}runscript
 
-\PYG{k}{if} \PYG{n}{some} \PYG{n}{logic} \PYG{n}{to} \PYG{n}{choose} \PYG{n}{foo}\PYG{p}{:}
+if some logic to choose foo:
 
-   \PYG{n}{check} \PYG{n}{arguments} \PYG{k}{for} \PYG{n}{foo}
+   check arguments for foo
 
-   \PYG{n}{run} \PYG{n}{foo}
+   run foo
 
-\PYG{k}{else} \PYG{k}{if} \PYG{n}{some} \PYG{n}{logic} \PYG{n}{to} \PYG{n}{choose} \PYG{n}{bar}\PYG{p}{:}
+else if some logic to choose bar:
 
-   \PYG{n}{run} \PYG{n}{bar}
+   run bar
 \end{sphinxVerbatim}
 
 and maybe your environment looks like this:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{environment}
+\PYGZpc{}environment
 
-    \PYG{n}{BEST\PYGZus{}GUY}\PYG{o}{=}\PYG{n}{foo}
+    BEST\PYGZus{}GUY=foo
 
-    \PYG{n}{export} \PYG{n}{BEST\PYGZus{}GUY}
+    export BEST\PYGZus{}GUY
 \end{sphinxVerbatim}
 
 \begin{DUlineblock}{0em}
@@ -4249,13 +4237,13 @@ and maybe your environment looks like this:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{environment}
+\PYGZpc{}environment
 
-    \PYG{n}{BEST\PYGZus{}GUY}\PYG{o}{=}\PYG{n}{foo}
+    BEST\PYGZus{}GUY=foo
 
-    \PYG{n}{BEST\PYGZus{}GUY}\PYG{o}{=}\PYG{n}{bar}
+    BEST\PYGZus{}GUY=bar
 
-    \PYG{n}{export} \PYG{n}{BEST\PYGZus{}GUY}
+    export BEST\PYGZus{}GUY
 \end{sphinxVerbatim}
 
 You obviously can’t have them at separate times. You’d have to source
@@ -4344,11 +4332,11 @@ anything about the container:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{apps} \PYG{n}{foobar}\PYG{o}{.}\PYG{n}{simg}
+singularity apps foobar.simg
 
-\PYG{n}{bar}
+bar
 
-\PYG{n}{foo}
+foo
 \end{sphinxVerbatim}
 
 \begin{DUlineblock}{0em}
@@ -4357,15 +4345,15 @@ anything about the container:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{inspect} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{foo}  \PYG{n}{foobar}\PYG{o}{.}\PYG{n}{simg}
+singularity inspect \PYGZhy{}\PYGZhy{}app foo  foobar.simg
 
-\PYG{p}{\PYGZob{}}
+\PYGZob{}
 
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SCIF\PYGZus{}APP\PYGZus{}NAME}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{foo}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYGZdq{}SCIF\PYGZus{}APP\PYGZus{}NAME\PYGZdq{}: \PYGZdq{}foo\PYGZdq{},
 
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SCIF\PYGZus{}APP\PYGZus{}SIZE}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{1MB}\PYG{l+s+s2}{\PYGZdq{}}
+    \PYGZdq{}SCIF\PYGZus{}APP\PYGZus{}SIZE\PYGZdq{}: \PYGZdq{}1MB\PYGZdq{}
 
-\PYG{p}{\PYGZcb{}}
+\PYGZcb{}
 \end{sphinxVerbatim}
 
 
@@ -4380,31 +4368,31 @@ you what the organization looks like, for each app:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}
+/scif/apps/
 
 
-     \PYG{n}{foo}\PYG{o}{/}
+     foo/
 
-        \PYG{n+nb}{bin}\PYG{o}{/}
+        bin/
 
-        \PYG{n}{lib}\PYG{o}{/}
+        lib/
 
-        \PYG{n}{scif}\PYG{o}{/}
+        scif/
 
-            \PYG{n}{runscript}\PYG{o}{.}\PYG{n}{help}
+            runscript.help
 
-            \PYG{n}{runscript}
+            runscript
 
-            \PYG{n}{env}\PYG{o}{/}
+            env/
 
-                \PYG{l+m+mi}{01}\PYG{o}{\PYGZhy{}}\PYG{n}{base}\PYG{o}{.}\PYG{n}{sh}
+                01\PYGZhy{}base.sh
 
-                \PYG{l+m+mi}{90}\PYG{o}{\PYGZhy{}}\PYG{n}{environment}\PYG{o}{.}\PYG{n}{sh}
+                90\PYGZhy{}environment.sh
 
 
-     \PYG{n}{bar}\PYG{o}{/}
+     bar/
 
-     \PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+     ....
 \end{sphinxVerbatim}
 
 If you are familiar with Singularity, the above will look very familiar.
@@ -4418,7 +4406,7 @@ etc. Here we are looking at the environment active for lolcat:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{exec} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{foo} \PYG{n}{foobar}\PYG{o}{.}\PYG{n}{simg} \PYG{n}{env} \PYG{o}{\textbar{}} \PYG{n}{grep} \PYG{n}{foo}
+singularity exec \PYGZhy{}\PYGZhy{}app foo foobar.simg env \textbar{} grep foo
 \end{sphinxVerbatim}
 
 Let’s talk about the output of the above in sections, you will notice
@@ -4429,9 +4417,9 @@ either, they are created for you.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{LD\PYGZus{}LIBRARY\PYGZus{}PATH}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{lib}\PYG{p}{:}\PYG{p}{:}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{.}\PYG{n}{d}\PYG{o}{/}\PYG{n}{libs}
+LD\PYGZus{}LIBRARY\PYGZus{}PATH=/scif/apps/foo/lib::/.singularity.d/libs
 
-\PYG{n}{PATH}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{p}{:}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{local}\PYG{o}{/}\PYG{n}{sbin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{local}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{sbin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{sbin}\PYG{p}{:}\PYG{o}{/}\PYG{n+nb}{bin}
+PATH=/scif/apps/foo/bin:/scif/apps/foo:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 \end{sphinxVerbatim}
 
 Next, notice that we have environment variables relevant to the active
@@ -4439,17 +4427,17 @@ app’s (foo) data and metadata. They look like this:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SCIF\PYGZus{}APPOUTPUT}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{data}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{output}
+SCIF\PYGZus{}APPOUTPUT=/scif/data/foo/output
 
-\PYG{n}{SCIF\PYGZus{}APPDATA}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{data}\PYG{o}{/}\PYG{n}{foo}
+SCIF\PYGZus{}APPDATA=/scif/data/foo
 
-\PYG{n}{SCIF\PYGZus{}APPINPUT}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{data}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n+nb}{input}
+SCIF\PYGZus{}APPINPUT=/scif/data/foo/input
 
-\PYG{n}{SCIF\PYGZus{}APPMETA}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{scif}
+SCIF\PYGZus{}APPMETA=/scif/apps/foo/scif
 
-\PYG{n}{SCIF\PYGZus{}APPROOT}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}
+SCIF\PYGZus{}APPROOT=/scif/apps/foo
 
-\PYG{n}{SCIF\PYGZus{}APPNAME}\PYG{o}{=}\PYG{n}{foo}
+SCIF\PYGZus{}APPNAME=foo
 \end{sphinxVerbatim}
 
 We also have foo’s environment variables defined under \sphinxcode{\sphinxupquote{\%appenv foo}} , and
@@ -4457,16 +4445,16 @@ importantly, we don’t see bar’s.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{BEST\PYGZus{}GUY}\PYG{o}{=}\PYG{n}{foo}
+BEST\PYGZus{}GUY=foo
 \end{sphinxVerbatim}
 
 Also provided are more global paths for data and apps:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SCIF\PYGZus{}APPS}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}
+SCIF\PYGZus{}APPS=/scif/apps
 
-\PYG{n}{SCIF\PYGZus{}DATA}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{data}
+SCIF\PYGZus{}DATA=/scif/data
 \end{sphinxVerbatim}
 
 Importantly, each app has its own modular location. When you do an \sphinxcode{\sphinxupquote{\%appinstall foo}},
@@ -4477,29 +4465,29 @@ Just add a script and name it:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{appfiles} \PYG{n}{foo}
+\PYGZpc{}appfiles foo
 
-    \PYG{n}{runfoo}\PYG{o}{.}\PYG{n}{sh}   \PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{runfoo}\PYG{o}{.}\PYG{n}{sh}
+    runfoo.sh   bin/runfoo.sh
 \end{sphinxVerbatim}
 
 and then maybe for install I’d make it executable
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{appinstall} \PYG{n}{foo}
+\PYGZpc{}appinstall foo
 
-    \PYG{n}{chmod} \PYG{n}{u}\PYG{o}{+}\PYG{n}{x} \PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{runfoo}\PYG{o}{.}\PYG{n}{sh}
+    chmod u+x bin/runfoo.sh
 \end{sphinxVerbatim}
 
 You don’t even need files! You could just do this.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{appinstall} \PYG{n}{foo}
+\PYGZpc{}appinstall foo
 
-    \PYG{n}{echo} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{echo }\PYG{l+s+s1}{\PYGZdq{}}\PYG{l+s+s1}{Hello Foo.}\PYG{l+s+s1}{\PYGZdq{}}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{runfoo}\PYG{o}{.}\PYG{n}{sh}
+    echo \PYGZsq{}echo \PYGZdq{}Hello Foo.\PYGZdq{}\PYGZsq{} \PYGZgt{}\PYGZgt{} bin/runfoo.sh
 
-    \PYG{n}{chmod} \PYG{n}{u}\PYG{o}{+}\PYG{n}{x} \PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{runfoo}\PYG{o}{.}\PYG{n}{sh}
+    chmod u+x bin/runfoo.sh
 \end{sphinxVerbatim}
 
 We can summarize these observations about using apps:
@@ -4575,38 +4563,38 @@ also find:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SCIF\PYGZus{}APPDATA\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{data}\PYG{o}{/}\PYG{n}{bar}
+SCIF\PYGZus{}APPDATA\PYGZus{}bar=/scif/data/bar
 
-\PYG{n}{SCIF\PYGZus{}APPRUN\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{bar}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{runscript}
+SCIF\PYGZus{}APPRUN\PYGZus{}bar=/scif/apps/bar/scif/runscript
 
-\PYG{n}{SCIF\PYGZus{}APPROOT\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{bar}
+SCIF\PYGZus{}APPROOT\PYGZus{}bar=/scif/apps/bar
 
-\PYG{n}{SCIF\PYGZus{}APPLIB\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{bar}\PYG{o}{/}\PYG{n}{lib}
+SCIF\PYGZus{}APPLIB\PYGZus{}bar=/scif/apps/bar/lib
 
-\PYG{n}{SCIF\PYGZus{}APPMETA\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{bar}\PYG{o}{/}\PYG{n}{scif}
+SCIF\PYGZus{}APPMETA\PYGZus{}bar=/scif/apps/bar/scif
 
-\PYG{n}{SCIF\PYGZus{}APPBIN\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{bar}\PYG{o}{/}\PYG{n+nb}{bin}
+SCIF\PYGZus{}APPBIN\PYGZus{}bar=/scif/apps/bar/bin
 
-\PYG{n}{SCIF\PYGZus{}APPENV\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{bar}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{env}\PYG{o}{/}\PYG{l+m+mi}{90}\PYG{o}{\PYGZhy{}}\PYG{n}{environment}\PYG{o}{.}\PYG{n}{sh}
+SCIF\PYGZus{}APPENV\PYGZus{}bar=/scif/apps/bar/scif/env/90\PYGZhy{}environment.sh
 
-\PYG{n}{SCIF\PYGZus{}APPLABELS\PYGZus{}bar}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{bar}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{labels}\PYG{o}{.}\PYG{n}{json}
+SCIF\PYGZus{}APPLABELS\PYGZus{}bar=/scif/apps/bar/scif/labels.json
 
 
-\PYG{n}{SCIF\PYGZus{}APPENV\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{env}\PYG{o}{/}\PYG{l+m+mi}{90}\PYG{o}{\PYGZhy{}}\PYG{n}{environment}\PYG{o}{.}\PYG{n}{sh}
+SCIF\PYGZus{}APPENV\PYGZus{}foo=/scif/apps/foo/scif/env/90\PYGZhy{}environment.sh
 
-\PYG{n}{SCIF\PYGZus{}APPLABELS\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{labels}\PYG{o}{.}\PYG{n}{json}
+SCIF\PYGZus{}APPLABELS\PYGZus{}foo=/scif/apps/foo/scif/labels.json
 
-\PYG{n}{SCIF\PYGZus{}APPDATA\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{data}\PYG{o}{/}\PYG{n}{foo}
+SCIF\PYGZus{}APPDATA\PYGZus{}foo=/scif/data/foo
 
-\PYG{n}{SCIF\PYGZus{}APPRUN\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{runscript}
+SCIF\PYGZus{}APPRUN\PYGZus{}foo=/scif/apps/foo/scif/runscript
 
-\PYG{n}{SCIF\PYGZus{}APPROOT\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}
+SCIF\PYGZus{}APPROOT\PYGZus{}foo=/scif/apps/foo
 
-\PYG{n}{SCIF\PYGZus{}APPLIB\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{lib}
+SCIF\PYGZus{}APPLIB\PYGZus{}foo=/scif/apps/foo/lib
 
-\PYG{n}{SCIF\PYGZus{}APPMETA\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n}{scif}
+SCIF\PYGZus{}APPMETA\PYGZus{}foo=/scif/apps/foo/scif
 
-\PYG{n}{SCIF\PYGZus{}APPBIN\PYGZus{}foo}\PYG{o}{=}\PYG{o}{/}\PYG{n}{scif}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{foo}\PYG{o}{/}\PYG{n+nb}{bin}
+SCIF\PYGZus{}APPBIN\PYGZus{}foo=/scif/apps/foo/bin
 \end{sphinxVerbatim}
 
 This is really great because it means that we can have apps interact
@@ -4730,31 +4718,31 @@ everything lolcat and cowsay goes to \sphinxhref{https://www.github.com/GodLoveD
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{wget} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{raw}\PYG{o}{.}\PYG{n}{githubusercontent}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{singularityware}\PYG{o}{/}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{master}\PYG{o}{/}\PYG{n}{examples}\PYG{o}{/}\PYG{n}{apps}\PYG{o}{/}\PYG{n}{Singularity}\PYG{o}{.}\PYG{n}{cowsay}
+wget https://raw.githubusercontent.com/singularityware/singularity/master/examples/apps/Singularity.cowsay
 
-\PYG{n}{sudo} \PYG{n}{singularity} \PYG{n}{build} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg} \PYG{n}{Singularity}\PYG{o}{.}\PYG{n}{cowsay}
+sudo singularity build moo.simg Singularity.cowsay
 \end{sphinxVerbatim}
 
 What apps are installed?
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{apps} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg}
+singularity apps moo.simg
 
-\PYG{n}{cowsay}
+cowsay
 
-\PYG{n}{fortune}
+fortune
 
-\PYG{n}{lolcat}
+lolcat
 \end{sphinxVerbatim}
 
 Ask for help for a specific app!
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{help} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{fortune} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg}
+singularity help \PYGZhy{}\PYGZhy{}app fortune moo.simg
 
-\PYG{n}{fortune} \PYG{o+ow}{is} \PYG{n}{the} \PYG{n}{best} \PYG{n}{app}
+fortune is the best app
 \end{sphinxVerbatim}
 
 Ask for help for all apps, without knowing in advance what they are:
@@ -4802,9 +4790,9 @@ fortune that is beautifully colored!
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{run} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{fortune} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg} \PYG{o}{\textbar{}} \PYG{n}{singularity} \PYG{n}{run} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{lolcat} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg}
+singularity run \PYGZhy{}\PYGZhy{}app fortune moo.simg \textbar{} singularity run \PYGZhy{}\PYGZhy{}app lolcat moo.simg
 
-\PYG{n}{You} \PYG{n}{will} \PYG{n}{be} \PYG{n}{surrounded} \PYG{n}{by} \PYG{n}{luxury}\PYG{o}{.}
+You will be surrounded by luxury.
 \end{sphinxVerbatim}
 
 This one might be easier to see - pipe the same fortune into the cowsay
@@ -4812,25 +4800,25 @@ app:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{run} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{fortune} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg} \PYG{o}{\textbar{}} \PYG{n}{singularity} \PYG{n}{run} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{cowsay} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg}
+singularity run \PYGZhy{}\PYGZhy{}app fortune moo.simg \textbar{} singularity run \PYGZhy{}\PYGZhy{}app cowsay moo.simg
 
- \PYG{n}{\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}}
+ \PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}
 
-\PYG{o}{/} \PYG{n}{Executive} \PYG{n}{ability} \PYG{o+ow}{is} \PYG{n}{prominent} \PYG{o+ow}{in} \PYG{n}{your} \PYGZbs{}
+/ Executive ability is prominent in your \PYGZbs{}
 
-\PYGZbs{} \PYG{n}{make}\PYG{o}{\PYGZhy{}}\PYG{n}{up}\PYG{o}{.}                               \PYG{o}{/}
+\PYGZbs{} make\PYGZhy{}up.                               /
 
- \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
+ \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
 
-        \PYGZbs{}   \PYG{o}{\PYGZca{}}\PYG{n}{\PYGZus{}\PYGZus{}}\PYG{o}{\PYGZca{}}
+        \PYGZbs{}   \PYGZca{}\PYGZus{}\PYGZus{}\PYGZca{}
 
-         \PYGZbs{}  \PYG{p}{(}\PYG{n}{oo}\PYG{p}{)}\PYGZbs{}\PYG{n}{\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}}
+         \PYGZbs{}  (oo)\PYGZbs{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}
 
-            \PYG{p}{(}\PYG{n}{\PYGZus{}\PYGZus{}}\PYG{p}{)}\PYGZbs{}       \PYG{p}{)}\PYGZbs{}\PYG{o}{/}\PYGZbs{}
+            (\PYGZus{}\PYGZus{})\PYGZbs{}       )\PYGZbs{}/\PYGZbs{}
 
-                \PYG{o}{\textbar{}}\PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{w} \PYG{o}{\textbar{}}
+                \textbar{}\textbar{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}w \textbar{}
 
-                \PYG{o}{\textbar{}}\PYG{o}{\textbar{}}     \PYG{o}{\textbar{}}\PYG{o}{\textbar{}}
+                \textbar{}\textbar{}     \textbar{}\textbar{}
 \end{sphinxVerbatim}
 
 and the final shabang - do the same, but make it colored. Let’s even get
@@ -4866,15 +4854,15 @@ an app:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{inspect} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{app} \PYG{n}{fortune} \PYG{n}{moo}\PYG{o}{.}\PYG{n}{simg}
+singularity inspect \PYGZhy{}\PYGZhy{}app fortune moo.simg
 
-\PYG{p}{\PYGZob{}}
+\PYGZob{}
 
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SCIF\PYGZus{}APP\PYGZus{}NAME}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fortune}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYGZdq{}SCIF\PYGZus{}APP\PYGZus{}NAME\PYGZdq{}: \PYGZdq{}fortune\PYGZdq{},
 
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SCIF\PYGZus{}APP\PYGZus{}SIZE}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{1MB}\PYG{l+s+s2}{\PYGZdq{}}
+    \PYGZdq{}SCIF\PYGZus{}APP\PYGZus{}SIZE\PYGZdq{}: \PYGZdq{}1MB\PYGZdq{}
 
-\PYG{p}{\PYGZcb{}}
+\PYGZcb{}
 \end{sphinxVerbatim}
 
 If you want to see the full specification or create your own
@@ -4886,7 +4874,7 @@ asciinema!
 
 
 \chapter{Singularity and Docker}
-\label{\detokenize{singularity_and_docker:singularity-and-docker}}\label{\detokenize{singularity_and_docker::doc}}
+\label{\detokenize{singularity_and_docker:singularity-and-docker}}\label{\detokenize{singularity_and_docker:id1}}\label{\detokenize{singularity_and_docker::doc}}
 Singularity is good friends with Docker. The reason is because the
 developers use and really like using Docker, and scientists have already
 put much resources into creating Docker images. Thus, one of our early
@@ -4917,16 +4905,16 @@ You can shell, import, run, and exec.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{shell} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+singularity shell docker://ubuntu:latest
 
-\PYG{n}{singularity} \PYG{n}{run} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+singularity run docker://ubuntu:latest
 
-\PYG{n}{singularity} \PYG{n}{exec} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest} \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Hello Dinosaur!}\PYG{l+s+s2}{\PYGZdq{}}
+singularity exec docker://ubuntu:latest echo \PYGZdq{}Hello Dinosaur!\PYGZdq{}
 
 
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+singularity pull docker://ubuntu:latest
 
-\PYG{n}{singularity} \PYG{n}{build} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+singularity build ubuntu.img docker://ubuntu:latest
 \end{sphinxVerbatim}
 
 
@@ -4951,43 +4939,43 @@ ubuntu operating system, from Docker. We will pull, then build:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}
+singularity pull docker://ubuntu
 
-\PYG{n}{WARNING}\PYG{p}{:} \PYG{n}{pull} \PYG{k}{for} \PYG{n}{Docker} \PYG{n}{Hub} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{guaranteed} \PYG{n}{to} \PYG{n}{produce} \PYG{n}{the}
+WARNING: pull for Docker Hub is not guaranteed to produce the
 
-\PYG{n}{WARNING}\PYG{p}{:} \PYG{n}{same} \PYG{n}{image} \PYG{n}{on} \PYG{n}{repeated} \PYG{n}{pull}\PYG{o}{.} \PYG{n}{Use} \PYG{n}{Singularity} \PYG{n}{Registry}
+WARNING: same image on repeated pull. Use Singularity Registry
 
-\PYG{n}{WARNING}\PYG{p}{:} \PYG{p}{(}\PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{p}{)} \PYG{n}{to} \PYG{n}{pull} \PYG{n}{exactly} \PYG{n}{equivalent} \PYG{n}{images}\PYG{o}{.}
+WARNING: (shub://) to pull exactly equivalent images.
 
-\PYG{n}{Docker} \PYG{n}{image} \PYG{n}{path}\PYG{p}{:} \PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}\PYG{o}{/}\PYG{n}{library}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+Docker image path: index.docker.io/library/ubuntu:latest
 
-\PYG{n}{Cache} \PYG{n}{folder} \PYG{n+nb}{set} \PYG{n}{to} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}
+Cache folder set to /home/vanessa/.singularity/docker
 
-\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{o}{/}\PYG{l+m+mi}{5}\PYG{p}{]} \PYG{o}{\textbar{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{\textbar{}} \PYG{l+m+mf}{100.0}\PYG{o}{\PYGZpc{}}
+[5/5] \textbar{}===================================\textbar{} 100.0\PYGZpc{}
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{n}{base} \PYG{n}{Singularity} \PYG{n}{environment}
+Importing: base Singularity environment
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{9}\PYG{n}{fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:9fb6c798fa41e509b58bccc5c29654c3ff4648b608f5daa67c1aab6a7d02c118.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{n}{b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:3b61febd4aefe982e0cb9c696d415137384d1a01052b50a85aae46439e15e49a.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{9}\PYG{n}{d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:9d99b9777eb02b8943c0e72d7a7baec5c782f8fd976825c9d3fb48b3101aacc2.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:d010c8cf75d7eb5d2504d5ffa0d19696e8d745a457dd8d28ec6dd41d3763617e.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{7}\PYG{n}{fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:7fac07fb303e0589b9c23e6f49d5dc1ff9d6f3c8c88cabe768b430bdb47f03a9.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{metadata}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{77}\PYG{n}{cece4ce6ef220f66747bb02205a00d9ca5ad0c0a6eea1760d34c744ef7b231}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/metadata/sha256:77cece4ce6ef220f66747bb02205a00d9ca5ad0c0a6eea1760d34c744ef7b231.tar.gz
 
-\PYG{n}{WARNING}\PYG{p}{:} \PYG{n}{Building} \PYG{n}{container} \PYG{k}{as} \PYG{n}{an} \PYG{n}{unprivileged} \PYG{n}{user}\PYG{o}{.} \PYG{n}{If} \PYG{n}{you} \PYG{n}{run} \PYG{n}{this} \PYG{n}{container} \PYG{k}{as} \PYG{n}{root}
+WARNING: Building container as an unprivileged user. If you run this container as root
 
-\PYG{n}{WARNING}\PYG{p}{:} \PYG{n}{it} \PYG{n}{may} \PYG{n}{be} \PYG{n}{missing} \PYG{n}{some} \PYG{n}{functionality}\PYG{o}{.}
+WARNING: it may be missing some functionality.
 
-\PYG{n}{Building} \PYG{n}{Singularity} \PYG{n}{image}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+Building Singularity image...
 
-\PYG{n}{Cleaning} \PYG{n}{up}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+Cleaning up...
 
-\PYG{n}{Singularity} \PYG{n}{container} \PYG{n}{built}\PYG{p}{:} \PYG{o}{.}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img}
+Singularity container built: ./ubuntu.img
 \end{sphinxVerbatim}
 
 The warnings mean well - it is to tell you that you are creating the
@@ -5008,9 +4996,9 @@ let’s look at the absolute minimum requirement:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}
+From: ubuntu
 \end{sphinxVerbatim}
 
 We would save this content to a file called Singularity and then issue
@@ -5018,7 +5006,7 @@ the following commands to bootstrap the image from the file
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{sudo} \PYG{n}{singularity} \PYG{n}{build} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img} \PYG{n}{Singularity}
+sudo singularity build ubuntu.img Singularity
 \end{sphinxVerbatim}
 
 Do you want to specify a particular tag? or version? You can just add
@@ -5026,9 +5014,9 @@ that to the docker uri:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+From: ubuntu:latest
 \end{sphinxVerbatim}
 
 \begin{sphinxadmonition}{note}{Note:}
@@ -5038,13 +5026,13 @@ Namespace, just add those to the header:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}
+From: ubuntu
 
-\PYG{n}{Registry}\PYG{p}{:} \PYG{n}{pancakes}\PYG{o}{.}\PYG{n}{registry}\PYG{o}{.}\PYG{n}{index}\PYG{o}{.}\PYG{n}{io}
+Registry: pancakes.registry.index.io
 
-\PYG{n}{Namespace}\PYG{p}{:} \PYG{n}{blue}\PYG{o}{/}\PYG{n}{berry}\PYG{o}{/}\PYG{n}{cream}
+Namespace: blue/berry/cream
 \end{sphinxVerbatim}
 
 The power of build comes with the other stuff that you can do! This
@@ -5054,40 +5042,40 @@ customizing the environment. Here is a full Singularity file:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{tensorflow}\PYG{o}{/}\PYG{n}{tensorflow}\PYG{p}{:}\PYG{n}{latest}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{runscript}
-
-    \PYG{n}{exec} \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{python} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}@}\PYG{l+s+s2}{\PYGZdq{}}
+From: tensorflow/tensorflow:latest
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{post}
+\PYGZpc{}runscript
 
-    \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Post install stuffs!}\PYG{l+s+s2}{\PYGZdq{}}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{files}
-
-\PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{n}{Desktop}\PYG{o}{/}\PYG{n}{analysis}\PYG{o}{.}\PYG{n}{py} \PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{analysis}\PYG{o}{.}\PYG{n}{py}
-
-\PYG{n}{relative\PYGZus{}path}\PYG{o}{.}\PYG{n}{py} \PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{analysis2}\PYG{o}{.}\PYG{n}{py}
+    exec /usr/bin/python \PYGZdq{}\PYGZdl{}@\PYGZdq{}
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{environment}
+\PYGZpc{}post
 
-\PYG{n}{TOPSECRET}\PYG{o}{=}\PYG{n}{pancakes}
-
-\PYG{n}{HELLO}\PYG{o}{=}\PYG{n}{WORLD}
-
-\PYG{n}{export} \PYG{n}{HELLO} \PYG{n}{TOPSECRET}
+    echo \PYGZdq{}Post install stuffs!\PYGZdq{}
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{labels}
+\PYGZpc{}files
 
-\PYG{n}{AUTHOR} \PYG{n}{Vanessasaur}
+/home/vanessa/Desktop/analysis.py /tmp/analysis.py
+
+relative\PYGZus{}path.py /tmp/analysis2.py
+
+
+\PYGZpc{}environment
+
+TOPSECRET=pancakes
+
+HELLO=WORLD
+
+export HELLO TOPSECRET
+
+
+\PYGZpc{}labels
+
+AUTHOR Vanessasaur
 \end{sphinxVerbatim}
 
 In the example above, I am overriding any Dockerfile \sphinxcode{\sphinxupquote{ENTRYPOINT}} or \sphinxcode{\sphinxupquote{CMD}} because I have
@@ -5097,17 +5085,17 @@ runscript, and add IncludeCmd to the header:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{tensorflow}\PYG{o}{/}\PYG{n}{tensorflow}\PYG{p}{:}\PYG{n}{latest}
+From: tensorflow/tensorflow:latest
 
-\PYG{n}{IncludeCmd}\PYG{p}{:} \PYG{n}{yes}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{post}
+IncludeCmd: yes
 
 
-    \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Post install stuffs!}\PYG{l+s+s2}{\PYGZdq{}}
+\PYGZpc{}post
+
+
+    echo \PYGZdq{}Post install stuffs!\PYGZdq{}
 \end{sphinxVerbatim}
 
 Did you know that you can commit this Singularity file to a GitHub repo
@@ -5184,7 +5172,7 @@ When we put those things together, it looks like this:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{registry}\PYG{o}{\PYGZgt{}}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{namespace}\PYG{o}{\PYGZgt{}}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{repo\PYGZus{}name}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{o}{\PYGZlt{}}\PYG{n}{repo\PYGZus{}tag}\PYG{o}{\PYGZgt{}}
+docker://\PYGZlt{}registry\PYGZgt{}/\PYGZlt{}namespace\PYGZgt{}/\PYGZlt{}repo\PYGZus{}name\PYGZgt{}:\PYGZlt{}repo\PYGZus{}tag\PYGZgt{}
 \end{sphinxVerbatim}
 
 By default, the minimum requirement is that you specify a repository
@@ -5192,14 +5180,14 @@ name (eg, ubuntu) and it will default to the following:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}\PYG{o}{/}\PYG{n}{library}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+docker://index.docker.io/library/ubuntu:latest
 \end{sphinxVerbatim}
 
 If you provide a version instead of a tag, that will be used instead:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}\PYG{o}{/}\PYG{n}{library}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{n+nd}{@sha256}\PYG{p}{:}\PYG{l+m+mf}{1235.}\PYG{o}{.}\PYG{o}{.}
+docker://index.docker.io/library/ubuntu@sha256:1235...
 \end{sphinxVerbatim}
 
 You can have one or the other, both are considered a “digest” in
@@ -5210,13 +5198,13 @@ the uri, you can also just state them explicitly:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}
+From: ubuntu
 
-\PYG{n}{Registry}\PYG{p}{:} \PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}
+Registry: index.docker.io
 
-\PYG{n}{Namespace}\PYG{p}{:} \PYG{n}{library}
+Namespace: library
 \end{sphinxVerbatim}
 
 
@@ -5241,9 +5229,9 @@ header with the labels \sphinxcode{\sphinxupquote{Username}} and \sphinxcode{\sp
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Username}\PYG{p}{:} \PYG{n}{vanessa}
+Username: vanessa
 
-\PYG{n}{Password}\PYG{p}{:} \PYG{p}{[}\PYG{n}{password}\PYG{p}{]}
+Password: [password]
 \end{sphinxVerbatim}
 
 Again, this can be in addition to specification of a custom registry
@@ -5256,9 +5244,9 @@ You can export your username, and password for Singularity as follows:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{export} \PYG{n}{SINGULARITY\PYGZus{}DOCKER\PYGZus{}USERNAME}\PYG{o}{=}\PYG{n}{vanessasaur}
+export SINGULARITY\PYGZus{}DOCKER\PYGZus{}USERNAME=vanessasaur
 
-\PYG{n}{export} \PYG{n}{SINGULARITY\PYGZus{}DOCKER\PYGZus{}PASSWORD}\PYG{o}{=}\PYG{n}{rawwwwwr}
+export SINGULARITY\PYGZus{}DOCKER\PYGZus{}PASSWORD=rawwwwwr
 \end{sphinxVerbatim}
 
 
@@ -5279,7 +5267,7 @@ your token is valid, you can do the following
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{http} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}\PYG{o}{/}\PYG{n}{v2}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{n}{code}\PYG{o}{\PYGZhy{}}\PYG{n}{samples}\PYG{o}{/}\PYG{n}{tags}\PYG{o}{/}\PYG{n+nb}{list} \PYG{n}{Authorization}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Bearer \PYGZdl{}TOKEN}\PYG{l+s+s2}{\PYGZdq{}}
+http https://index.docker.io/v2/vanessa/code\PYGZhy{}samples/tags/list Authorization:\PYGZdq{}Bearer \PYGZdl{}TOKEN\PYGZdq{}
 \end{sphinxVerbatim}
 
 The above call should return the tags list as expected. And of course
@@ -5351,11 +5339,11 @@ it runs out of space on the device:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{sudo} \PYG{n}{singularity} \PYG{n}{build} \PYG{n}{fatty}\PYG{o}{.}\PYG{n}{simg} \PYG{n}{Singularity}
+sudo singularity build fatty.simg Singularity
 
-\PYG{n+ne}{IOError}\PYG{p}{:} \PYG{p}{[}\PYG{n}{Errno} \PYG{l+m+mi}{28}\PYG{p}{]} \PYG{n}{No} \PYG{n}{space} \PYG{n}{left} \PYG{n}{on} \PYG{n}{device}
+IOError: [Errno 28] No space left on device
 
-\PYG{n}{ABORT}\PYG{p}{:} \PYG{n}{Aborting} \PYG{k}{with} \PYG{n}{RETVAL}\PYG{o}{=}\PYG{l+m+mi}{255}
+ABORT: Aborting with RETVAL=255
 \end{sphinxVerbatim}
 
 The issue here is that during build of a squashfs image, Singularity is
@@ -5365,7 +5353,7 @@ this is the issue, then the sandbox should work.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{sudo} \PYG{n}{singularity} \PYG{n}{build} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{sandbox} \PYG{p}{[}\PYG{n}{fatty}\PYG{p}{]} \PYG{n}{Singularity}
+sudo singularity build \PYGZhy{}\PYGZhy{}sandbox [fatty] Singularity
 \end{sphinxVerbatim}
 
 \sphinxstylestrong{Solution}
@@ -5400,14 +5388,14 @@ following:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{GRUB\PYGZus{}CMDLINE\PYGZus{}LINUX\PYGZus{}DEFAULT}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{vsyscall=emulate}\PYG{l+s+s2}{\PYGZdq{}}
+GRUB\PYGZus{}CMDLINE\PYGZus{}LINUX\PYGZus{}DEFAULT=\PYGZdq{}vsyscall=emulate\PYGZdq{}
 \end{sphinxVerbatim}
 
 and then update grub and reboot:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{update}\PYG{o}{\PYGZhy{}}\PYG{n}{grub} \PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}} \PYG{n}{reboot}
+update\PYGZhy{}grub \PYGZam{}\PYGZam{} reboot
 \end{sphinxVerbatim}
 
 Please note that this change might have \sphinxhref{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/admin-guide/kernel-parameters.txt?h=v4.13-rc3\#n4387}{security implications} that
@@ -5448,9 +5436,9 @@ container to mount it as home:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{rm} \PYG{o}{\PYGZhy{}}\PYG{n}{rf} \PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{homie} \PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}} \PYG{n}{mkdir} \PYG{o}{\PYGZhy{}}\PYG{n}{p} \PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{homie} \PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}} \PYGZbs{}
+rm \PYGZhy{}rf /tmp/homie \PYGZam{}\PYGZam{} mkdir \PYGZhy{}p /tmp/homie \PYGZam{}\PYGZam{} \PYGZbs{}
 
-\PYG{n}{singularity} \PYG{n}{exec} \PYG{o}{\PYGZhy{}}\PYG{n}{H} \PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{homie} \PYG{n}{analysis}\PYG{o}{.}\PYG{n}{img} \PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{bash}
+singularity exec \PYGZhy{}H /tmp/homie analysis.img /bin/bash
 \end{sphinxVerbatim}
 
 \sphinxstylestrong{Solution 2: Specify the executable to use}
@@ -5462,17 +5450,17 @@ This means:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{runscript}
+\PYGZpc{}runscript
 
 
-\PYG{c+c1}{\PYGZsh{} This specifies the python in the container}
+\PYGZsh{} This specifies the python in the container
 
-\PYG{n}{exec} \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{python} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}@}\PYG{l+s+s2}{\PYGZdq{}}
+exec /usr/bin/python \PYGZdq{}\PYGZdl{}@\PYGZdq{}
 
 
-\PYG{c+c1}{\PYGZsh{} This may pick up a different one}
+\PYGZsh{} This may pick up a different one
 
-\PYG{n}{exec} \PYG{n}{python} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}@}\PYG{l+s+s2}{\PYGZdq{}}
+exec python \PYGZdq{}\PYGZdl{}@\PYGZdq{}
 \end{sphinxVerbatim}
 
 This same idea would be useful if you are issuing the command to the
@@ -5521,7 +5509,7 @@ looks like this:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Defaults}    \PYG{n}{secure\PYGZus{}path} \PYG{o}{=} \PYG{o}{/}\PYG{n}{sbin}\PYG{p}{:}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{sbin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{p}{:}\PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n}{local}\PYG{o}{/}\PYG{n+nb}{bin}
+Defaults    secure\PYGZus{}path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 \end{sphinxVerbatim}
 
 
@@ -5545,7 +5533,7 @@ directive with corresponding path:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{autofs} \PYG{n}{bug} \PYG{n}{path} \PYG{o}{=} \PYG{o}{/}\PYG{n}{apps}
+autofs bug path = /apps
 \end{sphinxVerbatim}
 
 
@@ -5553,7 +5541,7 @@ directive with corresponding path:
 \label{\detokenize{appendix:appendix}}\label{\detokenize{appendix::doc}}
 
 \section{build-docker-module}
-\label{\detokenize{appendix:build-docker-module}}
+\label{\detokenize{appendix:build-docker-module}}\label{\detokenize{appendix:id1}}
 
 \subsection{Overview}
 \label{\detokenize{appendix:overview}}\label{\detokenize{appendix:sec-build-docker-module}}
@@ -5573,39 +5561,39 @@ Singularity with the \sphinxcode{\sphinxupquote{docker}} bootstrap module.
 \label{\detokenize{appendix:keywords}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{From}\PYG{p}{:} \PYG{o}{\PYGZlt{}}\PYG{n}{registry}\PYG{o}{\PYGZgt{}}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{namespace}\PYG{o}{\PYGZgt{}}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{container}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{o}{\PYGZlt{}}\PYG{n}{tag}\PYG{o}{\PYGZgt{}}\PYG{o}{@}\PYG{o}{\PYGZlt{}}\PYG{n}{digest}\PYG{o}{\PYGZgt{}}
+From: \PYGZlt{}registry\PYGZgt{}/\PYGZlt{}namespace\PYGZgt{}/\PYGZlt{}container\PYGZgt{}:\PYGZlt{}tag\PYGZgt{}@\PYGZlt{}digest\PYGZgt{}
 \end{sphinxVerbatim}
 
 The From keyword is mandatory. It specifies the container to use as a base. \sphinxcode{\sphinxupquote{registry}} is optional and defaults to \sphinxcode{\sphinxupquote{index.docker.io}}.
 \sphinxcode{\sphinxupquote{namespace}} is optional and defaults to \sphinxcode{\sphinxupquote{library}}. This is the correct namespace to use for some official containers (ubuntu for example).
 \sphinxcode{\sphinxupquote{tag}} is also optional and will default to \sphinxcode{\sphinxupquote{latest}}
 
-See \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/singularity\_and\_docker.html\#singularity-and-docker}{Singularity and Docker} for more detailed info on using Docker registries.
+See {\hyperref[\detokenize{singularity_and_docker:singularity-and-docker}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity and Docker}}}} for more detailed info on using Docker registries.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Registry}\PYG{p}{:} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{custom\PYGZus{}registry}
+Registry: http://custom\PYGZus{}registry
 \end{sphinxVerbatim}
 
 The Registry keyword is optional. It will default to \sphinxcode{\sphinxupquote{index.docker.io}}.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Namespace}\PYG{p}{:} \PYG{n}{namespace}
+Namespace: namespace
 \end{sphinxVerbatim}
 
 The Namespace keyword is optional. It will default to \sphinxcode{\sphinxupquote{library}}.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{IncludeCmd}\PYG{p}{:} \PYG{n}{yes}
+IncludeCmd: yes
 \end{sphinxVerbatim}
 
 The IncludeCmd keyword is optional. If included, and if a \sphinxcode{\sphinxupquote{\%runscript}} is not specified, a Docker \sphinxcode{\sphinxupquote{CMD}} will take precedence over \sphinxcode{\sphinxupquote{ENTRYPOINT}}
@@ -5615,7 +5603,7 @@ and will be used as a runscript. Note that the \sphinxcode{\sphinxupquote{Includ
 \sphinxcode{\sphinxupquote{IncludeCmd: yes}} and \sphinxcode{\sphinxupquote{IncludeCmd: no}} are identical. In both cases the \sphinxcode{\sphinxupquote{IncludeCmd}} keyword is not empty, so the Docker \sphinxcode{\sphinxupquote{CMD}} will take precedence
 over an \sphinxcode{\sphinxupquote{ENTRYPOINT}}.
 
-See \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/singularity\_and\_docker.html\#singularity-and-docker}{Singularity and Docker} for more info on order of operations for determining a runscript.
+See {\hyperref[\detokenize{singularity_and_docker:singularity-and-docker}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity and Docker}}}} for more info on order of operations for determining a runscript.
 \end{quote}
 
 
@@ -5627,14 +5615,14 @@ assembled in the proper order to produce a viable file system. Then the file sys
 Building from Docker Hub is not considered reproducible because if any of the layers of the image are changed, the container will change.
 If reproducibility is important to you, consider hosting a base container on Singularity Hub and building from it instead.
 
-For detailed information about setting your build environment see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_environment.html}{Build Customization}.
+For detailed information about setting your build environment see {\hyperref[\detokenize{build_environment:build-environment}]{\sphinxcrossref{\DUrole{std,std-ref}{Build Customization}}}}.
 
 
 \section{build-shub}
-\label{\detokenize{appendix:build-shub}}
+\label{\detokenize{appendix:build-shub}}\label{\detokenize{appendix:id2}}
 
 \subsection{Overview}
-\label{\detokenize{appendix:sec-build-shub}}\label{\detokenize{appendix:id2}}
+\label{\detokenize{appendix:sec-build-shub}}\label{\detokenize{appendix:id3}}
 You can use an existing container on Singularity Hub as your “base,” and then add customization. This allows you to build multiple images
 from the same starting point. For example, you may want to build several containers with the same custom python installation, the same custom
 compiler toolchain, or the same base MPI installation. Instead of building these from scratch each time, you could create a base container on
@@ -5642,17 +5630,17 @@ Singularity Hub and then build new containers from that existing base container 
 
 
 \subsection{Keywords}
-\label{\detokenize{appendix:id3}}
+\label{\detokenize{appendix:id4}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{shub}
+Bootstrap: shub
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{registry}\PYG{o}{\PYGZgt{}}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{username}\PYG{o}{\PYGZgt{}}\PYG{o}{/}\PYG{o}{\PYGZlt{}}\PYG{n}{container}\PYG{o}{\PYGZhy{}}\PYG{n}{name}\PYG{o}{\PYGZgt{}}\PYG{p}{:}\PYG{o}{\PYGZlt{}}\PYG{n}{tag}\PYG{o}{\PYGZgt{}}\PYG{n+nd}{@digest}
+From: shub://\PYGZlt{}registry\PYGZgt{}/\PYGZlt{}username\PYGZgt{}/\PYGZlt{}container\PYGZhy{}name\PYGZgt{}:\PYGZlt{}tag\PYGZgt{}@digest
 \end{sphinxVerbatim}
 
 The From keyword is mandatory. It specifies the container to use as a base. \sphinxcode{\sphinxupquote{registry is optional and defaults to {}`{}`singularity-hub.org}}.
@@ -5660,20 +5648,20 @@ The From keyword is mandatory. It specifies the container to use as a base. \sph
 
 
 \subsection{Notes}
-\label{\detokenize{appendix:id4}}
+\label{\detokenize{appendix:id5}}
 When bootstrapping from a Singularity Hub image, all previous definition files that led to the creation of the current image will be stored
 in a directory within the container called \sphinxcode{\sphinxupquote{/.singularity.d/bootstrap\_history}}. Singularity will also alert you if environment variables have
 been changed between the base image and the new image during bootstrap.
 
 
 \section{build-localimage}
-\label{\detokenize{appendix:build-localimage}}\phantomsection\label{\detokenize{appendix:sec-build-localimage}}
+\label{\detokenize{appendix:build-localimage}}\label{\detokenize{appendix:id6}}\phantomsection\label{\detokenize{appendix:sec-build-localimage}}
 This module allows you to build a container from an existing Singularity container on your host system. The name is somewhat misleading
 because your container can be in either image or directory format.
 
 
 \subsection{Overview}
-\label{\detokenize{appendix:id5}}
+\label{\detokenize{appendix:id7}}
 You can use an existing container image as your “base,” and then add customization. This allows you to build multiple images from the same
 starting point. For example, you may want to build several containers with the same custom python installation, the same custom compiler
 toolchain, or the same base MPI installation. Instead of building these from scratch each time, you could start with the appropriate local
@@ -5681,51 +5669,51 @@ base container and then customize the new container in \sphinxcode{\sphinxupquot
 
 
 \subsection{Keywords}
-\label{\detokenize{appendix:id6}}
+\label{\detokenize{appendix:id8}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{localimage}
+Bootstrap: localimage
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{From}\PYG{p}{:} \PYG{o}{/}\PYG{n}{path}\PYG{o}{/}\PYG{n}{to}\PYG{o}{/}\PYG{n}{container}\PYG{o}{/}\PYG{n}{file}\PYG{o}{/}\PYG{o+ow}{or}\PYG{o}{/}\PYG{n}{directory}
+From: /path/to/container/file/or/directory
 \end{sphinxVerbatim}
 
 The From keyword is mandatory. It specifies the local container to use as a base.
 
 
 \subsection{Notes}
-\label{\detokenize{appendix:id7}}
+\label{\detokenize{appendix:id9}}
 When building from a local container, all previous definition files that led to the creation of the current container will be stored in a
 directory within the container called \sphinxcode{\sphinxupquote{/.singularity.d/bootstrap\_history}}. Singularity will also alert you if environment variables have been
 changed between the base image and the new image during bootstrap.
 
 
 \section{build-yum}
-\label{\detokenize{appendix:build-yum}}\phantomsection\label{\detokenize{appendix:sec-build-yum}}
+\label{\detokenize{appendix:build-yum}}\label{\detokenize{appendix:id10}}\phantomsection\label{\detokenize{appendix:sec-build-yum}}
 This module allows you to build a Red Hat/CentOS/Scientific Linux style container from a mirror URI.
 
 
 \subsection{Overview}
-\label{\detokenize{appendix:id8}}
+\label{\detokenize{appendix:id11}}
 Use the \sphinxcode{\sphinxupquote{yum}} module to specify a base for a CentOS-like container. You must also specify the URI for the mirror you would like to use.
 
 
 \subsection{Keywords}
-\label{\detokenize{appendix:id9}}
+\label{\detokenize{appendix:id12}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{yum}
+Bootstrap: yum
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{OSVersion}\PYG{p}{:} \PYG{l+m+mi}{7}
+OSVersion: 7
 \end{sphinxVerbatim}
 
 The OSVersion keyword is optional. It specifies the OS version you would like to use. It is only required if you have specified a \%\{OSVERSION\}
@@ -5741,7 +5729,7 @@ can use it in the URL as in the example above.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Include}\PYG{p}{:} \PYG{n}{yum}
+Include: yum
 \end{sphinxVerbatim}
 
 The Include keyword is optional. It allows you to install additional packages into the core operating system. It is a best practice to supply
@@ -5750,7 +5738,7 @@ when using the \sphinxcode{\sphinxupquote{yum}} build module is YUM itself.
 
 
 \subsection{Notes}
-\label{\detokenize{appendix:id10}}
+\label{\detokenize{appendix:id13}}
 There is a major limitation with using YUM to bootstrap a container. The RPM database that exists within the container will be created using the
 RPM library and Berkeley DB implementation that exists on the host system. If the RPM implementation inside the container is not compatible with
 the RPM database that was used to create the container, RPM and YUM commands inside the container may fail. This issue can be easily demonstrated
@@ -5766,27 +5754,27 @@ that uses a different package manager, but you can do so. For instance, on Ubunt
 
 
 \section{build-debootstrap}
-\label{\detokenize{appendix:build-debootstrap}}\phantomsection\label{\detokenize{appendix:sec-build-debootstrap}}
+\label{\detokenize{appendix:build-debootstrap}}\label{\detokenize{appendix:id14}}\phantomsection\label{\detokenize{appendix:sec-build-debootstrap}}
 This module allows you to build a Debian/Ubuntu style container from a mirror URI.
 
 
 \subsection{Overview}
-\label{\detokenize{appendix:id11}}
+\label{\detokenize{appendix:id15}}
 Use the \sphinxcode{\sphinxupquote{debootstrap}} module to specify a base for a Debian-like container. You must also specify the OS version and a URI for the mirror you would like to use.
 
 
 \subsection{Keywords}
-\label{\detokenize{appendix:id12}}
+\label{\detokenize{appendix:id16}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{debootstrap}
+Bootstrap: debootstrap
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{OSVersion}\PYG{p}{:} \PYG{n}{xenial}
+OSVersion: xenial
 \end{sphinxVerbatim}
 
 The OSVersion keyword is mandatory. It specifies the OS version you would like to use. For Ubuntu you can use code words like \sphinxcode{\sphinxupquote{trusty}} (14.04), \sphinxcode{\sphinxupquote{xenial}} (16.04),
@@ -5795,7 +5783,7 @@ and \sphinxcode{\sphinxupquote{yakkety}} (17.04). For Debian you can use values 
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{MirrorURL}\PYG{p}{:}  \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{us}\PYG{o}{.}\PYG{n}{archive}\PYG{o}{.}\PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{o}{/}
+MirrorURL:  http://us.archive.ubuntu.com/ubuntu/
 \end{sphinxVerbatim}
 \end{quote}
 
@@ -5803,7 +5791,7 @@ The MirrorURL keyword is mandatory. It specifies a URL to use as a mirror when d
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Include}\PYG{p}{:} \PYG{n}{somepackage}
+Include: somepackage
 \end{sphinxVerbatim}
 
 The Include keyword is optional. It allows you to install additional packages into the core operating system. It is a best practice to supply only the bare essentials
@@ -5811,7 +5799,7 @@ such that the \sphinxcode{\sphinxupquote{\%post}} section has what it needs to p
 
 
 \subsection{Notes}
-\label{\detokenize{appendix:id13}}
+\label{\detokenize{appendix:id17}}
 In order to use the \sphinxcode{\sphinxupquote{debootstrap}} build module, you must have \sphinxcode{\sphinxupquote{debootstrap}} installed on your system. On Ubuntu you can install it like so:
 
 \fvset{hllines={, ,}}%
@@ -5828,20 +5816,20 @@ On CentOS you can install it from the epel repos like so:
 
 
 \section{build-arch}
-\label{\detokenize{appendix:build-arch}}\phantomsection\label{\detokenize{appendix:sec-build-arch}}
+\label{\detokenize{appendix:build-arch}}\label{\detokenize{appendix:id18}}\phantomsection\label{\detokenize{appendix:sec-build-arch}}
 This module allows you to build a Arch Linux based container.
 
 
 \subsection{Overview}
-\label{\detokenize{appendix:id14}}
+\label{\detokenize{appendix:id19}}
 Use the \sphinxcode{\sphinxupquote{arch}} module to specify a base for an Arch Linux based container. Arch Linux uses the aptly named the \sphinxcode{\sphinxupquote{pacman}} package manager (all puns intended).
 
 
 \subsection{Keywords}
-\label{\detokenize{appendix:id15}}
+\label{\detokenize{appendix:id20}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{arch}
+Bootstrap: arch
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
@@ -5851,67 +5839,67 @@ information necessary for that particular bootstrap module to build a core opera
 
 
 \subsection{Notes}
-\label{\detokenize{appendix:id16}}
+\label{\detokenize{appendix:id21}}
 Arch Linux is, by design, a very stripped down, light-weight OS. You may need to perform a fair amount of configuration to get a usable OS. Please refer
 to this \sphinxhref{https://github.com/singularityware/singularity/blob/master/examples/arch/README.md}{README.md} and
 the \sphinxhref{https://github.com/singularityware/singularity/blob/master/examples/arch/Singularity}{Arch Linux example} for more info.
 
 
 \section{build-busybox}
-\label{\detokenize{appendix:build-busybox}}\phantomsection\label{\detokenize{appendix:sec-build-busybox}}
+\label{\detokenize{appendix:build-busybox}}\label{\detokenize{appendix:id22}}\phantomsection\label{\detokenize{appendix:sec-build-busybox}}
 This module allows you to build a container based on BusyBox.
 
 
 \subsection{Overview}
-\label{\detokenize{appendix:id17}}
+\label{\detokenize{appendix:id23}}
 Use the \sphinxcode{\sphinxupquote{busybox}} module to specify a BusyBox base for container. You must also specify a URI for the mirror you would like to use.
 
 
 \subsection{Keywords}
-\label{\detokenize{appendix:id18}}
+\label{\detokenize{appendix:id24}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{busybox}
+Bootstrap: busybox
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{MirrorURL}\PYG{p}{:} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{www}\PYG{o}{.}\PYG{n}{busybox}\PYG{o}{.}\PYG{n}{net}\PYG{o}{/}\PYG{n}{downloads}\PYG{o}{/}\PYG{n}{binaries}\PYG{o}{/}\PYG{l+m+mf}{1.26}\PYG{o}{.}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{defconfig}\PYG{o}{\PYGZhy{}}\PYG{n}{multiarch}\PYG{o}{/}\PYG{n}{busybox}\PYG{o}{\PYGZhy{}}\PYG{n}{x86\PYGZus{}64}
+MirrorURL: https://www.busybox.net/downloads/binaries/1.26.1\PYGZhy{}defconfig\PYGZhy{}multiarch/busybox\PYGZhy{}x86\PYGZus{}64
 \end{sphinxVerbatim}
 
 The MirrorURL keyword is mandatory. It specifies a URL to use as a mirror when downloading the OS.
 
 
 \subsection{Notes}
-\label{\detokenize{appendix:id19}}
+\label{\detokenize{appendix:id25}}
 You can build a fully functional BusyBox container that only takes up \textasciitilde{}600kB of disk space!
 
 
 \section{build-zypper}
-\label{\detokenize{appendix:build-zypper}}\phantomsection\label{\detokenize{appendix:sec-build-zypper}}
+\label{\detokenize{appendix:build-zypper}}\label{\detokenize{appendix:id26}}\phantomsection\label{\detokenize{appendix:sec-build-zypper}}
 This module allows you to build a Suse style container from a mirror URI.
 
 
 \subsection{Overview}
-\label{\detokenize{appendix:id20}}
+\label{\detokenize{appendix:id27}}
 Use the \sphinxcode{\sphinxupquote{zypper}} module to specify a base for a Suse-like container. You must also specify a URI for
 the mirror you would like to use.
 
 
 \subsection{Keywords}
-\label{\detokenize{appendix:id21}}
+\label{\detokenize{appendix:id28}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{zypper}
+Bootstrap: zypper
 \end{sphinxVerbatim}
 
 The Bootstrap keyword is always mandatory. It describes the bootstrap module to use.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{OSVersion}\PYG{p}{:} \PYG{l+m+mf}{42.2}
+OSVersion: 42.2
 \end{sphinxVerbatim}
 
 The OSVersion keyword is optional. It specifies the OS version you would like to use.
@@ -5919,7 +5907,7 @@ It is only required if you have specified a \%\{OSVERSION\} variable in the \sph
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Include}\PYG{p}{:} \PYG{n}{somepackage}
+Include: somepackage
 \end{sphinxVerbatim}
 
 The Include keyword is optional. It allows you to install additional packages into the core operating system.
@@ -5928,7 +5916,7 @@ One common package you may want to install when using the zypper build module is
 
 
 \section{Singularity Action Flags}
-\label{\detokenize{appendix:singularity-action-flags}}\phantomsection\label{\detokenize{appendix:sec-action-flags}}
+\label{\detokenize{appendix:singularity-action-flags}}\label{\detokenize{appendix:id29}}\phantomsection\label{\detokenize{appendix:sec-action-flags}}
 For each of \sphinxcode{\sphinxupquote{exec}}, \sphinxcode{\sphinxupquote{run}}, and \sphinxcode{\sphinxupquote{shell}}, there are a few important flags that we want to note for new users that have substantial impact on using
 your container. While we won’t include the complete list of run options (for this complete list see \sphinxcode{\sphinxupquote{singularity run -{-}help}} or more generally
 \sphinxcode{\sphinxupquote{singularity \textless{}action\textgreater{} -{-}help}}) we will review some highly useful flags that you can add to these actions.
@@ -5960,16 +5948,16 @@ Here we are cleaning the environment. In the first command, we see that the vari
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{PEANUTBUTTER}\PYG{o}{=}\PYG{n}{JELLY} \PYG{n}{singularity} \PYG{n}{exec} \PYG{n}{Centos7}\PYG{o}{.}\PYG{n}{img} \PYG{n}{env} \PYG{o}{\textbar{}} \PYG{n}{grep} \PYG{n}{PEANUT}
+PEANUTBUTTER=JELLY singularity exec Centos7.img env \textbar{} grep PEANUT
 
-\PYG{n}{PEANUTBUTTER}\PYG{o}{=}\PYG{n}{JELLY}
+PEANUTBUTTER=JELLY
 \end{sphinxVerbatim}
 
 And now here we add \sphinxcode{\sphinxupquote{-{-}cleanenv}} to see that it doesn’t.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{PEANUTBUTTER}\PYG{o}{=}\PYG{n}{JELLY} \PYG{n}{singularity} \PYG{n}{exec} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{cleanenv} \PYG{n}{Centos7}\PYG{o}{.}\PYG{n}{img} \PYG{n}{env} \PYG{o}{\textbar{}} \PYG{n}{grep} \PYG{n}{PEANUT}
+PEANUTBUTTER=JELLY singularity exec \PYGZhy{}\PYGZhy{}cleanenv Centos7.img env \textbar{} grep PEANUT
 \end{sphinxVerbatim}
 
 Here we will test contain. We can first confirm that there are a lot of files on our host in /tmp, and the same files are found in the container.
@@ -6000,7 +5988,7 @@ Here we will test contain. We can first confirm that there are a lot of files on
 \label{\detokenize{appendix:commands}}
 
 \subsection{Command Usage}
-\label{\detokenize{appendix:command-usage}}\label{\detokenize{appendix:id22}}
+\label{\detokenize{appendix:command-usage}}\label{\detokenize{appendix:id30}}
 
 \subsubsection{The Singularity command}
 \label{\detokenize{appendix:the-singularity-command}}\label{\detokenize{appendix:sec-commandlineinterface}}
@@ -6020,38 +6008,38 @@ level help for all arguments. The main options include:
 \sphinxstylestrong{Container Actions}
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id22}{build} : Build a container on your user endpoint or build environment
+{\hyperref[\detokenize{appendix:build-command}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}} : Build a container on your user endpoint or build environment
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id25}{exec} : Execute a command to your container
+{\hyperref[\detokenize{appendix:exec-command}]{\sphinxcrossref{\DUrole{std,std-ref}{exec}}}} : Execute a command to your container
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id27}{inspect} : See labels, run and test scripts, and environment variables
+{\hyperref[\detokenize{appendix:inspect-command}]{\sphinxcrossref{\DUrole{std,std-ref}{inspect}}}} : See labels, run and test scripts, and environment variables
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id28}{pull} : pull an image from Docker or Singularity Hub
+{\hyperref[\detokenize{appendix:pull-command}]{\sphinxcrossref{\DUrole{std,std-ref}{pull}}}} : pull an image from Docker or Singularity Hub
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id30}{run} : Run your image as an executable
+{\hyperref[\detokenize{appendix:run-command}]{\sphinxcrossref{\DUrole{std,std-ref}{run}}}} : Run your image as an executable
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id36}{shell} : Shell into your image
+{\hyperref[\detokenize{appendix:shell-command}]{\sphinxcrossref{\DUrole{std,std-ref}{shell}}}} : Shell into your image
 
 \end{itemize}
 
 \sphinxstylestrong{Image Commands}
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id40}{image.import} : import layers or other file content to your image
+{\hyperref[\detokenize{appendix:image-import}]{\sphinxcrossref{\DUrole{std,std-ref}{image.import}}}} : import layers or other file content to your image
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id38}{image.export} : export the contents of the image to tar or stream
+{\hyperref[\detokenize{appendix:image-export}]{\sphinxcrossref{\DUrole{std,std-ref}{image.export}}}} : export the contents of the image to tar or stream
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id41}{image.create} : create a new image, using the old ext3 filesystem
+{\hyperref[\detokenize{appendix:image-create}]{\sphinxcrossref{\DUrole{std,std-ref}{image.create}}}} : create a new image, using the old ext3 filesystem
 
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id39}{image.expand} : increase the size of your image (old ext3)
+{\hyperref[\detokenize{appendix:image-expand}]{\sphinxcrossref{\DUrole{std,std-ref}{image.expand}}}} : increase the size of your image (old ext3)
 
 \end{itemize}
 
@@ -6061,7 +6049,7 @@ Instances were added in 2.4. This list is brief, and likely to expand
 with further development.
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/running\_services.html}{instances} : Start, stop, and list container instances
+{\hyperref[\detokenize{running_services:running-services}]{\sphinxcrossref{\DUrole{std,std-ref}{instances}}}} : Start, stop, and list container instances
 
 \end{itemize}
 
@@ -6070,11 +6058,11 @@ The following commands are deprecated in 2.4 and will be removed in
 future releases.
 \begin{itemize}
 \item {} 
-\sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#id53}{bootstrap} : Bootstrap a container recipe
+{\hyperref[\detokenize{appendix:bootstrap}]{\sphinxcrossref{\DUrole{std,std-ref}{bootstrap}}}} : Bootstrap a container recipe
 
 \end{itemize}
 
-For the full usage, \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#command-usage}{see the bottom of this page}
+For the full usage, {\hyperref[\detokenize{appendix:command-usage}]{\sphinxcrossref{\DUrole{std,std-ref}{see the bottom of this page}}}}
 
 
 \paragraph{Options and argument processing}
@@ -6219,24 +6207,24 @@ Have a question, or need further information? \sphinxhref{https://www.sylabs.io/
 
 
 \subsection{build}
-\label{\detokenize{appendix:id23}}\label{\detokenize{appendix:id24}}\phantomsection\label{\detokenize{appendix:sec-build}}
+\label{\detokenize{appendix:build}}\label{\detokenize{appendix:build-command}}
 Use \sphinxcode{\sphinxupquote{build}} to download and assemble existing containers, convert containers
-from one format to another, or build a container from a \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html}{Singularity recipe}.
+from one format to another, or build a container from a {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{Singularity recipe}}}}.
 
 
 \subsubsection{Overview}
-\label{\detokenize{appendix:id25}}
+\label{\detokenize{appendix:id31}}
 The \sphinxcode{\sphinxupquote{build}} command accepts a target as input and produces a container as
 output. The target can be a Singularity Hub or Docker Hub URI, a path
 to an existing container, or a path to a Singularity Recipe file. The
 output container can be in squashfs, ext3, or directory format.
 
 For a complete list of \sphinxcode{\sphinxupquote{build}} options type \sphinxcode{\sphinxupquote{singularity help build}}. For more info on building
-containers see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html}{Build a Container}.
+containers see {\hyperref[\detokenize{build_a_container:build-a-container}]{\sphinxcrossref{\DUrole{std,std-ref}{Build a Container}}}}.
 
 
 \subsubsection{Examples}
-\label{\detokenize{appendix:id26}}
+\label{\detokenize{appendix:id32}}
 
 \paragraph{Download an existing container from Singularity Hub or Docker Hub}
 \label{\detokenize{appendix:download-an-existing-container-from-singularity-hub-or-docker-hub}}
@@ -6284,7 +6272,7 @@ Given a Singularity Recipe called \sphinxcode{\sphinxupquote{Singularity}} :
 
 
 \subsection{exec}
-\label{\detokenize{appendix:id27}}\phantomsection\label{\detokenize{appendix:sec-exec}}
+\label{\detokenize{appendix:exec}}\label{\detokenize{appendix:exec-command}}
 The \sphinxcode{\sphinxupquote{exec}} Singularity sub-command allows you to spawn an arbitrary command
 within your container image as if it were running directly on the host
 system. All standard IO, pipes, and file systems are accessible via the
@@ -6294,7 +6282,7 @@ different from the Docker exec, as it does not require a container to be
 
 
 \subsubsection{Examples}
-\label{\detokenize{appendix:id28}}
+\label{\detokenize{appendix:id33}}
 
 \paragraph{Printing the OS release inside the container}
 \label{\detokenize{appendix:printing-the-os-release-inside-the-container}}
@@ -6336,7 +6324,7 @@ Use the \sphinxcode{\sphinxupquote{instance://\textless{}instance name\textgreat
 \label{\detokenize{appendix:runtime-flags}}
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the \sphinxcode{\sphinxupquote{singularity run help}} and our
-documentation on \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#singularity-action-flags}{flags} to better customize this command.
+documentation on {\hyperref[\detokenize{appendix:singularity-action-flags}]{\sphinxcrossref{\DUrole{std,std-ref}{flags}}}} to better customize this command.
 
 
 \paragraph{Special Characters}
@@ -6373,12 +6361,12 @@ Starting with the file \sphinxcode{\sphinxupquote{hello.py}} in the current dire
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+ch}{\PYGZsh{}!/usr/bin/python}
+\PYGZsh{}!/usr/bin/python
 
 
-\PYG{k+kn}{import} \PYG{n+nn}{sys}
+import sys
 
-\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Hello World: The Python version is }\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{.}\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{.}\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{sys}\PYG{o}{.}\PYG{n}{version\PYGZus{}info}\PYG{p}{[}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)}
+print(\PYGZdq{}Hello World: The Python version is \PYGZpc{}s.\PYGZpc{}s.\PYGZpc{}s\PYGZdq{} \PYGZpc{} sys.version\PYGZus{}info[:3])
 \end{sphinxVerbatim}
 
 Because our home directory is automatically bound into the container,
@@ -6539,7 +6527,7 @@ Test error: 0.8\PYGZpc{}
 
 
 \subsection{inspect}
-\label{\detokenize{appendix:id29}}\phantomsection\label{\detokenize{appendix:sec-inspect}}
+\label{\detokenize{appendix:inspect}}\label{\detokenize{appendix:inspect-command}}
 How can you sniff an image? We have provided the inspect command for
 you to easily see the runscript, test script, environment, help, and
 metadata labels.
@@ -6555,33 +6543,33 @@ JSON API standardized response, for example:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{inspect} \PYG{o}{\PYGZhy{}}\PYG{n}{l} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{json} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img}
+singularity inspect \PYGZhy{}l \PYGZhy{}\PYGZhy{}json ubuntu.img
 
-\PYG{p}{\PYGZob{}}
+\PYGZob{}
 
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{data}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+    \PYGZdq{}data\PYGZdq{}: \PYGZob{}
 
-        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{attributes}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+        \PYGZdq{}attributes\PYGZdq{}: \PYGZob{}
 
-            \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{labels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+            \PYGZdq{}labels\PYGZdq{}: \PYGZob{}
 
-                \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SINGULARITY\PYGZus{}DEFFILE\PYGZus{}BOOTSTRAP}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{docker}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+                \PYGZdq{}SINGULARITY\PYGZus{}DEFFILE\PYGZus{}BOOTSTRAP\PYGZdq{}: \PYGZdq{}docker\PYGZdq{},
 
-                \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SINGULARITY\PYGZus{}DEFFILE}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Singularity}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+                \PYGZdq{}SINGULARITY\PYGZus{}DEFFILE\PYGZdq{}: \PYGZdq{}Singularity\PYGZdq{},
 
-                \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SINGULARITY\PYGZus{}BOOTSTRAP\PYGZus{}VERSION}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{2.2.99}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+                \PYGZdq{}SINGULARITY\PYGZus{}BOOTSTRAP\PYGZus{}VERSION\PYGZdq{}: \PYGZdq{}2.2.99\PYGZdq{},
 
-                \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SINGULARITY\PYGZus{}DEFFILE\PYGZus{}FROM}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ubuntu:latest}\PYG{l+s+s2}{\PYGZdq{}}
+                \PYGZdq{}SINGULARITY\PYGZus{}DEFFILE\PYGZus{}FROM\PYGZdq{}: \PYGZdq{}ubuntu:latest\PYGZdq{}
 
-            \PYG{p}{\PYGZcb{}}
+            \PYGZcb{}
 
-        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYGZcb{},
 
-        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{type}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{container}\PYG{l+s+s2}{\PYGZdq{}}
+        \PYGZdq{}type\PYGZdq{}: \PYGZdq{}container\PYGZdq{}
 
-    \PYG{p}{\PYGZcb{}}
+    \PYGZcb{}
 
-\PYG{p}{\PYGZcb{}}
+\PYGZcb{}
 \end{sphinxVerbatim}
 
 
@@ -6734,23 +6722,23 @@ With \sphinxcode{\sphinxupquote{-{-}json}} you can also see it as such:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{inspect} \PYG{o}{\PYGZhy{}}\PYG{n}{hf} \PYG{o}{\PYGZhy{}}\PYG{n}{j} \PYG{n}{dino}\PYG{o}{.}\PYG{n}{img}
+singularity inspect \PYGZhy{}hf \PYGZhy{}j dino.img
 
-\PYG{p}{\PYGZob{}}
+\PYGZob{}
 
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{data}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+    \PYGZdq{}data\PYGZdq{}: \PYGZob{}
 
-        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{attributes}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+        \PYGZdq{}attributes\PYGZdq{}: \PYGZob{}
 
-            \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{help}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{Hi there! This is my image help section.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{Usage:}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{boobeep doo doo}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{ \PYGZhy{}\PYGZhy{}arg/a arrrrg I}\PYG{l+s+s2}{\PYGZsq{}}\PYG{l+s+s2}{m a pirate!}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{ \PYGZhy{}\PYGZhy{}boo/b eeeeeuzzz where is the honey?}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}
+            \PYGZdq{}help\PYGZdq{}: \PYGZdq{}\PYGZbs{}n\PYGZbs{}n\PYGZbs{}nHi there! This is my image help section.\PYGZbs{}n\PYGZbs{}nUsage:\PYGZbs{}n\PYGZbs{}nboobeep doo doo\PYGZbs{}n\PYGZbs{}n \PYGZhy{}\PYGZhy{}arg/a arrrrg I\PYGZsq{}m a pirate!\PYGZbs{}n \PYGZhy{}\PYGZhy{}boo/b eeeeeuzzz where is the honey?\PYGZbs{}n\PYGZbs{}n\PYGZbs{}n\PYGZdq{}
 
-        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYGZcb{},
 
-        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{type}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{container}\PYG{l+s+s2}{\PYGZdq{}}
+        \PYGZdq{}type\PYGZdq{}: \PYGZdq{}container\PYGZdq{}
 
-    \PYG{p}{\PYGZcb{}}
+    \PYGZcb{}
 
-\PYG{p}{\PYGZcb{}}
+\PYGZcb{}
 \end{sphinxVerbatim}
 
 or in a human friendly, readable print to the screen, don’t use \sphinxcode{\sphinxupquote{-j}} or \sphinxcode{\sphinxupquote{-{-}json}}:
@@ -6909,7 +6897,7 @@ improve or amend this, \sphinxhref{https://github.com/singularityware/singularit
 
 
 \subsection{pull}
-\label{\detokenize{appendix:id30}}\label{\detokenize{appendix:id31}}\phantomsection\label{\detokenize{appendix:sec-pull}}
+\label{\detokenize{appendix:pull}}\label{\detokenize{appendix:pull-command}}\phantomsection\label{\detokenize{appendix:sec-pull}}
 Singularity \sphinxcode{\sphinxupquote{pull}} is the command that you would want to use to communicate
 with a container registry. The command does exactly as it says - there
 exists an image external to my host, and I want to pull it here. We
@@ -6926,11 +6914,11 @@ extract on your local machine. The basic command is the following:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}
+singularity pull shub://vsoch/hello\PYGZhy{}world
 
-\PYG{n}{Progress} \PYG{o}{\textbar{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{\textbar{}} \PYG{l+m+mf}{100.0}\PYG{o}{\PYGZpc{}}
+Progress \textbar{}===================================\textbar{} 100.0\PYGZpc{}
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{o}{.}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{\PYGZhy{}}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}\PYG{o}{\PYGZhy{}}\PYG{n}{master}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: ./vsoch\PYGZhy{}hello\PYGZhy{}world\PYGZhy{}master.img
 \end{sphinxVerbatim}
 
 
@@ -6943,7 +6931,7 @@ above would be equivalent to doing:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}\PYG{p}{:}\PYG{n}{master}
+singularity pull shub://vsoch/hello\PYGZhy{}world:master
 \end{sphinxVerbatim}
 
 To enable other branches to build, they must be turned on in your
@@ -6952,7 +6940,7 @@ you would pull it as follows:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}\PYG{p}{:}\PYG{n}{development}
+singularity pull shub://vsoch/hello\PYGZhy{}world:development
 \end{sphinxVerbatim}
 
 The term \sphinxcode{\sphinxupquote{latest}} in Singularity Hub will pull, across all of your
@@ -6968,13 +6956,13 @@ naming convention is to use the username, reponame, and the branch
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{PULL} \PYG{n}{OPTIONS}\PYG{p}{:}
+PULL OPTIONS:
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{n}\PYG{o}{/}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{name}   \PYG{n}{Specify} \PYG{n}{a} \PYG{n}{custom} \PYG{n}{container} \PYG{n}{name} \PYG{p}{(}\PYG{n}{first} \PYG{n}{priority}\PYG{p}{)}
+    \PYGZhy{}n/\PYGZhy{}\PYGZhy{}name   Specify a custom container name (first priority)
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{C}\PYG{o}{/}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{commit} \PYG{n}{Name} \PYG{n}{container} \PYG{n}{based} \PYG{n}{on} \PYG{n}{GitHub} \PYG{n}{commit} \PYG{p}{(}\PYG{n}{second} \PYG{n}{priority}\PYG{p}{)}
+    \PYGZhy{}C/\PYGZhy{}\PYGZhy{}commit Name container based on GitHub commit (second priority)
 
-    \PYG{o}{\PYGZhy{}}\PYG{n}{H}\PYG{o}{/}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{hash}   \PYG{n}{Name} \PYG{n}{container} \PYG{n}{based} \PYG{n}{on} \PYG{n}{file} \PYG{n+nb}{hash} \PYG{p}{(}\PYG{n}{second} \PYG{n}{priority}\PYG{p}{)}
+    \PYGZhy{}H/\PYGZhy{}\PYGZhy{}hash   Name container based on file hash (second priority)
 \end{sphinxVerbatim}
 
 
@@ -6982,11 +6970,11 @@ naming convention is to use the username, reponame, and the branch
 \label{\detokenize{appendix:custom-name}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{name} \PYG{n}{meatballs}\PYG{o}{.}\PYG{n}{img} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}
+singularity pull \PYGZhy{}\PYGZhy{}name meatballs.img shub://vsoch/hello\PYGZhy{}world
 
-\PYG{n}{Progress} \PYG{o}{\textbar{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{\textbar{}} \PYG{l+m+mf}{100.0}\PYG{o}{\PYGZpc{}}
+Progress \textbar{}===================================\textbar{} 100.0\PYGZpc{}
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{o}{.}\PYG{o}{/}\PYG{n}{meatballs}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: ./meatballs.img
 \end{sphinxVerbatim}
 
 
@@ -6999,11 +6987,11 @@ want to match containers to their build files:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{commit} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}
+singularity pull \PYGZhy{}\PYGZhy{}commit shub://vsoch/hello\PYGZhy{}world
 
-\PYG{n}{Progress} \PYG{o}{\textbar{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{\textbar{}} \PYG{l+m+mf}{100.0}\PYG{o}{\PYGZpc{}}
+Progress \textbar{}===================================\textbar{} 100.0\PYGZpc{}
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{o}{.}\PYG{o}{/}\PYG{l+m+mi}{4187993}\PYG{n}{b8b44cbfa51c7e38e6b527918fcdf0470}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: ./4187993b8b44cbfa51c7e38e6b527918fcdf0470.img
 \end{sphinxVerbatim}
 
 
@@ -7013,11 +7001,11 @@ If you prefer the hash of the file itself, you can do that too.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{hash} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}
+singularity pull \PYGZhy{}\PYGZhy{}hash shub://vsoch/hello\PYGZhy{}world
 
-\PYG{n}{Progress} \PYG{o}{\textbar{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{\textbar{}} \PYG{l+m+mf}{100.0}\PYG{o}{\PYGZpc{}}
+Progress \textbar{}===================================\textbar{} 100.0\PYGZpc{}
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{o}{.}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{n}{db5b0723cfd378e332fa4806dd79e31}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: ./4db5b0723cfd378e332fa4806dd79e31.img
 \end{sphinxVerbatim}
 
 
@@ -7032,13 +7020,13 @@ pulling to \sphinxcode{\sphinxupquote{/tmp}} .
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SINGULARITY\PYGZus{}PULLFOLDER}\PYG{o}{=}\PYG{o}{/}\PYG{n}{tmp}
+SINGULARITY\PYGZus{}PULLFOLDER=/tmp
 
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}
+singularity pull shub://vsoch/hello\PYGZhy{}world
 
-\PYG{n}{Progress} \PYG{o}{\textbar{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{\textbar{}} \PYG{l+m+mf}{100.0}\PYG{o}{\PYGZpc{}}
+Progress \textbar{}===================================\textbar{} 100.0\PYGZpc{}
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{\PYGZhy{}}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}\PYG{o}{\PYGZhy{}}\PYG{n}{master}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: /tmp/vsoch\PYGZhy{}hello\PYGZhy{}world\PYGZhy{}master.img
 \end{sphinxVerbatim}
 
 
@@ -7049,56 +7037,56 @@ commit id ( \sphinxcode{\sphinxupquote{version}} ).
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{shub}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{/}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}\PYG{n+nd}{@42e1f04ed80217895f8c960bdde6bef4d34fab59}
+singularity pull shub://vsoch/hello\PYGZhy{}world@42e1f04ed80217895f8c960bdde6bef4d34fab59
 
-\PYG{n}{Progress} \PYG{o}{\textbar{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{\textbar{}} \PYG{l+m+mf}{100.0}\PYG{o}{\PYGZpc{}}
+Progress \textbar{}===================================\textbar{} 100.0\PYGZpc{}
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{o}{.}\PYG{o}{/}\PYG{n}{vsoch}\PYG{o}{\PYGZhy{}}\PYG{n}{hello}\PYG{o}{\PYGZhy{}}\PYG{n}{world}\PYG{o}{\PYGZhy{}}\PYG{n}{master}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: ./vsoch\PYGZhy{}hello\PYGZhy{}world\PYGZhy{}master.img
 \end{sphinxVerbatim}
 
 In this example, the first build of this container will be pulled.
 
 
 \subsubsection{Docker}
-\label{\detokenize{appendix:id32}}
+\label{\detokenize{appendix:id34}}
 Docker pull is similar (on the surface) to a Singularity Hub pull, and
 we would do the following:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}
+singularity pull docker://ubuntu
 
-\PYG{n}{Initializing} \PYG{n}{Singularity} \PYG{n}{image} \PYG{n}{subsystem}
+Initializing Singularity image subsystem
 
-\PYG{n}{Opening} \PYG{n}{image} \PYG{n}{file}\PYG{p}{:} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img}
+Opening image file: ubuntu.img
 
-\PYG{n}{Creating} \PYG{l+m+mi}{223}\PYG{n}{MiB} \PYG{n}{image}
+Creating 223MiB image
 
-\PYG{n}{Binding} \PYG{n}{image} \PYG{n}{to} \PYG{n}{loop}
+Binding image to loop
 
-\PYG{n}{Creating} \PYG{n}{file} \PYG{n}{system} \PYG{n}{within} \PYG{n}{image}
+Creating file system within image
 
-\PYG{n}{Image} \PYG{o+ow}{is} \PYG{n}{done}\PYG{p}{:} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img}
+Image is done: ubuntu.img
 
-\PYG{n}{Docker} \PYG{n}{image} \PYG{n}{path}\PYG{p}{:} \PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}\PYG{o}{/}\PYG{n}{library}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+Docker image path: index.docker.io/library/ubuntu:latest
 
-\PYG{n}{Cache} \PYG{n}{folder} \PYG{n+nb}{set} \PYG{n}{to} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}
+Cache folder set to /home/vanessa/.singularity/docker
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{n}{base} \PYG{n}{Singularity} \PYG{n}{environment}
+Importing: base Singularity environment
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{55010}\PYG{n}{f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:55010f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{2955}\PYG{n}{fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:2955fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{n}{deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{metadata}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: ubuntu.img
 \end{sphinxVerbatim}
 
 If you specify the tag, the image would be named accordingly (eg, \sphinxcode{\sphinxupquote{ubuntu-latest.img}}). Did
@@ -7106,9 +7094,9 @@ you notice that the output looks similar to if we did the following?
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{create} \PYG{n}{ubuntu}\PYG{o}{.}\PYG{n}{img}
+singularity create ubuntu.img
 
-\PYG{n}{singularity} \PYG{k+kn}{import} \PYG{n+nn}{ubuntu}\PYG{n+nn}{.}\PYG{n+nn}{img} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}
+singularity import ubuntu.img docker://ubuntu
 \end{sphinxVerbatim}
 
 this is because the same logic is happening on the back end. Thus, the
@@ -7118,44 +7106,44 @@ else.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{pull} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{size} \PYG{l+m+mi}{2000} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{name} \PYG{n}{jellybelly}\PYG{o}{.}\PYG{n}{img} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}
+singularity pull \PYGZhy{}\PYGZhy{}size 2000 \PYGZhy{}\PYGZhy{}name jellybelly.img docker://ubuntu
 
-\PYG{n}{Initializing} \PYG{n}{Singularity} \PYG{n}{image} \PYG{n}{subsystem}
+Initializing Singularity image subsystem
 
-\PYG{n}{Opening} \PYG{n}{image} \PYG{n}{file}\PYG{p}{:} \PYG{n}{jellybelly}\PYG{o}{.}\PYG{n}{img}
+Opening image file: jellybelly.img
 
-\PYG{n}{Creating} \PYG{l+m+mi}{2000}\PYG{n}{MiB} \PYG{n}{image}
+Creating 2000MiB image
 
-\PYG{n}{Binding} \PYG{n}{image} \PYG{n}{to} \PYG{n}{loop}
+Binding image to loop
 
-\PYG{n}{Creating} \PYG{n}{file} \PYG{n}{system} \PYG{n}{within} \PYG{n}{image}
+Creating file system within image
 
-\PYG{n}{Image} \PYG{o+ow}{is} \PYG{n}{done}\PYG{p}{:} \PYG{n}{jellybelly}\PYG{o}{.}\PYG{n}{img}
+Image is done: jellybelly.img
 
-\PYG{n}{Docker} \PYG{n}{image} \PYG{n}{path}\PYG{p}{:} \PYG{n}{index}\PYG{o}{.}\PYG{n}{docker}\PYG{o}{.}\PYG{n}{io}\PYG{o}{/}\PYG{n}{library}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+Docker image path: index.docker.io/library/ubuntu:latest
 
-\PYG{n}{Cache} \PYG{n}{folder} \PYG{n+nb}{set} \PYG{n}{to} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}
+Cache folder set to /home/vanessa/.singularity/docker
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{n}{base} \PYG{n}{Singularity} \PYG{n}{environment}
+Importing: base Singularity environment
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{55010}\PYG{n}{f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:55010f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{2955}\PYG{n}{fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:2955fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{n}{deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{docker}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66.tar.gz
 
-\PYG{n}{Importing}\PYG{p}{:} \PYG{o}{/}\PYG{n}{home}\PYG{o}{/}\PYG{n}{vanessa}\PYG{o}{/}\PYG{o}{.}\PYG{n}{singularity}\PYG{o}{/}\PYG{n}{metadata}\PYG{o}{/}\PYG{n}{sha256}\PYG{p}{:}\PYG{n}{fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
-\PYG{n}{Done}\PYG{o}{.} \PYG{n}{Container} \PYG{o+ow}{is} \PYG{n}{at}\PYG{p}{:} \PYG{n}{jellybelly}\PYG{o}{.}\PYG{n}{img}
+Done. Container is at: jellybelly.img
 \end{sphinxVerbatim}
 
 
 \subsection{run}
-\label{\detokenize{appendix:id33}}\phantomsection\label{\detokenize{appendix:sec-run}}
+\label{\detokenize{appendix:run}}\label{\detokenize{appendix:run-command}}
 It’s common to want your container to “do a thing.” Singularity \sphinxcode{\sphinxupquote{run}} allows
 you to define a custom action to be taken when a container is either \sphinxcode{\sphinxupquote{run}} or
 executed directly by file name. Specifically, you might want it to
@@ -7164,7 +7152,7 @@ different functions for the user.
 
 
 \subsubsection{Overview}
-\label{\detokenize{appendix:id34}}
+\label{\detokenize{appendix:id35}}
 First, how do we run a container? We can do that in one of two ways -
 the commands below are identical:
 
@@ -7209,10 +7197,10 @@ given to the container.
 
 
 \subsubsection{Runtime Flags}
-\label{\detokenize{appendix:id35}}
+\label{\detokenize{appendix:id36}}
 If you are interested in containing an environment or filesystem
 locations, we highly recommend that you look at the \sphinxcode{\sphinxupquote{singularity run help}} and our
-documentation on \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#singularity-action-flags}{flags}
+documentation on {\hyperref[\detokenize{appendix:singularity-action-flags}]{\sphinxcrossref{\DUrole{std,std-ref}{flags}}}}
 to better customize this command.
 
 
@@ -7268,18 +7256,18 @@ aren’t importing Docker at all) then we default to \sphinxcode{\sphinxupquote{
 
 \end{enumerate}
 
-Here is how you would define the runscript section when you \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html\#build-a-container}{build} an image:
+Here is how you would define the runscript section when you {\hyperref[\detokenize{build_a_container:build-a-container}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}} an image:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:} \PYG{n}{docker}
+Bootstrap: docker
 
-\PYG{n}{From}\PYG{p}{:} \PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+From: ubuntu:latest
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{runscript}
+\PYGZpc{}runscript
 
-\PYG{n}{exec} \PYG{o}{/}\PYG{n}{usr}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{python} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}@}\PYG{l+s+s2}{\PYGZdq{}}
+exec /usr/bin/python \PYGZdq{}\PYGZdl{}@\PYGZdq{}
 \end{sphinxVerbatim}
 
 and of course python should be installed as /usr/bin/python. The
@@ -7300,23 +7288,23 @@ exec \PYGZdq{}\PYGZdl{}@\PYGZdq{}{}`
 \end{sphinxVerbatim}
 
 If you want different entrypoints for your image, we recommend using the
-\%apprun syntax (see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/reproducible\_scif\_apps.html\#reproducible-sci-f-apps}{apps}). Here we have two entrypoints for foo and bar:
+\%apprun syntax (see \DUrole{xref,std,std-ref}{apps}). Here we have two entrypoints for foo and bar:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{runscript}
+\PYGZpc{}runscript
 
-\PYG{n}{exec} \PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Try running with \PYGZhy{}\PYGZhy{}app dog/cat}\PYG{l+s+s2}{\PYGZdq{}}
-
-
-\PYG{o}{\PYGZpc{}}\PYG{n}{apprun} \PYG{n}{dog}
-
-\PYG{n}{exec} \PYG{n}{echo} \PYG{n}{Hello} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}@}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{this} \PYG{o+ow}{is} \PYG{n}{Dog}
+exec echo \PYGZdq{}Try running with \PYGZhy{}\PYGZhy{}app dog/cat\PYGZdq{}
 
 
-\PYG{o}{\PYGZpc{}}\PYG{n}{apprun} \PYG{n}{cat}
+\PYGZpc{}apprun dog
 
-\PYG{n}{exec} \PYG{n}{echo} \PYG{n}{Meow} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdl{}@}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{this} \PYG{o+ow}{is} \PYG{n}{Cat}
+exec echo Hello \PYGZdq{}\PYGZdl{}@\PYGZdq{}, this is Dog
+
+
+\PYGZpc{}apprun cat
+
+exec echo Meow \PYGZdq{}\PYGZdl{}@\PYGZdq{}, this is Cat
 \end{sphinxVerbatim}
 
 and then running (after build of a complete recipe) would look like:
@@ -7348,7 +7336,7 @@ container is one that tells the user how to interact with it.
 
 
 \subsection{shell}
-\label{\detokenize{appendix:id39}}\phantomsection\label{\detokenize{appendix:sec-shell}}
+\label{\detokenize{appendix:shell}}\label{\detokenize{appendix:shell-command}}
 The \sphinxcode{\sphinxupquote{shell}} Singularity sub-command will automatically spawn an interactive
 shell within a container. As of v2.3 the default that is spawned via the
 shell command is \sphinxcode{\sphinxupquote{/bin/bash}} if it exists otherwise \sphinxcode{\sphinxupquote{/bin/sh}} is called.
@@ -7378,7 +7366,7 @@ Additionally any arguments passed to the Singularity command (after the
 container name) will be passed to the called shell within the container,
 and shell can be used across image types. Here is a quick example of
 shelling into a container assembled from Docker layers. We highly
-recommend that you look at the \sphinxcode{\sphinxupquote{singularity shell help}} and our documentation on \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/appendix.html\#singularity-action-flags}{flags} to
+recommend that you look at the \sphinxcode{\sphinxupquote{singularity shell help}} and our documentation on {\hyperref[\detokenize{appendix:singularity-action-flags}]{\sphinxcrossref{\DUrole{std,std-ref}{flags}}}} to
 better customize this command.
 
 
@@ -7506,7 +7494,7 @@ hello world
 \label{\detokenize{appendix:image-command-group}}
 
 \subsection{image.export}
-\label{\detokenize{appendix:id41}}\phantomsection\label{\detokenize{appendix:sec-imageexport}}
+\label{\detokenize{appendix:image-export}}\label{\detokenize{appendix:id38}}\phantomsection\label{\detokenize{appendix:sec-imageexport}}
 Export is a way to dump the contents of your container into a \sphinxcode{\sphinxupquote{.tar.gz}}, or a
 stream to put into some other place. For example, you could stream
 this into an in memory tar in python. Importantly, this command was
@@ -7519,26 +7507,26 @@ Here we export an image into a \sphinxcode{\sphinxupquote{.tar}} file:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{image}\PYG{o}{.}\PYG{n}{export} \PYG{n}{container}\PYG{o}{.}\PYG{n}{img} \PYG{o}{\PYGZgt{}} \PYG{n}{container}\PYG{o}{.}\PYG{n}{tar}
+singularity image.export container.img \PYGZgt{} container.tar
 \end{sphinxVerbatim}
 
 We can also specify the file with \sphinxcode{\sphinxupquote{-{-}file}}
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{image}\PYG{o}{.}\PYG{n}{export} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{file} \PYG{n}{container}\PYG{o}{.}\PYG{n}{tar} \PYG{n}{container}\PYG{o}{.}\PYG{n}{img}
+singularity image.export \PYGZhy{}\PYGZhy{}file container.tar container.img
 \end{sphinxVerbatim}
 
 And here is the recommended way to compress your image:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{image}\PYG{o}{.}\PYG{n}{export} \PYG{n}{container}\PYG{o}{.}\PYG{n}{img} \PYG{o}{\textbar{}} \PYG{n}{gzip} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{9} \PYG{o}{\PYGZgt{}} \PYG{n}{container}\PYG{o}{.}\PYG{n}{img}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+singularity image.export container.img \textbar{} gzip \PYGZhy{}9 \PYGZgt{} container.img.tar.gz
 \end{sphinxVerbatim}
 
 
 \subsection{image.expand}
-\label{\detokenize{appendix:id42}}\phantomsection\label{\detokenize{appendix:sec-imageexpand}}
+\label{\detokenize{appendix:image-expand}}\label{\detokenize{appendix:id39}}\phantomsection\label{\detokenize{appendix:sec-imageexpand}}
 While the squashfs filesystem means that you typically don’t need to
 worry about the size of your container being built, you might find that
 if you are building an ext3 image (pre Singularity 2.4) you want to
@@ -7622,7 +7610,7 @@ increase (which is 768MiB) by using the \sphinxcode{\sphinxupquote{-{-}size}} op
 
 
 \subsection{image.import}
-\label{\detokenize{appendix:id43}}\phantomsection\label{\detokenize{appendix:sec-imageimport}}
+\label{\detokenize{appendix:image-import}}\label{\detokenize{appendix:id40}}\phantomsection\label{\detokenize{appendix:sec-imageimport}}
 Singularity import is essentially taking a dump of files and folders
 and adding them to your image. This works for local compressed things
 (e.g., tar.gz) but also for docker image layers that you don’t have on
@@ -7635,16 +7623,16 @@ image:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{image}\PYG{o}{.}\PYG{k+kn}{import} \PYG{n+nn}{container}\PYG{n+nn}{.}\PYG{n+nn}{img} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+singularity image.import container.img docker://ubuntu:latest
 \end{sphinxVerbatim}
 
 
 \subsection{image.create}
-\label{\detokenize{appendix:id44}}\phantomsection\label{\detokenize{appendix:sec-imagecreate}}
+\label{\detokenize{appendix:image-create}}\label{\detokenize{appendix:id41}}\phantomsection\label{\detokenize{appendix:sec-imagecreate}}
 A Singularity image, which can be referred to as a “container,” is a
 single file that contains a virtual file system. As of Singularity
 2.4, we strongly recommend that you build (create and install) an
-image using \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html}{build}. If you have reason to create an empty image, or use
+image using {\hyperref[\detokenize{build_a_container:build-a-container}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}}. If you have reason to create an empty image, or use
 create for any other reason, the original \sphinxcode{\sphinxupquote{create}} command is replaced with a
 more specific \sphinxcode{\sphinxupquote{image.create}}. After creating an image you can install an operating
 system, applications, and save meta-data with it.
@@ -7668,13 +7656,13 @@ following command:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{image}\PYG{o}{.}\PYG{n}{create} \PYG{n}{container}\PYG{o}{.}\PYG{n}{img}
+singularity image.create container.img
 
-\PYG{n}{Creating} \PYG{n}{empty} \PYG{l+m+mi}{768}\PYG{n}{MiB} \PYG{n}{image} \PYG{n}{file}\PYG{p}{:} \PYG{n}{container}\PYG{o}{.}\PYG{n}{img}
+Creating empty 768MiB image file: container.img
 
-\PYG{n}{Formatting} \PYG{n}{image} \PYG{k}{with} \PYG{n}{ext3} \PYG{n}{file} \PYG{n}{system}
+Formatting image with ext3 file system
 
-\PYG{n}{Image} \PYG{o+ow}{is} \PYG{n}{done}\PYG{p}{:} \PYG{n}{container}\PYG{o}{.}\PYG{n}{img}
+Image is done: container.img
 \end{sphinxVerbatim}
 
 How big is it?
@@ -7736,15 +7724,15 @@ size.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{sudo} \PYG{n}{singularity} \PYG{n}{build} \PYG{n}{container}\PYG{o}{.}\PYG{n}{simg} \PYG{n}{docker}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ubuntu}
+sudo singularity build container.simg docker://ubuntu
 
 
-\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+...
 
 
-\PYG{n}{du} \PYG{o}{\PYGZhy{}}\PYG{n}{sh} \PYG{n}{container}\PYG{o}{.}\PYG{n}{simg}
+du \PYGZhy{}sh container.simg
 
-\PYG{l+m+mi}{45}\PYG{n}{M} \PYG{n}{container}\PYG{o}{.}\PYG{n}{simg}
+45M container.simg
 \end{sphinxVerbatim}
 \end{quote}
 
@@ -7780,7 +7768,7 @@ Image is done: container.img
 
 
 \section{Instance Command Group}
-\label{\detokenize{appendix:instance-command-group}}
+\label{\detokenize{appendix:instance-command-group}}\label{\detokenize{appendix:id42}}
 
 \subsection{instance.start}
 \label{\detokenize{appendix:instance-start}}\label{\detokenize{appendix:sec-instances}}\phantomsection\label{\detokenize{appendix:sec-instancestart}}
@@ -7791,7 +7779,7 @@ named instance in the background.
 
 
 \subsubsection{Overview}
-\label{\detokenize{appendix:id46}}
+\label{\detokenize{appendix:id43}}
 To initiate a named instance of a container, you must call the \sphinxcode{\sphinxupquote{instance.start}} command
 with 2 arguments: the name of the container that you want to start and a
 unique name for an instance of that container. Once the new instance is
@@ -7812,15 +7800,15 @@ For a complete list of options see the output of:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{singularity} \PYG{n}{help} \PYG{n}{instance}\PYG{o}{.}\PYG{n}{start}
+singularity help instance.start
 \end{sphinxVerbatim}
 
 
 \subsubsection{Examples}
-\label{\detokenize{appendix:id47}}
+\label{\detokenize{appendix:id44}}
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at \sphinxcode{\sphinxupquote{instance}} usage see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/running\_services.html\#running-services}{Running Instances}.
+detailed look at \sphinxcode{\sphinxupquote{instance}} usage see {\hyperref[\detokenize{running_services:running-services}]{\sphinxcrossref{\DUrole{std,std-ref}{Running Instances}}}}.
 
 
 \paragraph{Start an instance called cow1 from a container on Singularity Hub}
@@ -7914,16 +7902,16 @@ of the named instances running in the background.
 
 
 \subsubsection{Overview}
-\label{\detokenize{appendix:id48}}
+\label{\detokenize{appendix:id45}}
 After initiating one or more named instances to run in the background
 with the \sphinxcode{\sphinxupquote{instance.start}} command you can list them with the \sphinxcode{\sphinxupquote{instance.list}} command.
 
 
 \subsubsection{Examples}
-\label{\detokenize{appendix:id49}}
+\label{\detokenize{appendix:id46}}
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at \sphinxcode{\sphinxupquote{instance}} usage see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/running\_services.html\#running-services}{Running Instances}.
+detailed look at \sphinxcode{\sphinxupquote{instance}} usage see {\hyperref[\detokenize{running_services:running-services}]{\sphinxcrossref{\DUrole{std,std-ref}{Running Instances}}}}.
 
 
 \paragraph{Start a few named instances from containers on Singularity Hub}
@@ -7963,20 +7951,20 @@ instances once you are finished using them
 
 
 \subsubsection{Overview}
-\label{\detokenize{appendix:id51}}
+\label{\detokenize{appendix:id47}}
 After initiating one or more named instances to run in the background
 with the \sphinxcode{\sphinxupquote{instance.start}} command you can stop them with the \sphinxcode{\sphinxupquote{instance.stop}} command.
 
 
 \subsubsection{Examples}
-\label{\detokenize{appendix:id52}}
+\label{\detokenize{appendix:id48}}
 These examples use a container from Singularity Hub, but you can use
 local containers or containers from Docker Hub as well. For a more
-detailed look at \sphinxcode{\sphinxupquote{instance}} usage see \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/running\_services.html\#running-services}{Running Instances}.
+detailed look at \sphinxcode{\sphinxupquote{instance}} usage see {\hyperref[\detokenize{running_services:running-services}]{\sphinxcrossref{\DUrole{std,std-ref}{Running Instances}}}}.
 
 
 \paragraph{Start a few named instances from containers on Singularity Hub}
-\label{\detokenize{appendix:id54}}
+\label{\detokenize{appendix:id49}}
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYGZdl{} singularity instance.start shub://GodloveD/lolcow cow1
@@ -8011,21 +7999,16 @@ Stopping hiya instance of /home/ubuntu/vsoch\PYGZhy{}hello\PYGZhy{}world\PYGZhy{
 
 \section{Deprecated}
 \label{\detokenize{appendix:deprecated}}
-\begin{sphinxadmonition}{note}{Note:}
-The bootstrap command is deprecated for Singularity Version
-2.4. You should use \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html\#build-a-container}{build} instead.
-\end{sphinxadmonition}
-
 
 \subsection{bootstrap}
-\label{\detokenize{appendix:id56}}\phantomsection\label{\detokenize{appendix:sec-bootstrap}}
+\label{\detokenize{appendix:bootstrap}}\label{\detokenize{appendix:id50}}\phantomsection\label{\detokenize{appendix:sec-bootstrap}}
 Bootstrapping was the original way (for Singularity versions prior to
 2.4) to install an operating system and then configure it appropriately
 for a specified need. Bootstrap is very similar to build, except that it
 by default uses an \sphinxhref{https://en.wikipedia.org/wiki/Ext3}{ext3} filesystem and allows for writability. The
 images unfortunately are not immutable in this way, and can degrade over
 time. As of 2.4, bootstrap is still supported for Singularity, however
-we encourage you to use \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/build\_a\_container.html}{build} instead.
+we encourage you to use {\hyperref[\detokenize{build_a_container:build-a-container}]{\sphinxcrossref{\DUrole{std,std-ref}{build}}}} instead.
 
 
 \subsubsection{Quick Start}
@@ -8055,9 +8038,9 @@ Let’s continue with our quick start example. Here is your spec file, \sphinxco
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Bootstrap}\PYG{p}{:}\PYG{n}{docker}
+Bootstrap:docker
 
-\PYG{n}{From}\PYG{p}{:}\PYG{n}{ubuntu}\PYG{p}{:}\PYG{n}{latest}
+From:ubuntu:latest
 \end{sphinxVerbatim}
 
 You next create an image:
@@ -8142,7 +8125,7 @@ Importing: /home/vanessa/.singularity/docker/sha256:cf9722e506aada1109f5c00a9ba5
 Importing: /home/vanessa/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 \end{sphinxVerbatim}
 
-For details and best practices for creating your Singularity recipe, \sphinxhref{https://singularity-userdoc.readthedocs.io/en/latest/container\_recipes.html\#container-recipes}{read about them here}.
+For details and best practices for creating your Singularity recipe, {\hyperref[\detokenize{container_recipes:container-recipes}]{\sphinxcrossref{\DUrole{std,std-ref}{read about them here}}}}.
 
 
 

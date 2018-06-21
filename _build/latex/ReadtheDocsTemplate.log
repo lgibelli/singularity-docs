@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  20 JUN 2018 22:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  21 JUN 2018 08:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1090,12 +1090,7 @@ Underfull \vbox (badness 10000) detected at line 189
 Overfull \vbox (2.68169pt too high) detected at line 189
  []
 
-[2] [3] [4] [5] [6]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 527.
-LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 541.
-[7] [8]
+[2] [3] [4] [5] [6] [7] [8]
 Chapter 2.
 [9
 
@@ -1118,7 +1113,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleemphasis' on input line 822.
 
 [11] [12]
-<flow.png, id=1425, 3539.2225pt x 1258.7025pt>
+<flow.png, id=1423, 3539.2225pt x 1258.7025pt>
 File: flow.png Graphic file (type png)
 <use flow.png>
 Package pdftex.def Info: flow.png  used on input line 998.
@@ -1131,95 +1126,95 @@ Chapter 3.
 
 ]
 Chapter 4.
-<build_input_output.png, id=1503, 417.56pt x 400.49625pt>
+<build_input_output.png, id=1497, 417.56pt x 400.49625pt>
 File: build_input_output.png Graphic file (type png)
 <use build_input_output.png>
-Package pdftex.def Info: build_input_output.png  used on input line 1325.
+Package pdftex.def Info: build_input_output.png  used on input line 1319.
 (pdftex.def)             Requested size: 417.55896pt x 400.49527pt.
 [21] [22 <./build_input_output.png>]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 1357.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 1351.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-357.
+351.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1357.
+(hyperref)                removing `\sphinxupquote' on input line 1351.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-357.
+351.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1357.
+(hyperref)                removing `\sphinxupquote' on input line 1351.
 
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <12> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 1360.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 1354.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-360.
+354.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1360.
+(hyperref)                removing `\sphinxupquote' on input line 1354.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-388.
+382.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1388.
+(hyperref)                removing `\sphinxupquote' on input line 1382.
 
 [23] [24]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-500.
+494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1500.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-516.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1516.
+(hyperref)                removing `\sphinxupquote' on input line 1494.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-534.
+510.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1534.
+(hyperref)                removing `\sphinxupquote' on input line 1510.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
-549.
+528.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sphinxupquote' on input line 1549.
+(hyperref)                removing `\sphinxupquote' on input line 1528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\sphinxstyleliteralintitle' on input line 1
+543.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\sphinxupquote' on input line 1543.
 
 [25] [26]
 Chapter 5.
 [27
 
 ] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 1778--1785
+Underfull \hbox (badness 10000) in paragraph at lines 1772--1779
 []\T1/ptm/b/n/10 DOCKER_ARCHITECTURE \T1/ptm/m/n/10 This is ex-posed via the ex
 -ported en-vi-ron-ment vari-able
  []
@@ -1229,15 +1224,15 @@ Chapter 6.
 [31
 
 ] [32] [33] [34]
-Overfull \vbox (2.18257pt too high) detected at line 2193
+Overfull \vbox (2.18257pt too high) detected at line 2187
  []
 
 [35] [36] [37] [38] [39] [40]
-Underfull \vbox (badness 10000) detected at line 2605
+Underfull \vbox (badness 10000) detected at line 2599
  []
 
 
-Overfull \vbox (2.68169pt too high) detected at line 2605
+Overfull \vbox (2.68169pt too high) detected at line 2599
  []
 
 [41] [42] [43] [44
@@ -1246,10 +1241,10 @@ Overfull \vbox (2.68169pt too high) detected at line 2605
 Chapter 7.
 File: flow.png Graphic file (type png)
 <use flow.png>
-Package pdftex.def Info: flow.png  used on input line 2751.
+Package pdftex.def Info: flow.png  used on input line 2745.
 (pdftex.def)             Requested size: 469.75502pt x 167.05577pt.
 [45] [46] [47] [48]
-Overfull \vbox (2.2412pt too high) detected at line 3015
+Overfull \vbox (2.2412pt too high) detected at line 3009
  []
 
 [49] [50]
@@ -1289,72 +1284,71 @@ Chapter 15.
 ]
 Chapter 16.
 [93] [94] [95] [96] [97] [98] [99] [100]
-Overfull \vbox (2.48106pt too high) detected at line 6212
+Overfull \vbox (2.48106pt too high) detected at line 6200
  []
 
 [101] [102] [103] [104]
-Overfull \vbox (2.9801pt too high) detected at line 6443
+Overfull \vbox (2.9801pt too high) detected at line 6431
  []
 
 [105]
-Overfull \vbox (1.98016pt too high) detected at line 6538
+Overfull \vbox (1.98016pt too high) detected at line 6526
  []
 
 [106]
-Underfull \vbox (badness 10000) detected at line 6538
+Underfull \vbox (badness 10000) detected at line 6526
  []
 
 
-Overfull \vbox (2.68169pt too high) detected at line 6538
+Overfull \vbox (2.68169pt too high) detected at line 6526
  []
 
 [107] [108] [109] [110]
-Overfull \vbox (0.98013pt too high) detected at line 6776
+Overfull \vbox (0.98013pt too high) detected at line 6764
  []
 
 [111] [112]
-Overfull \vbox (0.98015pt too high) detected at line 6903
+Overfull \vbox (0.98015pt too high) detected at line 6891
  []
 
 [113] [114] [115]
-Overfull \vbox (0.73784pt too high) detected at line 7102
+Overfull \vbox (0.73784pt too high) detected at line 7090
  []
 
 [116] [117] [118] [119] [120] [121] [122] [123] [124] [125] [126] [127] [128] [
 129] [130] [131] (./ReadtheDocsTemplate.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 8151.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 8134.
 [132]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 8151.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 8134.
 (./ReadtheDocsTemplate.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8151.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8151.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8134.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8134.
 
 Package rerunfilecheck Info: File `ReadtheDocsTemplate.out' has not changed.
 (rerunfilecheck)             Checksum: 96D0B1924BA6C3225F79499F46DDB5B0;42414.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 8151.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 8134.
  ) 
 Here is how much of TeX's memory you used:
- 14678 strings out of 492982
- 209631 string characters out of 6134896
- 378611 words of memory out of 5000000
- 17447 multiletter control sequences out of 15000+600000
- 54854 words of font info for 79 fonts, out of 8000000 for 9000
+ 14685 strings out of 492982
+ 209996 string characters out of 6134896
+ 379723 words of memory out of 5000000
+ 17463 multiletter control sequences out of 15000+600000
+ 53496 words of font info for 75 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 37i,12n,49p,764b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,49p,518b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
-w/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucr
-ro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on ReadtheDocsTemplate.pdf (140 pages, 642123 bytes).
+w/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
+vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/urw/times/utmri8a.pfb>
+Output written on ReadtheDocsTemplate.pdf (140 pages, 618279 bytes).
 PDF statistics:
- 2289 PDF objects out of 2487 (max. 8388607)
- 2104 compressed objects within 22 object streams
- 475 named destinations out of 1000 (max. 500000)
+ 2271 PDF objects out of 2487 (max. 8388607)
+ 2088 compressed objects within 21 object streams
+ 471 named destinations out of 1000 (max. 500000)
  2092 words of extra memory for PDF output out of 10000 (max. 10000000)
 
