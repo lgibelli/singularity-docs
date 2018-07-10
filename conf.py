@@ -117,7 +117,8 @@ html_context = {
     'display_github': True,
     'github_user': 'singularityware',
     'github_repo': 'singularity-userdocs',
-    'github_version': 'master',   
+    'github_version': 'master',
+    'conf_py_path': '/',
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -174,7 +175,7 @@ html_static_path = ['_static']
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #html_show_sphinx = True
