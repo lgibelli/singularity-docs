@@ -51,7 +51,7 @@ copyright = u'2018, Singularity'
 # built documents.
 #
 # The short X.Y version.
-version = '2.5.1'
+version = '1.0'
 # The full version, including alpha/beta/rc tags.
 release = '2.5.1'
 
@@ -111,6 +111,13 @@ html_theme_options = {
     'navigation_depth': 5,
     'prev_next_buttons_location': 'bottom',
     'style_external_links': True,
+}
+
+html_context = {
+    'display_github': True,
+    'github_user': 'singularityware',
+    'github_repo': 'singularity-userdocs',
+    'github_version': 'master',   
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
